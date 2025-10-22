@@ -39,7 +39,7 @@
   <xacro:lidar_v0 prefix="top" parent="base_link">
     <origin xyz="0 -0.19 0.315"/>
   </xacro:lidar_v0>
-  <xacro:lidar_gazebo_v0 prefix="top" min_rad="-3.14" max_rad="3.14" min_range="0.02" max_range="10"/>
+  <xacro:lidar_gazebo_v0 prefix="top" min_rad="-3.925" max_rad="0.785" min_range="0.18" max_range="10"/>
   <!-- depth cam sensor -->
   <xacro:sensor_d415 name="bottom" parent="base_link" flag_color="1" flag_ir="0" flag_depth="1" updaterate="2">
     <!-- <origin xyz="0 -0.23813 0.18161" rpy="0 0 -${M_PI/4}"/> -->
