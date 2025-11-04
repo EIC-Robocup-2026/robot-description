@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="ros2_control" params="ros2_control">
+    <!-- Simulation - Gazebo based ros2_control -->
     <xacro:if value="${ros2_control == 'gazebo'}">
       <ros2_control name="GazeboSimSystem" type="system">
         <hardware>
@@ -40,14 +41,11 @@
         </joint>
       </ros2_control>
     </xacro:if>
+
+    <!-- Issac Sim/ MicroROS : Topic based ros2_control -->
     <xacro:if value="${ros2_control == 'topic_base'}">
       <ros2_control name="topic_base_controller" type="system">
         <hardware>
-          <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
-          <param name="joint_commands_topic">/drivebase_joint_cmd</param>
-          <param name="joint_states_topic">/drivebase_joint_states</param>
-          <!-- <param name="sum_wrapped_joint_states">true</param> -->
-          <param name="trigger_joint_command_threshold">-1.0</param>
         </hardware>
         <joint name="fl_wheel_joint">
           <command_interface name="velocity">
@@ -83,6 +81,105 @@
         </joint>
       </ros2_control>
     </xacro:if>
+
+    <!-- Real Hardware : real_robot based ros2_control -->
+    <xacro:if value="${ros2_control == 'real_robot'}">
+      <ros2_control name="topic_base_controller" type="system">
+        <hardware>
+          <plugin>cubemars_hardware/CubeMarsSystemHardware</plugin>
+          <param name="can_interface">can0</param>
+        </hardware>
+        <joint name="fl_wheel_joint">
+          <param name="can_id">1</param>
+          <param name="pole_pairs">14</param>
+          <param name="gear_ratio">10</param>
+          <param name="kt">0.123</param>
+          <param name="enc_off">0.0</param>
+          <param name="trq_limit">30</param>
+          <xacro:if value="${read_only}">
+            <param name="read_only">1</param>
+          </xacro:if>
+          <command_interface name="position" />
+          <command_interface name="velocity">
+            <param name="min"> -16.00</param>
+            <param name="max"> 16.00</param>
+          </command_interface>
+          <command_interface name="acceleration" />
+          <command_interface name="effort" />
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+          <state_interface name="effort" />
+          <state_interface name="temperature" />
+        </joint>
+        <joint name="fr_wheel_joint">
+          <param name="can_id">2</param>
+          <param name="pole_pairs">14</param>
+          <param name="gear_ratio">10</param>
+          <param name="kt">0.123</param>
+          <param name="enc_off">0.0</param>
+          <param name="trq_limit">30</param>
+          <xacro:if value="${read_only}">
+            <param name="read_only">1</param>
+          </xacro:if>
+          <command_interface name="position" />
+          <command_interface name="velocity">
+            <param name="min"> -16.00</param>
+            <param name="max"> 16.00</param>
+          </command_interface>
+          <command_interface name="acceleration" />
+          <command_interface name="effort" />
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+          <state_interface name="effort" />
+          <state_interface name="temperature" />
+        </joint>
+        <joint name="br_wheel_joint">
+          <param name="can_id">3</param>
+          <param name="pole_pairs">14</param>
+          <param name="gear_ratio">10</param>
+          <param name="kt">0.123</param>
+          <param name="enc_off">0.0</param>
+          <param name="trq_limit">30</param>
+          <xacro:if value="${read_only}">
+            <param name="read_only">1</param>
+          </xacro:if>
+          <command_interface name="position" />
+          <command_interface name="velocity">
+            <param name="min"> -16.00</param>
+            <param name="max"> 16.00</param>
+          </command_interface>
+          <command_interface name="acceleration" />
+          <command_interface name="effort" />
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+          <state_interface name="effort" />
+          <state_interface name="temperature" />
+        </joint>
+        <joint name="bl_wheel_joint">
+          <param name="can_id">4</param>
+          <param name="pole_pairs">14</param>
+          <param name="gear_ratio">10</param>
+          <param name="kt">0.123</param>
+          <param name="enc_off">0.0</param>
+          <param name="trq_limit">30</param>
+          <xacro:if value="${read_only}">
+            <param name="read_only">1</param>
+          </xacro:if>
+          <command_interface name="position" />
+          <command_interface name="velocity">
+            <param name="min"> -16.00</param>
+            <param name="max"> 16.00</param>
+          </command_interface>
+          <command_interface name="acceleration" />
+          <command_interface name="effort" />
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+          <state_interface name="effort" />
+          <state_interface name="temperature" />
+        </joint>
+      </ros2_control>
+    </xacro:if>
+
     <gazebo>
       <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin"
         filename="libgz_ros2_control-system.so">
