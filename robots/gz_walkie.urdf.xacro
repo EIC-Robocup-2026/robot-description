@@ -37,10 +37,10 @@
   </xacro:wheel_v0>
   <!-- lidar sensor -->
   <xacro:lidar_v0 prefix="front" parent="base_link">
-    <origin xyz="0 -0.19 0.315" rpy="0 0 -1.5707963"/>
+    <origin xyz="0 -0.240 0.315" rpy="0 0 -1.5707963"/>
   </xacro:lidar_v0>
   <xacro:lidar_v0 prefix="back" parent="base_link">
-    <origin xyz="0 0.19 0.315" rpy="0 0 1.5707963"/>
+    <origin xyz="0 0.240 0.315" rpy="0 0 1.5707963"/>
   </xacro:lidar_v0>
   <xacro:lidar_gazebo_v0 prefix="top" min_rad="-3.925" max_rad="0.785" min_range="0.18" max_range="10"/>
   <xacro:lidar_gazebo_v0 prefix="back" min_rad="-3.925" max_rad="0.785" min_range="0.18" max_range="10"/>
