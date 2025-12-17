@@ -1,10 +1,13 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-	<xacro:macro name="lidar_gazebo_v0" params="prefix min_rad max_rad min_range max_range">
+	<xacro:macro
+        name="lidar_gazebo_v0"
+        params="prefix min_rad max_rad min_range max_range yaw_offset"
+    >
 		<gazebo reference="${prefix}_lidar_link">
-			<sensor name="laser" type="gpu_lidar">
+			<sensor name="${prefix}_lidar" type="gpu_lidar">
 				<visualize>false</visualize>
-				<pose>0 0 0 0 0 0</pose>
+				<pose>0 0 0 0 0 ${yaw_offset}</pose>
 				<update_rate>40</update_rate>
 				<lidar>
 					<scan>
@@ -26,7 +29,7 @@
 						<stddev>0.01</stddev>
 					</noise>
 				</lidar>
-				<topic>scan</topic>
+				<topic>${prefix}_lidar</topic>
 				<gz_frame_id>${prefix}_lidar_link</gz_frame_id>
 			</sensor>
 		</gazebo>

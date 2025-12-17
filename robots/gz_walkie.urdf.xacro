@@ -1,67 +1,127 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="walkie_bot">
-  <xacro:property name="M_PI" value="3.14159274"/>
-  <xacro:arg name="ros2_control" default="gazebo"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"/>
+  <xacro:property name="M_PI" value="3.14159274" />
+  <xacro:arg name="ros2_control" default="gazebo" />
+
+  <!-- Dual lidar option when only SIMULATION
+  real robot force to be dual_lidar
+  don't forgot to enable lidar topic to bridge in gz_bridge.yml -->
+  <xacro:arg name="dual_lidar" default="False" />
+
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro"
+  />
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"
+  />
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro"
+  />
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"
+  />
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"
+  />
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
-  <link name="base_footprint"/>
+  <link name="base_footprint" />
   <xacro:base_v0 parent="base_footprint">
-    <origin xyz="0 0 0" rpy="0 0 ${M_PI / 2}"/>
+    <origin xyz="0 0 0" rpy="0 0 ${M_PI / 2}" />
   </xacro:base_v0>
-  <xacro:base_gazebo_v0/>
+  <xacro:base_gazebo_v0 />
   <!-- Wheel -->
   <!-- 1st wheel -->
   <xacro:wheel_v0 prefix="bl" parent="base_link">
-    <origin xyz="0.177622395 0.177622395 0.05" rpy="0 0 -${M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="0.177622395 0.177622395 0.05" rpy="0 0 -${M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- 2nd wheel -->
   <xacro:wheel_v0 prefix="br" parent="base_link">
-    <origin xyz="-0.177622395 0.177622395 0.05" rpy="0 0 ${M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="-0.177622395 0.177622395 0.05" rpy="0 0 ${M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- 3rd wheel -->
   <xacro:wheel_v0 prefix="fr" parent="base_link">
-    <origin xyz="-0.177622395 -0.177622395 0.05" rpy="0 0 ${3*M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="-0.177622395 -0.177622395 0.05" rpy="0 0 ${3*M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- 4th wheel -->
   <xacro:wheel_v0 prefix="fl" parent="base_link">
-    <origin xyz="0.177622395 -0.177622395 0.05" rpy="0 0 ${5*M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="0.177622395 -0.177622395 0.05" rpy="0 0 ${5*M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- lidar sensor -->
+  <!-- single lidar for simulation performance -->
+  <xacro:if
+    value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}"
+  >
+    <xacro:lidar_v0 prefix="single" parent="base_link">
+      <origin xyz="0 0 0.315" rpy="0 0 -1.5707963" />
+    </xacro:lidar_v0>
+    <xacro:lidar_gazebo_v0
+      prefix="single"
+      min_rad="-${M_PI}"
+      max_rad=" ${M_PI}"
+      min_range="0.2"
+      max_range="10"
+      yaw_offset="0"
+    />
+  </xacro:if>
+  <!-- dual lidar when ** REAL WORLD ** or ** SIMULATION ** but set argument ** DUAL_LIDAR ** to true -->
+  <xacro:unless
+    value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}"
+  >
   <xacro:lidar_v0 prefix="front" parent="base_link">
-    <origin xyz="0 -0.240 0.315" rpy="0 0 -1.5707963"/>
-  </xacro:lidar_v0>
-  <xacro:lidar_v0 prefix="back" parent="base_link">
-    <origin xyz="0 0.240 0.315" rpy="0 0 1.5707963"/>
-  </xacro:lidar_v0>
-  <xacro:lidar_gazebo_v0 prefix="top" min_rad="-3.925" max_rad="0.785" min_range="0.18" max_range="10"/>
-  <xacro:lidar_gazebo_v0 prefix="back" min_rad="-3.925" max_rad="0.785" min_range="0.18" max_range="10"/>
+      <origin xyz="0 -0.240 0.315" rpy="0 0 -1.5707963" />
+    </xacro:lidar_v0>
+    <xacro:lidar_v0 prefix="back" parent="base_link">
+      <origin xyz="0 0.240 0.315" rpy="0 0 1.5707963" />
+    </xacro:lidar_v0>
+
+    <xacro:lidar_gazebo_v0
+      prefix="front"
+      min_rad="-2.09333333"
+      max_rad=" 2.09333333"
+      min_range="0.18"
+      max_range="10"
+      yaw_offset="0"
+    />
+    <xacro:lidar_gazebo_v0
+      prefix="back"
+      min_rad="-2.09333333"
+      max_rad=" 2.09333333"
+      min_range="0.18"
+      max_range="10"
+      yaw_offset="0"
+    />
+  </xacro:unless>
   <!-- depth cam sensor -->
-  <xacro:sensor_d415 name="bottom" parent="base_link" flag_color="1" flag_ir="0" flag_depth="1" updaterate="2">
-    <!-- <origin xyz="0 -0.23813 0.18161" rpy="0 0 -${M_PI/4}"/> -->
-    <origin xyz="0 -0.23813 0.18161" rpy="0 -0.5564807787058716 -${M_PI/2}"/>
+  <xacro:sensor_d415
+    name="bottom"
+    parent="base_link"
+    flag_color="1"
+    flag_ir="0"
+    flag_depth="1"
+    updaterate="2"
+  >
+    <origin xyz="0 -0.23813 0.18161" rpy="0 -0.5564807787058716 -${M_PI/2}" />
   </xacro:sensor_d415>
 
-  <link name="bottombase"/>
+  <link name="bottombase" />
   <joint name="bottombase_joint" type="fixed">
-      <parent link="base_link"/>
-      <child link="bottombase"/>
-      <origin xyz="0 -0.23813 0.18161" rpy="0 0 -${M_PI/2}"/>
+      <parent link="base_link" />
+      <child link="bottombase" />
+      <origin xyz="0 -0.23813 0.18161" rpy="0 0 -${M_PI/2}" />
   </joint>
 
   <!-- imu sensor -->
   <xacro:imu_v0 prefix="top" parent="base_link">
-    <origin xyz="0 0 0.17"/>
+    <origin xyz="0 0 0.17" />
   </xacro:imu_v0>
-  <xacro:imu_gazebo_v0 prefix="top"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro"/>
-  <xacro:ros2_control ros2_control="$(arg ros2_control)"/>
+  <xacro:imu_gazebo_v0 prefix="top" />
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro"
+  />
+  <xacro:ros2_control ros2_control="$(arg ros2_control)" />
 </robot>

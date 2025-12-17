@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="ros2_control" params="ros2_control">
     <!-- Simulation - Gazebo based ros2_control -->
@@ -173,9 +173,12 @@
     </xacro:if>
 
     <gazebo>
-      <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin"
-        filename="libgz_ros2_control-system.so">
-        <parameters>$(find walkie_description)/config/ros2_controller/my_controllers.yaml</parameters>
+      <plugin
+        name="gz_ros2_control::GazeboSimROS2ControlPlugin"
+        filename="libgz_ros2_control-system.so"
+      >
+        <parameters
+        >$(find walkie_description)/config/ros2_controller/sim_controllers.yaml</parameters>
       </plugin>
     </gazebo>
   </xacro:macro>
