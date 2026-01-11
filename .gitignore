@@ -3,17 +3,6 @@ build
 install
 log
 
-# ROSbots submodules
-rosbot_hardware_interfaces/
-rosbot_controllers/
-husarion_components_description/
-husarion_gz_worlds
-gazebosim/gz_ros2_control
-diff_drive_controller
-imu_sensor_broadcaster
-micro-ROS-Agent/
-micro_ros_msgs/
-
 # pyspelling
 *.dic
 
@@ -106,3 +95,9 @@ temp/
 *.exe
 *.o
 *.so
+
+# Custom Ignore
+
+# Ignore all .urdf files (not .urdf.xacro)
+*.urdf
+!*.urdf.xacro
