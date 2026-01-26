@@ -23,7 +23,13 @@
   <xacro:include
         filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"
     />
-
+  <!-- Include the arm and gripper macros -->
+  <xacro:include
+        filename="$(find walkie_description)/urdf/walkie-arm/walkie_arm.urdf.xacro"
+    />
+  <xacro:include
+        filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro"
+    />
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
   <link name="base_footprint" />
@@ -52,7 +58,42 @@
     <origin xyz="0.145261 -0.145261 0.05" rpy="0 0 ${5*M_PI/4}" />
     <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
+  <!-- Left arm base mount -->
+  <link name="left_arm_base">
+      <!-- <visual>
+        <geometry>
+          <cylinder radius="0.05" length="0.05" />
+        </geometry>
+        <origin xyz="0 0 0.025" rpy="0 0 0" />
+        <material name="mount_material">
+          <color rgba="0.3 0.3 0.3 1.0" />
+        </material>
+      </visual> -->
+  </link>
+  <!-- Left arm mount joint -->
+  <joint name="left_arm_mount_joint" type="fixed">
+    <parent link="base_link" />
+    <child link="left_arm_base" />
+    <origin
+          xyz="0.075 0 0.9018"
+          rpy="0 0 0"
+      />
+  </joint>
+  <!-- Left arm -->
+  <xacro:walkie_arm
+        base_link="arm_base"
+        flange_link="link_flange"
+        prefix="left"
+  >
+    <origin xyz="0 0 0.05" rpy="0 0 0" />
+  </xacro:walkie_arm>
+  <!-- Left gripper (optional) -->
+  <xacro:walkie_gripper parent="link_flange" prefix="left">
+      <origin xyz="0 0 0" rpy="3.141592653589793 0 0" />
+  </xacro:walkie_gripper>
   
+
+
   <!-- lidar sensor -->
   <!-- single lidar for simulation performance -->
   <xacro:if
