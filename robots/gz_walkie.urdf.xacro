@@ -116,10 +116,10 @@
         value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}"
     >
   <xacro:lidar_v0 prefix="front" parent="base_link">
-      <origin xyz="0 -0.240 0.315" rpy="0 0 -1.5707963" />
+      <origin xyz="0 -0.240 0.28232" rpy="0 0 -1.5707963" />
     </xacro:lidar_v0>
     <xacro:lidar_v0 prefix="back" parent="base_link">
-      <origin xyz="0 0.240 0.315" rpy="0 0 1.5707963" />
+      <origin xyz="0 0.240 0.28232" rpy="0 0 1.5707963" />
     </xacro:lidar_v0>
 
     <xacro:lidar_gazebo_v0
@@ -148,14 +148,14 @@
         flag_depth="1"
         updaterate="2"
     >
-    <origin xyz="0 -0.23813 0.18161" rpy="0 -0.5564807787058716 -${M_PI/2}" />
+    <origin xyz="0 -0.282713 0.1775" rpy="0 -0.453786 -${M_PI/2}" />
   </xacro:sensor_d415>
 
   <link name="bottombase" />
   <joint name="bottombase_joint" type="fixed">
       <parent link="base_link" />
       <child link="bottombase" />
-      <origin xyz="0 -0.23813 0.18161" rpy="0 0 -${M_PI/2}" />
+      <origin xyz="0 -0.282713 0.1775" rpy="0 0 -${M_PI/2}" />
   </joint>
 
   <!-- imu sensor -->
