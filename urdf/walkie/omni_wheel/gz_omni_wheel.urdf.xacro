@@ -19,7 +19,8 @@
     <link name="${prefix}_wheel_link">
       <visual>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/omni_wheel.dae" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie/omni_wheel_optimize.dae" scale="1 1 1"/>
+          <!-- <mesh filename="package://walkie_description/meshes/walkie/omni_wheel.dae" scale="1 1 1"/> -->
           <!-- <mesh filename="package://walkie_description/meshes/walkie/omni_wheel.stl" scale="1 1 1"/> -->
         </geometry>
       </visual>
