@@ -24,7 +24,7 @@ def generate_launch_description():
     rviz_config_path = os.path.join(pkg_moveit_config, 'config', 'moveit.rviz')
   
     # CHANGED: Use the standard controller config (ensure this file exists and has left_arm_controller)
-    controller_config = os.path.join(pkg_arm_description, 'config', 'ros2_controller', 'ros2_controllers.yaml')
+    controller_config = os.path.join(pkg_arm_description, 'config', 'ros2_controller', 'arm_controllers.yaml')
 
     # Launch Argument: hardware_type
     hardware_type_arg = DeclareLaunchArgument(
