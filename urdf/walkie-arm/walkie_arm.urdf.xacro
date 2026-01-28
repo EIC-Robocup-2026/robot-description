@@ -1,380 +1,211 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Joint properties -->
   <xacro:property name="joint_effort" value="30.0" />
   <xacro:property name="joint_velocity" value="2.0" />
   <xacro:property name="joint_damping" value="0.1" />
   <xacro:property name="joint_friction" value="0.1" />
 
-  <!-- Link mass properties -->
-  <xacro:property name="link1_mass" value="0.15" />
-  <xacro:property name="link2_mass" value="0.12" />
-  <xacro:property name="link3_mass" value="0.20" />
-  <xacro:property name="link4_mass" value="0.18" />
-  <xacro:property name="link5_mass" value="0.15" />
-  <xacro:property name="link6_mass" value="0.10" />
-  <xacro:property name="link7_mass" value="0.08" />
-  <xacro:property name="flange_mass" value="0.05" />
-
-  <!-- Inertial macro -->
-  <xacro:macro name="link_inertial" params="mass ixx iyy izz">
-    <inertial>
-      <origin xyz="0 0 0.0" rpy="0 0 0" />
-      <mass value="${mass}" />
-      <inertia
-                ixx="${ixx}"
-                ixy="0.0"
-                ixz="0.0"
-                iyy="${iyy}"
-                iyz="0.0"
-                izz="${izz}"
-            />
-    </inertial>
-  </xacro:macro>
-
-  <!-- Material visual macro for Gazebo -->
-  <xacro:macro
-        name="material_visual"
-        params="ref_link ambient diffuse specular"
-    >
-    <gazebo reference="${ref_link}">
-      <visual>
-        <material>
-          <ambient>${ambient}</ambient>
-          <diffuse>${diffuse}</diffuse>
-          <specular>${specular}</specular>
-        </material>
-      </visual>
-    </gazebo>
-  </xacro:macro>
-
-  <!-- Material definition -->
-  <material name="walkie_plastic">
+  <material name="walkie_steel_satin">
     <color rgba="0.62353 0.62353 0.62353 1.0" />
   </material>
 
-  <!-- Main arm macro -->
-  <xacro:macro name="walkie_arm" params="base_link flange_link prefix *origin">
-    <!-- Link 1 -->
-    <link name="${prefix}_link1">
-      <xacro:link_inertial
-                mass="${link1_mass}"
-                ixx="0.00015"
-                iyy="0.00015"
-                izz="0.0001"
-            />
-      <visual name="${prefix}_link1_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 1.5708" xyz="0.0 0.0 0.0" />
+  <xacro:macro name="walkie_arm" params="base_link prefix">
+    
+    <link name="${base_link}">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.07550 0.0 0.0" />
         <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body1.322.dae"
-                        scale="0.01 0.01 0.01"
-                    />
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.267.stl" scale="1 1 1"/>
         </geometry>
       </visual>
-    </link>
-
-    <!-- Link 2 -->
-    <link name="${prefix}_link2">
-      <xacro:link_inertial
-                mass="${link2_mass}"
-                ixx="0.00012"
-                iyy="0.00012"
-                izz="0.00008"
-            />
-      <visual name="${prefix}_link2_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 0.0" xyz="0.03325 0.03325 0.0" />
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.07550 0.0 0.0" />
         <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body8.dae"
-                        scale="0.01 0.01 0.01"
-                    />
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.267.stl" scale="1 1 1"/>
         </geometry>
-      </visual>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.5"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      </inertial>
     </link>
 
-    <!-- Link 3 -->
-    <link name="${prefix}_link3">
-      <xacro:link_inertial
-                mass="${link3_mass}"
-                ixx="0.0002"
-                iyy="0.0002"
-                izz="0.00012"
-            />
-      <visual name="${prefix}_link3_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="1.5708 0.0 1.5708" xyz="0.0 -0.03925 -0.06275" />
-        <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body7.dae"
-                        scale="0.01 0.01 0.01"
-                    />
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Link 4 -->
-    <link name="${prefix}_link4">
-      <xacro:link_inertial
-                mass="${link4_mass}"
-                ixx="0.00025"
-                iyy="0.00025"
-                izz="0.00015"
-            />
-      <visual name="${prefix}_link4_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 1.5708" xyz="-0.03425 0.0 -0.2174" />
-        <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body1.292.dae"
-                        scale="0.01 0.01 0.01"
-                    />
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Link 5 -->
-    <link name="${prefix}_link5">
-      <xacro:link_inertial
-                mass="${link5_mass}"
-                ixx="0.0002"
-                iyy="0.0002"
-                izz="0.00012"
-            />
-      <visual name="${prefix}_link5_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
-        <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body2.003.dae"
-                        scale="0.01 0.01 0.01"
-                    />
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Link 6 -->
-    <link name="${prefix}_link6">
-      <xacro:link_inertial
-                mass="${link6_mass}"
-                ixx="0.00015"
-                iyy="0.00015"
-                izz="0.0001"
-            />
-      <visual name="${prefix}_link6_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
-        <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body1.373.dae"
-                        scale="0.01 0.01 0.01"
-                    />
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Link 7 -->
-    <link name="${prefix}_link7">
-      <xacro:link_inertial
-                mass="${link7_mass}"
-                ixx="0.00012"
-                iyy="0.00012"
-                izz="0.00008"
-            />
-      <visual name="${prefix}_link7_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
-        <geometry>
-          <mesh
-                        filename="package://walkie_description/meshes/walkie-arm/dae/Body2.008.dae"
-                        scale="0.01 0.01 0.01"
-                    />
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Link 8 (Flange/End effector) -->
-    <link name="${prefix}_${flange_link}">
-      <xacro:link_inertial
-                mass="${flange_mass}"
-                ixx="0.00002"
-                iyy="0.00002"
-                izz="0.00003"
-            />
-      <visual name="${prefix}_flange_visual">
-        <material name="walkie_plastic" />
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
-        <geometry>
-          <cylinder radius="0.0175" length="0.002" />
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Joint: Base to Link1 -->
-    <joint name="${prefix}_${base_link}_to_${prefix}_link1" type="fixed">
-      <parent link="${prefix}_${base_link}" />
-      <child link="${prefix}_link1" />
-      <xacro:insert_block name="origin" />
-    </joint>
-
-    <!-- Joint 1: Link1 to Link2 -->
     <joint name="${prefix}_joint1" type="revolute">
       <axis xyz="1.0 0.0 0.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
+      <limit effort="${joint_effort}" lower="-3.14" upper="3.14" velocity="${joint_velocity}" />
+      <parent link="${base_link}" />
+      <child link="${prefix}_link1" />
+      <origin xyz="0.07550 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
+    </joint>
+
+    <link name="${prefix}_link1">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.04425 -0.03925 0.0" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body8.006.stl" scale="1 1 1"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.04425 -0.03925 0.0" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body8.006.stl" scale="1 1 1"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.15" />
+        <inertia ixx="0.00015" ixy="0.0" ixz="0.0" iyy="0.00015" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_joint2" type="revolute">
+      <axis xyz="0.0 -1.0 0.0" />
+      <limit effort="${joint_effort}" lower="-1.57" upper="1.57" velocity="${joint_velocity}" />
       <parent link="${prefix}_link1" />
       <child link="${prefix}_link2" />
-      <origin xyz="0.0865 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.04425 -0.03925 0.0" rpy="0.0 -1.57 0.0" />
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <!-- Joint 2: Link2 to Link3 -->
-    <joint name="${prefix}_joint2" type="revolute">
-      <axis xyz="0.0 1.0 0.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
-      <parent link="${prefix}_link2" />
-      <child link="${prefix}_link3" />
-      <origin xyz="0.03325 0.03925 0.0" rpy="0.0 0.0 0.0" />
-      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
-    </joint>
+    <link name="${prefix}_link2">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.03925 -0.13525" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.006.stl" scale="1 1 1"/>
+        </geometry>
+      </visual>
+      <collision>
+       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.03925 -0.13525" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.006.stl" scale="1 1 1"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.12" />
+        <inertia ixx="0.00012" ixy="0.0" ixz="0.0" iyy="0.00012" iyz="0.0" izz="0.00008" />
+      </inertial>
+    </link>
 
-    <!-- Joint 3: Link3 to Link4 -->
     <joint name="${prefix}_joint3" type="revolute">
       <axis xyz="0.0 0.0 -1.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
+      <limit effort="${joint_effort}" lower="-3.14" upper="3.14" velocity="${joint_velocity}" />
+      <parent link="${prefix}_link2" />
+      <child link="${prefix}_link3" />
+      <origin xyz="0.0 0.03925 -0.13525" rpy="0.0 0.0 0.0" />
+      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
+    </joint>
+
+    <link name="${prefix}_link3">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.03825 0.0 -0.11475" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.266.stl" scale="1 1 1"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.03825 0.0 -0.11475" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.266.stl" scale="1 1 1"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.20" />
+        <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.00012" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_joint4" type="revolute">
+      <axis xyz="1.0 0.0 0.0" />
+      <limit effort="${joint_effort}" lower="-1.9" upper="1.9" velocity="${joint_velocity}" />
       <parent link="${prefix}_link3" />
       <child link="${prefix}_link4" />
-      <origin xyz="0.0 -0.03925 -0.1326" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.03825 0.0 -0.11475" rpy="0.0 0.0 0.0" />
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <!-- Joint 4: Link4 to Link5 -->
-    <joint name="${prefix}_joint4" type="revolute">
-      <axis xyz="0.0 0.0 -1.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
+    <link name="${prefix}_link4">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="-0.05962 0.0 -0.12200" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.020.stl" scale="1 1 1"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="-0.05962 0.0 -0.12200" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.020.stl" scale="1 1 1"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.18" />
+        <inertia ixx="0.00025" ixy="0.0" ixz="0.0" iyy="0.00025" iyz="0.0" izz="0.00015" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_joint5" type="revolute">
+      <axis xyz="-1.0 0.0 0.0" />
+      <limit effort="${joint_effort}" lower="-1.57" upper="1.57" velocity="${joint_velocity}" />
       <parent link="${prefix}_link4" />
       <child link="${prefix}_link5" />
-      <origin xyz="-0.001 0.0 -0.2174" rpy="1.5708 0.0 -1.5708" />
+      <origin xyz="-0.05962 0.0 -0.12200" rpy="0.0 0.0 0.0" />
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <!-- Joint 5: Link5 to Link6 -->
-    <joint name="${prefix}_joint5" type="revolute">
-      <axis xyz="0.0 0.0 -1.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
+    <link name="${prefix}_link5">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.02037 -0.02800 -0.06500" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.026.stl" scale="1 1 1"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.02037 -0.02800 -0.06500" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.026.stl" scale="1 1 1"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.15" />
+        <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.00012" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}_joint6" type="revolute">
+      <axis xyz="0.0 -1.0 0.0" />
+      <limit effort="${joint_effort}" lower="-1.57" upper="1.57" velocity="${joint_velocity}" />
       <parent link="${prefix}_link5" />
       <child link="${prefix}_link6" />
-      <origin xyz="0.0 -0.197 -0.00717" rpy="0.0 0.0 0.0" />
+      <origin xyz="0.02037 -0.02800 -0.06500" rpy="0.0 0.0 0.0" />
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <!-- Joint 6: Link6 to Link7 -->
-    <joint name="${prefix}_joint6" type="revolute">
-      <axis xyz="1.0 0.0 0.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
-      <parent link="${prefix}_link6" />
-      <child link="${prefix}_link7" />
-      <origin xyz="0.0 -0.065 0.00718" rpy="3.14159 0.0 3.14159" />
-      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
-    </joint>
-
-    <!-- Joint 7: Link7 to Flange -->
-    <joint name="${prefix}_joint7" type="revolute">
-      <axis xyz="0.0 0.0 1.0" />
-      <limit
-                effort="${joint_effort}"
-                lower="-3.14"
-                upper="3.14"
-                velocity="${joint_velocity}"
-            />
-      <parent link="${prefix}_link7" />
-      <child link="${prefix}_${flange_link}" />
-      <origin xyz="0.0 -0.088 0.0" rpy="-2.81984 1.5708 1.89255" />
-      <dynamics damping="${joint_damping}" friction="${joint_friction}" />
-    </joint>
-
-    <!-- Gazebo materials -->
-    <xacro:material_visual
-            ref_link="${prefix}_link1"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_link2"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_link3"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_link4"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_link5"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_link6"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_link7"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
-    <xacro:material_visual
-            ref_link="${prefix}_${flange_link}"
-            ambient="0.62 0.62 0.62 1"
-            diffuse="0.62 0.62 0.62 1"
-            specular="0.3 0.3 0.3 1"
-        />
+    <link name="${prefix}_link6">
+      <visual>
+        <material name="walkie_steel_satin" />
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.02800 -0.13825" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.259.stl" scale="1 1 1"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.02800 -0.13825" />
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.259.stl" scale="1 1 1"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.10" />
+        <inertia ixx="0.00015" ixy="0.0" ixz="0.0" iyy="0.00015" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
 
   </xacro:macro>
-
 </robot>
