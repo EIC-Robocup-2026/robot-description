@@ -3,10 +3,11 @@
     <!-- Arguments -->
     <xacro:arg name="robot_name" default="dual_walkie_arm" />
     <xacro:arg name="base_link" default="base_link" />
-    <xacro:arg name="left_flange_link" default="link_flange" />
-    <xacro:arg name="right_flange_link" default="link_flange" />
     <xacro:arg name="use_gripper" default="true" />
     <xacro:arg name="arm_spacing" default="0.5" />
+
+    <xacro:arg name="ros2_control_hardware_type" default="mock_components" /> 
+    <xacro:arg name="hardware_config_file" default="$(find walkie_description)/config/hardware_layout.yaml" /> 
 
     <!-- Include the arm and gripper macros -->
     <xacro:include
@@ -15,6 +16,9 @@
     <xacro:include
         filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro"
     />
+    <xacro:include
+        filename="$(find walkie_description)/urdf/walkie/arm_ros2_control.xacro"
+    /> 
 
     <!-- Main base link -->
     <link name="$(arg base_link)">
@@ -41,32 +45,6 @@
       </visual>
     </link>
 
-    <!-- Left arm base mount -->
-    <link name="left_arm_base">
-      <!-- <visual>
-        <geometry>
-          <cylinder radius="0.05" length="0.05" />
-        </geometry>
-        <origin xyz="0 0 0.025" rpy="0 0 0" />
-        <material name="mount_material">
-          <color rgba="0.3 0.3 0.3 1.0" />
-        </material>
-      </visual> -->
-    </link>
-
-    <!-- Right arm base mount -->
-    <link name="right_arm_base">
-      <!-- <visual>
-        <geometry>
-          <cylinder radius="0.05" length="0.05" />
-        </geometry>
-        <origin xyz="0 0 0.025" rpy="0 0 0" />
-        <material name="mount_material">
-          <color rgba="0.3 0.3 0.3 1.0" />
-        </material>
-      </visual> -->
-    </link>
-
     <!-- Left arm mount joint -->
     <joint name="left_arm_mount_joint" type="fixed">
       <parent link="$(arg base_link)" />
@@ -89,34 +67,64 @@
 
     <!-- Left arm -->
     <xacro:walkie_arm
-        base_link="arm_base"
-        flange_link="$(arg left_flange_link)"
+        base_link="left_arm_base"
         prefix="left"
-    >
-      <origin xyz="0 0 0.05" rpy="0 0 0" />
-    </xacro:walkie_arm>
+    />
 
     <!-- Right arm -->
     <xacro:walkie_arm
-        base_link="arm_base"
-        flange_link="$(arg right_flange_link)"
+        base_link="right_arm_base"
         prefix="right"
-    >
-      <origin xyz="0 0 0.05" rpy="0 0 0" />
-    </xacro:walkie_arm>
+    />
 
     <!-- Left gripper (optional) -->
     <xacro:if value="$(arg use_gripper)">
-      <xacro:walkie_gripper parent="$(arg left_flange_link)" prefix="left">
-        <origin xyz="0 0 0" rpy="3.141592653589793 0 0" />
-      </xacro:walkie_gripper>
+      <xacro:walkie_gripper parent="left_link6" prefix="left" />
+
+      <link name="left_gripper_center">
+        <visual>
+          <geometry> <sphere radius="0.01"/> </geometry>
+          <material name="red"> <color rgba="1 0 0 1"/> </material>
+        </visual>
+        <collision>
+          <geometry> <sphere radius="0.01"/> </geometry>
+        </collision>
+        <inertial>
+          <mass value="0.001" />
+          <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+      </link>
+
+      <joint name="left_gripper_center_joint" type="fixed">
+        <parent link="left_link7"/>
+        <child link="left_gripper_center"/>
+        <origin xyz="0.0 0.0 -0.18" rpy="0.0 0.0 0.0"/>
+      </joint>
     </xacro:if>
 
     <!-- Right gripper (optional) -->
     <xacro:if value="$(arg use_gripper)">
-      <xacro:walkie_gripper parent="$(arg right_flange_link)" prefix="right">
-        <origin xyz="0 0 0" rpy="3.141592653589793 0 0" />
-      </xacro:walkie_gripper>
+      <xacro:walkie_gripper parent="right_link6" prefix="right" />
+
+      <link name="right_gripper_center">
+        <visual>
+          <geometry> <sphere radius="0.01"/> </geometry>
+          <material name="red"> <color rgba="1 0 0 1"/> </material>
+        </visual>
+        <collision>
+          <geometry> <sphere radius="0.01"/> </geometry>
+        </collision>
+        <inertial>
+          <mass value="0.001" />
+          <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+        </inertial>
+      </link>
+
+      <joint name="right_gripper_center_joint" type="fixed">
+        <parent link="right_link7"/>
+        <child link="right_gripper_center"/>
+        <origin xyz="0.0 0.0 -0.18" rpy="0.0 0.0 0.0"/>
+      </joint>
     </xacro:if>
 
     <!-- Gazebo materials -->
@@ -131,5 +139,17 @@
     <gazebo reference="right_arm_base">
       <material>Gazebo/Grey</material>
     </gazebo>
+
+    <xacro:arm_ros2_control 
+        name="LeftWalkieSystem" 
+        prefix="left"
+        hardware_config_file="$(arg hardware_config_file)"
+    />
+
+    <xacro:arm_ros2_control 
+        name="RightWalkieSystem" 
+        prefix="right"
+        hardware_config_file="$(arg hardware_config_file)"
+    />
 
 </robot>
