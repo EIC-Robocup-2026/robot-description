@@ -89,7 +89,7 @@
     <xacro:lidar_v0 prefix="single" parent="base_link">
       <origin xyz="0 0 0.315" rpy="0 0 -1.5707963"/>
     </xacro:lidar_v0>
-    <xacro:lidar_gazebo_v0 prefix="single" min_rad="-${M_PI}" max_rad=" ${M_PI}" min_range="0.2" max_range="10" yaw_offset="0"/>
+    <xacro:lidar_gazebo_v0 prefix="single" min_rad="-${M_PI}" max_rad=" ${M_PI}" min_range="0.6" max_range="10" yaw_offset="0"/>
   </xacro:if>
   <!-- dual lidar when ** REAL WORLD ** or ** SIMULATION ** but set argument ** DUAL_LIDAR ** to true -->
   <xacro:unless value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}">
