@@ -39,7 +39,7 @@
         <material name="walkie_aluminum_polished" />
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.02116 -0.03906" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.121.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_121.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -51,67 +51,67 @@
       <xacro:gripper_link_inertial mass="0.2" />
     </link>
 
-    <link name="${prefix}_gripper_worm_gear">
+    <link name="${prefix}_gripper_worm_gear_link">
       <xacro:gripper_link_inertial mass="0.02" />
       <visual>
         <material name="walkie_aluminum_polished" />
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.133.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_133.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_worm_gear" type="revolute">
+    <joint name="${prefix}_gripper_worm_gear_joint" type="revolute">
       <limit lower="-15.7" upper="3.14" effort="${worm_joint_effort}" velocity="${worm_joint_velocity}"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.00275"/>
       <parent link="${prefix}_link7"/>
-      <child link="${prefix}_gripper_worm_gear"/>
+      <child link="${prefix}_gripper_worm_gear_link"/>
       <axis xyz="0.0 0.0 -1.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <link name="${prefix}_gripper_gear_r">
+    <link name="${prefix}_gripper_gear_r_link">
       <xacro:gripper_link_inertial mass="0.01" />
       <visual>
         <material name="walkie_aluminum_polished" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.113.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_113.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_gear_r" type="revolute">
+    <joint name="${prefix}_gripper_gear_r_joint" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="${worm_gear_ratio}" offset="0" joint="${prefix}_gripper_worm_gear"/>
+      <mimic multiplier="${worm_gear_ratio}" offset="0" joint="${prefix}_gripper_worm_gear_joint"/>
       <origin rpy="0.0 0.0 0.0" xyz="-0.03240 -0.00100 -0.05335"/>
       <parent link="${prefix}_link7"/>
-      <child link="${prefix}_gripper_gear_r"/>
+      <child link="${prefix}_gripper_gear_r_link"/>
       <axis xyz="0.0 -1.0 0.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <link name="${prefix}_gripper_gear_l">
+    <link name="${prefix}_gripper_gear_l_link">
       <xacro:gripper_link_inertial mass="0.01" />
       <visual>
         <material name="walkie_aluminum_polished" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.007.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_007.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_gear_l" type="revolute">
+    <joint name="${prefix}_gripper_gear_l_joint" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="-0.1" offset="0" joint="${prefix}_gripper_worm_gear"/>
+      <mimic multiplier="-0.1" offset="0" joint="${prefix}_gripper_worm_gear_joint"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.03240 -0.00100 -0.05335"/>
       <parent link="${prefix}_link7"/>
-      <child link="${prefix}_gripper_gear_l"/>
+      <child link="${prefix}_gripper_gear_l_link"/>
       <axis xyz="0.0 -1.0 0.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <link name="${prefix}_gripper_hand_r">
+    <link name="${prefix}_gripper_hand_r_link">
       <xacro:gripper_link_inertial mass="0.015" />
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="-0.00904 0.0 -0.04823"/>
@@ -122,22 +122,22 @@
       <visual>
         <material name="walkie_opaque_gold" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.123.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_123.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_hand_r" type="revolute">
+    <joint name="${prefix}_gripper_hand_r_joint" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_gear_r"/>
+      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_gear_r_joint"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.00896 0.00100 -0.06579"/>
-      <parent link="${prefix}_gripper_gear_r"/>
-      <child link="${prefix}_gripper_hand_r"/>
+      <parent link="${prefix}_gripper_gear_r_link"/>
+      <child link="${prefix}_gripper_hand_r_link"/>
       <axis xyz="0.0 -1.0 0.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <link name="${prefix}_gripper_hand_l">
+    <link name="${prefix}_gripper_hand_l_link">
       <xacro:gripper_link_inertial mass="0.015" />
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.00904 0.0 -0.04823"/>
@@ -148,57 +148,57 @@
       <visual>
         <material name="walkie_opaque_gold" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.046.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_046.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_hand_l" type="revolute">
+    <joint name="${prefix}_gripper_hand_l_joint" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_gear_l"/>
+      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_gear_l_joint"/>
       <origin rpy="0.0 0.0 0.0" xyz="-0.00896 0.00100 -0.06579"/>
-      <parent link="${prefix}_gripper_gear_l"/>
-      <child link="${prefix}_gripper_hand_l"/>
+      <parent link="${prefix}_gripper_gear_l_link"/>
+      <child link="${prefix}_gripper_hand_l_link"/>
       <axis xyz="0.0 -1.0 0.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <link name="${prefix}_gripper_connector_r">
+    <link name="${prefix}_gripper_connector_r_link">
       <xacro:gripper_link_inertial mass="0.01" />
       <visual>
         <material name="walkie_aluminum_polished" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.019.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_019.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_connector_r" type="revolute">
+    <joint name="${prefix}_gripper_connector_r_joint" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_hand_r"/>
+      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_hand_r_joint"/>
       <origin rpy="0.0 0.0 0.0" xyz="-0.01742 0.0 0.02955"/>
-      <parent link="${prefix}_gripper_hand_r"/>
-      <child link="${prefix}_gripper_connector_r"/>
+      <parent link="${prefix}_gripper_hand_r_link"/>
+      <child link="${prefix}_gripper_connector_r_link"/>
       <axis xyz="0.0 -1.0 0.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
-    <link name="${prefix}_gripper_connector_l">
+    <link name="${prefix}_gripper_connector_l_link">
       <xacro:gripper_link_inertial mass="0.01" />
       <visual>
         <material name="walkie_aluminum_polished" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.003.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_003.stl" scale="1 1 1"/>
         </geometry>
       </visual>
     </link>
 
-    <joint name="${prefix}_gripper_connector_l" type="revolute">
+    <joint name="${prefix}_gripper_connector_l_joint" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_hand_l"/>
+      <mimic multiplier="-1.0" offset="0" joint="${prefix}_gripper_hand_l_joint"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.01742 0.0 0.02955"/>
-      <parent link="${prefix}_gripper_hand_l"/>
-      <child link="${prefix}_gripper_connector_l"/>
+      <parent link="${prefix}_gripper_hand_l_link"/>
+      <child link="${prefix}_gripper_connector_l_link"/>
       <axis xyz="0.0 -1.0 0.0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>

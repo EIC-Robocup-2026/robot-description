@@ -7,7 +7,7 @@ hardware_config:
   left_joint5: mock
   left_joint6: mock
   left_joint7: mock
-  left_gripper_worm_gear: mock # gripper joint name
+  left_gripper_worm_gear_joint: mock # gripper joint name
   # Right Arm
   right_joint1: mock
   right_joint2: mock
@@ -16,4 +16,4 @@ hardware_config:
   right_joint5: mock
   right_joint6: mock
   right_joint7: mock
-  right_gripper_worm_gear: mock # gripper joint name
+  right_gripper_worm_gear_joint: mock # gripper joint name
