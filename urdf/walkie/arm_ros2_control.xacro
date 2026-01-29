@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="left_arm_ros2_control" params="name prefix hardware_config_file">
+  <xacro:macro name="arm_ros2_control" params="name prefix hardware_config_file">
 
     <xacro:property name="hw_config" value="${xacro.load_yaml(hardware_config_file)}"/>
 
     <xacro:if value="${'cubemars' in hw_config['hardware_config'].values()}">
-      <ros2_control name="RealSystem" type="system">
+      <ros2_control name="${name}Real" type="system">
         <hardware>
           <plugin>cubemars_hardware/CubeMarsSystemHardware</plugin>
           <param name="can_interface">can0</param>
@@ -16,7 +16,7 @@
       </ros2_control>
     </xacro:if>
 
-    <ros2_control name="MockSystem" type="system">
+    <ros2_control name="${name}Mock" type="system">
       <hardware>
          <plugin>mock_components/GenericSystem</plugin>
       </hardware>
