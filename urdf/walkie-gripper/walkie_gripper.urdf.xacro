@@ -35,7 +35,7 @@
 
     <link name="${prefix}_link7">
       <visual>
-        <material name="walkie_opaque_gold" />
+        <material name="walkie_aluminum_polished" />
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.02116 -0.03906" />
         <geometry>
           <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1.121.stl" scale="1 1 1"/>

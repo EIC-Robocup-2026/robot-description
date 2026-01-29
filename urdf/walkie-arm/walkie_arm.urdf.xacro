@@ -21,9 +21,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.07550 0.0 0.0" />
+        <origin rpy="1.57080 0.00000 1.57080" xyz="0.03350 0.00000 -0.00513"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.267.stl" scale="1 1 1"/>
+          <cylinder radius="0.04838" length="0.08350"/>
         </geometry>
       </collision>
       <inertial>
@@ -51,9 +51,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.04425 -0.03925 0.0" />
+        <origin rpy="-1.57080 1.57080 0.00000" xyz="0.04418 0.00000 -0.00000"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body8.006.stl" scale="1 1 1"/>
+          <cylinder radius="0.04393" length="0.09802"/>
         </geometry>
       </collision>
       <inertial>
@@ -80,9 +80,9 @@
         </geometry>
       </visual>
       <collision>
-       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.03925 -0.13525" />
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.03929 -0.12406"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.006.stl" scale="1 1 1"/>
+          <cylinder radius="0.04469" length="0.15440"/>
         </geometry>
       </collision>
       <inertial>
@@ -109,9 +109,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.03825 0.0 -0.11475" />
+        <origin rpy="-0.00000 1.57080 -0.00000" xyz="-0.00103 -0.00000 -0.11471"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.266.stl" scale="1 1 1"/>
+          <cylinder radius="0.04497" length="0.09083"/>
         </geometry>
       </collision>
       <inertial>
@@ -138,9 +138,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="-0.05962 0.0 -0.12200" />
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.03467 -0.00059 -0.09265"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.020.stl" scale="1 1 1"/>
+          <cylinder radius="0.03436" length="0.09152"/>
         </geometry>
       </collision>
       <inertial>
@@ -167,9 +167,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.02037 -0.02800 -0.06500" />
+        <origin rpy="1.57080 0.00000 0.00000" xyz="0.02026 0.00000 -0.06561"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.026.stl" scale="1 1 1"/>
+          <cylinder radius="0.03329" length="0.06786"/>
         </geometry>
       </collision>
       <inertial>
@@ -196,9 +196,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.02800 -0.13825" />
+        <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.02829 -0.08677"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.259.stl" scale="1 1 1"/>
+          <cylinder radius="0.03852" length="0.10036"/>
         </geometry>
       </collision>
       <inertial>
