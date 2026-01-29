@@ -10,7 +10,7 @@
 
     <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/walkie_arm.urdf.xacro" />
     <xacro:include filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro" />
-    <xacro:include filename="$(find walkie_description)/urdf/walkie/arm_ros2_control.xacro" /> 
+    <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/arm_ros2_control.xacro" /> 
 
     <xacro:walkie_arm base_link="$(arg base_link)" prefix="left" />
 
@@ -47,6 +47,7 @@
     <xacro:arm_ros2_control 
         name="LeftWalkieSystem" 
         prefix="left"
+        hardware_type="$(arg ros2_control_hardware_type)"
         hardware_config_file="$(arg hardware_config_file)"
     />
 

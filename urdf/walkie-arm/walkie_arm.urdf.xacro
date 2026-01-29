@@ -17,7 +17,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="0.07550 0.0 0.0" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.267.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1_267.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -47,7 +47,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="0.04425 -0.03925 0.0" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body8.006.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body8_006.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -76,7 +76,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.03925 -0.13525" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.006.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2_006.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -105,7 +105,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="0.03825 0.0 -0.11475" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.266.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1_266.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -134,7 +134,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="-0.05962 0.0 -0.12200" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.020.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2_020.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -163,7 +163,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="0.02037 -0.02800 -0.06500" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2.026.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body2_026.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
@@ -192,7 +192,7 @@
         <material name="walkie_steel_satin" />
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.02800 -0.13825" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1.259.stl" scale="1 1 1"/>
+          <mesh filename="package://walkie_description/meshes/walkie-arm/stl/Body1_259.stl" scale="1 1 1"/>
         </geometry>
       </visual>
       <collision>
