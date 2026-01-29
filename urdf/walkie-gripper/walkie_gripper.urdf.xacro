@@ -7,6 +7,7 @@
   
   <xacro:property name="worm_joint_effort" value="20.0" />
   <xacro:property name="worm_joint_velocity" value="2.0" />
+  <xacro:property name="worm_gear_ratio" value="0.1" />
 
   <xacro:macro name="gripper_link_inertial" params="mass">
     <inertial>
@@ -82,7 +83,7 @@
 
     <joint name="${prefix}_gripper_gear_r" type="revolute">
       <limit lower="-3.14" upper="3.14" effort="${joint_effort}" velocity="${joint_velocity}"/>
-      <mimic multiplier="0.1" offset="0" joint="${prefix}_gripper_worm_gear"/>
+      <mimic multiplier="${worm_gear_ratio}" offset="0" joint="${prefix}_gripper_worm_gear"/>
       <origin rpy="0.0 0.0 0.0" xyz="-0.03240 -0.00100 -0.05335"/>
       <parent link="${prefix}_link7"/>
       <child link="${prefix}_gripper_gear_r"/>
