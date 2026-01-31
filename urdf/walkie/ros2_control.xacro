@@ -170,6 +170,17 @@
           <state_interface name="temperature" />
         </joint>
       </ros2_control>
+      <ros2_control name="HeadServoSystem" type="system">
+        <hardware>
+          <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+          <param name="joint_commands_topic">/head_servo_joint_cmd</param>
+          <param name="joint_states_topic">/head_servo_joint_states</param>
+        </hardware>
+        <joint name="head_servo_joint">
+          <command_interface name="position" />
+          <state_interface name="position" />
+        </joint>
+      </ros2_control>
     </xacro:if>
 
     <gazebo>
