@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="servo_v0" params="prefix parent *joint_origin">
+    
+    <joint name="${prefix}_servobase_joint" type="fixed">
+      <xacro:insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="${prefix}_servobase_link"/>
+    </joint>
+
+    <link name="${prefix}_servobase_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie/ServoMountPlate.stl"  scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="dark_grey"><color rgba="0.2 0.2 0.2 1"/></material>
+      </visual>
+    </link>
+
+    <joint name="${prefix}_servo_joint" type="revolute">
+      <parent link="${prefix}_servobase_link"/>
+      <child link="${prefix}_servo_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <axis xyz="1 0 0"/> 
+      <limit lower="-1.5708" upper="1.5708" effort="1.0" velocity="1.0"/>
+    </joint>
+
+    <link name="${prefix}_servo_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://walkie_description/meshes/walkie/ServoCameraCase.stl"  scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.104 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.208 0.039 0.039"/>
+        </geometry>
+      </collision>
+    </link>
+
+  </xacro:macro>
+</robot>
