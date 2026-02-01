@@ -15,12 +15,10 @@
     <link name="base_link">
       <visual>
         <geometry>
-          <!-- <mesh filename="package://walkie_description/meshes/walkie/base_link.dae"/> -->
           <mesh filename="package://walkie_description/meshes/walkie/base_link2.stl"/>
         </geometry>
         <material name="grey"/>
       </visual>
-      <!-- Simplified collision: single cylinder to reduce complexity for planning -->
       <collision>
         <origin xyz="0 0 0.165" rpy="0 0 0"/>
         <geometry>
