@@ -24,34 +24,18 @@
           <!-- <mesh filename="package://walkie_description/meshes/walkie/omni_wheel.stl" scale="1 1 1"/> -->
         </geometry>
       </visual>
+      <collision>
+        <geometry>
+          <cylinder length="${wheel_thickness}" radius="${wheel_radian}"/>
+        </geometry>
+        <origin xyz="0 ${wheel_thickness/2} 0" rpy="1.570796327 0 0"/>
+      </collision>
       <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radian}">
         <origin xyz="0 ${wheel_thickness/2} 0" rpy="1.570796327 0 0"/>
       </xacro:inertial_cylinder>
     </link>
-    <xacro:roller prefix="${prefix}" num="1">
-      <origin xyz="0.0577 0.012 0.0" rpy="0.0 -0.0 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="2">
-      <origin xyz="0.05 0.012 0.0289" rpy="0.0 -0.5236 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="3">
-      <origin xyz="0.0289 0.012 0.05" rpy="0.0 -1.0472 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="4">
-      <origin xyz="0.0 0.012 0.0577" rpy="0.0 -1.5708 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="5">
-      <origin xyz="-0.0289 0.012 0.05" rpy="0.0 -2.0944 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="6">
-      <origin xyz="-0.05 0.012 0.0289" rpy="0.0 -2.618 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
+    <!-- Rollers removed to simplify collision and joint count for planning -->
+    <!-- xacro:roller blocks intentionally omitted -->
     <xacro:roller prefix="${prefix}" num="7">
       <origin xyz="-0.0577 0.012 0.0" rpy="0.0 -3.1416 0.0"/>
       <axis xyz="0.0 0.0 1.0"/>

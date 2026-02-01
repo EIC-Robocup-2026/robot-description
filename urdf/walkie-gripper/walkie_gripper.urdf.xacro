@@ -45,7 +45,7 @@
       <collision>
         <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.03004"/>
         <geometry>
-          <box size="0.12520 0.05916 0.05330"/>
+          <box size="0.125 0.059 0.053"/>
         </geometry>
       </collision>
       <xacro:gripper_link_inertial mass="0.2" />
@@ -60,6 +60,12 @@
           <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_133.stl" scale="1 1 1"/>
         </geometry>
       </visual>
+      <!-- <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        <geometry>
+          <cylinder length="0.05" radius="0.015"/>
+        </geometry>
+      </collision> -->
     </link>
 
     <joint name="${prefix}_gripper_worm_gear_joint" type="revolute">
@@ -79,6 +85,14 @@
           <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_113.stl" scale="1 1 1"/>
         </geometry>
       </visual>
+      <!-- collision removed to simplify planning / avoid duplicate geometry
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.02 0.02 0.06"/>
+        </geometry>
+      </collision>
+      -->
     </link>
 
     <joint name="${prefix}_gripper_gear_r_joint" type="revolute">
@@ -99,6 +113,14 @@
           <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_007.stl" scale="1 1 1"/>
         </geometry>
       </visual>
+      <!-- collision removed to simplify planning / avoid duplicate geometry
+      <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.02 0.02 0.06"/>
+        </geometry>
+      </collision>
+      -->
     </link>
 
     <joint name="${prefix}_gripper_gear_l_joint" type="revolute">
@@ -171,6 +193,12 @@
           <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_019.stl" scale="1 1 1"/>
         </geometry>
       </visual>
+      <!-- <collision>
+        <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.01 0.015 0.03"/>
+        </geometry> -->
+      <!-- </collision> -->
     </link>
 
     <joint name="${prefix}_gripper_connector_r_joint" type="revolute">
@@ -191,6 +219,12 @@
           <mesh filename="package://walkie_description/meshes/walkie-gripper/stl/Body1_003.stl" scale="1 1 1"/>
         </geometry>
       </visual>
+      <!-- <collision> -->
+        <!-- <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+        <geometry>
+          <box size="0.01 0.015 0.03"/>
+        </geometry>
+      </collision> -->
     </link>
 
     <joint name="${prefix}_gripper_connector_l_joint" type="revolute">

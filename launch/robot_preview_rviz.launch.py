@@ -31,7 +31,7 @@ def generate_launch_description():
 
     package_dir = os.path.join(get_package_share_directory(package_name))
 
-    robot_model = LaunchConfiguration('robot_model', default=os.path.join(get_package_share_directory(package_name), 'robots','gz_walkie.urdf.xacro'))
+    robot_model = LaunchConfiguration('robot_model', default=os.path.join(get_package_share_directory(package_name), 'robots','gz_walkie_1arm.urdf.xacro'))
     ros2_control = LaunchConfiguration('ros2_control', default='gazebo')
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 

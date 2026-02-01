@@ -10,10 +10,10 @@
   don't forgot to enable lidar topic to bridge in gz_bridge.yml -->
   <xacro:arg name="dual_lidar" default="True"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"/>
+  <!-- <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"/>
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"/> -->
   <!-- Include the arm and gripper macros -->
   <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/walkie_arm.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro"/>
@@ -37,7 +37,7 @@
   <!-- Wheel -->
 
 
-  <xacro:wheel_v0 prefix="bl" parent="base_link">
+  <!-- <xacro:wheel_v0 prefix="bl" parent="base_link">
     <origin xyz="0.145261 0.145261 0.05" rpy="0 0 -${M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
@@ -55,7 +55,7 @@
   <xacro:wheel_v0 prefix="fl" parent="base_link">
     <origin xyz="0.145261 -0.145261 0.05" rpy="0 0 ${5*M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
-  </xacro:wheel_v0>
+  </xacro:wheel_v0> -->
 
   <!-- Left arm mount joint -->
   <joint name="left_arm_mount_joint" type="fixed">
@@ -97,7 +97,7 @@
   <!-- lidar sensor -->
   <!-- single lidar for simulation performance -->
   
- <xacro:if value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}">
+  <!-- <xacro:if value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}">
     <xacro:lidar_v0 prefix="single" parent="base_link">
       <origin xyz="0 0 0.315" rpy="0 0 -1.5707963"/>
     </xacro:lidar_v0>
@@ -131,7 +131,7 @@
   <xacro:imu_gazebo_v0 prefix="top"/>
 
   <xacro:include filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro"/>
-  <xacro:ros2_control ros2_control="$(arg ros2_control)"/>  
+  <xacro:ros2_control ros2_control="$(arg ros2_control)"/>  -->
 
   <xacro:arm_ros2_control name="LeftWalkieSystem" prefix="left" hardware_type="$(arg ros2_control_hardware_type)" hardware_config_file="$(arg hardware_config_file)"/>
   

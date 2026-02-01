@@ -34,7 +34,7 @@
     </link>
 
     <joint name="${prefix}_joint1" type="revolute">
-      <axis xyz="1.0 0.0 0.0" />
+      <axis xyz="-1.0 0.0 0.0" />
       <limit effort="${joint_effort}" lower="-3.14" upper="3.14" velocity="${joint_velocity}" />
       <parent link="${base_link}" />
       <child link="${prefix}_link1" />
@@ -53,7 +53,7 @@
       <collision>
         <origin rpy="-1.57080 1.57080 0.00000" xyz="0.04418 0.00000 -0.00000"/>
         <geometry>
-          <cylinder radius="0.04393" length="0.09802"/>
+          <cylinder radius="0.04393" length="0.098"/>
         </geometry>
       </collision>
       <inertial>
@@ -63,11 +63,11 @@
     </link>
 
     <joint name="${prefix}_joint2" type="revolute">
-      <axis xyz="0.0 -1.0 0.0" />
-      <limit effort="${joint_effort}" lower="-1.57" upper="1.57" velocity="${joint_velocity}" />
+      <axis xyz="0.0 1.0 0.0" />
+      <limit effort="${joint_effort}" lower="-3.14" upper="0.0" velocity="${joint_velocity}" />
       <parent link="${prefix}_link1" />
       <child link="${prefix}_link2" />
-      <origin xyz="0.04425 -0.03925 0.0" rpy="0.0 -1.57 0.0" />
+      <origin xyz="0.04425 -0.03925 0.0" rpy="0.0 0.0 0.0" />
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
@@ -82,7 +82,7 @@
       <collision>
         <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.03929 -0.12406"/>
         <geometry>
-          <cylinder radius="0.04469" length="0.15440"/>
+          <cylinder radius="0.04469" length="0.15"/>
         </geometry>
       </collision>
       <inertial>
@@ -92,7 +92,7 @@
     </link>
 
     <joint name="${prefix}_joint3" type="revolute">
-      <axis xyz="0.0 0.0 -1.0" />
+      <axis xyz="0.0 0.0 1.0" />
       <limit effort="${joint_effort}" lower="-3.14" upper="3.14" velocity="${joint_velocity}" />
       <parent link="${prefix}_link2" />
       <child link="${prefix}_link3" />
@@ -111,7 +111,7 @@
       <collision>
         <origin rpy="-0.00000 1.57080 -0.00000" xyz="-0.00103 -0.00000 -0.11471"/>
         <geometry>
-          <cylinder radius="0.04497" length="0.09083"/>
+          <cylinder radius="0.044" length="0.09"/>
         </geometry>
       </collision>
       <inertial>
@@ -140,7 +140,7 @@
       <collision>
         <origin rpy="0.00000 0.00000 0.00000" xyz="-0.03467 -0.00059 -0.09265"/>
         <geometry>
-          <cylinder radius="0.03436" length="0.09152"/>
+          <cylinder radius="0.034" length="0.09"/>
         </geometry>
       </collision>
       <inertial>
@@ -151,10 +151,10 @@
 
     <joint name="${prefix}_joint5" type="revolute">
       <axis xyz="-1.0 0.0 0.0" />
-      <limit effort="${joint_effort}" lower="-1.57" upper="1.57" velocity="${joint_velocity}" />
+      <limit effort="${joint_effort}" lower="-3.14" upper="0.0" velocity="${joint_velocity}" />
       <parent link="${prefix}_link4" />
       <child link="${prefix}_link5" />
-      <origin xyz="-0.05962 0.0 -0.12200" rpy="0.0 0.0 0.0" />
+      <origin xyz="-0.05962 0.0 -0.12200" rpy="-1.57 0.0 0.0" />
       <dynamics damping="${joint_damping}" friction="${joint_friction}" />
     </joint>
 
@@ -169,7 +169,7 @@
       <collision>
         <origin rpy="1.57080 0.00000 0.00000" xyz="0.02026 0.00000 -0.06561"/>
         <geometry>
-          <cylinder radius="0.03329" length="0.06786"/>
+          <cylinder radius="0.0285" length="0.067"/>
         </geometry>
       </collision>
       <inertial>
@@ -179,7 +179,7 @@
     </link>
 
     <joint name="${prefix}_joint6" type="revolute">
-      <axis xyz="0.0 -1.0 0.0" />
+      <axis xyz="0.0 1.0 0.0" />
       <limit effort="${joint_effort}" lower="-1.57" upper="1.57" velocity="${joint_velocity}" />
       <parent link="${prefix}_link5" />
       <child link="${prefix}_link6" />
@@ -198,7 +198,7 @@
       <collision>
         <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.02829 -0.08677"/>
         <geometry>
-          <cylinder radius="0.03852" length="0.10036"/>
+          <cylinder radius="0.038" length="0.100"/>
         </geometry>
       </collision>
       <inertial>
