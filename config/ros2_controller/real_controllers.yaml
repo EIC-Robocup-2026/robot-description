@@ -58,3 +58,9 @@ head_servo_controller:
   ros__parameters:
     joints:
       - head_servo_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    open_loop: true
+    allow_nonzero_velocity_at_steady_state: true

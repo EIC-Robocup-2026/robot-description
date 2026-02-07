@@ -172,7 +172,7 @@
       </ros2_control>
       <ros2_control name="HeadServoSystem" type="system">
         <hardware>
-          <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+          <plugin>mock_components/GenericSystem</plugin>
           <param name="joint_commands_topic">/head_servo_joint_cmd</param>
           <param name="joint_states_topic">/head_servo_joint_states</param>
         </hardware>
