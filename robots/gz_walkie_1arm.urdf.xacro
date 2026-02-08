@@ -15,7 +15,7 @@
   <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/head/servo_camera.urdf.xacro"/>
-
+  
   <!-- Include the arm and gripper macros -->
   <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/walkie_arm.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro"/>
