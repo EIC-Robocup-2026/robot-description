@@ -139,7 +139,7 @@
          <param name="enc_off">0.0</param>
          <param name="read_only">0</param>
         <param name="external_gear_ratio">${external_gear_ratio}</param>
-        <param name="trq_limit">1</param>
+        <param name="trq_limit">1.7</param>
         <param name="grasp_detect">1</param>
       </xacro:if>
 
@@ -153,5 +153,5 @@
       </xacro:if>
     </joint>
   </xacro:macro>
-
+ 
 </robot>
