@@ -1,129 +1,139 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="walkie_bot">
-  <xacro:property name="M_PI" value="3.14159274"/>
-  <xacro:arg name="ros2_control" default="gazebo"/>
-  <xacro:arg name="use_gripper" default="true"/>
-  <xacro:arg name="ros2_control_hardware_type" default="mock_components"/>
-  <xacro:arg name="hardware_config_file" default="$(find walkie_description)/config/hardware_layout.yaml"/>
+  <xacro:property name="M_PI" value="3.14159274" />
+  <xacro:arg name="ros2_control" default="gazebo" />
+  <xacro:arg name="use_gripper" default="true" />
+  <xacro:arg name="ros2_control_hardware_type" default="mock_components" />
+  <xacro:arg name="hardware_config_file"
+    default="$(find walkie_description)/config/hardware_layout.yaml" />
   <!-- Dual lidar option when only SIMULATION
   real robot force to be dual_lidar
   don't forgot to enable lidar topic to bridge in gz_bridge.yml -->
-  <xacro:arg name="dual_lidar" default="True"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/head/servo_camera.urdf.xacro"/>
+  <xacro:arg name="dual_lidar" default="True" />
+  <xacro:arg name="use_zed" default="false" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro" />
+  <xacro:include
+    filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/head/servo_camera.urdf.xacro" />
 
   <!-- Include the arm and gripper macros -->
-  <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/walkie_arm.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/arm_ros2_control.xacro"/>
+  <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/walkie_arm.urdf.xacro" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie-gripper/walkie_gripper.urdf.xacro" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie-arm/arm_ros2_control.xacro" />
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
-  <link name="base_footprint"/>
+  <link name="base_footprint" />
   <xacro:base_v0 parent="base_footprint">
-    <origin xyz="0 0 0" rpy="0 0 ${M_PI / 2}"/>
+    <origin xyz="0 0 0" rpy="0 0 ${M_PI / 2}" />
   </xacro:base_v0>
-  <xacro:base_gazebo_v0/>
+  <xacro:base_gazebo_v0 />
   <!-- Wheel -->
   <!-- 1st wheel -->
   <xacro:wheel_v0 prefix="bl" parent="base_link">
-    <origin xyz="0.145261 0.145261 0.05" rpy="0 0 -${M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="0.145261 0.145261 0.05" rpy="0 0 -${M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- 2nd wheel -->
   <xacro:wheel_v0 prefix="br" parent="base_link">
-    <origin xyz="-0.145261 0.145261 0.05" rpy="0 0 ${M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="-0.145261 0.145261 0.05" rpy="0 0 ${M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- 3rd wheel -->
   <xacro:wheel_v0 prefix="fr" parent="base_link">
-    <origin xyz="-0.145261 -0.145261 0.05" rpy="0 0 ${3*M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="-0.145261 -0.145261 0.05" rpy="0 0 ${3*M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- 4th wheel -->
   <xacro:wheel_v0 prefix="fl" parent="base_link">
-    <origin xyz="0.145261 -0.145261 0.05" rpy="0 0 ${5*M_PI/4}"/>
-    <axis xyz="0.0 1.0 0.0"/>
+    <origin xyz="0.145261 -0.145261 0.05" rpy="0 0 ${5*M_PI/4}" />
+    <axis xyz="0.0 1.0 0.0" />
   </xacro:wheel_v0>
   <!-- Left arm mount joint -->
   <joint name="left_arm_mount_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="left_arm_base"/>
-    <origin xyz="0.075 0 0.951268" rpy="0 0 0"/>
+    <parent link="base_link" />
+    <child link="left_arm_base" />
+    <origin xyz="0.075 0 0.951268" rpy="0 0 0" />
   </joint>
   <!-- Left arm -->
-  <xacro:walkie_arm base_link="left_arm_base" prefix="left"/>
+  <xacro:walkie_arm base_link="left_arm_base" prefix="left" />
   <xacro:if value="$(arg use_gripper)">
-    <xacro:walkie_gripper parent="left_link6" prefix="left"/>
+    <xacro:walkie_gripper parent="left_link6" prefix="left" />
   </xacro:if>
   <xacro:if value="$(arg use_gripper)">
     <link name="left_gripper_center">
       <visual>
         <geometry>
-          <sphere radius="0.01"/>
+          <sphere radius="0.01" />
         </geometry>
         <material name="red">
-          <color rgba="1 0 0 1"/>
+          <color rgba="1 0 0 1" />
         </material>
       </visual>
       <collision>
         <geometry>
-          <sphere radius="0.01"/>
+          <sphere radius="0.01" />
         </geometry>
       </collision>
       <inertial>
-        <mass value="0.001"/>
-        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+        <mass value="0.001" />
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
       </inertial>
     </link>
     <joint name="left_gripper_center_joint" type="fixed">
-      <parent link="left_link7"/>
-      <child link="left_gripper_center"/>
-      <origin xyz="0.0 0.0 -0.18" rpy="0.0 0.0 0.0"/>
+      <parent link="left_link7" />
+      <child link="left_gripper_center" />
+      <origin xyz="0.0 0.0 -0.18" rpy="0.0 0.0 0.0" />
     </joint>
   </xacro:if>
   <!-- lidar sensor -->
   <!-- single lidar for simulation performance -->
   <xacro:if value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}">
     <xacro:lidar_v0 prefix="single" parent="base_link">
-      <origin xyz="0 0 0.315" rpy="0 0 -1.5707963"/>
+      <origin xyz="0 0 0.315" rpy="0 0 -1.5707963" />
     </xacro:lidar_v0>
-    <xacro:lidar_gazebo_v0 prefix="single" min_rad="-${M_PI}" max_rad=" ${M_PI}" min_range="0.6" max_range="10" yaw_offset="0"/>
+    <xacro:lidar_gazebo_v0 prefix="single" min_rad="-${M_PI}" max_rad=" ${M_PI}" min_range="0.6"
+      max_range="10" yaw_offset="0" />
   </xacro:if>
-  <!-- dual lidar when ** REAL WORLD ** or ** SIMULATION ** but set argument ** DUAL_LIDAR ** to true -->
+  <!-- dual lidar when ** REAL WORLD ** or ** SIMULATION ** 
+  set argument ** DUAL_LIDAR ** to true -->
   <xacro:unless value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}">
     <xacro:lidar_v0 prefix="front" parent="base_link">
-      <origin xyz="0 -0.240 0.28232" rpy="0 0 -1.5707963"/>
+      <origin xyz="0 -0.240 0.28232" rpy="0 0 -1.5707963" />
     </xacro:lidar_v0>
     <xacro:lidar_v0 prefix="back" parent="base_link">
-      <origin xyz="0 0.240 0.28232" rpy="0 0 1.5707963"/>
+      <origin xyz="0 0.240 0.28232" rpy="0 0 1.5707963" />
     </xacro:lidar_v0>
-    <xacro:lidar_gazebo_v0 prefix="front" min_rad="-2.09333333" max_rad=" 2.09333333" min_range="0.18" max_range="10" yaw_offset="0"/>
-    <xacro:lidar_gazebo_v0 prefix="back" min_rad="-2.09333333" max_rad=" 2.09333333" min_range="0.18" max_range="10" yaw_offset="0"/>
+    <xacro:lidar_gazebo_v0 prefix="front" min_rad="-2.09333333" max_rad=" 2.09333333"
+      min_range="0.18" max_range="10" yaw_offset="0" />
+    <xacro:lidar_gazebo_v0 prefix="back" min_rad="-2.09333333" max_rad=" 2.09333333"
+      min_range="0.18" max_range="10" yaw_offset="0" />
   </xacro:unless>
   <!-- depth cam sensor -->
   <!-- d415 -->
-  <xacro:sensor_d415 name="bottom" parent="base_link" flag_color="1" flag_ir="0" flag_depth="1" updaterate="2">
-    <origin xyz="0 -0.282713 0.1775" rpy="0 -0.453786 -${M_PI/2}"/>
+  <xacro:sensor_d415 name="bottom" parent="base_link" flag_color="1" flag_ir="0" flag_depth="0"
+    updaterate="2">
+    <origin xyz="0 -0.282713 0.1775" rpy="0 -0.453786 -${M_PI/2}" />
   </xacro:sensor_d415>
-  <link name="bottombase"/>
+  <link name="bottombase" />
   <joint name="bottombase_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="bottombase"/>
-    <origin xyz="0 -0.282713 0.1775" rpy="0 0 -${M_PI/2}"/>
+    <parent link="base_link" />
+    <child link="bottombase" />
+    <origin xyz="0 -0.282713 0.1775" rpy="0 0 -${M_PI/2}" />
   </joint>
   <xacro:servo_v0 prefix="head" parent="base_link">
-    <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/> 
+    <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0" />
   </xacro:servo_v0>
   <!-- imu sensor -->
   <xacro:imu_v0 prefix="top" parent="base_link">
-    <origin xyz="0 0 0.17"/>
+    <origin xyz="0 0 0.17" />
   </xacro:imu_v0>
-  <xacro:imu_gazebo_v0 prefix="top"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro"/>
-  <xacro:ros2_control ros2_control="$(arg ros2_control)"/>
-  <xacro:arm_ros2_control name="LeftWalkieSystem" prefix="left" hardware_type="$(arg ros2_control_hardware_type)" hardware_config_file="$(arg hardware_config_file)"/>
+  <xacro:imu_gazebo_v0 prefix="top" />
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro" />
+  <xacro:ros2_control ros2_control="$(arg ros2_control)" />
+  <xacro:arm_ros2_control name="LeftWalkieSystem" prefix="left"
+    hardware_type="$(arg ros2_control_hardware_type)"
+    hardware_config_file="$(arg hardware_config_file)" />
 </robot>

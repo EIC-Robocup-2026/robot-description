@@ -1,44 +1,213 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Conditionally include zed_wrapper URDF only when use_zed is true (SDK mode) -->
+  <xacro:arg name="use_zed" default="false" />
+  <xacro:if value="$(arg use_zed)">
+    <xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
+  </xacro:if>
+
   <xacro:macro name="servo_v0" params="prefix parent *joint_origin">
-    
+    <xacro:arg name="camera_name" default="zed_${prefix}" />
+    <xacro:arg name="camera_model" default="zed2i" />
+    <xacro:arg name="use_zed_localization" default="false" />
+
+    <!-- ============ Servo Mount ============ -->
     <joint name="${prefix}_servobase_joint" type="fixed">
-      <xacro:insert_block name="joint_origin"/>
-      <parent link="${parent}"/>
-      <child link="${prefix}_servobase_link"/>
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}_servobase_link" />
     </joint>
 
     <link name="${prefix}_servobase_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/ServoMountPlate.stl"  scale="0.001 0.001 0.001"/>
+          <mesh filename="package://walkie_description/meshes/walkie/ServoMountPlate.stl"
+            scale="0.001 0.001 0.001" />
         </geometry>
-        <material name="dark_grey"><color rgba="0.2 0.2 0.2 1"/></material>
+        <material name="dark_grey">
+          <color rgba="0.2 0.2 0.2 1" />
+        </material>
       </visual>
+      <inertial>
+        <mass value="0.05" />
+        <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5" />
+      </inertial>
     </link>
 
+    <!-- ============ Servo Joint (tilt) ============ -->
     <joint name="${prefix}_servo_joint" type="revolute">
-      <parent link="${prefix}_servobase_link"/>
-      <child link="${prefix}_servo_link"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/> <axis xyz="-1 0 0"/> 
-      <limit lower="-0.384" upper="0.436" effort="10.0" velocity="1.0"/>
+      <parent link="${prefix}_servobase_link" />
+      <child link="${prefix}_servo_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <axis xyz="-1 0 0" />
+      <limit lower="-0.384" upper="0.436" effort="10.0" velocity="1.0" />
     </joint>
 
     <link name="${prefix}_servo_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/ServoCameraCase.stl"  scale="0.001 0.001 0.001"/>
+          <mesh filename="package://walkie_description/meshes/walkie/ServoCameraCase.stl"
+            scale="0.001 0.001 0.001" />
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0.104 0 0" rpy="0 0 0"/>
+        <origin xyz="0.104 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.208 0.039 0.039"/>
+          <box size="0.208 0.039 0.039" />
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.2" />
+        <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4" />
+      </inertial>
     </link>
+
+    <!-- ============ ZED Camera Body ============ -->
+    <!-- SDK mode: use zed_wrapper macro -->
+    <xacro:if value="$(arg use_zed)">
+      <xacro:zed_camera name="zed" model="$(arg camera_model)">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:zed_camera>
+    </xacro:if>
+
+    <!-- No-wrapper mode: define standalone camera links -->
+    <xacro:unless value="$(arg use_zed)">
+      <!-- Camera mount frame -->
+      <link name="$(arg camera_name)_camera_mount_link" />
+      <joint name="$(arg camera_name)_mount_joint" type="fixed">
+        <parent link="$(arg camera_name)_camera_mount_link" />
+        <child link="$(arg camera_name)_camera_link" />
+        <origin xyz="0 0 0.015" rpy="0 0 0" />
+      </joint>
+
+
+      <!-- Camera body link -->
+      <link name="$(arg camera_name)_camera_link">
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <box size="0.030 0.16 0.033" />
+          </geometry>
+          <material name="zed_dark">
+            <color rgba="0.15 0.15 0.15 1" />
+          </material>
+        </visual>
+        <collision>
+          <geometry>
+            <box size="0.175 0.030 0.033" />
+          </geometry>
+        </collision>
+        <inertial>
+          <mass value="0.16" />
+          <origin xyz="0 0 0" />
+          <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4" />
+        </inertial>
+      </link>
+
+      <!-- Left camera frame (baseline origin) -->
+      <link name="$(arg camera_name)_left_camera_frame" />
+      <joint name="$(arg camera_name)_left_camera_joint" type="fixed">
+        <parent link="$(arg camera_name)_camera_link" />
+        <child link="$(arg camera_name)_left_camera_frame" />
+        <origin xyz="0 0.06 0" rpy="0 0 0" />
+      </joint>
+
+      <!-- Left camera optical frame -->
+      <link name="$(arg camera_name)_left_camera_optical_frame" />
+      <joint name="$(arg camera_name)_left_camera_optical_joint" type="fixed">
+        <parent link="$(arg camera_name)_left_camera_frame" />
+        <child link="$(arg camera_name)_left_camera_optical_frame" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </joint>
+
+      <!-- Right camera frame -->
+      <link name="$(arg camera_name)_right_camera_frame" />
+      <joint name="$(arg camera_name)_right_camera_joint" type="fixed">
+        <parent link="$(arg camera_name)_camera_link" />
+        <child link="$(arg camera_name)_right_camera_frame" />
+        <origin xyz="0 -0.06 0" rpy="0 0 0" />
+      </joint>
+
+      <!-- Right camera optical frame -->
+      <link name="$(arg camera_name)_right_camera_optical_frame" />
+      <joint name="$(arg camera_name)_right_camera_optical_joint" type="fixed">
+        <parent link="$(arg camera_name)_right_camera_frame" />
+        <child link="$(arg camera_name)_right_camera_optical_frame" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </joint>
+
+      <!-- Depth frame (co-located with left camera) -->
+      <link name="$(arg camera_name)_depth_frame" />
+      <joint name="$(arg camera_name)_depth_joint" type="fixed">
+        <parent link="$(arg camera_name)_left_camera_frame" />
+        <child link="$(arg camera_name)_depth_frame" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </joint>
+
+      <!-- ============ Gazebo Sensors (Gz Sim / Jazzy) ============ -->
+      <gazebo reference="$(arg camera_name)_camera_link">
+        <!-- Left RGB Camera -->
+        <sensor name="${prefix}_left_rgb_sensor" type="camera">
+          <pose relative_to="$(arg camera_name)_left_camera_optical_frame">0 0 0 0 0 0</pose>
+          <camera name="${prefix}_left">
+            <horizontal_fov>1.9199</horizontal_fov> <!-- ZED2i: 110 deg -->
+            <image>
+              <width>960</width>
+              <height>540</height>
+              <format>RGB_INT8</format>
+            </image> --> </camera>
+          <always_on>1</always_on>
+          <update_rate>15</update_rate>
+          <visualize>true</visualize>
+          <topic>${prefix}/rgb/image</topic>
+          <gz_frame_id>$(arg camera_name)_left_camera_optical_frame</gz_frame_id>
+        </sensor>
+
+        <!-- Depth Camera -->
+        <sensor name="${prefix}_depth_sensor" type="depth_camera">
+          <pose relative_to="$(arg camera_name)_left_camera_optical_frame">0 0 0 0 0 0</pose>
+          <camera name="${prefix}_depth">
+            <horizontal_fov>1.9199</horizontal_fov> <!-- ZED2i: 110 deg -->
+            <image>
+              <width>960</width>
+              <height>540</height>
+            </image>
+            <clip>
+              <near>0.3</near>
+              <far>20</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>false</visualize>
+          <topic>${prefix}/depth</topic>
+          <gz_frame_id>$(arg camera_name)_left_camera_optical_frame</gz_frame_id>
+        </sensor>
+      </gazebo>
+    </xacro:unless>
+
+    <!-- ============ Camera Mounting Joint ============ -->
+    <xacro:if value="$(arg use_zed_localization)">
+      <joint name="$(arg camera_name)_joint" type="fixed">
+        <parent link="$(arg camera_name)_camera_mount_link" />
+        <child link="${prefix}_servo_link" />
+        <origin xyz="0.098 -0.02 -0.015" rpy="0 0 -1.5708" />
+      </joint>
+    </xacro:if>
+    <xacro:unless value="$(arg use_zed_localization)">
+      <joint name="$(arg camera_name)_joint" type="fixed">
+        <parent link="${prefix}_servo_link" />
+        <child link="$(arg camera_name)_camera_mount_link" />
+        <origin xyz="0.098 -0.006 -0.015" rpy="0 0 -1.5708" />
+      </joint>
+    </xacro:unless>
 
   </xacro:macro>
 </robot>
