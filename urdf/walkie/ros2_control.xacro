@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="ros2_control" params="ros2_control">
     <!-- Simulation - Gazebo based ros2_control -->
@@ -37,6 +37,13 @@
             <param name="max"> 3.14</param>
           </command_interface>
           <state_interface name="velocity" />
+          <state_interface name="position" />
+        </joint>
+        <joint name="head_servo_joint">
+          <command_interface name="position">
+            <param name="min"> -1.54</param>
+            <param name="max"> 1.54</param>
+          </command_interface>
           <state_interface name="position" />
         </joint>
       </ros2_control>
@@ -188,8 +195,7 @@
         name="gz_ros2_control::GazeboSimROS2ControlPlugin"
         filename="libgz_ros2_control-system.so"
       >
-        <parameters
-        >$(find walkie_description)/config/ros2_controller/sim_controllers.yaml</parameters>
+        <parameters>$(find walkie_description)/config/ros2_controller/sim_controllers.yaml</parameters>
       </plugin>
     </gazebo>
   </xacro:macro>
