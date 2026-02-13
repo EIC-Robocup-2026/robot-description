@@ -1,19 +1,19 @@
 hardware_config:
   # Left Arm
-  left_joint1: cubemars
-  left_joint2: cubemars
-  left_joint3: cubemars
-  left_joint4: cubemars
+  left_joint1: mock
+  left_joint2: mock
+  left_joint3: mock
+  left_joint4: mock
   left_joint5: cubemars
   left_joint6: cubemars
   left_joint7: cubemars
   left_gripper_worm_gear_joint: cubemars # gripper joint name
   # Right Arm
-  right_joint1: cubemars
-  right_joint2: cubemars
-  right_joint3: cubemars
-  right_joint4: cubemars
-  right_joint5: cubemars
-  right_joint6: cubemars
-  right_joint7: cubemars
-  right_gripper_worm_gear_joint: cubemars # gripper joint name
+  right_joint1: mock
+  right_joint2: mock
+  right_joint3: mock
+  right_joint4: mock
+  right_joint5: mock
+  right_joint6: mock
+  right_joint7: mock
+  right_gripper_worm_gear_joint: mock # gripper joint name
