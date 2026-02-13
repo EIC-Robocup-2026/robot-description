@@ -92,7 +92,7 @@
     <xacro:if value="${use_global_config or prefix + '_gripper_worm_gear_joint' in hw_config['hardware_config']}">
          <xacro:if value="${use_global_config or hw_config['hardware_config'][prefix + '_gripper_worm_gear_joint'] == target_type}">
             <xacro:configure_single_gripper name="${prefix}_gripper_worm_gear_joint" type="${target_type}" 
-                can_id="${id_offset + 8}" gear_ratio="10.0" external_gear_ratio="10.0"/>
+                can_id="${id_offset + 8}" gear_ratio="10.0" external_gear_ratio="1.0" />
          </xacro:if>
     </xacro:if>
 
@@ -139,6 +139,8 @@
          <param name="enc_off">0.0</param>
          <param name="read_only">0</param>
         <param name="external_gear_ratio">${external_gear_ratio}</param>
+        <param name="trq_limit">1.7</param>
+        <param name="grasp_detect">1</param>
       </xacro:if>
 
       <command_interface name="position"/>
@@ -151,5 +153,5 @@
       </xacro:if>
     </joint>
   </xacro:macro>
-
+ 
 </robot>
