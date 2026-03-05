@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <!-- Conditionally include zed_wrapper URDF only when use_zed is true (SDK mode) -->
-  <xacro:arg name="use_zed" default="false"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/zed/zed_macro.urdf.xacro"/>
   <xacro:macro name="servo_v0" params="prefix parent *joint_origin">
     <xacro:arg name="camera_name" default="zed_${prefix}"/>
