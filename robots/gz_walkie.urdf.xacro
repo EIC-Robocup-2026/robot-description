@@ -10,9 +10,8 @@
   <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415.urdf.xacro"/>
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415/d415.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/head/servo_camera.urdf.xacro"/>
-
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
   <link name="base_footprint"/>
@@ -71,7 +70,7 @@
     <origin xyz="0 -0.282713 0.1775" rpy="0 0 -${M_PI/2}"/>
   </joint>
   <xacro:servo_v0 prefix="head" parent="base_link">
-    <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/> 
+    <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/>
   </xacro:servo_v0>
   <!-- imu sensor -->
   <xacro:imu_v0 prefix="top" parent="base_link">
