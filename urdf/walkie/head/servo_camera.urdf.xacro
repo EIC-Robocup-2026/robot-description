@@ -77,11 +77,11 @@
         <update_rate>15</update_rate>
         <visualize>true</visualize>
         <topic>${prefix}/rgb/image</topic>
-        <gz_frame_id>$(arg camera_name)_left_camera_frame_optical</gz_frame_id>
+        <gz_frame_id>$(arg camera_name)_left_camera_frame</gz_frame_id>
       </sensor>
       <!-- Depth Camera -->
       <sensor name="${prefix}_depth_sensor" type="depth_camera">
-        <pose relative_to="$(arg camera_name)_left_camera_frame_optical">0 0 0 0 -1.570796326794897 0</pose>
+        <pose relative_to="$(arg camera_name)_left_camera_frame_optical">0 0 0 1.570796326794897 -1.570796326794897 0</pose>
         <camera name="${prefix}_depth">
           <horizontal_fov>1.9199</horizontal_fov>
           <!-- ZED2i: 110 deg -->
@@ -103,7 +103,7 @@
         <update_rate>10</update_rate>
         <visualize>false</visualize>
         <topic>${prefix}/depth</topic>
-        <gz_frame_id>$(arg camera_name)_left_camera_frame_optical</gz_frame_id>
+        <gz_frame_id>$(arg camera_name)_left_camera_frame</gz_frame_id>
       </sensor>
     </gazebo>
     <!-- ============ Camera Mounting Joint ============ -->
