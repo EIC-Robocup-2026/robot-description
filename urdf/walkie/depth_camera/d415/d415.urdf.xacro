@@ -53,7 +53,7 @@ aluminum peripherial evaluation case.
         <origin xyz="${d415_cam_mount_from_center_offset} ${-d415_cam_depth_py} 0" rpy="${pi/2} 0 ${pi/2}"/>
         <geometry>
           <!-- <box size="${d415_cam_width} ${d415_cam_height} ${d415_cam_depth}"/> -->
-          <mesh filename="package://walkie_description/urdf/walkie/depth_camera/visual/d415.stl"/>
+          <mesh filename="package://walkie_description/urdf/walkie/depth_camera/d415/visual/d415.stl"/>
         </geometry>
         <material name="aluminum"/>
       </visual>
