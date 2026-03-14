@@ -1,80 +1,50 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find walkie_description)/urdf/inertial_macros.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/omni_wheel.gazebo.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/omni_wheel.transmission.xacro"/>
-  <xacro:include filename="$(find walkie_description)/urdf/walkie/roller/gz_roller.urdf.xacro"/>
-  <xacro:property name="wheel_thickness" value="0.0185"/>
-  <xacro:property name="wheel_radian" value="0.0175"/>
-  <xacro:property name="wheel_mass" value="0.05"/>
+  <xacro:include
+        filename="$(find walkie_description)/urdf/inertial_macros.xacro"
+    />
+  <xacro:include
+        filename="$(find walkie_description)/urdf/walkie/omni_wheel/omni_wheel.gazebo.xacro"
+    />
+  <xacro:include
+        filename="$(find walkie_description)/urdf/walkie/omni_wheel/omni_wheel.transmission.xacro"
+    />
+  <xacro:property name="wheel_thickness" value="0.05" />
+  <xacro:property name="wheel_radian" value="0.075" />
+  <xacro:property name="wheel_mass" value="0.05" />
   <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
     <joint name="${prefix}_wheel_joint" type="continuous">
-      <xacro:insert_block name="joint_origin"/>
-      <parent link="${parent}"/>
-      <child link="${prefix}_wheel_link"/>
-      <limit effort="100" velocity="100"/>
-      <dynamics damping="5.0" friction="0.5"/>
-      <xacro:insert_block name="joint_axis"/>
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}_wheel_link" />
+      <limit effort="100" velocity="100" />
+      <dynamics damping="5.0" friction="0.5" />
+      <xacro:insert_block name="joint_axis" />
     </joint>
     <link name="${prefix}_wheel_link">
-      <visual>
-        <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/omni_wheel_optimize.dae" scale="1 1 1"/>
-          <!-- <mesh filename="package://walkie_description/meshes/walkie/omni_wheel.dae" scale="1 1 1"/> -->
-          <!-- <mesh filename="package://walkie_description/meshes/walkie/omni_wheel.stl" scale="1 1 1"/> -->
-        </geometry>
-      </visual>
-      <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radian}">
-        <origin xyz="0 ${wheel_thickness/2} 0" rpy="1.570796327 0 0"/>
-      </xacro:inertial_cylinder>
+        <visual>
+            <geometry>
+                <mesh
+                        filename="package://walkie_description/meshes/walkie/omni_wheel_optimize.dae"
+                        scale="1 1 1"
+                    />
+            </geometry>
+        </visual>
+        <xacro:inertial_cylinder
+                mass="${wheel_mass}"
+                length="${wheel_thickness}"
+                radius="${wheel_radian}"
+            >
+            <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+        </xacro:inertial_cylinder>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570796327 0 0" />
+            <geometry>
+            <cylinder radius="${wheel_radian}" length="${wheel_thickness}" />
+            </geometry>
+        </collision>
     </link>
-    <xacro:roller prefix="${prefix}" num="1">
-      <origin xyz="0.0577 0.012 0.0" rpy="0.0 -0.0 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="2">
-      <origin xyz="0.05 0.012 0.0289" rpy="0.0 -0.5236 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="3">
-      <origin xyz="0.0289 0.012 0.05" rpy="0.0 -1.0472 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="4">
-      <origin xyz="0.0 0.012 0.0577" rpy="0.0 -1.5708 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="5">
-      <origin xyz="-0.0289 0.012 0.05" rpy="0.0 -2.0944 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="6">
-      <origin xyz="-0.05 0.012 0.0289" rpy="0.0 -2.618 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="7">
-      <origin xyz="-0.0577 0.012 0.0" rpy="0.0 -3.1416 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="8">
-      <origin xyz="-0.05 0.012 -0.0289" rpy="0.0 -3.6652 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="9">
-      <origin xyz="-0.0289 0.012 -0.05" rpy="0.0 -4.1888 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="10">
-      <origin xyz="-0.0 0.012 -0.0577" rpy="0.0 -4.7124 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="11">
-      <origin xyz="0.0289 0.012 -0.05" rpy="0.0 -5.236 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
-    <xacro:roller prefix="${prefix}" num="12">
-      <origin xyz="0.05 0.012 -0.0289" rpy="0.0 -5.7596 0.0"/>
-      <axis xyz="0.0 0.0 1.0"/>
-    </xacro:roller>
+    <xacro:wheel_gazebo_v0 prefix="${prefix}" />
   </xacro:macro>
+
 </robot>
