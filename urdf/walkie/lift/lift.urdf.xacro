@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="lift_v0" params="prefix parent *joint_origin">
+    <joint name="${prefix}_joint" type="prismatic">
+        <xacro:insert_block name="joint_origin"/>
+        <limit lower="-0.51510" upper="0.00000" effort="0.00000" velocity="0.00000"/>
+        <parent link="${parent}"/>
+        <child link="${prefix}_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+    </joint>
+    <link name="${prefix}_link">
+        <visual name="lift">
+            <geometry>
+                <mesh filename="package://walkie_description/meshes/walkie/lift.stl" scale="0.01 0.01 0.01"/>
+            </geometry>
+            <material name="grey"/>
+        </visual>
+        <collision name="lift_collision">
+            <origin rpy="0.00000 0.00000 -0.00000" xyz="-0.00000 -0.08773 0.09614"/>
+            <geometry>
+                <box size="0.34666 0.35267 0.18936"/>
+            </geometry>
+        </collision>
+    </link>
+  </xacro:macro>
+</robot>
