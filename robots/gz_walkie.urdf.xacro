@@ -76,9 +76,11 @@
     <child link="bottombase"/>
     <origin xyz="0 -0.245763 0.17000" rpy="0 0 -${M_PI/2}"/>
   </joint>
-  <!-- <xacro:servo_v0 prefix="head" parent="base_link">
-    <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/>
-  </xacro:servo_v0> -->
+  <!-- head servo -->
+  <xacro:servo_v0 prefix="head" parent="lift_link">
+    <origin xyz="-0.03403 -0.2650 0.21525" rpy="0 0 0" />
+    <!-- <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/> -->
+  </xacro:servo_v0>
 
   <!-- imu sensor -->
   <xacro:imu_v0 prefix="top" parent="base_link">
@@ -105,6 +107,7 @@
     arm_connected_to="lift_link"
     bimanual="true"
     ee_type="openarm_hand"
+    use_fake_hardware="true"
   />
 
 </robot>
