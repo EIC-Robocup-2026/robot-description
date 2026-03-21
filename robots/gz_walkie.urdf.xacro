@@ -107,6 +107,7 @@
     arm_connected_to="lift_link"
     bimanual="true"
     ee_type="openarm_hand"
+    ros2_control="false"
     use_fake_hardware="true"
   />
 
