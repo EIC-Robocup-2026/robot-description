@@ -9,7 +9,7 @@
    
     <!-- ============ Servo Joint (tilt) ============ -->    
     <joint name="${prefix}_servo_joint" type="revolute">
-      <limit lower="-3.14000" upper="3.14000" effort="0.00000" velocity="0.00000"/>
+      <limit lower="-0.785398163" upper="0.785398163" effort="0.00000" velocity="0.00000"/>
       <parent link="${parent}"/>
       <child link="${prefix}_servo_link"/>
       <xacro:insert_block name="joint_origin"/>
@@ -23,9 +23,9 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0.104 0 0" rpy="0 0 0"/>
+        <origin xyz="0.034 -0.056649 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.208 0.039 0.039"/>
+          <box size="0.186 0.044 0.040"/>
         </geometry>
       </collision>
       <inertial>
