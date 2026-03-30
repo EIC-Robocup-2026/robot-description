@@ -14,21 +14,22 @@
     </joint>
     <link name="base_link">
       <visual>
+        <origin xyz="0 0 0" rpy="0 0 1.5708"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/base_link2.stl"/>
+          <mesh filename="package://walkie_description/meshes/walkie/base_link3.stl" scale="0.01 0.01 0.01"/>
         </geometry>
         <material name="grey"/>
       </visual>
       <collision>
         <origin xyz="0 0 0.165" rpy="0 0 0"/>
         <geometry>
-          <cylinder radius="0.29" length="0.33"/>
+          <cylinder radius="0.275" length="0.33"/>
         </geometry>
       </collision>
       <collision>
-        <origin xyz="0 0 0.605" rpy="0 0 0"/>
+        <origin xyz="0 0.07 0.725" rpy="0 0 0"/>
         <geometry>
-          <box size="0.3 0.19 0.54"/>
+          <box size="0.196 0.18 0.80"/>
         </geometry>
       </collision>
       <xacro:inertial_cylinder mass="${base_mass}" length="${bass_thickness}" radius="${base_radian}">

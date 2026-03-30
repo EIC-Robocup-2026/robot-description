@@ -12,6 +12,9 @@
   <xacro:include filename="$(find walkie_description)/urdf/walkie/imu/imu_gz.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/depth_camera/d415/d415.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/head/servo_camera.urdf.xacro"/>
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/lift/lift.urdf.xacro"/>
+  <xacro:include filename="$(find walkie_description)/urdf/openarm/robot/openarm_robot.xacro"/>
+
   <!-- =============== Link & Joint =============== -->
   <!-- Base -->
   <link name="base_footprint"/>
@@ -19,25 +22,29 @@
     <origin xyz="0 0 0" rpy="0 0 ${M_PI / 2}"/>
   </xacro:base_v0>
   <xacro:base_gazebo_v0/>
+  <!-- Lift -->
+  <xacro:lift_v0 prefix="lift" parent="base_link">
+    <origin xyz="0.00000 0.07000 0.90875" rpy="0 0 0"/>
+  </xacro:lift_v0>
   <!-- Wheel -->
   <!-- 1st wheel -->
   <xacro:wheel_v0 prefix="bl" parent="base_link">
-    <origin xyz="0.145261 0.145261 0.05" rpy="0 0 -${M_PI/4}"/>
+    <origin xyz="0.130943 0.130943 0.05" rpy="0 0 -${M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- 2nd wheel -->
   <xacro:wheel_v0 prefix="br" parent="base_link">
-    <origin xyz="-0.145261 0.145261 0.05" rpy="0 0 ${M_PI/4}"/>
+    <origin xyz="-0.130943 0.130943 0.05" rpy="0 0 ${M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- 3rd wheel -->
   <xacro:wheel_v0 prefix="fr" parent="base_link">
-    <origin xyz="-0.145261 -0.145261 0.05" rpy="0 0 ${3*M_PI/4}"/>
+    <origin xyz="-0.130943 -0.130943 0.05" rpy="0 0 ${3*M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- 4th wheel -->
   <xacro:wheel_v0 prefix="fl" parent="base_link">
-    <origin xyz="0.145261 -0.145261 0.05" rpy="0 0 ${5*M_PI/4}"/>
+    <origin xyz="0.130943 -0.130943 0.05" rpy="0 0 ${5*M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- lidar sensor -->
@@ -51,27 +58,30 @@
   <!-- dual lidar when ** REAL WORLD ** or ** SIMULATION ** but set argument ** DUAL_LIDAR ** to true -->
   <xacro:unless value="${'$(arg ros2_control)' == 'gazebo' and not $(arg dual_lidar)}">
     <xacro:lidar_v0 prefix="front" parent="base_link">
-      <origin xyz="0 -0.240 0.28232" rpy="0 0 -1.5707963"/>
+      <origin xyz="0 -0.235 0.28232" rpy="0 0 -1.5707963"/>
     </xacro:lidar_v0>
     <xacro:lidar_v0 prefix="back" parent="base_link">
-      <origin xyz="0 0.240 0.28232" rpy="0 0 1.5707963"/>
+      <origin xyz="0 0.235 0.28232" rpy="0 0 1.5707963"/>
     </xacro:lidar_v0>
     <xacro:lidar_gazebo_v0 prefix="front" min_rad="-2.09333333" max_rad=" 2.09333333" min_range="0.18" max_range="10" yaw_offset="0"/>
     <xacro:lidar_gazebo_v0 prefix="back" min_rad="-2.09333333" max_rad=" 2.09333333" min_range="0.18" max_range="10" yaw_offset="0"/>
   </xacro:unless>
   <!-- depth cam sensor -->
   <xacro:sensor_d415 name="bottom" parent="base_link" flag_color="1" flag_ir="0" flag_depth="1" updaterate="2">
-    <origin xyz="0 -0.282713 0.1775" rpy="0 -0.453786 -${M_PI/2}"/>
+    <origin xyz="0 -0.245763 0.17000" rpy="0 0.34906585 -${M_PI/2}"/>
   </xacro:sensor_d415>
   <link name="bottombase"/>
   <joint name="bottombase_joint" type="fixed">
     <parent link="base_link"/>
     <child link="bottombase"/>
-    <origin xyz="0 -0.282713 0.1775" rpy="0 0 -${M_PI/2}"/>
+    <origin xyz="0 -0.245763 0.17000" rpy="0 0 -${M_PI/2}"/>
   </joint>
-  <xacro:servo_v0 prefix="head" parent="base_link">
-    <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/>
+  <!-- head servo -->
+  <xacro:servo_v0 prefix="head" parent="lift_link">
+    <origin xyz="-0.03403 -0.2650 0.21525" rpy="0 0 0" />
+    <!-- <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/> -->
   </xacro:servo_v0>
+
   <!-- imu sensor -->
   <xacro:imu_v0 prefix="top" parent="base_link">
     <origin xyz="0 0 0.17"/>
@@ -79,4 +89,26 @@
   <xacro:imu_gazebo_v0 prefix="top"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro"/>
   <xacro:ros2_control ros2_control="$(arg ros2_control)"/>
+
+  <!-- OpenArm -->
+  <xacro:openarm_robot
+    arm_type="v10"
+    body_type="v10"
+    joint_limits="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/joint_limits.yaml')}"
+    control_gains="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/control_gains.yaml')}"
+    inertials="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/inertials.yaml')}"
+    kinematics="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/kinematics.yaml')}"
+    kinematics_link="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/kinematics_link.yaml')}"
+    kinematics_offset="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/kinematics_offset.yaml')}"
+    body_inertials="${xacro.load_yaml('$(find walkie_description)/config/openarm/body/v10/inertials.yaml')}"
+    body_kinematics="${xacro.load_yaml('$(find walkie_description)/config/openarm/body/v10/kinematics.yaml')}"
+    body_kinematics_link="${xacro.load_yaml('$(find walkie_description)/config/openarm/body/v10/kinematics_link.yaml')}"
+    ee_kinematics_link="${xacro.load_yaml('$(find walkie_description)/config/openarm/hand/openarm_hand/kinematics_link.yaml')}"
+    arm_connected_to="lift_link"
+    bimanual="true"
+    ee_type="openarm_hand"
+    ros2_control="false"
+    use_fake_hardware="true"
+  />
+
 </robot>

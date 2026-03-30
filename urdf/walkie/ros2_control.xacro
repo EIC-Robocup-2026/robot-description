@@ -1,228 +1,263 @@
 <?xml version="1.0" ?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Sub-macro: Velocity-controlled wheel joint (mock/gazebo/topic_base) -->
+  <xacro:macro name="wheel_velocity_joint" params="name vel_min vel_max">
+    <joint name="${name}">
+      <command_interface name="velocity">
+        <param name="min">${vel_min}</param>
+        <param name="max">${vel_max}</param>
+      </command_interface>
+      <state_interface name="velocity" />
+      <state_interface name="position" />
+    </joint>
+  </xacro:macro>
+
+  <!-- Sub-macro: Position-controlled arm joint (mock/gazebo/topic_base) -->
+  <xacro:macro name="position_arm_joint" params="joint_name">
+    <joint name="${joint_name}">
+      <command_interface name="position" />
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+    </joint>
+  </xacro:macro>
+
+  <!-- Sub-macro: CubeMars wheel joint (real_robot) -->
+  <xacro:macro
+    name="cubemars_wheel_joint"
+    params="name can_id pole_pairs gear_ratio kt enc_off trq_limit read_only vel_min=-16 vel_max=16"
+  >
+    <joint name="${name}">
+      <param name="can_id">${can_id}</param>
+      <param name="pole_pairs">${pole_pairs}</param>
+      <param name="gear_ratio">${gear_ratio}</param>
+      <param name="kt">${kt}</param>
+      <param name="enc_off">${enc_off}</param>
+      <param name="trq_limit">${trq_limit}</param>
+      <param name="read_only">${read_only}</param>
+      <command_interface name="position" />
+      <command_interface name="velocity">
+        <param name="min">${vel_min}</param>
+        <param name="max">${vel_max}</param>
+      </command_interface>
+      <command_interface name="acceleration" />
+      <command_interface name="effort" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+      <state_interface name="effort" />
+      <state_interface name="temperature" />
+    </joint>
+  </xacro:macro>
+
   <xacro:macro name="ros2_control" params="ros2_control">
+
     <!-- Mock hardware -->
     <xacro:if value="${ros2_control == 'mock'}">
-        <ros2_control name="MockSystem" type="system">
+      <ros2_control name="MockSystem" type="system">
         <hardware>
-            <plugin>mock_components/GenericSystem</plugin>
+          <plugin>mock_components/GenericSystem</plugin>
         </hardware>
-        <joint name="fl_wheel_joint">
-            <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-            </command_interface>
-            <state_interface name="velocity" />
-            <state_interface name="position" />
-        </joint>
-        <joint name="fr_wheel_joint">
-            <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-            </command_interface>
-            <state_interface name="velocity" />
-            <state_interface name="position" />
-        </joint>
-        <joint name="br_wheel_joint">
-            <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-            </command_interface>
-            <state_interface name="velocity" />
-            <state_interface name="position" />
-        </joint>
-        <joint name="bl_wheel_joint">
-            <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-            </command_interface>
-            <state_interface name="velocity" />
-            <state_interface name="position" />
-        </joint>
+        <xacro:wheel_velocity_joint
+          name="fl_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
+        <xacro:wheel_velocity_joint
+          name="fr_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
+        <xacro:wheel_velocity_joint
+          name="br_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
+        <xacro:wheel_velocity_joint
+          name="bl_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
         <joint name="head_servo_joint">
-            <command_interface name="position">
-            <param name="min"> -1.54</param>
-            <param name="max"> 1.54</param>
-            </command_interface>
-            <state_interface name="position" />
+          <command_interface name="position">
+            <param name="min">-1.54</param>
+            <param name="max">1.54</param>
+          </command_interface>
+          <state_interface name="position" />
         </joint>
+        <joint name="lift_joint">
+          <command_interface name="position">
+            <param name="min">-0.51510</param>
+            <param name="max">0.00000</param>
+          </command_interface>
+          <state_interface name="position" />
+        </joint>
+
+        <xacro:position_arm_joint joint_name="openarm_left_joint1" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint2" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint3" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint4" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint5" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint6" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint7" />
+
+        <xacro:position_arm_joint joint_name="openarm_right_joint1" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint3" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint4" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint5" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint6" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint7" />
+
+        <xacro:position_arm_joint joint_name="openarm_left_finger_joint1" />
+
+        <xacro:position_arm_joint joint_name="openarm_right_finger_joint1" />
         </ros2_control>
     </xacro:if>
+
     <!-- Simulation - Gazebo based ros2_control -->
     <xacro:if value="${ros2_control == 'gazebo'}">
       <ros2_control name="GazeboSimSystem" type="system">
         <hardware>
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
         </hardware>
-        <joint name="fl_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
-        <joint name="fr_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
-        <joint name="br_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
-        <joint name="bl_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -3.14</param>
-            <param name="max"> 3.14</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
+        <xacro:wheel_velocity_joint
+          name="fl_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
+        <xacro:wheel_velocity_joint
+          name="fr_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
+        <xacro:wheel_velocity_joint
+          name="br_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
+        <xacro:wheel_velocity_joint
+          name="bl_wheel_joint"
+          vel_min="-3.14"
+          vel_max="3.14"
+        />
         <joint name="head_servo_joint">
           <command_interface name="position">
-            <param name="min"> -1.54</param>
-            <param name="max"> 1.54</param>
+            <param name="min">-1.54</param>
+            <param name="max">1.54</param>
           </command_interface>
           <state_interface name="position" />
         </joint>
+        <joint name="lift_joint">
+          <command_interface name="position">
+            <param name="min">-0.51510</param>
+            <param name="max">0.00000</param>
+          </command_interface>
+          <state_interface name="position" />
+        </joint>
+
+
+        <xacro:position_arm_joint joint_name="openarm_left_joint1" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint2" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint3" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint4" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint5" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint6" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint7" />
+
+        <xacro:position_arm_joint joint_name="openarm_right_joint1" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint3" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint4" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint5" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint6" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint7" />
+
+        <xacro:position_arm_joint joint_name="openarm_left_finger_joint1" />
+
+        <xacro:position_arm_joint joint_name="openarm_right_finger_joint1" />
+
       </ros2_control>
     </xacro:if>
 
-    <!-- Issac Sim/ MicroROS : Topic based ros2_control -->
+    <!-- Isaac Sim / MicroROS : Topic based ros2_control -->
     <xacro:if value="${ros2_control == 'topic_base'}">
-      <ros2_control name="topic_base_controller" type="system">
+      <ros2_control name="TopicBaseSystem" type="system">
         <hardware>
         </hardware>
-        <joint name="fl_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
-        <joint name="fr_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
-        <joint name="br_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
-        <joint name="bl_wheel_joint">
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <state_interface name="velocity" />
-          <state_interface name="position" />
-        </joint>
+        <xacro:wheel_velocity_joint
+          name="fl_wheel_joint"
+          vel_min="-16"
+          vel_max="16"
+        />
+        <xacro:wheel_velocity_joint
+          name="fr_wheel_joint"
+          vel_min="-16"
+          vel_max="16"
+        />
+        <xacro:wheel_velocity_joint
+          name="br_wheel_joint"
+          vel_min="-16"
+          vel_max="16"
+        />
+        <xacro:wheel_velocity_joint
+          name="bl_wheel_joint"
+          vel_min="-16"
+          vel_max="16"
+        />
       </ros2_control>
     </xacro:if>
 
     <!-- Real Hardware : real_robot based ros2_control -->
     <xacro:if value="${ros2_control == 'real_robot'}">
-      <ros2_control name="topic_base_controller" type="system">
+      <ros2_control name="CubeMarsSystem" type="system">
         <hardware>
           <plugin>cubemars_hardware/CubeMarsSystemHardware</plugin>
           <param name="can_interface">can0</param>
         </hardware>
-        <joint name="fl_wheel_joint">
-          <param name="can_id">3</param>
-          <param name="pole_pairs">14</param>
-          <param name="gear_ratio">10</param>
-          <param name="kt">0.123</param>
-          <param name="enc_off">0.0</param>
-          <param name="trq_limit">30</param>
-          <param name="read_only">0</param>
-          <command_interface name="position" />
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <command_interface name="acceleration" />
-          <command_interface name="effort" />
-          <state_interface name="position" />
-          <state_interface name="velocity" />
-          <state_interface name="effort" />
-          <state_interface name="temperature" />
-        </joint>
-        <joint name="fr_wheel_joint">
-          <param name="can_id">1</param>
-          <param name="pole_pairs">14</param>
-          <param name="gear_ratio">10</param>
-          <param name="kt">0.123</param>
-          <param name="enc_off">0.0</param>
-          <param name="trq_limit">30</param>
-          <param name="read_only">0</param>
-          <command_interface name="position" />
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <command_interface name="acceleration" />
-          <command_interface name="effort" />
-          <state_interface name="position" />
-          <state_interface name="velocity" />
-          <state_interface name="effort" />
-          <state_interface name="temperature" />
-        </joint>
-        <joint name="br_wheel_joint">
-          <param name="can_id">4</param>
-          <param name="pole_pairs">14</param>
-          <param name="gear_ratio">10</param>
-          <param name="kt">0.123</param>
-          <param name="enc_off">0.0</param>
-          <param name="trq_limit">30</param>
-          <param name="read_only">0</param>
-          <command_interface name="position" />
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <command_interface name="acceleration" />
-          <command_interface name="effort" />
-          <state_interface name="position" />
-          <state_interface name="velocity" />
-          <state_interface name="effort" />
-          <state_interface name="temperature" />
-        </joint>
-        <joint name="bl_wheel_joint">
-          <param name="can_id">2</param>
-          <param name="pole_pairs">14</param>
-          <param name="gear_ratio">10</param>
-          <param name="kt">0.123</param>
-          <param name="enc_off">0.0</param>
-          <param name="trq_limit">30</param>
-          <param name="read_only">0</param>
-          <command_interface name="position" />
-          <command_interface name="velocity">
-            <param name="min"> -16.00</param>
-            <param name="max"> 16.00</param>
-          </command_interface>
-          <command_interface name="acceleration" />
-          <command_interface name="effort" />
-          <state_interface name="position" />
-          <state_interface name="velocity" />
-          <state_interface name="effort" />
-          <state_interface name="temperature" />
-        </joint>
+        <xacro:cubemars_wheel_joint
+          name="fl_wheel_joint"
+          can_id="3"
+          pole_pairs="14"
+          gear_ratio="10"
+          kt="0.123"
+          enc_off="0.0"
+          trq_limit="30"
+          read_only="0"
+        />
+        <xacro:cubemars_wheel_joint
+          name="fr_wheel_joint"
+          can_id="1"
+          pole_pairs="14"
+          gear_ratio="10"
+          kt="0.123"
+          enc_off="0.0"
+          trq_limit="30"
+          read_only="0"
+        />
+        <xacro:cubemars_wheel_joint
+          name="br_wheel_joint"
+          can_id="4"
+          pole_pairs="14"
+          gear_ratio="10"
+          kt="0.123"
+          enc_off="0.0"
+          trq_limit="30"
+          read_only="0"
+        />
+        <xacro:cubemars_wheel_joint
+          name="bl_wheel_joint"
+          can_id="2"
+          pole_pairs="14"
+          gear_ratio="10"
+          kt="0.123"
+          enc_off="0.0"
+          trq_limit="30"
+          read_only="0"
+        />
       </ros2_control>
       <ros2_control name="HeadServoSystem" type="system">
         <hardware>
@@ -235,16 +270,45 @@
           <state_interface name="position" />
         </joint>
       </ros2_control>
+
+      <ros2_control name="ArmSystem" type="system">
+        <hardware>
+          <plugin>mock_components/GenericSystem</plugin>
+        </hardware>
+        <xacro:position_arm_joint joint_name="openarm_left_joint1" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint2" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint3" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint4" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint5" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint6" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint7" />
+
+        <xacro:position_arm_joint joint_name="openarm_right_joint1" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint3" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint4" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint5" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint6" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint7" />
+
+        <xacro:position_arm_joint joint_name="openarm_left_finger_joint1" />
+
+        <xacro:position_arm_joint joint_name="openarm_right_finger_joint1" />
+      </ros2_control>
     </xacro:if>
 
-    <gazebo>
-      <plugin
-                name="gz_ros2_control::GazeboSimROS2ControlPlugin"
-                filename="libgz_ros2_control-system.so"
-            >
-        <parameters
-                >$(find walkie_description)/config/ros2_controller/sim_controllers.yaml</parameters>
-      </plugin>
-    </gazebo>
+    <!-- Gazebo plugin (only included for gazebo mode) -->
+    <xacro:if value="${ros2_control == 'gazebo'}">
+      <gazebo>
+        <plugin
+          name="gz_ros2_control::GazeboSimROS2ControlPlugin"
+          filename="libgz_ros2_control-system.so"
+        >
+          <parameters
+          >$(find walkie_description)/config/ros2_controller/sim_controllers.yaml</parameters>
+        </plugin>
+      </gazebo>
+    </xacro:if>
+
   </xacro:macro>
 </robot>
