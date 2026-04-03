@@ -1,7 +1,7 @@
 controller_manager:
   ros__parameters:
     update_rate: 60
-    use_sim_time: true
+    use_sim_time: false
 
     joint_broad:
       type: joint_state_broadcaster/JointStateBroadcaster
