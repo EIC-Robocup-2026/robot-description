@@ -77,8 +77,8 @@
     <origin xyz="0 -0.245763 0.17000" rpy="0 0.34906585 -${M_PI/2}"/>
   </xacro:sensor_d415>
   <!-- head servo -->
-  <xacro:servo_v0 prefix="head" parent="lift_link">
-    <origin xyz="-0.03403 -0.2650 0.21525" rpy="0 0 0" />
+  <xacro:servo_v0 prefix="head" parent="base_link">
+    <origin xyz="-0.03403 -0.2650 0.61525" rpy="0 0 0" />
     <!-- <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/> -->
   </xacro:servo_v0>
 
