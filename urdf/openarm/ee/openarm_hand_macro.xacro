@@ -21,7 +21,7 @@
       </inertial>
     </xacro:if>
   </xacro:macro>
-  
+
   <xacro:macro name="ee_link_with_sc" params="name prefix rpy:='0 0 0' ee_kinematics_link">
     <link name="${prefix}${name}">
       <visual name="${prefix}${name}_visual">

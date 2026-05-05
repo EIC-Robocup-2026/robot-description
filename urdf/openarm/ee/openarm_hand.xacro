@@ -10,7 +10,6 @@
       <xacro:property name="ee_prefix" value="openarm_${arm_prefix}" />
     </xacro:unless>
 
-
     <xacro:ee_link_with_sc name="hand" prefix="${ee_prefix}" ee_kinematics_link="${ee_kinematics_link}"/>
     <!-- <link name="${ee_prefix}hand"/> -->
 
@@ -79,6 +78,24 @@
       <axis xyz="0 1 0" />
       <limit effort="333" lower="0.0" upper="0.044" velocity="10.0" />
       <mimic joint="${ee_prefix}finger_joint1" />
+    </joint>
+
+    <link name="${ee_prefix}wristcam_bracket">
+      <visual name="${ee_prefix}wristcam_bracket_visual">
+        <origin xyz="0.0095 0 -0.0055" rpy="3.125 -1.57 0" />
+        <geometry>
+          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="wristcam_bracket_material">
+          <color rgba="0.2 0.2 0.2 1.0" />
+        </material>
+      </visual>
+    </link>
+
+    <joint name="${ee_prefix}wristcam_bracket_joint" type="fixed">
+      <parent link="${ee_prefix}hand" />
+      <child link="${ee_prefix}wristcam_bracket" />
+      <origin xyz="0 0 0" rpy="0 0 0 " />
     </joint>
 
   </xacro:macro>
