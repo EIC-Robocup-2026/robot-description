@@ -15,11 +15,32 @@ controller_manager:
     head_servo_controller:
       type: position_controllers/JointGroupPositionController
 
-    # left_arm_controller:
-    #   type: joint_trajectory_controller/JointTrajectoryController
-    
-    # left_hand_controller:
-    #   type: position_controllers/GripperActionController  
+    lift_controller:
+      type: position_controllers/JointGroupPositionController
+
+    left_forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    left_forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    left_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    left_gripper_controller:
+      type: position_controllers/GripperActionController
+
+    right_forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    right_forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    right_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_gripper_controller:
+      type: position_controllers/GripperActionController
 
 forward_velocity_controller:
   ros__parameters:
@@ -71,37 +92,145 @@ head_servo_controller:
     open_loop: true
     allow_nonzero_velocity_at_steady_state: true
 
+lift_controller:
+  ros__parameters:
+    joints:
+      - lift_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    open_loop: true
+    allow_nonzero_velocity_at_steady_state: true
 
-# left_arm_controller:
-#   ros__parameters:
-#     joints:
-#       - left_joint1
-#       - left_joint2
-#       - left_joint3
-#       - left_joint4
-#       - left_joint5
-#       - left_joint6
-#       - left_joint7
-#     command_interfaces:
-#       - position
-#     state_interfaces:
-#       - position
-#       - velocity
-#     allow_nonzero_velocity_at_trajectory_end: true
 
-# left_hand_controller:
-#   ros__parameters:
-#     joint: left_gripper_worm_gear_joint
-    
-#     # Control parameters
-#     goal_tolerance: 0.01
-#     max_effort: 100.0
-#     max_velocity: 0.1
-    
-#     # Stalling detection (useful for grasping)
-#     allow_stalling: true
-#     stall_velocity_threshold: 0.001
-#     stall_timeout: 1.0
-    
-#     # Action monitoring
-#     action_monitor_rate: 20.0
+left_forward_position_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+left_forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - velocity
+
+left_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 50.0
+
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+left_gripper_controller:
+  ros__parameters:
+    joint: openarm_left_finger_joint1
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+
+right_forward_position_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+right_forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - velocity
+
+right_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 50.0
+
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+right_gripper_controller:
+  ros__parameters:
+    joint: openarm_right_finger_joint1
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
