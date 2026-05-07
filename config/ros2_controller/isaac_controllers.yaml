@@ -12,6 +12,9 @@ controller_manager:
     omni_wheel_drive_controller:
       type: omni_wheel_drive_controller/OmniWheelDriveController
 
+    lift_controller:
+      type: position_controllers/JointGroupPositionController
+
     left_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
@@ -28,6 +31,24 @@ controller_manager:
     right_gripper_controller:
       type: joint_trajectory_controller/JointTrajectoryController
       # type: position_controller/GripperActionController
+
+    left_forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    left_forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    left_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    right_forward_velocity_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    right_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
 
 forward_velocity_controller:
   ros__parameters:
@@ -62,6 +83,15 @@ omni_wheel_drive_controller:
 
     cmd_vel_timeout: 0.5
     publish_limited_velocity: true
+
+lift_controller:
+  ros__parameters:
+    joints:
+      - lift_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
 
 arm_controller:
   ros__parameters:
@@ -139,3 +169,117 @@ right_gripper_controller:
     state_interfaces:
       - position
       - velocity
+
+left_forward_position_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+left_forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - velocity
+
+left_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 50.0
+
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+
+right_forward_position_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+right_forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: velocity
+    command_interfaces:
+      - velocity
+    state_interfaces:
+      - velocity
+
+right_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 50.0
+
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
