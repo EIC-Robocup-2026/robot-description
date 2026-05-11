@@ -50,6 +50,9 @@ controller_manager:
     right_joint_trajectory_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
+    head_servo_controller:
+      type: position_controllers/JointGroupPositionController
+
 forward_velocity_controller:
   ros__parameters:
     joints:
@@ -283,3 +286,14 @@ right_joint_trajectory_controller:
     constraints:
       stopped_velocity_tolerance: 0.01
       goal_time: 0.0
+
+head_servo_controller:
+  ros__parameters:
+    joints:
+      - head_servo_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    open_loop: true
+    allow_nonzero_velocity_at_steady_state: true

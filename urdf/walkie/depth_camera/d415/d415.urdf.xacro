@@ -150,21 +150,6 @@ aluminum peripherial evaluation case.
           <update_rate>${updaterate}</update_rate>
           <visualize>1</visualize>
           <gz_frame_id>${name}_color_optical_frame</gz_frame_id>
-          <plugin name="${name}_color_controller" filename="libgazebo_ros_camera.so">
-            <alwaysOn>true</alwaysOn>
-            <updateRate>0.0</updateRate>
-            <cameraName>${name}/color/</cameraName>
-            <imageTopicName>image_raw</imageTopicName>
-            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-            <frameName>${name}_color_optical_frame</frameName>
-            <!--<hackBaseline>0.07</hackBaseline>-->
-            <hackBaseline>0.0</hackBaseline>
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
-          </plugin>
         </sensor>
       </xacro:if>
       <xacro:if value="${flag_ir}">
@@ -193,21 +178,6 @@ aluminum peripherial evaluation case.
           <always_on>1</always_on>
           <update_rate>${updaterate}</update_rate>
           <visualize>0</visualize>
-          <plugin name="{name}_left_ir_controller" filename="libgazebo_ros_camera.so">
-            <alwaysOn>true</alwaysOn>
-            <updateRate>0.0</updateRate>
-            <cameraName>${name}/left_ir/</cameraName>
-            <imageTopicName>image_raw</imageTopicName>
-            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-            <frameName>${name}_left_ir_optical_frame</frameName>
-            <!--<hackBaseline>0.07</hackBaseline>-->
-            <hackBaseline>0.0</hackBaseline>
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
-          </plugin>
         </sensor>
         <sensor name="${name}_right_ired_sensor" type="camera">
           <pose frame="${name}_right_ir_optical_frame">0 0 0 0 0 0</pose>
@@ -234,21 +204,6 @@ aluminum peripherial evaluation case.
           <always_on>1</always_on>
           <update_rate>${updaterate}</update_rate>
           <visualize>0</visualize>
-          <plugin name="{name}_right_ir_controller" filename="libgazebo_ros_camera.so">
-            <alwaysOn>true</alwaysOn>
-            <updateRate>0.0</updateRate>
-            <cameraName>${name}/right_ir/</cameraName>
-            <imageTopicName>image_raw</imageTopicName>
-            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-            <frameName>${name}_right_ir_optical_frame</frameName>
-            <!--<hackBaseline>0.07</hackBaseline>-->
-            <hackBaseline>0.0</hackBaseline>
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
-          </plugin>
         </sensor>
       </xacro:if>
       <xacro:if value="${flag_depth}">
@@ -279,23 +234,6 @@ aluminum peripherial evaluation case.
           <visualize>true</visualize>
           <topic>${name}_depth/image</topic>
           <gz_frame_id>${name}_depth_frame</gz_frame_id>
-          <plugin name="{name}_depth_controller" filename="libgazebo_ros_camera.so">
-            <alwaysOn>true</alwaysOn>
-            <updateRate>0.0</updateRate>
-            <cameraName>${name}/depth/</cameraName>
-            <imageTopicName>image_raw</imageTopicName>
-            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-            <frameName>${name}_depth_optical_frame</frameName>
-            <hackBaseline>0.07</hackBaseline>
-            <!-- <hackBaseline>0.0</hackBaseline> -->
-            <distortionK1>0.0</distortionK1>
-            <distortionK2>0.0</distortionK2>
-            <distortionK3>0.0</distortionK3>
-            <distortionT1>0.0</distortionT1>
-            <distortionT2>0.0</distortionT2>
-            <min_depth>0.1</min_depth>
-            <max_depth>100.0</max_depth>
-          </plugin>
         </sensor>
       </xacro:if>
     </gazebo>
