@@ -28,8 +28,8 @@
             arm_connected_to='base'
             body_connected_to='world'
             bimanual:=false
-            right_arm_base_xyz='-0.083 -0.230 0.123'
-            left_arm_base_xyz='0.083 -0.230 0.123'
+            right_arm_base_xyz='-0.03 -0.230 0.1085'
+            left_arm_base_xyz='0.03 -0.230 0.1085'
             right_arm_base_rpy='1.5708 0 -1.5708'
             left_arm_base_rpy='-1.5708 0 -1.5708'
             left_can_interface:='can1'

@@ -95,8 +95,8 @@
         </joint>
         <joint name="lift_joint">
           <command_interface name="position">
-            <param name="min">-0.51510</param>
-            <param name="max">0.00000</param>
+            <param name="min">0.000</param>
+            <param name="max">0.743</param>
           </command_interface>
           <state_interface name="position">
             <param name="initial_value">0.0</param>
@@ -163,10 +163,12 @@
         </joint>
         <joint name="lift_joint">
           <command_interface name="position">
-            <param name="min">-0.51510</param>
-            <param name="max">0.00000</param>
+            <param name="min">0.000</param>
+            <param name="max">0.743</param>
           </command_interface>
-          <state_interface name="position" />
+          <state_interface name="position">
+            <param name="initial_value">0.51</param>
+          </state_interface>
         </joint>
 
         <xacro:position_arm_joint joint_name="openarm_left_joint1" />
@@ -237,8 +239,8 @@
             <command_interface name="velocity" />
             <command_interface name="effort" />
             <command_interface name="position">
-                <param name="min">-0.51510</param>
-                <param name="max">0.00000</param>
+                <param name="min">0.000</param>
+                <param name="max">0.743</param>
             </command_interface>
             <state_interface name="position" />
         </joint>
@@ -332,8 +334,8 @@
         </hardware>
         <joint name="lift_joint">
           <command_interface name="position">
-            <param name="min">-0.51510</param>
-            <param name="max">0.00000</param>
+            <param name="min">0.00000</param>
+            <param name="max">0.74300</param>
           </command_interface>
           <state_interface name="position" />
         </joint>

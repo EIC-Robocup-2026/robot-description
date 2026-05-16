@@ -3,7 +3,7 @@
   <xacro:macro name="lift_v0" params="prefix parent *joint_origin">
     <joint name="${prefix}_joint" type="prismatic">
         <xacro:insert_block name="joint_origin"/>
-        <limit lower="-0.506" upper="0.00000" effort="100.0" velocity="0.1"/>
+        <limit lower="0.000" upper="0.743" effort="1000.0" velocity="0.1"/>
         <parent link="${parent}"/>
         <child link="${prefix}_link"/>
     <axis xyz="0.00000 0.00000 1.00000"/>
@@ -11,7 +11,7 @@
     <link name="${prefix}_link">
         <visual name="lift">
             <geometry>
-                <mesh filename="package://walkie_description/meshes/walkie/Lift.stl" scale="0.01 0.01 0.01"/>
+                <mesh filename="package://walkie_description/meshes/walkie/Lift2.stl"/>
             </geometry>
             <material name="grey"/>
         </visual>
