@@ -24,7 +24,7 @@
   <xacro:base_gazebo_v0/>
   <!-- Lift -->
   <xacro:lift_v0 prefix="lift" parent="base_link">
-    <origin xyz="0.00000 0.07000 0.90875" rpy="0 0 0"/>
+    <origin xyz="0.00000 0.07000 0.3985" rpy="0 0 0"/>
   </xacro:lift_v0>
   <!-- Wheel -->
   <!-- 1st wheel -->
@@ -78,7 +78,7 @@
   </xacro:sensor_d415>
   <!-- head servo -->
   <xacro:servo_v0 prefix="head" parent="lift_link">
-    <origin xyz="-0.03403 -0.2650 0.21525" rpy="0 0 0" />
+    <origin xyz="-0.03403 -0.2650 0.20075" rpy="0 0 0" />
     <!-- <origin xyz="-0.098 -0.1195 0.848" rpy="0 0 0"/> -->
   </xacro:servo_v0>
 
