@@ -29,7 +29,7 @@ joint4:
   kinematic:
     x: -0.0
     y: 0.0315
-    z: 0.15375
+    z: 0.20375
     roll: 0
     pitch: 0
     yaw: 0
