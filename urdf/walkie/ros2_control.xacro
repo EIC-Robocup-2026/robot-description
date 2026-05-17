@@ -318,15 +318,37 @@
       </ros2_control>
       <ros2_control name="HeadServoSystem" type="system">
         <hardware>
-          <plugin>mock_components/GenericSystem</plugin>
-          <param name="joint_commands_topic">/head_servo_joint_cmd</param>
-          <param name="joint_states_topic">/head_servo_joint_states</param>
+          <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
+          <param name="port_name">/dev/ttyUSB0</param>
+          <param name="baud_rate">57600</param>
+          <param name="number_of_joints">1</param>
+          <param name="number_of_transmissions">1</param>
+          <param name="dynamixel_model_folder">/param/dxl_model</param>
         </hardware>
+
         <joint name="head_servo_joint">
-          <command_interface name="position" />
-          <state_interface name="position" />
+          <command_interface name="position">
+            <param name="min">-0.7854</param>
+            <param name="max">0.7854</param>
+          </command_interface>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+          <state_interface name="effort"/>
         </joint>
-      </ros2_control>
+
+        <gpio name="head_servo_joint">
+          <param name="type">dxl</param>
+          <param name="ID">2</param>
+          <command_interface name="Goal Position"/>
+          <state_interface name="Present Position"/>
+          <state_interface name="Present Velocity"/>
+          <state_interface name="Present Load"/>
+          <param name="Position P Gain">800</param>
+          <param name="Position I Gain">100</param>
+          <param name="Position D Gain">100</param>
+          <param name="Drive Mode">0</param>
+        </gpio>
+      </ros2_control> 
 
       <ros2_control name="LiftSystem" type="system">
         <hardware>
