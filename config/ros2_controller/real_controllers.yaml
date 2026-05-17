@@ -1,6 +1,6 @@
 controller_manager:
   ros__parameters:
-    update_rate: 60
+    update_rate: 50
     use_sim_time: false
 
     joint_broad:
@@ -86,9 +86,11 @@ head_servo_controller:
     joints:
       - head_servo_joint
     command_interfaces:
-      - position
+      - Goal Position
     state_interfaces:
-      - position
+      - Present Position
+      - Present Velocity
+      - Present Current
     open_loop: true
     allow_nonzero_velocity_at_steady_state: true
 
