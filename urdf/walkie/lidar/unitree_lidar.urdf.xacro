@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="unitree4d_l2_lidar" params="prefix parent min_angle max_angle *joint_origin">
+    <joint name="${prefix}_lidar_joint" type="fixed">
+      <xacro:insert_block name="joint_origin" />
+      <parent link="${parent}" />
+      <child link="${prefix}_lidar_link" />
+    </joint>
+    <link name="${prefix}_lidar_link">
+    </link>
+  </xacro:macro>
+
+  <xacro:macro name="unitree4d_l2_lidar_gazebo" params="prefix min_angle max_angle">
+    <gazebo reference="${prefix}_lidar_link">
+      <sensor name="${prefix}_lidar" type="gpu_lidar">
+        <visualize>false</visualize>
+        <pose>0 0 0 0 0 0</pose>
+        <update_rate>40</update_rate>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>0.5</resolution>
+              <min_angle>${min_angle}</min_angle>
+              <max_angle>${max_angle}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>32</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>1.5707963</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.3</min>
+            <max>25.0</max>
+            <resolution>0.015000</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </lidar>
+        <topic>${prefix}_lidar</topic>
+        <gz_frame_id>${prefix}_lidar_link</gz_frame_id>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>
