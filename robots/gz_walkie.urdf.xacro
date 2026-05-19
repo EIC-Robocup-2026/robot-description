@@ -6,6 +6,10 @@
   real robot force to be dual_lidar
   don't forgot to enable lidar topic to bridge in gz_bridge.yml -->
   <xacro:arg name="dual_lidar" default="True"/>
+  <xacro:arg name="use_arm" default="True"/>
+  <xacro:arg name="use_fake_arm_hardware" default="True"/>
+  <xacro:arg name="left_can_interface" default="can1"/>
+  <xacro:arg name="right_can_interface" default="can0"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/lidar/lidar_gz.urdf.xacro"/>
@@ -104,7 +108,13 @@
   </xacro:imu_v0>
   <xacro:imu_gazebo_v0 prefix="top"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/ros2_control.xacro"/>
-  <xacro:ros2_control ros2_control="$(arg ros2_control)"/>
+  <xacro:ros2_control ros2_control="$(arg ros2_control)"
+    use_fake_hardware="$(arg use_fake_arm_hardware)"
+    left_can_interface="$(arg left_can_interface)"
+    right_can_interface="$(arg right_can_interface)"
+    hand="true"
+    control_gains="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/control_gains.yaml')}"
+  />
 
   <!-- OpenArm -->
   <xacro:openarm_robot
@@ -123,8 +133,11 @@
     arm_connected_to="lift_link"
     bimanual="true"
     ee_type="openarm_hand"
-    ros2_control="false"
-    use_fake_hardware="true"
+    hand="true"
+    ros2_control="${'$(arg ros2_control)' == 'real_robot'}"
+    use_fake_hardware="$(arg use_fake_arm_hardware)"
+    left_can_interface="$(arg left_can_interface)"
+    right_can_interface="$(arg right_can_interface)"
   />
 
 </robot>
