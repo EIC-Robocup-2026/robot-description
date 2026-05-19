@@ -28,6 +28,9 @@
       <state_interface name="velocity">
         <param name="initial_value">0.0</param>
       </state_interface>
+      <state_interface name="effort">
+        <param name="initial_value">0.0</param>
+      </state_interface>
     </joint>
   </xacro:macro>
 
@@ -58,7 +61,40 @@
     </joint>
   </xacro:macro>
 
-  <xacro:macro name="ros2_control" params="ros2_control">
+  <!-- Global helper macro to configure real arm hardware joints cleanly -->
+  <xacro:macro name="configure_joint" params="joint_name initial_position">
+    <joint name="${joint_name}">
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
+      <command_interface name="effort"/>
+
+      <state_interface name="position">
+        <param name="initial_value">${initial_position}</param>
+      </state_interface>
+
+      <state_interface name="velocity">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+
+      <state_interface name="effort">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+    </joint>
+  </xacro:macro>
+
+  <!-- Main Macro Declaration (ros2_control included back into parameters list) -->
+  <xacro:macro name="ros2_control"
+            params="ros2_control
+                arm_type:=^|openarm
+                control_gains:=^|{}
+                left_can_interface:=^|can1
+                right_can_interface:=^|can0
+                use_fake_hardware:=^|true
+                fake_sensor_commands:=^|false
+                hand:=^|false
+                left_arm_prefix:=^|left_
+                right_arm_prefix:=^|right_
+                can_fd:=^|true">
 
     <!-- Mock hardware -->
     <xacro:if value="${ros2_control == 'mock'}">
@@ -265,7 +301,7 @@
 
         <xacro:position_arm_joint joint_name="openarm_right_finger_joint1" />
 
-        </ros2_control>
+      </ros2_control>
     </xacro:if>
 
     <!-- Real Hardware : real_robot based ros2_control -->
@@ -273,7 +309,7 @@
       <ros2_control name="CubeMarsSystem" type="system">
         <hardware>
           <plugin>cubemars_hardware/CubeMarsSystemHardware</plugin>
-          <param name="can_interface">can0</param>
+          <param name="can_interface">can2</param>
         </hardware>
         <xacro:cubemars_wheel_joint
                     name="fl_wheel_joint"
@@ -316,6 +352,7 @@
                     read_only="0"
                 />
       </ros2_control>
+
       <ros2_control name="HeadServoSystem" type="system">
         <hardware>
           <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
@@ -324,6 +361,7 @@
           <param name="number_of_joints">1</param>
           <param name="number_of_transmissions">1</param>
           <param name="dynamixel_model_folder">/param/dxl_model</param>
+          <param name="disable_torque_at_init">true</param>
         </hardware>
 
         <joint name="head_servo_joint">
@@ -359,34 +397,14 @@
             <param name="min">0.00000</param>
             <param name="max">0.74300</param>
           </command_interface>
-          <state_interface name="position" />
+          <state_interface name="position">
+            <param name="initial_value">0.0</param>
+          </state_interface>
+          <state_interface name="velocity">
+            <param name="initial_value">0.0</param>
+          </state_interface>
         </joint>
-      </ros2_control>
-
-      <ros2_control name="ArmSystem" type="system">
-        <hardware>
-          <plugin>mock_components/GenericSystem</plugin>
-        </hardware>
-        <xacro:position_arm_joint joint_name="openarm_left_joint1" />
-        <xacro:position_arm_joint joint_name="openarm_left_joint2" />
-        <xacro:position_arm_joint joint_name="openarm_left_joint3" />
-        <xacro:position_arm_joint joint_name="openarm_left_joint4" />
-        <xacro:position_arm_joint joint_name="openarm_left_joint5" />
-        <xacro:position_arm_joint joint_name="openarm_left_joint6" />
-        <xacro:position_arm_joint joint_name="openarm_left_joint7" />
-
-        <xacro:position_arm_joint joint_name="openarm_right_joint1" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint3" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint4" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint5" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint6" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint7" />
-
-        <xacro:position_arm_joint joint_name="openarm_left_finger_joint1" />
-
-        <xacro:position_arm_joint joint_name="openarm_right_finger_joint1" />
-      </ros2_control>
+      </ros2_control>  
     </xacro:if>
 
     <!-- Gazebo plugin (only included for gazebo mode) -->
