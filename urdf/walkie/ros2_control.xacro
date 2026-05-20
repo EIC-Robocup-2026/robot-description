@@ -132,10 +132,10 @@
         <joint name="lift_joint">
           <command_interface name="position">
             <param name="min">0.000</param>
-            <param name="max">0.743</param>
+            <param name="max">0.7435</param>
           </command_interface>
           <state_interface name="position">
-            <param name="initial_value">0.0</param>
+            <param name="initial_value">0.7435</param>
           </state_interface>
           <state_interface name="velocity">
             <param name="initial_value">0.0</param>
@@ -224,8 +224,20 @@
         <xacro:position_arm_joint joint_name="openarm_right_joint7" />
 
         <xacro:position_arm_joint joint_name="openarm_left_finger_joint1" />
+        <joint name="openarm_left_finger_joint2">
+          <param name="mimic">openarm_left_finger_joint1</param>
+          <param name="multiplier">1.0</param>
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+        </joint>
 
         <xacro:position_arm_joint joint_name="openarm_right_finger_joint1" />
+        <joint name="openarm_right_finger_joint2">
+          <param name="mimic">openarm_right_finger_joint1</param>
+          <param name="multiplier">1.0</param>
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+        </joint>
 
       </ros2_control>
     </xacro:if>
