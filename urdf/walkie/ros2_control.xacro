@@ -413,10 +413,10 @@
         <joint name="lift_joint">
           <command_interface name="position">
             <param name="min">0.00000</param>
-            <param name="max">0.74300</param>
+            <param name="max">0.74350</param>
           </command_interface>
           <state_interface name="position">
-            <param name="initial_value">0.0</param>
+            <param name="initial_value">0.7435</param>
           </state_interface>
           <state_interface name="velocity">
             <param name="initial_value">0.0</param>
