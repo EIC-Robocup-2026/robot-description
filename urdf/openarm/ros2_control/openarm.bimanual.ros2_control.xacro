@@ -42,6 +42,13 @@
             <param name="kd5">${control_gains['joint5']['kd']}</param>
             <param name="kd6">${control_gains['joint6']['kd']}</param>
             <param name="kd7">${control_gains['joint7']['kd']}</param>
+            <!-- Gravity in the link0 frame. The left arm is mounted with a
+                 -pi/2 roll about x, so world -z (gravity) maps to link0 +y. -->
+            <param name="gravity_x">0.0</param>
+            <param name="gravity_y">9.81</param>
+            <param name="gravity_z">0.0</param>
+            <param name="gravity_compensation">true</param>
+            <param name="coriolis_compensation">false</param>
           </xacro:unless>
         </hardware>
 
@@ -107,6 +114,13 @@
             <param name="kd5">${control_gains['joint5']['kd']}</param>
             <param name="kd6">${control_gains['joint6']['kd']}</param>
             <param name="kd7">${control_gains['joint7']['kd']}</param>
+            <!-- Gravity in the link0 frame. The right arm is mounted with a
+                 +pi/2 roll about x, so world -z (gravity) maps to link0 -y. -->
+            <param name="gravity_x">0.0</param>
+            <param name="gravity_y">-9.81</param>
+            <param name="gravity_z">0.0</param>
+            <param name="gravity_compensation">true</param>
+            <param name="coriolis_compensation">false</param>
           </xacro:unless>
         </hardware>
 
