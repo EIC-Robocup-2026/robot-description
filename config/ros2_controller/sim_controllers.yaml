@@ -13,7 +13,7 @@ controller_manager:
       type: omni_wheel_drive_controller/OmniWheelDriveController
 
     lift_controller:
-      type: position_controllers/JointGroupPositionController
+      type: joint_trajectory_controller/JointTrajectoryController
 
     left_arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
