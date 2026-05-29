@@ -135,11 +135,7 @@
             <param name="max">0.7435</param>
           </command_interface>
           <state_interface name="position">
-<<<<<<< HEAD
-            <param name="initial_value">0.743</param>
-=======
             <param name="initial_value">0.7435</param>
->>>>>>> 6b37dd9 (feat:moveit-standalone)
           </state_interface>
           <state_interface name="velocity">
             <param name="initial_value">0.0</param>
@@ -404,7 +400,7 @@
           <param name="Position D Gain">100</param>
           <param name="Drive Mode">0</param>
         </gpio>
-      </ros2_control> 
+      </ros2_control>
 
       <ros2_control name="LiftSystem" type="system">
         <hardware>
@@ -422,7 +418,7 @@
             <param name="initial_value">0.0</param>
           </state_interface>
         </joint>
-      </ros2_control>  
+      </ros2_control>
     </xacro:if>
 
     <!-- Gazebo plugin (only included for gazebo mode) -->
