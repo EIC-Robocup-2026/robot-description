@@ -9,7 +9,7 @@
    
     <!-- ============ Servo Joint (tilt) ============ -->    
     <joint name="${prefix}_servo_joint" type="revolute">
-      <limit lower="-0.785398163" upper="0.785398163" effort="0.00000" velocity="0.00000"/>
+      <limit lower="-0.785398163" upper="1.04719755" effort="0.00000" velocity="0.00000"/>
       <parent link="${parent}"/>
       <child link="${prefix}_servo_link"/>
       <xacro:insert_block name="joint_origin"/>
@@ -19,13 +19,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/HeadCameraMount.stl" scale="0.01 0.01 0.01"/>
+          <mesh filename="package://walkie_description/meshes/walkie/HeadCameraMount.stl"/>
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0.034 -0.056649 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.186 0.044 0.040"/>
+          <mesh filename="package://walkie_description/meshes/walkie/HeadCameraMount.stl"/>
         </geometry>
       </collision>
       <inertial>
@@ -95,14 +95,14 @@
       <joint name="$(arg camera_name)_joint" type="fixed">
         <parent link="$(arg camera_name)_camera_link"/>
         <child link="${prefix}_servo_link"/>
-        <origin xyz="0.03403 -0.32 -0.015" rpy="0 0 -1.5708"/>
+        <origin xyz="0.034 -0.088 0.005" rpy="0 0 -1.5708"/>
       </joint>
     </xacro:if>
     <xacro:unless value="$(arg use_zed_localization)">
       <joint name="$(arg camera_name)_joint" type="fixed">
         <parent link="${prefix}_servo_link"/>
         <child link="$(arg camera_name)_camera_link"/>
-        <origin xyz="0.03403 -0.063145 -0.015" rpy="0 0 -1.5708"/>
+        <origin xyz="0.034 -0.088 0.005" rpy="0 0 -1.5708"/>
       </joint>
     </xacro:unless>
   </xacro:macro>
