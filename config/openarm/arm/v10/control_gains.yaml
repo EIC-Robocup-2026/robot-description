@@ -29,13 +29,13 @@ joint4:
   kd: 2.0
 
 joint5:
-  kp: 10.0
-  kd: 0.7
+  kp: 25.0
+  kd: 2.0
 
 joint6:
-  kp: 10.0
-  kd: 0.6
+  kp: 25.0
+  kd: 2.0
 
 joint7:
-  kp: 10.0
-  kd: 0.5
+  kp: 25.0
+  kd: 2.0
