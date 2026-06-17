@@ -142,7 +142,7 @@
           </state_interface>
         </joint>
 
-        <xacro:position_arm_joint joint_name="openarm_left_joint1" initial_position="0.2618" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint1" initial_position="0.0" />
         <xacro:position_arm_joint joint_name="openarm_left_joint2" />
         <xacro:position_arm_joint joint_name="openarm_left_joint3" />
         <xacro:position_arm_joint joint_name="openarm_left_joint4" initial_position="0.2618" />
@@ -150,7 +150,7 @@
         <xacro:position_arm_joint joint_name="openarm_left_joint6" />
         <xacro:position_arm_joint joint_name="openarm_left_joint7" />
 
-        <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="0.0" />
         <xacro:position_arm_joint joint_name="openarm_right_joint2" />
         <xacro:position_arm_joint joint_name="openarm_right_joint3" />
         <xacro:position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
@@ -207,7 +207,7 @@
           </state_interface>
         </joint>
 
-        <xacro:position_arm_joint joint_name="openarm_left_joint1" initial_position="0.2618" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint1" initial_position="0.0" />
         <xacro:position_arm_joint joint_name="openarm_left_joint2" />
         <xacro:position_arm_joint joint_name="openarm_left_joint3" />
         <xacro:position_arm_joint joint_name="openarm_left_joint4" initial_position="0.2618" />
@@ -215,7 +215,7 @@
         <xacro:position_arm_joint joint_name="openarm_left_joint6" />
         <xacro:position_arm_joint joint_name="openarm_left_joint7" />
 
-        <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="0.0" />
         <xacro:position_arm_joint joint_name="openarm_right_joint2" />
         <xacro:position_arm_joint joint_name="openarm_right_joint3" />
         <xacro:position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
@@ -293,7 +293,7 @@
             <state_interface name="position" />
         </joint>
 
-        <xacro:position_arm_joint joint_name="openarm_left_joint1" initial_position="0.2618" />
+        <xacro:position_arm_joint joint_name="openarm_left_joint1" initial_position="0.0" />
         <xacro:position_arm_joint joint_name="openarm_left_joint2" />
         <xacro:position_arm_joint joint_name="openarm_left_joint3" />
         <xacro:position_arm_joint joint_name="openarm_left_joint4" initial_position="0.2618" />
@@ -301,7 +301,7 @@
         <xacro:position_arm_joint joint_name="openarm_left_joint6" />
         <xacro:position_arm_joint joint_name="openarm_left_joint7" />
 
-        <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
+        <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="0.0" />
         <xacro:position_arm_joint joint_name="openarm_right_joint2" />
         <xacro:position_arm_joint joint_name="openarm_right_joint3" />
         <xacro:position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
