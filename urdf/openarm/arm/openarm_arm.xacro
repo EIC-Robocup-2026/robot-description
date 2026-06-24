@@ -3,7 +3,7 @@
 
   <xacro:include filename="$(find walkie_description)/urdf/openarm/arm/openarm_macro.xacro" />
 
-  <xacro:macro name="openarm_arm" params="arm_type arm_prefix:='' no_prefix:=false description_pkg:='walkie_description' connected_to:='base' xyz:='0 0 0' rpy:='0 0 0' joint_limits inertials kinematics kinematics_link kinematics_offset:=none " >
+  <xacro:macro name="openarm_arm" params="arm_type arm_prefix:='' no_prefix:=false description_pkg:='walkie_description' connected_to:='base' xyz:='0 0 0' rpy:='0 0 0' joint_limits inertials kinematics kinematics_link kinematics_offset:=none joint2_fixed:=false " >
 
     <xacro:property name="prefix" value="${'' if no_prefix else 'openarm' + '_' + arm_prefix}" />
 
@@ -48,13 +48,22 @@
       <xacro:property name="limit_offset_joint2" value="${-pi/2}" />
     </xacro:if>
 
-    <joint name="${prefix}joint2" type="revolute">
-      <xacro:openarm-kinematics name="joint2" config="${kinematics}" offset="${kinematics_offset}" reflect="${reflect}"/>
-      <parent link="${prefix}link1" />
-      <child link="${prefix}link2" />
-      <axis xyz="-1 0 0" />
-      <xacro:openarm-limits name="joint2" config="${joint_limits}" reflect="${reflect}" offset="${limit_offset_joint2}"/>
-    </joint>
+    <xacro:if value="${joint2_fixed}">
+      <joint name="${prefix}joint2" type="fixed">
+        <xacro:openarm-kinematics name="joint2" config="${kinematics}" offset="${kinematics_offset}" reflect="${reflect}"/>
+        <parent link="${prefix}link1" />
+        <child link="${prefix}link2" />
+      </joint>
+    </xacro:if>
+    <xacro:unless value="${joint2_fixed}">
+      <joint name="${prefix}joint2" type="revolute">
+        <xacro:openarm-kinematics name="joint2" config="${kinematics}" offset="${kinematics_offset}" reflect="${reflect}"/>
+        <parent link="${prefix}link1" />
+        <child link="${prefix}link2" />
+        <axis xyz="-1 0 0" />
+        <xacro:openarm-limits name="joint2" config="${joint_limits}" reflect="${reflect}" offset="${limit_offset_joint2}"/>
+      </joint>
+    </xacro:unless>
     
     <xacro:link_with_sc no_prefix="${no_prefix}" name="link3" kinematics_link="${kinematics_link}" inertials="${inertials}" reflect="${reflect}"/>
 
