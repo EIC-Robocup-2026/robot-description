@@ -37,6 +37,10 @@
 
   <xacro:arg name="use_fake_hardware" default="false" />
 
+  <xacro:arg name="left_use_fake_hardware" default="$(arg use_fake_hardware)" />
+
+  <xacro:arg name="right_use_fake_hardware" default="$(arg use_fake_hardware)" />
+
   <xacro:arg name="fake_sensor_commands" default="false" />
 
   <xacro:arg name="bimanual" default="true" />

@@ -6,7 +6,8 @@
              control_gains
              left_can_interface:=^|can1
              right_can_interface:=^|can0
-             use_fake_hardware:=^|false
+             left_use_fake_hardware:=^|false
+             right_use_fake_hardware:=^|false
              fake_sensor_commands:=^|false
              hand:=^|false
              left_arm_prefix:=^|left_
@@ -17,12 +18,12 @@
     <ros2_control name="openarm_left_hardware_interface" type="system">
         <hardware>
           <param name="arm_type">${arm_type}</param>
-          <xacro:if value="${use_fake_hardware}">
+          <xacro:if value="${left_use_fake_hardware}">
             <plugin>mock_components/GenericSystem</plugin>
             <param name="fake_sensor_commands">${fake_sensor_commands}</param>
             <param name="state_following_offset">0.0</param>
           </xacro:if>
-          <xacro:unless value="${use_fake_hardware}">
+          <xacro:unless value="${left_use_fake_hardware}">
             <plugin>openarm_hardware/OpenArm_v10HW</plugin>
             <param name="can_interface">${left_can_interface}</param>
             <param name="arm_prefix">${left_arm_prefix}</param>
@@ -89,12 +90,12 @@
     <ros2_control name="openarm_right_hardware_interface" type="system">
         <hardware>
           <param name="arm_type">${arm_type}</param>
-          <xacro:if value="${use_fake_hardware}">
+          <xacro:if value="${right_use_fake_hardware}">
             <plugin>mock_components/GenericSystem</plugin>
             <param name="fake_sensor_commands">${fake_sensor_commands}</param>
             <param name="state_following_offset">0.0</param>
           </xacro:if>
-          <xacro:unless value="${use_fake_hardware}">
+          <xacro:unless value="${right_use_fake_hardware}">
             <plugin>openarm_hardware/OpenArm_v10HW</plugin>
             <param name="can_interface">${right_can_interface}</param>
             <param name="arm_prefix">${right_arm_prefix}</param>

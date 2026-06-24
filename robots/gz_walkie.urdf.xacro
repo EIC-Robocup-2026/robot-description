@@ -8,6 +8,8 @@
   <xacro:arg name="dual_lidar" default="True"/>
   <xacro:arg name="use_arm" default="True"/>
   <xacro:arg name="use_fake_arm_hardware" default="True"/>
+  <xacro:arg name="left_use_fake_arm_hardware" default="$(arg use_fake_arm_hardware)"/>
+  <xacro:arg name="right_use_fake_arm_hardware" default="$(arg use_fake_arm_hardware)"/>
   <xacro:arg name="left_can_interface" default="can1"/>
   <xacro:arg name="right_can_interface" default="can0"/>
   <xacro:include filename="$(find walkie_description)/urdf/walkie/base/base.urdf.xacro"/>
@@ -135,7 +137,8 @@
     ee_type="openarm_hand"
     hand="true"
     ros2_control="${'$(arg ros2_control)' == 'real_robot'}"
-    use_fake_hardware="$(arg use_fake_arm_hardware)"
+    left_use_fake_hardware="$(arg left_use_fake_arm_hardware)"
+    right_use_fake_hardware="$(arg right_use_fake_arm_hardware)"
     left_can_interface="$(arg left_can_interface)"
     right_can_interface="$(arg right_can_interface)"
   />
