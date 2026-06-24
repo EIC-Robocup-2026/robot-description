@@ -23,6 +23,7 @@
             use_fake_hardware:=false
             left_use_fake_hardware:=false
             right_use_fake_hardware:=false
+            right_joint2_fixed:=false
             fake_sensor_commands:=false
             no_prefix:='false'
             arm_prefix:=''
@@ -87,7 +88,8 @@
         inertials="${inertials}"
         kinematics="${kinematics}"
         kinematics_link="${kinematics_link}"
-        kinematics_offset="${kinematics_offset}" />
+        kinematics_offset="${kinematics_offset}"
+        joint2_fixed="${right_joint2_fixed}" />
 
         <!-- ros2_control hardware interfaces for bimanual setup -->
         <xacro:if value="${ros2_control}">
@@ -98,6 +100,7 @@
             right_can_interface="${right_can_interface}"
             left_use_fake_hardware="${left_use_fake_hardware}"
             right_use_fake_hardware="${right_use_fake_hardware}"
+            right_joint2_fixed="${right_joint2_fixed}"
             fake_sensor_commands="${fake_sensor_commands}"
             left_arm_prefix="${left_arm_prefix}"
             right_arm_prefix="${right_arm_prefix}"

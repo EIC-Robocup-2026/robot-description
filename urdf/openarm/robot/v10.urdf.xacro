@@ -41,6 +41,8 @@
 
   <xacro:arg name="right_use_fake_hardware" default="$(arg use_fake_hardware)" />
 
+  <xacro:arg name="right_joint2_fixed" default="false" />
+
   <xacro:arg name="fake_sensor_commands" default="false" />
 
   <xacro:arg name="bimanual" default="true" />
@@ -75,6 +77,9 @@
   left_arm_prefix="$(arg left_arm_prefix)"
   right_arm_prefix="$(arg right_arm_prefix)"
   use_fake_hardware="$(arg use_fake_hardware)"
+  left_use_fake_hardware="$(arg left_use_fake_hardware)"
+  right_use_fake_hardware="$(arg right_use_fake_hardware)"
+  right_joint2_fixed="$(arg right_joint2_fixed)"
   fake_sensor_commands="$(arg fake_sensor_commands)"
   no_prefix="$(arg no_prefix)"
   arm_prefix=""

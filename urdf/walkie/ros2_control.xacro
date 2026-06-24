@@ -94,7 +94,9 @@
                 hand:=^|false
                 left_arm_prefix:=^|left_
                 right_arm_prefix:=^|right_
-                can_fd:=^|true">
+                can_fd:=^|true
+                right_joint2_fixed:=^|false
+                sim_controllers_yaml">
 
     <!-- Mock hardware -->
     <xacro:if value="${ros2_control == 'mock'}">
@@ -151,7 +153,9 @@
         <xacro:position_arm_joint joint_name="openarm_left_joint7" />
 
         <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        <xacro:unless value="${right_joint2_fixed}">
+          <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        </xacro:unless>
         <xacro:position_arm_joint joint_name="openarm_right_joint3" />
         <xacro:position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
         <xacro:position_arm_joint joint_name="openarm_right_joint5" />
@@ -216,7 +220,9 @@
         <xacro:position_arm_joint joint_name="openarm_left_joint7" />
 
         <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        <xacro:unless value="${right_joint2_fixed}">
+          <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        </xacro:unless>
         <xacro:position_arm_joint joint_name="openarm_right_joint3" />
         <xacro:position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
         <xacro:position_arm_joint joint_name="openarm_right_joint5" />
@@ -302,7 +308,9 @@
         <xacro:position_arm_joint joint_name="openarm_left_joint7" />
 
         <xacro:position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
-        <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        <xacro:unless value="${right_joint2_fixed}">
+          <xacro:position_arm_joint joint_name="openarm_right_joint2" />
+        </xacro:unless>
         <xacro:position_arm_joint joint_name="openarm_right_joint3" />
         <xacro:position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
         <xacro:position_arm_joint joint_name="openarm_right_joint5" />
@@ -429,7 +437,7 @@
                     filename="libgz_ros2_control-system.so"
                 >
           <parameters
-                    >$(find walkie_description)/config/ros2_controller/sim_controllers.yaml</parameters>
+                    >${sim_controllers_yaml}</parameters>
         </plugin>
       </gazebo>
     </xacro:if>
