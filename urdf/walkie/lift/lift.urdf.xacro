@@ -11,7 +11,7 @@
     <link name="${prefix}_link">
         <visual name="lift">
             <geometry>
-                <mesh filename="package://walkie_description/meshes/walkie/Lift.stl"/>
+                <mesh filename="package://walkie_description/meshes/walkie/Lift_simple.stl"/>
             </geometry>
             <material name="grey"/>
         </visual>

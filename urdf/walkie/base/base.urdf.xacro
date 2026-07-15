@@ -16,7 +16,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/base_link.stl"/>
+          <mesh filename="package://walkie_description/meshes/walkie/base_link_simple.stl"/>
         </geometry>
         <material name="grey"/>
       </visual>
