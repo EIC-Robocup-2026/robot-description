@@ -30,24 +30,86 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
     robot_model = LaunchConfiguration('robot_model')
     ros2_control = LaunchConfiguration('ros2_control', default='gazebo')
+    dual_lidar = LaunchConfiguration('dual_lidar', default='true')
+    use_zed = LaunchConfiguration('use_zed', default='false')
+    use_arm = LaunchConfiguration('use_arm', default='true')
+    use_fake_arm_hardware = LaunchConfiguration('use_fake_arm_hardware', default='false')
+    left_can_interface = LaunchConfiguration('left_can_interface', default='can1')
+    right_can_interface = LaunchConfiguration('right_can_interface', default='can0')
+    right_joint2_fixed = LaunchConfiguration('right_joint2_fixed', default='false')
 
     declare_robot_model = DeclareLaunchArgument(
-        'robot_model', default_value=os.path.join(get_package_share_directory('walkie_description'), 'robots','gz_walkie.urdf.xacro'),
-        description='path of robot urdf file that going to use')
+        'robot_model',
+        default_value=os.path.join(
+            get_package_share_directory('walkie_description'),
+            'robots',
+            'gz_walkie.urdf.xacro',
+        ),
+        description='path of robot urdf file that going to use',
+    )
 
     robot_desc = ParameterValue(
-        Command(['xacro ', robot_model, ' ros2_control:=', ros2_control]),
-        value_type=str
+        Command([
+            'xacro ', robot_model,
+            ' ros2_control:=', ros2_control,
+            ' dual_lidar:=', dual_lidar,
+            ' use_zed:=', use_zed,
+            ' use_arm:=', use_arm,
+            ' use_fake_arm_hardware:=', use_fake_arm_hardware,
+            ' left_can_interface:=', left_can_interface,
+            ' right_can_interface:=', right_can_interface,
+            ' right_joint2_fixed:=', right_joint2_fixed,
+        ]),
+        value_type=str,
     )
-    
+
     return LaunchDescription([
         declare_robot_model,
-
+        DeclareLaunchArgument(
+            'ros2_control',
+            default_value='gazebo',
+            description='ros2_control mode (gazebo, real_robot, topic_base, mock, etc.)',
+        ),
+        DeclareLaunchArgument(
+            'dual_lidar',
+            default_value='true',
+            description='Whether to enable dual lidar configuration',
+        ),
+        DeclareLaunchArgument(
+            'use_zed',
+            default_value='false',
+            description='Whether to use ZED camera in robot description',
+        ),
+        DeclareLaunchArgument(
+            'use_arm',
+            default_value='true',
+            description='Whether to include the OpenArm',
+        ),
+        DeclareLaunchArgument(
+            'use_fake_arm_hardware',
+            default_value='false',
+            description='Use mock hardware for the arm',
+        ),
+        DeclareLaunchArgument(
+            'left_can_interface',
+            default_value='can1',
+            description='CAN interface for the left arm',
+        ),
+        DeclareLaunchArgument(
+            'right_can_interface',
+            default_value='can0',
+            description='CAN interface for the right arm',
+        ),
+        DeclareLaunchArgument(
+            'right_joint2_fixed',
+            default_value='false',
+            description='Lock the right arm joint2 as a fixed URDF joint at its nominal position',
+        ),
         DeclareLaunchArgument(
             'use_sim_time',
             default_value='false',
-            description='Use simulation (Gazebo) clock if true'),
-
+            description='Use simulation (Gazebo) clock if true',
+        ),
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -55,7 +117,7 @@ def generate_launch_description():
             output='screen',
             parameters=[{
                 'use_sim_time': use_sim_time,
-                'robot_description': robot_desc # use robot xacro path 
+                'robot_description': robot_desc,
             }],
         ),
     ])
