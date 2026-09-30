@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="walkie_bot">
   <xacro:property name="M_PI" value="3.14159274"/>
   <xacro:arg name="ros2_control" default="gazebo"/>
+  <xacro:arg name="roller" default="false"/>
   <!-- Dual lidar option when only SIMULATION
   real robot force to be dual_lidar
   don't forgot to enable lidar topic to bridge in gz_bridge.yml -->
@@ -38,22 +39,22 @@
   </xacro:lift_v0>
   <!-- Wheel -->
   <!-- 1st wheel -->
-  <xacro:wheel_v0 prefix="bl" parent="base_link">
+  <xacro:wheel_v0 prefix="bl" parent="base_link" roller="$(arg roller)">
     <origin xyz="0.130943 0.130943 0.05" rpy="0 0 -${M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- 2nd wheel -->
-  <xacro:wheel_v0 prefix="br" parent="base_link">
+  <xacro:wheel_v0 prefix="br" parent="base_link" roller="$(arg roller)">
     <origin xyz="-0.130943 0.130943 0.05" rpy="0 0 ${M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- 3rd wheel -->
-  <xacro:wheel_v0 prefix="fr" parent="base_link">
+  <xacro:wheel_v0 prefix="fr" parent="base_link" roller="$(arg roller)">
     <origin xyz="-0.130943 -0.130943 0.05" rpy="0 0 ${3*M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>
   <!-- 4th wheel -->
-  <xacro:wheel_v0 prefix="fl" parent="base_link">
+  <xacro:wheel_v0 prefix="fl" parent="base_link" roller="$(arg roller)">
     <origin xyz="0.130943 -0.130943 0.05" rpy="0 0 ${5*M_PI/4}"/>
     <axis xyz="0.0 1.0 0.0"/>
   </xacro:wheel_v0>

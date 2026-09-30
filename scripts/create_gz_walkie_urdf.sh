@@ -4,15 +4,12 @@ set -euo pipefail
 # -----------------------------------------------------------------------------
 # Script: create_gz_walkie_urdf.sh
 # Purpose:
-#   1. Generate gz_walkie.urdf from gz_walkie.urdf.xacro
-#   2. Replace package://walkie_description with file:// absolute path
-#   3. Save as gz_walkie_absolute_path.urdf
+#   Generate simple wheel and roller versions of Walkie URDF:
+#   1. gz_walkie_simple.urdf & gz_walkie_simple_absolute_path.urdf (simple wheel)
+#   2. gz_walkie_roller.urdf & gz_walkie_roller_absolute_path.urdf (roller tags with collision)
 # -----------------------------------------------------------------------------
 
-# Resolve directories
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# If script is in scripts/ directory, package root is one level up;
-# if script is in package root, package root is SCRIPT_DIR.
 if [ -f "${SCRIPT_DIR}/package.xml" ]; then
     PACKAGE_DIR="${SCRIPT_DIR}"
 else
@@ -21,17 +18,17 @@ fi
 
 ROBOTS_DIR="${PACKAGE_DIR}/robots"
 XACRO_INPUT="${ROBOTS_DIR}/gz_walkie.urdf.xacro"
-URDF_OUTPUT="${ROBOTS_DIR}/gz_walkie.urdf"
-ABS_URDF_OUTPUT="${ROBOTS_DIR}/gz_walkie_absolute_path.urdf"
+
+# Mode: all (default), simple, roller
+MODE="${1:-all}"
 
 echo "=== Walkie URDF Generator ==="
 echo "Package directory : ${PACKAGE_DIR}"
 echo "Input xacro       : ${XACRO_INPUT}"
-echo "Output URDF       : ${URDF_OUTPUT}"
-echo "Output Abs URDF   : ${ABS_URDF_OUTPUT}"
+echo "Target mode       : ${MODE}"
 echo "============================="
 
-# 1. Check for xacro command (use system xacro or fallback to pixi)
+# 1. Check for xacro command
 XACRO_CMD=""
 if command -v xacro >/dev/null 2>&1; then
     XACRO_CMD="xacro"
@@ -43,51 +40,69 @@ else
     exit 1
 fi
 
-echo "[1/3] Generating ${URDF_OUTPUT} from Xacro..."
-${XACRO_CMD} "${XACRO_INPUT}" -o "${URDF_OUTPUT}"
-echo "  -> Created ${URDF_OUTPUT}"
+generate_variant() {
+    local variant_name="$1"
+    local roller_val="$2"
+    local urdf_file="${ROBOTS_DIR}/gz_walkie_${variant_name}.urdf"
+    local abs_urdf_file="${ROBOTS_DIR}/gz_walkie_${variant_name}_absolute_path.urdf"
 
-echo "[2/3] Replacing package:// references with file://${PACKAGE_DIR}..."
-echo "[3/3] Saving absolute path URDF to ${ABS_URDF_OUTPUT}..."
+    echo "--- Generating [${variant_name}] (roller:=${roller_val}) ---"
+    ${XACRO_CMD} "${XACRO_INPUT}" "roller:=${roller_val}" -o "${urdf_file}"
+    echo "  -> Created ${urdf_file}"
 
-python3 - <<EOF
+    # Replace package:// with file:// absolute path
+    python3 - <<EOF
 import os
 import re
 
 package_dir = "${PACKAGE_DIR}"
-input_urdf = "${URDF_OUTPUT}"
-output_urdf = "${ABS_URDF_OUTPUT}"
+input_file = "${urdf_file}"
+output_file = "${abs_urdf_file}"
 
-with open(input_urdf, "r", encoding="utf-8") as f:
+with open(input_file, "r", encoding="utf-8") as f:
     content = f.read()
 
-# Replace package URI with file:// absolute path
-# Target format: file:///path/to/robot-description/...
 replacements = [
     ("package://walkie_description", f"file://{package_dir}"),
     ("package://walkie-description", f"file://{package_dir}"),
 ]
-
 for old_pkg, new_pkg in replacements:
     content = content.replace(old_pkg, new_pkg)
 
-# Write output file with standard spelling
-with open(output_urdf, "w", encoding="utf-8") as f:
+with open(output_file, "w", encoding="utf-8") as f:
     f.write(content)
 
-# Count and verify replaced paths
 file_refs = re.findall(r'file://(/[^"\' <]+)', content)
 missing = [path for path in file_refs if not os.path.exists(path)]
-
-print(f"  -> Total mesh references converted: {len(file_refs)}")
 if missing:
     print(f"  [WARNING] {len(missing)} referenced files not found on disk:")
-    for m in missing[:5]:
+    for m in missing[:3]:
         print(f"     - {m}")
 else:
-    print("  -> All referenced mesh files successfully verified on disk!")
+    print(f"  -> Converted {len(file_refs)} mesh paths to absolute file:// URIs (all verified on disk)")
 
-print(f"  -> Successfully generated: {output_urdf}")
+print(f"  -> Created ${abs_urdf_file}")
 EOF
+}
 
+case "${MODE}" in
+    simple)
+        generate_variant "simple" "false"
+        ;;
+    roller)
+        generate_variant "roller" "true"
+        ;;
+    all)
+        generate_variant "simple" "false"
+        generate_variant "roller" "true"
+        ;;
+    *)
+        echo "Unknown mode: ${MODE}. Available options: all, simple, roller" >&2
+        exit 1
+        ;;
+esac
+
+echo ""
+echo "Summary of generated URDF files:"
+ls -lh "${ROBOTS_DIR}"/gz_walkie*.urdf
 echo "All steps completed successfully!"

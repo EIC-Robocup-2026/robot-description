@@ -3,6 +3,7 @@
   <xacro:arg name="standalone" default="false" />
   <xacro:arg name="prefix" default="wheel" />
   <xacro:arg name="parent" default="base_link" />
+  <xacro:arg name="roller" default="false" />
 	<xacro:include
     filename="$(find walkie_description)/urdf/inertial_macros.xacro"
   />
@@ -18,7 +19,7 @@
 	<xacro:property name="wheel_thickness" value="0.05" />
 	<xacro:property name="wheel_radian" value="0.075" />
 	<xacro:property name="wheel_mass" value="0.05" />
-	<xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
+	<xacro:macro name="wheel_v0" params="prefix parent roller:=^|$(arg roller) *joint_origin *joint_axis">
   	<joint name="${prefix}_wheel_joint" type="continuous">
   		<xacro:insert_block name="joint_origin" />
   		<parent link="${parent}" />
@@ -43,10 +44,18 @@
       >
   			<origin xyz="0 0 0" rpy="1.570796327 0 0" />
   		</xacro:inertial_cylinder>
-  		<!-- <collision><origin xyz="0 0 0" rpy="1.570796327 0 0" /><geometry><cylinder radius="${wheel_radian}" length="${wheel_thickness}" /></geometry></collision> -->
+  		<xacro:unless value="${roller}">
+  			<collision>
+  				<origin xyz="0 0 0" rpy="1.570796327 0 0" />
+  				<geometry>
+  					<cylinder radius="${wheel_radian}" length="${wheel_thickness}" />
+  				</geometry>
+  			</collision>
+  		</xacro:unless>
   	</link>
   	<xacro:wheel_gazebo_v0 prefix="${prefix}" />
   	<!-- Individual Roller Joint and Link Instantiations -->
+  	<xacro:if value="${roller}">
   	<xacro:roller prefix="${prefix}" num="1">
   		<origin xyz="0.067000 -0.009500 0.000000" rpy="0.000000 -0.000000 0.000000" />
   		<axis xyz="0.000000 0.000000 1.000000" />
@@ -159,12 +168,13 @@
   		<origin xyz="0.065321 0.009500 -0.014906" rpy="0.000000 -6.058835 0.000000" />
   		<axis xyz="0.000000 0.000000 1.000000" />
   	</xacro:roller>
+  	</xacro:if>
 	</xacro:macro>
 
   <!-- Standalone Wheel Instantiation for testing & export -->
   <xacro:if value="$(arg standalone)">
     <link name="$(arg parent)" />
-    <xacro:wheel_v0 prefix="$(arg prefix)" parent="$(arg parent)">
+    <xacro:wheel_v0 prefix="$(arg prefix)" parent="$(arg parent)" roller="$(arg roller)">
       <origin xyz="0 0 0" rpy="0 0 0" />
       <axis xyz="0 1 0" />
     </xacro:wheel_v0>
