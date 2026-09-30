@@ -24,6 +24,7 @@
   <xacro:macro name="link_with_sc" params="name no_prefix:='false' rpy:='0 0 0' kinematics_link:='' reflect:=1 inertials:=^">
     <!-- <xacro:property name="prefix" value="${'' if no_prefix else arm_prefix + arm_type + '_'}" /> -->
     <xacro:property name="prefix" value="${'' if no_prefix else 'openarm' + '_' +  arm_prefix}" />
+    <xacro:property name="collision_mesh" value="${name + '_symp_inv.stl' if reflect == -1 else name + '_symp.stl'}" />
     <link name="${prefix}${name}">
       <visual name="${prefix}${name}_visual">
         <xacro:openarm-kinematics-link config="${kinematics_link}" name="${name}" />
@@ -34,10 +35,9 @@
       <collision name="${prefix}${name}_collision">
         <xacro:openarm-kinematics-link config="${kinematics_link}" name="${name}" />
         <geometry>
-          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/collision/${name}_symp.stl" scale="0.001 ${0.001*reflect} 0.001" />
-          <!-- <mesh filename="package://${description_pkg}/meshes/arm/${arm_type}/collision/${name}.stl" scale="0.001 0.001 0.001" /> -->
+          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/collision/${collision_mesh}" scale="0.001 0.001 0.001" />
         </geometry>
-      </collision>`
+      </collision>
       <xacro:openarm-inertials name="${name}" inertials="${inertials}" reflect="${reflect}" />
     </link>
   </xacro:macro>
