@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="roller_gazebo_v0" params="prefix">
+    <gazebo reference="${prefix}_roller_link">
+      <collision>
+        <surface>
+          <friction>
+            <ode>
+              <mu1>1.0</mu1>
+              <mu2>1.0</mu2>
+              <kp>1e15</kp>
+              <kd>1e13</kd>
+            </ode>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0.01</restitution_coefficient>
+            <threshold>0</threshold>
+          </bounce>
+          <contact>
+            <ode>
+                <min_depth>0.005</min_depth>
+                <kp>1e6</kp>
+                <kd>1000</kd>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </gazebo>
+  </xacro:macro>
+</robot>
