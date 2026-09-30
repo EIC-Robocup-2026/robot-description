@@ -24,12 +24,16 @@
   <xacro:macro name="link_with_sc" params="name no_prefix:='false' rpy:='0 0 0' kinematics_link:='' reflect:=1 inertials:=^">
     <!-- <xacro:property name="prefix" value="${'' if no_prefix else arm_prefix + arm_type + '_'}" /> -->
     <xacro:property name="prefix" value="${'' if no_prefix else 'openarm' + '_' +  arm_prefix}" />
+    <!-- Pre-mirrored meshes (_inv.dae, _symp_inv.stl) with positive scale are used instead of
+         negative scaling (e.g. scale="... -0.001 ...") to prevent PhysX/engine cooking failures
+         in SAPIEN, Isaac Sim, and O3DE (see readme.md). -->
+    <xacro:property name="visual_mesh" value="${name + '_inv.dae' if reflect == -1 else name + '.dae'}" />
     <xacro:property name="collision_mesh" value="${name + '_symp_inv.stl' if reflect == -1 else name + '_symp.stl'}" />
     <link name="${prefix}${name}">
       <visual name="${prefix}${name}_visual">
         <xacro:openarm-kinematics-link config="${kinematics_link}" name="${name}" />
         <geometry>
-          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/visual/${name}.dae" scale="0.001 ${0.001*reflect} 0.001" />
+          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/visual/${visual_mesh}" scale="0.001 0.001 0.001" />
         </geometry>
       </visual>
       <collision name="${prefix}${name}_collision">

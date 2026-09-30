@@ -48,10 +48,11 @@
     </link>
 
     <link name="${ee_prefix}right_finger">
+      <!-- Pre-mirrored finger_inv meshes with positive scale prevent PhysX cooking failures in SAPIEN / Isaac Sim / O3DE -->
       <visual name="${ee_prefix}right_finger_visual">
         <xacro:openarm-ee-kinematics-link config="${ee_kinematics_link}" name="right_finger" />
         <geometry>
-          <mesh filename="package://${description_pkg}/meshes/openarm/ee/${ee_type}/visual/finger.dae" scale="0.001 -0.001 0.001"/>
+          <mesh filename="package://${description_pkg}/meshes/openarm/ee/${ee_type}/visual/finger_inv.dae" scale="0.001 0.001 0.001"/>
         </geometry>
       </visual>
       <collision name="${ee_prefix}right_finger_collision">
