@@ -3,6 +3,7 @@
   <xacro:property name="M_PI" value="3.14159274"/>
   <xacro:arg name="ros2_control" default="gazebo"/>
   <xacro:arg name="roller" default="false"/>
+  <xacro:arg name="lift_at_top" default="false"/>
   <!-- Dual lidar option when only SIMULATION
   real robot force to be dual_lidar
   don't forgot to enable lidar topic to bridge in gz_bridge.yml -->
@@ -34,9 +35,16 @@
   </xacro:base_v0>
   <xacro:base_gazebo_v0/>
   <!-- Lift -->
-  <xacro:lift_v0 prefix="lift" parent="base_link">
-    <origin xyz="0.00000 0.07000 0.3985" rpy="0 0 0"/>
-  </xacro:lift_v0>
+  <xacro:if value="$(arg lift_at_top)">
+    <xacro:lift_v0 prefix="lift" parent="base_link" lift_at_top="true">
+      <origin xyz="0.00000 0.07000 1.1420" rpy="0 0 0"/>
+    </xacro:lift_v0>
+  </xacro:if>
+  <xacro:unless value="$(arg lift_at_top)">
+    <xacro:lift_v0 prefix="lift" parent="base_link" lift_at_top="false">
+      <origin xyz="0.00000 0.07000 0.3985" rpy="0 0 0"/>
+    </xacro:lift_v0>
+  </xacro:unless>
   <!-- Wheel -->
   <!-- 1st wheel -->
   <xacro:wheel_v0 prefix="bl" parent="base_link" roller="$(arg roller)">
@@ -121,6 +129,7 @@
     left_can_interface="$(arg left_can_interface)"
     right_can_interface="$(arg right_can_interface)"
     hand="true"
+    lift_at_top="$(arg lift_at_top)"
     control_gains="${xacro.load_yaml('$(find walkie_description)/config/openarm/arm/v10/control_gains.yaml')}"
   />
 

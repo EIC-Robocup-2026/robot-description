@@ -21,11 +21,14 @@ XACRO_INPUT="${ROBOTS_DIR}/gz_walkie.urdf.xacro"
 
 # Mode: all (default), simple, roller
 MODE="${1:-all}"
+# Lift resting position: true (top), false (bottom, default)
+LIFT_AT_TOP="${2:-false}"
 
 echo "=== Walkie URDF Generator ==="
 echo "Package directory : ${PACKAGE_DIR}"
 echo "Input xacro       : ${XACRO_INPUT}"
 echo "Target mode       : ${MODE}"
+echo "Lift at top       : ${LIFT_AT_TOP}"
 echo "============================="
 
 # 1. Check for xacro command
@@ -46,8 +49,8 @@ generate_variant() {
     local urdf_file="${ROBOTS_DIR}/gz_walkie_${variant_name}.urdf"
     local abs_urdf_file="${ROBOTS_DIR}/gz_walkie_${variant_name}_absolute_path.urdf"
 
-    echo "--- Generating [${variant_name}] (roller:=${roller_val}) ---"
-    ${XACRO_CMD} "${XACRO_INPUT}" "roller:=${roller_val}" -o "${urdf_file}"
+    echo "--- Generating [${variant_name}] (roller:=${roller_val}, lift_at_top:=${LIFT_AT_TOP}) ---"
+    ${XACRO_CMD} "${XACRO_INPUT}" "roller:=${roller_val}" "lift_at_top:=${LIFT_AT_TOP}" -o "${urdf_file}"
     echo "  -> Created ${urdf_file}"
 
     # Replace package:// with file:// absolute path

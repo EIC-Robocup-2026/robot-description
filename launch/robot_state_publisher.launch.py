@@ -38,6 +38,7 @@ def generate_launch_description():
     right_can_interface = LaunchConfiguration('right_can_interface', default='can0')
     right_joint2_fixed = LaunchConfiguration('right_joint2_fixed', default='false')
     roller = LaunchConfiguration('roller', default='false')
+    lift_at_top = LaunchConfiguration('lift_at_top', default='false')
 
     declare_robot_model = DeclareLaunchArgument(
         'robot_model',
@@ -61,6 +62,7 @@ def generate_launch_description():
             ' right_can_interface:=', right_can_interface,
             ' right_joint2_fixed:=', right_joint2_fixed,
             ' roller:=', roller,
+            ' lift_at_top:=', lift_at_top,
         ]),
         value_type=str,
     )
@@ -111,6 +113,11 @@ def generate_launch_description():
             'roller',
             default_value='false',
             description='Whether to use full roller collisions on omni wheels or simple wheels',
+        ),
+        DeclareLaunchArgument(
+            'lift_at_top',
+            default_value='false',
+            description='Whether the lift joint rest pose is at the top (true) or bottom (false)',
         ),
         DeclareLaunchArgument(
             'use_sim_time',
