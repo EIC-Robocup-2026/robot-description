@@ -17,6 +17,15 @@ def _extract_value(content: str, key: str) -> float:
     return float(match.group(1))
 
 
+def _extract_xacro_property_value(content: str, property_name: str) -> float:
+    match = re.search(
+        rf'<xacro:property\s+name="{property_name}"\s+value="([0-9.]+)"',
+        content,
+    )
+    assert match, f"Could not find xacro property '{property_name}' in file"
+    return float(match.group(1))
+
+
 def test_sim_and_isaac_robot_radius_match_real_controller():
     real = _extract_value(
         _read("config/ros2_controller/real_controllers.yaml"), "robot_radius"
@@ -36,7 +45,7 @@ def test_sim_and_isaac_robot_radius_match_real_controller():
 def test_gz_omni_wheel_uses_wheel_radius_property():
     content = _read("urdf/walkie/omni_wheel/gz_omni_wheel.urdf.xacro")
 
-    radius_value = _extract_value(content, "wheel_radius")
+    radius_value = _extract_xacro_property_value(content, "wheel_radius")
     assert radius_value == EXPECTED_WHEEL_RADIUS
     assert "wheel_radian" not in content
     assert content.count("${wheel_radius}") == 2
