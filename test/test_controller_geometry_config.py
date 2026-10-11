@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_ROBOT_RADIUS = 0.18518136649782
+EXPECTED_ROBOT_RADIUS = 0.185
 EXPECTED_WHEEL_RADIUS = 0.076
 
 
