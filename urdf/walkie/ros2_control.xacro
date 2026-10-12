@@ -82,6 +82,36 @@
     </joint>
   </xacro:macro>
 
+  <!-- Sub-macro: Wheel joint driven by a MuJoCo velocity actuator (mujoco).
+       Exposes only the velocity command interface; the MJCF actuator must share the joint name. -->
+  <xacro:macro name="mujoco_wheel_joint" params="name vel_min vel_max">
+    <joint name="${name}">
+      <command_interface name="velocity">
+        <param name="min">${vel_min}</param>
+        <param name="max">${vel_max}</param>
+      </command_interface>
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+  </xacro:macro>
+
+  <!-- Sub-macro: Arm/gripper joint driven by a MuJoCo position actuator (mujoco).
+       Exposes only the position command interface; the MJCF actuator must share the joint name. -->
+  <xacro:macro name="mujoco_position_arm_joint" params="joint_name initial_position:=0.0">
+    <joint name="${joint_name}">
+      <command_interface name="position" />
+      <state_interface name="position">
+        <param name="initial_value">${initial_position}</param>
+      </state_interface>
+      <state_interface name="velocity">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="effort">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+    </joint>
+  </xacro:macro>
+
   <!-- Main Macro Declaration (ros2_control included back into parameters list) -->
   <xacro:macro name="ros2_control"
             params="ros2_control
@@ -96,7 +126,9 @@
                 right_arm_prefix:=^|right_
                 can_fd:=^|true
                 right_joint2_fixed:=^|false
-                sim_controllers_yaml">
+                sim_controllers_yaml
+                mujoco_model:=^|''
+                mujoco_headless:=^|false">
 
     <!-- Mock hardware -->
     <xacro:if value="${ros2_control == 'mock'}">
@@ -245,6 +277,100 @@
           <state_interface name="velocity" />
         </joint>
 
+      </ros2_control>
+    </xacro:if>
+
+    <!-- Simulation - MuJoCo based ros2_control (mujoco_ros2_control).
+         Every commanded joint below must have an MJCF actuator with the same name:
+         velocity actuators for the wheels, position actuators for everything else.
+         Mimic joints (openarm_*_finger_joint2) are not listed; the MJCF couples them
+         to openarm_*_finger_joint1 through equality constraints. -->
+    <xacro:if value="${ros2_control == 'mujoco'}">
+      <ros2_control name="MujocoSystem" type="system">
+        <hardware>
+          <plugin>mujoco_ros2_control/MujocoSystemInterface</plugin>
+          <param name="mujoco_model">${mujoco_model}</param>
+          <param name="headless">${'true' if mujoco_headless else 'false'}</param>
+          <!-- Ground-truth pose of the free-floating base (nav_msgs/Odometry, no TF) -->
+          <param name="odom_free_joint_name">floating_base_joint</param>
+          <param name="odom_topic">/mujoco_ground_truth/odom</param>
+        </hardware>
+        <xacro:mujoco_wheel_joint
+                    name="fl_wheel_joint"
+                    vel_min="-3.14"
+                    vel_max="3.14"
+                />
+        <xacro:mujoco_wheel_joint
+                    name="fr_wheel_joint"
+                    vel_min="-3.14"
+                    vel_max="3.14"
+                />
+        <xacro:mujoco_wheel_joint
+                    name="br_wheel_joint"
+                    vel_min="-3.14"
+                    vel_max="3.14"
+                />
+        <xacro:mujoco_wheel_joint
+                    name="bl_wheel_joint"
+                    vel_min="-3.14"
+                    vel_max="3.14"
+                />
+        <joint name="head_servo_joint">
+          <command_interface name="position">
+            <param name="min">-1.54</param>
+            <param name="max">1.54</param>
+          </command_interface>
+          <state_interface name="position" />
+          <state_interface name="velocity" />
+        </joint>
+        <joint name="lift_joint">
+          <command_interface name="position">
+            <param name="min">0.000</param>
+            <param name="max">0.743</param>
+          </command_interface>
+          <state_interface name="position">
+            <param name="initial_value">0.51</param>
+          </state_interface>
+          <state_interface name="velocity" />
+        </joint>
+
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint1" initial_position="0.2618" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint2" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint3" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint4" initial_position="0.2618" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint5" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint6" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_joint7" />
+
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint1" initial_position="-0.2618" />
+        <xacro:unless value="${right_joint2_fixed}">
+          <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint2" />
+        </xacro:unless>
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint3" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint4" initial_position="0.2618" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint5" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint6" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_joint7" />
+
+        <xacro:mujoco_position_arm_joint joint_name="openarm_left_finger_joint1" />
+        <xacro:mujoco_position_arm_joint joint_name="openarm_right_finger_joint1" />
+
+        <!-- IMU: reads the MJCF sensors top_imu_quat, top_imu_gyro and top_imu_accel
+             attached to the top_imu site (frame of top_imu_link). -->
+        <sensor name="top_imu">
+          <param name="mujoco_type">imu</param>
+          <param name="mujoco_sensor_name">top_imu</param>
+          <state_interface name="orientation.x" />
+          <state_interface name="orientation.y" />
+          <state_interface name="orientation.z" />
+          <state_interface name="orientation.w" />
+          <state_interface name="angular_velocity.x" />
+          <state_interface name="angular_velocity.y" />
+          <state_interface name="angular_velocity.z" />
+          <state_interface name="linear_acceleration.x" />
+          <state_interface name="linear_acceleration.y" />
+          <state_interface name="linear_acceleration.z" />
+        </sensor>
       </ros2_control>
     </xacro:if>
 
