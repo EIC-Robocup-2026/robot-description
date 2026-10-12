@@ -1,0 +1,72 @@
+<!--
+  Default MuJoCo world for walkie: a flat floor, a light and the robot.
+
+  Load this file rather than walkie.xml, which has no floor:
+    python -m mujoco.viewer --mjcf=description/mujoco/scene.xml   (or: pixi run mjcf-view)
+  The mujoco_ros2_control hardware parameter 'mujoco_model' points to the installed copy,
+  share/walkie_description/mujoco/scene.xml.
+
+  Writing a custom world
+  ======================
+  Copy this file and keep it in this directory: walkie.xml resolves its meshes relative to
+  the directory of the top-level model file (meshdir="../"). A world must:
+
+    1. Include walkie.xml before any other body with joints, so the robot's degrees of
+       freedom come first in qpos and the robot's 'home' keyframe stays valid.
+
+    2. Declare a geom of type="plane" named "floor" in the FLOOR collision class
+       (contype="1" conaffinity="32").
+
+    3. Contain the four wheel-floor <pair> elements of the <contact> section below. The wheel
+       capsules belong to no collision class, so these pairs are their only contacts. The
+       first friction coefficient acts along the wheel axle (free-rolling omni rollers), the
+       second along the rolling direction. That anisotropy only works against a plane.
+
+    4. Keep the <statistic> extent and <visual><map znear> values below (camera near plane).
+
+  Tag every other world geom with one collision class (bit values are documented in the
+  header of walkie.xml):
+    FURN  furniture, walls and other static geometry   contype="64" conaffinity="56"
+    OBJ   movable objects the arms interact with        contype="32" conaffinity="121"
+  FURN does not collide with FLOOR or FURN, so furniture must be static (bodies without
+  joints); anything that moves must be OBJ. The mobile base and the robot body never collide
+  with world geometry by design (navigation relies on the lidars); arms and grippers collide
+  with FURN and OBJ.
+-->
+<mujoco model="walkie_scene">
+  <include file="walkie.xml"/>
+
+  <!-- The near clipping plane of all cameras is znear * extent (5.5 cm here). It must stay
+       above about 3 cm, or the head camera renders the inside of the ZED housing it sits in;
+       a custom world should keep both values. -->
+  <statistic center="0 0 0.7" extent="2.2"/>
+
+  <visual>
+    <map znear="0.025"/>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="150" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+      height="3072"/>
+    <texture type="2d" name="floor" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+      rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="floor" texture="floor" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 3.5" dir="0 0 -1" directional="true"/>
+    <geom name="floor" type="plane" size="0 0 0.05" material="floor" contype="1"
+      conaffinity="32"/>
+  </worldbody>
+
+  <contact>
+    <!-- friction: along the axle, along the rolling direction, torsional, rolling (x2) -->
+    <pair geom1="fl_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+    <pair geom1="fr_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+    <pair geom1="bl_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+    <pair geom1="br_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+  </contact>
+</mujoco>
