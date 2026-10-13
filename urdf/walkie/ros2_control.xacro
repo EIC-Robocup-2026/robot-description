@@ -96,7 +96,12 @@
                 right_arm_prefix:=^|right_
                 can_fd:=^|true
                 right_joint2_fixed:=^|false
+                lift_at_top:=^|false
                 sim_controllers_yaml">
+
+    <xacro:property name="lift_min" value="${-0.7435 if lift_at_top else 0.000}" />
+    <xacro:property name="lift_max" value="${0.000 if lift_at_top else 0.7435}" />
+    <xacro:property name="lift_init" value="${0.000 if lift_at_top else 0.7435}" />
 
     <!-- Mock hardware -->
     <xacro:if value="${ros2_control == 'mock'}">
@@ -133,11 +138,11 @@
         </joint>
         <joint name="lift_joint">
           <command_interface name="position">
-            <param name="min">0.000</param>
-            <param name="max">0.7435</param>
+            <param name="min">${lift_min}</param>
+            <param name="max">${lift_max}</param>
           </command_interface>
           <state_interface name="position">
-            <param name="initial_value">0.7435</param>
+            <param name="initial_value">${lift_init}</param>
           </state_interface>
           <state_interface name="velocity">
             <param name="initial_value">0.0</param>
@@ -203,8 +208,8 @@
         </joint>
         <joint name="lift_joint">
           <command_interface name="position">
-            <param name="min">0.000</param>
-            <param name="max">0.743</param>
+            <param name="min">${lift_min}</param>
+            <param name="max">${lift_max}</param>
           </command_interface>
           <state_interface name="position">
             <param name="initial_value">0.51</param>
@@ -293,8 +298,8 @@
             <command_interface name="velocity" />
             <command_interface name="effort" />
             <command_interface name="position">
-                <param name="min">0.000</param>
-                <param name="max">0.743</param>
+                <param name="min">${lift_min}</param>
+                <param name="max">${lift_max}</param>
             </command_interface>
             <state_interface name="position" />
         </joint>
@@ -416,11 +421,11 @@
         </hardware>
         <joint name="lift_joint">
           <command_interface name="position">
-            <param name="min">0.08000</param>
-            <param name="max">0.74350</param>
+            <param name="min">${lift_min}</param>
+            <param name="max">${lift_max}</param>
           </command_interface>
           <state_interface name="position">
-            <param name="initial_value">0.7435</param>
+            <param name="initial_value">${lift_init}</param>
           </state_interface>
           <state_interface name="velocity">
             <param name="initial_value">0.0</param>

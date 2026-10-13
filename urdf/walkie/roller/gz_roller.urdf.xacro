@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find walkie_description)/urdf/inertial_macros.xacro"/>
+  <xacro:include filename="$(find walkie_description)/urdf/walkie/roller/roller.gazebo.xacro"/>
+
+  <xacro:property name="roller_mass" value="0.008" />
+  <xacro:property name="roller_radius" value="0.009" />
+  <xacro:property name="roller_length" value="0.018600000000000002" />
+
+  <!-- Roller Macro Definition (Model S4 (4 Spheres) Compound Collision & Inertia) -->
+  <xacro:macro name="roller" params="prefix num *joint_origin *joint_axis">
+      <link name="roller_${prefix}_${num}_link">
+          <inertial>
+              <origin xyz="0 0 0" rpy="0 0 0" />
+              <mass value="${roller_mass}" />
+              <inertia ixx="0.00000051" ixy="0" ixz="0" iyy="0.00000051" iyz="0" izz="0.00000025" />
+          </inertial>
+          <!-- Sub-element 1: Sphere at u=-7.39mm -->
+          <collision>
+              <origin xyz="0 0 -0.007394" rpy="0 0 0" />
+              <geometry>
+                  <sphere radius="0.008640" />
+              </geometry>
+          </collision>
+          <!-- Sub-element 2: Sphere at u=-3.58mm -->
+          <collision>
+              <origin xyz="0 0 -0.003581" rpy="0 0 0" />
+              <geometry>
+                  <sphere radius="0.008916" />
+              </geometry>
+          </collision>
+          <!-- Sub-element 3: Sphere at u=3.58mm -->
+          <collision>
+              <origin xyz="0 0 0.003581" rpy="0 0 0" />
+              <geometry>
+                  <sphere radius="0.008916" />
+              </geometry>
+          </collision>
+          <!-- Sub-element 4: Sphere at u=7.39mm -->
+          <collision>
+              <origin xyz="0 0 0.007394" rpy="0 0 0" />
+              <geometry>
+                  <sphere radius="0.008640" />
+              </geometry>
+          </collision>
+      </link>
+      <joint name="roller_${prefix}_${num}_joint" type="continuous">
+          <xacro:insert_block name="joint_origin" />
+          <parent link="${prefix}_wheel_link" />
+          <child link="roller_${prefix}_${num}_link" />
+          <xacro:insert_block name="joint_axis" />
+      </joint>
+  </xacro:macro>
+</robot>
