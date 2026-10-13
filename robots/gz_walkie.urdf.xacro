@@ -102,7 +102,7 @@
     <parent link="base_link"/>
     <child link="unitree4d_l2_imu_initial"/>
     <xacro:if value="${'$(arg ros2_control)' == 'topic_base' or '$(arg ros2_control)' == 'gazebo'}">
-      <origin xyz="-0.05196152 0 1.676" rpy="${M_PI} 0.488692 0.98"/>
+      <origin xyz="-0.05196152 0 1.676" rpy="${M_PI} 0.488692 0"/>
     </xacro:if>
     <xacro:unless value="${'$(arg ros2_control)' == 'topic_base' or '$(arg ros2_control)' == 'gazebo'}">
       <origin xyz="-0.05196152 0 1.676" rpy="3.36159 -0.445 2.6607963"/>
