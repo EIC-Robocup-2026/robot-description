@@ -85,7 +85,7 @@
       <visual name="${ee_prefix}wristcam_bracket_visual">
         <origin xyz="0.0095 0 -0.0055" rpy="3.125 -1.57 0" />
         <geometry>
-          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001" />
+          <mesh filename="package://${description_pkg}/meshes/openarm/ee/${ee_type}/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001" />
         </geometry>
         <material name="wristcam_bracket_material">
           <color rgba="0.2 0.2 0.2 1.0" />
@@ -94,7 +94,7 @@
       <collision name="${ee_prefix}wristcam_bracket_collision">
         <origin xyz="0.0095 0 -0.0055" rpy="3.125 -1.57 0" />
         <geometry>
-          <mesh filename="package://${description_pkg}/meshes/openarm/arm/${arm_type}/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001" />
+          <mesh filename="package://${description_pkg}/meshes/openarm/ee/${ee_type}/collision/wristcam_bracket.stl" scale="0.001 0.001 0.001" />
         </geometry>
       </collision>
     </link>

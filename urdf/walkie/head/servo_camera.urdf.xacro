@@ -25,7 +25,7 @@
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://walkie_description/meshes/walkie/HeadCameraMount_simple.stl"/>
+          <mesh filename="package://walkie_description/meshes/walkie/HeadCameraMount_collision.stl"/>
         </geometry>
       </collision>
       <inertial>
@@ -34,7 +34,7 @@
       </inertial>
     </link>
     <!-- ============ ZED Camera Body ============ -->
-    <xacro:zed_camera name="$(arg camera_name)" model="$(arg camera_model)">
+    <xacro:zed_camera name="$(arg camera_name)" model="$(arg camera_model)" enable_collision="false">
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:zed_camera>
     <!-- ============ Gazebo Sensors (Gz Sim / Jazzy) ============ -->
