@@ -1,0 +1,246 @@
+# Controllers for the MuJoCo simulation (ros2_control:=mujoco, mujoco_ros2_control).
+#
+# Same controller set as sim_controllers.yaml, except:
+#   - no left/right_forward_velocity_controller: the MuJoCo arm joints are driven by
+#     position actuators and expose only the position command interface;
+#   - imu_sensor_broadcaster publishes the top_imu sensor (MJCF sensors top_imu_quat,
+#     top_imu_gyro, top_imu_accel). It publishes on ~/imu; remap it in the launch file.
+controller_manager:
+  ros__parameters:
+    update_rate: 60
+    use_sim_time: true
+
+    joint_broad:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    imu_sensor_broadcaster:
+      type: imu_sensor_broadcaster/IMUSensorBroadcaster
+
+    omni_wheel_drive_controller:
+      type: omni_wheel_drive_controller/OmniWheelDriveController
+
+    lift_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    left_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    left_gripper_controller:
+      type: position_controllers/GripperActionController
+
+    right_gripper_controller:
+      type: position_controllers/GripperActionController
+
+    left_forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    left_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    right_forward_position_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    right_joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    head_servo_controller:
+      type: position_controllers/JointGroupPositionController
+
+imu_sensor_broadcaster:
+  ros__parameters:
+    sensor_name: top_imu
+    frame_id: top_imu_link
+
+omni_wheel_drive_controller:
+  ros__parameters:
+    wheel_offset: 0.7853981633974485
+    wheel_names:
+      ["fl_wheel_joint", "bl_wheel_joint", "br_wheel_joint", "fr_wheel_joint"]
+
+    robot_radius: 0.185
+    wheel_radius: 0.076
+
+    odom_frame_id: odom
+    base_frame_id: base_footprint
+    pose_covariance_diagonal: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    twist_covariance_diagonal: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+    open_loop: true
+    position_feedback: false
+    enable_odom_tf: true
+
+    cmd_vel_timeout: 0.5
+    publish_limited_velocity: true
+
+lift_controller:
+  ros__parameters:
+    joints:
+      - lift_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+      - openarm_left_finger_joint1
+      - openarm_right_finger_joint1
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+left_arm_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+right_arm_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+left_gripper_controller:
+  ros__parameters:
+    joint: openarm_left_finger_joint1
+
+right_gripper_controller:
+  ros__parameters:
+    joint: openarm_right_finger_joint1
+
+left_forward_position_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+left_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - openarm_left_joint1
+      - openarm_left_joint2
+      - openarm_left_joint3
+      - openarm_left_joint4
+      - openarm_left_joint5
+      - openarm_left_joint6
+      - openarm_left_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 50.0
+
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.5
+
+right_forward_position_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+
+right_joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - openarm_right_joint1
+      - openarm_right_joint2
+      - openarm_right_joint3
+      - openarm_right_joint4
+      - openarm_right_joint5
+      - openarm_right_joint6
+      - openarm_right_joint7
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+    state_publish_rate: 50.0
+    action_monitor_rate: 50.0
+
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.5
+
+head_servo_controller:
+  ros__parameters:
+    joints:
+      - head_servo_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    open_loop: true
+    allow_nonzero_velocity_at_steady_state: true
