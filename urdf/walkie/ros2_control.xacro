@@ -244,7 +244,7 @@
             <param name="max">${lift_max}</param>
           </command_interface>
           <state_interface name="position">
-            <param name="initial_value">0.51</param>
+            <param name="initial_value">${lift_init}</param>
           </state_interface>
         </joint>
 
