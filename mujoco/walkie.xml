@@ -50,522 +50,523 @@
     <mesh name="base_link_simple" content_type="model/stl" file="meshes/walkie/base_link_simple.stl"/>
     <mesh name="Lift_simple" content_type="model/stl" file="meshes/walkie/Lift_simple.stl"/>
     <mesh name="HeadCameraMount_simple" content_type="model/stl" file="meshes/walkie/HeadCameraMount_simple.stl"/>
+    <mesh name="HeadCameraMount_collision" content_type="model/stl" file="meshes/walkie/HeadCameraMount_collision.stl"/>
     <mesh name="zed2i" content_type="model/stl" file="meshes/walkie/depth_camera/zed/zed2i.stl"/>
-    <mesh name="link0_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link0_symp.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="link1_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link1_symp.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="link2_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link2_symp.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="link3_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link3_symp.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="link0_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link0_symp_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link1_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link1_symp_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link2_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link2_symp_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link3_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link3_symp_inv.stl" scale="0.001 0.001 0.001"/>
     <mesh name="link4_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link4_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link5_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link5_symp.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="link6_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link6_symp.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="link7_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link7_symp.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="link0_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link0_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link1_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link1_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link2_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link2_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link3_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link3_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link5_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link5_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link6_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link6_symp.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="link7_symp1" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link7_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link5_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link5_symp_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link6_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link6_symp_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link7_symp_inv" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link7_symp_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link0_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link0_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link1_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link1_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link2_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link2_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link3_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link3_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link5_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link5_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link6_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link6_symp.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link7_symp" content_type="model/stl" file="meshes/openarm/arm/v10/collision/link7_symp.stl" scale="0.001 0.001 0.001"/>
     <mesh name="hand" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/hand.stl" scale="0.001 0.001 0.001"/>
     <mesh name="finger" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/finger.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="finger1" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/finger.stl" scale="0.001 -0.001 0.001"/>
-    <mesh name="wristcam_bracket" content_type="model/stl" file="meshes/openarm/arm/v10/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="finger_inv" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/finger_inv.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="wristcam_bracket" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001"/>
   </asset>
 
   <worldbody>
     <body name="base_footprint" pos="0 0 -0.0062">
       <joint name="floating_base_joint" type="free"/>
-      <body name="base_link" pos="0 0 0.0312" quat="0.707107 0 0 0.707107">
+      <body name="base_link" pos="0 0 0.0312">
         <inertial pos="0 0 0.165" mass="20.2" diaginertia="0.565221 0.565221 0.763813"/>
-        <geom name="base_link_visual" pos="0 0 0" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="base_link_simple"/>
+        <geom name="base_link_visual" pos="0 0 0" quat="0.707107 0 0 0.707107" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="base_link_simple"/>
         <geom name="base_link_collision_0" size="0.275 0.165" pos="0 0 0.165" type="cylinder" contype="2" conaffinity="24" group="3"/>
-        <geom name="base_link_collision_1" size="0.098 0.09 0.52" pos="0 0.07 0.845" type="box" contype="2" conaffinity="24" group="3"/>
-        <geom name="base_link_collision_2" size="0.115 0.0345 0.52" pos="-0.115 0.07 0.845" type="box" contype="2" conaffinity="24" group="3"/>
-        <site name="front_lidar_ray_000" size="0.002" pos="0 -0.235 0.28232" quat="-0.18265 0.68311 -0.18265 -0.68311" group="5"/>
-        <site name="front_lidar_ray_001" size="0.002" pos="0 -0.235 0.28232" quat="-0.176685 0.684677 -0.176685 -0.684677" group="5"/>
-        <site name="front_lidar_ray_002" size="0.002" pos="0 -0.235 0.28232" quat="-0.170706 0.686192 -0.170706 -0.686192" group="5"/>
-        <site name="front_lidar_ray_003" size="0.002" pos="0 -0.235 0.28232" quat="-0.164715 0.687655 -0.164715 -0.687655" group="5"/>
-        <site name="front_lidar_ray_004" size="0.002" pos="0 -0.235 0.28232" quat="-0.158711 0.689065 -0.158711 -0.689065" group="5"/>
-        <site name="front_lidar_ray_005" size="0.002" pos="0 -0.235 0.28232" quat="-0.152695 0.690423 -0.152695 -0.690423" group="5"/>
-        <site name="front_lidar_ray_006" size="0.002" pos="0 -0.235 0.28232" quat="-0.146667 0.691729 -0.146667 -0.691729" group="5"/>
-        <site name="front_lidar_ray_007" size="0.002" pos="0 -0.235 0.28232" quat="-0.140628 0.692982 -0.140628 -0.692982" group="5"/>
-        <site name="front_lidar_ray_008" size="0.002" pos="0 -0.235 0.28232" quat="-0.134578 0.694182 -0.134578 -0.694182" group="5"/>
-        <site name="front_lidar_ray_009" size="0.002" pos="0 -0.235 0.28232" quat="-0.128519 0.695329 -0.128519 -0.695329" group="5"/>
-        <site name="front_lidar_ray_010" size="0.002" pos="0 -0.235 0.28232" quat="-0.122449 0.696424 -0.122449 -0.696424" group="5"/>
-        <site name="front_lidar_ray_011" size="0.002" pos="0 -0.235 0.28232" quat="-0.11637 0.697465 -0.11637 -0.697465" group="5"/>
-        <site name="front_lidar_ray_012" size="0.002" pos="0 -0.235 0.28232" quat="-0.110282 0.698454 -0.110282 -0.698454" group="5"/>
-        <site name="front_lidar_ray_013" size="0.002" pos="0 -0.235 0.28232" quat="-0.104186 0.699389 -0.104186 -0.699389" group="5"/>
-        <site name="front_lidar_ray_014" size="0.002" pos="0 -0.235 0.28232" quat="-0.0980819 0.700271 -0.0980819 -0.700271" group="5"/>
-        <site name="front_lidar_ray_015" size="0.002" pos="0 -0.235 0.28232" quat="-0.0919703 0.7011 -0.0919703 -0.7011" group="5"/>
-        <site name="front_lidar_ray_016" size="0.002" pos="0 -0.235 0.28232" quat="-0.0858517 0.701876 -0.0858517 -0.701876" group="5"/>
-        <site name="front_lidar_ray_017" size="0.002" pos="0 -0.235 0.28232" quat="-0.0797266 0.702598 -0.0797266 -0.702598" group="5"/>
-        <site name="front_lidar_ray_018" size="0.002" pos="0 -0.235 0.28232" quat="-0.0735954 0.703266 -0.0735954 -0.703266" group="5"/>
-        <site name="front_lidar_ray_019" size="0.002" pos="0 -0.235 0.28232" quat="-0.0674587 0.703882 -0.0674587 -0.703882" group="5"/>
-        <site name="front_lidar_ray_020" size="0.002" pos="0 -0.235 0.28232" quat="-0.0613168 0.704443 -0.0613168 -0.704443" group="5"/>
-        <site name="front_lidar_ray_021" size="0.002" pos="0 -0.235 0.28232" quat="-0.0551702 0.704951 -0.0551702 -0.704951" group="5"/>
-        <site name="front_lidar_ray_022" size="0.002" pos="0 -0.235 0.28232" quat="-0.0490194 0.705406 -0.0490194 -0.705406" group="5"/>
-        <site name="front_lidar_ray_023" size="0.002" pos="0 -0.235 0.28232" quat="-0.0428649 0.705806 -0.0428649 -0.705806" group="5"/>
-        <site name="front_lidar_ray_024" size="0.002" pos="0 -0.235 0.28232" quat="-0.0367072 0.706153 -0.0367072 -0.706153" group="5"/>
-        <site name="front_lidar_ray_025" size="0.002" pos="0 -0.235 0.28232" quat="-0.0305466 0.706447 -0.0305466 -0.706447" group="5"/>
-        <site name="front_lidar_ray_026" size="0.002" pos="0 -0.235 0.28232" quat="-0.0243838 0.706686 -0.0243838 -0.706686" group="5"/>
-        <site name="front_lidar_ray_027" size="0.002" pos="0 -0.235 0.28232" quat="-0.0182191 0.706872 -0.0182191 -0.706872" group="5"/>
-        <site name="front_lidar_ray_028" size="0.002" pos="0 -0.235 0.28232" quat="-0.0120529 0.707004 -0.0120529 -0.707004" group="5"/>
-        <site name="front_lidar_ray_029" size="0.002" pos="0 -0.235 0.28232" quat="-0.00588592 0.707082 -0.00588592 -0.707082" group="5"/>
-        <site name="front_lidar_ray_030" size="0.002" pos="0 -0.235 0.28232" quat="0.000281554 0.707107 0.000281554 -0.707107" group="5"/>
-        <site name="front_lidar_ray_031" size="0.002" pos="0 -0.235 0.28232" quat="0.00644901 0.707077 0.00644901 -0.707077" group="5"/>
-        <site name="front_lidar_ray_032" size="0.002" pos="0 -0.235 0.28232" quat="0.012616 0.706994 0.012616 -0.706994" group="5"/>
-        <site name="front_lidar_ray_033" size="0.002" pos="0 -0.235 0.28232" quat="0.018782 0.706857 0.018782 -0.706857" group="5"/>
-        <site name="front_lidar_ray_034" size="0.002" pos="0 -0.235 0.28232" quat="0.0249465 0.706667 0.0249465 -0.706667" group="5"/>
-        <site name="front_lidar_ray_035" size="0.002" pos="0 -0.235 0.28232" quat="0.0311092 0.706422 0.0311092 -0.706422" group="5"/>
-        <site name="front_lidar_ray_036" size="0.002" pos="0 -0.235 0.28232" quat="0.0372695 0.706124 0.0372695 -0.706124" group="5"/>
-        <site name="front_lidar_ray_037" size="0.002" pos="0 -0.235 0.28232" quat="0.043427 0.705772 0.043427 -0.705772" group="5"/>
-        <site name="front_lidar_ray_038" size="0.002" pos="0 -0.235 0.28232" quat="0.0495812 0.705366 0.0495812 -0.705366" group="5"/>
-        <site name="front_lidar_ray_039" size="0.002" pos="0 -0.235 0.28232" quat="0.0557316 0.704907 0.0557316 -0.704907" group="5"/>
-        <site name="front_lidar_ray_040" size="0.002" pos="0 -0.235 0.28232" quat="0.0618777 0.704394 0.0618777 -0.704394" group="5"/>
-        <site name="front_lidar_ray_041" size="0.002" pos="0 -0.235 0.28232" quat="0.0680192 0.703828 0.0680192 -0.703828" group="5"/>
-        <site name="front_lidar_ray_042" size="0.002" pos="0 -0.235 0.28232" quat="0.0741555 0.703208 0.0741555 -0.703208" group="5"/>
-        <site name="front_lidar_ray_043" size="0.002" pos="0 -0.235 0.28232" quat="0.0802861 0.702534 0.0802861 -0.702534" group="5"/>
-        <site name="front_lidar_ray_044" size="0.002" pos="0 -0.235 0.28232" quat="0.0864106 0.701807 0.0864106 -0.701807" group="5"/>
-        <site name="front_lidar_ray_045" size="0.002" pos="0 -0.235 0.28232" quat="0.0925286 0.701027 0.0925286 -0.701027" group="5"/>
-        <site name="front_lidar_ray_046" size="0.002" pos="0 -0.235 0.28232" quat="0.0986395 0.700193 0.0986395 -0.700193" group="5"/>
-        <site name="front_lidar_ray_047" size="0.002" pos="0 -0.235 0.28232" quat="0.104743 0.699306 0.104743 -0.699306" group="5"/>
-        <site name="front_lidar_ray_048" size="0.002" pos="0 -0.235 0.28232" quat="0.110838 0.698366 0.110838 -0.698366" group="5"/>
-        <site name="front_lidar_ray_049" size="0.002" pos="0 -0.235 0.28232" quat="0.116925 0.697373 0.116925 -0.697373" group="5"/>
-        <site name="front_lidar_ray_050" size="0.002" pos="0 -0.235 0.28232" quat="0.123003 0.696326 0.123003 -0.696326" group="5"/>
-        <site name="front_lidar_ray_051" size="0.002" pos="0 -0.235 0.28232" quat="0.129072 0.695227 0.129072 -0.695227" group="5"/>
-        <site name="front_lidar_ray_052" size="0.002" pos="0 -0.235 0.28232" quat="0.135131 0.694075 0.135131 -0.694075" group="5"/>
-        <site name="front_lidar_ray_053" size="0.002" pos="0 -0.235 0.28232" quat="0.14118 0.69287 0.14118 -0.69287" group="5"/>
-        <site name="front_lidar_ray_054" size="0.002" pos="0 -0.235 0.28232" quat="0.147218 0.691612 0.147218 -0.691612" group="5"/>
-        <site name="front_lidar_ray_055" size="0.002" pos="0 -0.235 0.28232" quat="0.153244 0.690301 0.153244 -0.690301" group="5"/>
-        <site name="front_lidar_ray_056" size="0.002" pos="0 -0.235 0.28232" quat="0.159259 0.688939 0.159259 -0.688939" group="5"/>
-        <site name="front_lidar_ray_057" size="0.002" pos="0 -0.235 0.28232" quat="0.165262 0.687523 0.165262 -0.687523" group="5"/>
-        <site name="front_lidar_ray_058" size="0.002" pos="0 -0.235 0.28232" quat="0.171253 0.686056 0.171253 -0.686056" group="5"/>
-        <site name="front_lidar_ray_059" size="0.002" pos="0 -0.235 0.28232" quat="0.17723 0.684536 0.17723 -0.684536" group="5"/>
-        <site name="front_lidar_ray_060" size="0.002" pos="0 -0.235 0.28232" quat="0.183194 0.682964 0.183194 -0.682964" group="5"/>
-        <site name="front_lidar_ray_061" size="0.002" pos="0 -0.235 0.28232" quat="0.189144 0.68134 0.189144 -0.68134" group="5"/>
-        <site name="front_lidar_ray_062" size="0.002" pos="0 -0.235 0.28232" quat="0.195079 0.679665 0.195079 -0.679665" group="5"/>
-        <site name="front_lidar_ray_063" size="0.002" pos="0 -0.235 0.28232" quat="0.201 0.677937 0.201 -0.677937" group="5"/>
-        <site name="front_lidar_ray_064" size="0.002" pos="0 -0.235 0.28232" quat="0.206906 0.676158 0.206906 -0.676158" group="5"/>
-        <site name="front_lidar_ray_065" size="0.002" pos="0 -0.235 0.28232" quat="0.212795 0.674328 0.212795 -0.674328" group="5"/>
-        <site name="front_lidar_ray_066" size="0.002" pos="0 -0.235 0.28232" quat="0.218669 0.672446 0.218669 -0.672446" group="5"/>
-        <site name="front_lidar_ray_067" size="0.002" pos="0 -0.235 0.28232" quat="0.224526 0.670513 0.224526 -0.670513" group="5"/>
-        <site name="front_lidar_ray_068" size="0.002" pos="0 -0.235 0.28232" quat="0.230365 0.66853 0.230365 -0.66853" group="5"/>
-        <site name="front_lidar_ray_069" size="0.002" pos="0 -0.235 0.28232" quat="0.236187 0.666495 0.236187 -0.666495" group="5"/>
-        <site name="front_lidar_ray_070" size="0.002" pos="0 -0.235 0.28232" quat="0.241992 0.66441 0.241992 -0.66441" group="5"/>
-        <site name="front_lidar_ray_071" size="0.002" pos="0 -0.235 0.28232" quat="0.247778 0.662274 0.247778 -0.662274" group="5"/>
-        <site name="front_lidar_ray_072" size="0.002" pos="0 -0.235 0.28232" quat="0.253545 0.660087 0.253545 -0.660087" group="5"/>
-        <site name="front_lidar_ray_073" size="0.002" pos="0 -0.235 0.28232" quat="0.259292 0.657851 0.259292 -0.657851" group="5"/>
-        <site name="front_lidar_ray_074" size="0.002" pos="0 -0.235 0.28232" quat="0.26502 0.655564 0.26502 -0.655564" group="5"/>
-        <site name="front_lidar_ray_075" size="0.002" pos="0 -0.235 0.28232" quat="0.270728 0.653228 0.270728 -0.653228" group="5"/>
-        <site name="front_lidar_ray_076" size="0.002" pos="0 -0.235 0.28232" quat="0.276415 0.650841 0.276415 -0.650841" group="5"/>
-        <site name="front_lidar_ray_077" size="0.002" pos="0 -0.235 0.28232" quat="0.282082 0.648406 0.282082 -0.648406" group="5"/>
-        <site name="front_lidar_ray_078" size="0.002" pos="0 -0.235 0.28232" quat="0.287726 0.645921 0.287726 -0.645921" group="5"/>
-        <site name="front_lidar_ray_079" size="0.002" pos="0 -0.235 0.28232" quat="0.293349 0.643387 0.293349 -0.643387" group="5"/>
-        <site name="front_lidar_ray_080" size="0.002" pos="0 -0.235 0.28232" quat="0.29895 0.640803 0.29895 -0.640803" group="5"/>
-        <site name="front_lidar_ray_081" size="0.002" pos="0 -0.235 0.28232" quat="0.304527 0.638172 0.304527 -0.638172" group="5"/>
-        <site name="front_lidar_ray_082" size="0.002" pos="0 -0.235 0.28232" quat="0.310082 0.635491 0.310082 -0.635491" group="5"/>
-        <site name="front_lidar_ray_083" size="0.002" pos="0 -0.235 0.28232" quat="0.315613 0.632762 0.315613 -0.632762" group="5"/>
-        <site name="front_lidar_ray_084" size="0.002" pos="0 -0.235 0.28232" quat="0.32112 0.629986 0.32112 -0.629986" group="5"/>
-        <site name="front_lidar_ray_085" size="0.002" pos="0 -0.235 0.28232" quat="0.326603 0.627161 0.326603 -0.627161" group="5"/>
-        <site name="front_lidar_ray_086" size="0.002" pos="0 -0.235 0.28232" quat="0.33206 0.624288 0.33206 -0.624288" group="5"/>
-        <site name="front_lidar_ray_087" size="0.002" pos="0 -0.235 0.28232" quat="0.337493 0.621368 0.337493 -0.621368" group="5"/>
-        <site name="front_lidar_ray_088" size="0.002" pos="0 -0.235 0.28232" quat="0.3429 0.618401 0.3429 -0.618401" group="5"/>
-        <site name="front_lidar_ray_089" size="0.002" pos="0 -0.235 0.28232" quat="0.34828 0.615387 0.34828 -0.615387" group="5"/>
-        <site name="front_lidar_ray_090" size="0.002" pos="0 -0.235 0.28232" quat="0.353635 0.612326 0.353635 -0.612326" group="5"/>
-        <site name="front_lidar_ray_091" size="0.002" pos="0 -0.235 0.28232" quat="0.358962 0.609218 0.358962 -0.609218" group="5"/>
-        <site name="front_lidar_ray_092" size="0.002" pos="0 -0.235 0.28232" quat="0.364262 0.606064 0.364262 -0.606064" group="5"/>
-        <site name="front_lidar_ray_093" size="0.002" pos="0 -0.235 0.28232" quat="0.369534 0.602864 0.369534 -0.602864" group="5"/>
-        <site name="front_lidar_ray_094" size="0.002" pos="0 -0.235 0.28232" quat="0.374778 0.599617 0.374778 -0.599617" group="5"/>
-        <site name="front_lidar_ray_095" size="0.002" pos="0 -0.235 0.28232" quat="0.379994 0.596326 0.379994 -0.596326" group="5"/>
-        <site name="front_lidar_ray_096" size="0.002" pos="0 -0.235 0.28232" quat="0.385181 0.592989 0.385181 -0.592989" group="5"/>
-        <site name="front_lidar_ray_097" size="0.002" pos="0 -0.235 0.28232" quat="0.390338 0.589607 0.390338 -0.589607" group="5"/>
-        <site name="front_lidar_ray_098" size="0.002" pos="0 -0.235 0.28232" quat="0.395466 0.58618 0.395466 -0.58618" group="5"/>
-        <site name="front_lidar_ray_099" size="0.002" pos="0 -0.235 0.28232" quat="0.400564 0.582708 0.400564 -0.582708" group="5"/>
-        <site name="front_lidar_ray_100" size="0.002" pos="0 -0.235 0.28232" quat="0.405631 0.579192 0.405631 -0.579192" group="5"/>
-        <site name="front_lidar_ray_101" size="0.002" pos="0 -0.235 0.28232" quat="0.410667 0.575632 0.410667 -0.575632" group="5"/>
-        <site name="front_lidar_ray_102" size="0.002" pos="0 -0.235 0.28232" quat="0.415672 0.572028 0.415672 -0.572028" group="5"/>
-        <site name="front_lidar_ray_103" size="0.002" pos="0 -0.235 0.28232" quat="0.420646 0.568381 0.420646 -0.568381" group="5"/>
-        <site name="front_lidar_ray_104" size="0.002" pos="0 -0.235 0.28232" quat="0.425587 0.56469 0.425587 -0.56469" group="5"/>
-        <site name="front_lidar_ray_105" size="0.002" pos="0 -0.235 0.28232" quat="0.430497 0.560957 0.430497 -0.560957" group="5"/>
-        <site name="front_lidar_ray_106" size="0.002" pos="0 -0.235 0.28232" quat="0.435373 0.557181 0.435373 -0.557181" group="5"/>
-        <site name="front_lidar_ray_107" size="0.002" pos="0 -0.235 0.28232" quat="0.440216 0.553362 0.440216 -0.553362" group="5"/>
-        <site name="front_lidar_ray_108" size="0.002" pos="0 -0.235 0.28232" quat="0.445026 0.549502 0.445026 -0.549502" group="5"/>
-        <site name="front_lidar_ray_109" size="0.002" pos="0 -0.235 0.28232" quat="0.449802 0.545599 0.449802 -0.545599" group="5"/>
-        <site name="front_lidar_ray_110" size="0.002" pos="0 -0.235 0.28232" quat="0.454543 0.541655 0.454543 -0.541655" group="5"/>
-        <site name="front_lidar_ray_111" size="0.002" pos="0 -0.235 0.28232" quat="0.459251 0.53767 0.459251 -0.53767" group="5"/>
-        <site name="front_lidar_ray_112" size="0.002" pos="0 -0.235 0.28232" quat="0.463923 0.533644 0.463923 -0.533644" group="5"/>
-        <site name="front_lidar_ray_113" size="0.002" pos="0 -0.235 0.28232" quat="0.46856 0.529577 0.46856 -0.529577" group="5"/>
-        <site name="front_lidar_ray_114" size="0.002" pos="0 -0.235 0.28232" quat="0.473161 0.52547 0.473161 -0.52547" group="5"/>
-        <site name="front_lidar_ray_115" size="0.002" pos="0 -0.235 0.28232" quat="0.477726 0.521323 0.477726 -0.521323" group="5"/>
-        <site name="front_lidar_ray_116" size="0.002" pos="0 -0.235 0.28232" quat="0.482255 0.517137 0.482255 -0.517137" group="5"/>
-        <site name="front_lidar_ray_117" size="0.002" pos="0 -0.235 0.28232" quat="0.486747 0.512911 0.486747 -0.512911" group="5"/>
-        <site name="front_lidar_ray_118" size="0.002" pos="0 -0.235 0.28232" quat="0.491202 0.508646 0.491202 -0.508646" group="5"/>
-        <site name="front_lidar_ray_119" size="0.002" pos="0 -0.235 0.28232" quat="0.49562 0.504342 0.49562 -0.504342" group="5"/>
-        <site name="front_lidar_ray_120" size="0.002" pos="0 -0.235 0.28232" quat="0.5 0.5 0.5 -0.5" group="5"/>
-        <site name="front_lidar_ray_121" size="0.002" pos="0 -0.235 0.28232" quat="0.504342 0.49562 0.504342 -0.49562" group="5"/>
-        <site name="front_lidar_ray_122" size="0.002" pos="0 -0.235 0.28232" quat="0.508646 0.491202 0.508646 -0.491202" group="5"/>
-        <site name="front_lidar_ray_123" size="0.002" pos="0 -0.235 0.28232" quat="0.512911 0.486747 0.512911 -0.486747" group="5"/>
-        <site name="front_lidar_ray_124" size="0.002" pos="0 -0.235 0.28232" quat="0.517137 0.482255 0.517137 -0.482255" group="5"/>
-        <site name="front_lidar_ray_125" size="0.002" pos="0 -0.235 0.28232" quat="0.521323 0.477726 0.521323 -0.477726" group="5"/>
-        <site name="front_lidar_ray_126" size="0.002" pos="0 -0.235 0.28232" quat="0.52547 0.473161 0.52547 -0.473161" group="5"/>
-        <site name="front_lidar_ray_127" size="0.002" pos="0 -0.235 0.28232" quat="0.529577 0.46856 0.529577 -0.46856" group="5"/>
-        <site name="front_lidar_ray_128" size="0.002" pos="0 -0.235 0.28232" quat="0.533644 0.463923 0.533644 -0.463923" group="5"/>
-        <site name="front_lidar_ray_129" size="0.002" pos="0 -0.235 0.28232" quat="0.53767 0.459251 0.53767 -0.459251" group="5"/>
-        <site name="front_lidar_ray_130" size="0.002" pos="0 -0.235 0.28232" quat="0.541655 0.454543 0.541655 -0.454543" group="5"/>
-        <site name="front_lidar_ray_131" size="0.002" pos="0 -0.235 0.28232" quat="0.545599 0.449802 0.545599 -0.449802" group="5"/>
-        <site name="front_lidar_ray_132" size="0.002" pos="0 -0.235 0.28232" quat="0.549502 0.445026 0.549502 -0.445026" group="5"/>
-        <site name="front_lidar_ray_133" size="0.002" pos="0 -0.235 0.28232" quat="0.553362 0.440216 0.553362 -0.440216" group="5"/>
-        <site name="front_lidar_ray_134" size="0.002" pos="0 -0.235 0.28232" quat="0.557181 0.435373 0.557181 -0.435373" group="5"/>
-        <site name="front_lidar_ray_135" size="0.002" pos="0 -0.235 0.28232" quat="0.560957 0.430497 0.560957 -0.430497" group="5"/>
-        <site name="front_lidar_ray_136" size="0.002" pos="0 -0.235 0.28232" quat="0.56469 0.425587 0.56469 -0.425587" group="5"/>
-        <site name="front_lidar_ray_137" size="0.002" pos="0 -0.235 0.28232" quat="0.568381 0.420646 0.568381 -0.420646" group="5"/>
-        <site name="front_lidar_ray_138" size="0.002" pos="0 -0.235 0.28232" quat="0.572028 0.415672 0.572028 -0.415672" group="5"/>
-        <site name="front_lidar_ray_139" size="0.002" pos="0 -0.235 0.28232" quat="0.575632 0.410667 0.575632 -0.410667" group="5"/>
-        <site name="front_lidar_ray_140" size="0.002" pos="0 -0.235 0.28232" quat="0.579192 0.405631 0.579192 -0.405631" group="5"/>
-        <site name="front_lidar_ray_141" size="0.002" pos="0 -0.235 0.28232" quat="0.582708 0.400564 0.582708 -0.400564" group="5"/>
-        <site name="front_lidar_ray_142" size="0.002" pos="0 -0.235 0.28232" quat="0.58618 0.395466 0.58618 -0.395466" group="5"/>
-        <site name="front_lidar_ray_143" size="0.002" pos="0 -0.235 0.28232" quat="0.589607 0.390338 0.589607 -0.390338" group="5"/>
-        <site name="front_lidar_ray_144" size="0.002" pos="0 -0.235 0.28232" quat="0.592989 0.385181 0.592989 -0.385181" group="5"/>
-        <site name="front_lidar_ray_145" size="0.002" pos="0 -0.235 0.28232" quat="0.596326 0.379994 0.596326 -0.379994" group="5"/>
-        <site name="front_lidar_ray_146" size="0.002" pos="0 -0.235 0.28232" quat="0.599617 0.374778 0.599617 -0.374778" group="5"/>
-        <site name="front_lidar_ray_147" size="0.002" pos="0 -0.235 0.28232" quat="0.602864 0.369534 0.602864 -0.369534" group="5"/>
-        <site name="front_lidar_ray_148" size="0.002" pos="0 -0.235 0.28232" quat="0.606064 0.364262 0.606064 -0.364262" group="5"/>
-        <site name="front_lidar_ray_149" size="0.002" pos="0 -0.235 0.28232" quat="0.609218 0.358962 0.609218 -0.358962" group="5"/>
-        <site name="front_lidar_ray_150" size="0.002" pos="0 -0.235 0.28232" quat="0.612326 0.353635 0.612326 -0.353635" group="5"/>
-        <site name="front_lidar_ray_151" size="0.002" pos="0 -0.235 0.28232" quat="0.615387 0.34828 0.615387 -0.34828" group="5"/>
-        <site name="front_lidar_ray_152" size="0.002" pos="0 -0.235 0.28232" quat="0.618401 0.3429 0.618401 -0.3429" group="5"/>
-        <site name="front_lidar_ray_153" size="0.002" pos="0 -0.235 0.28232" quat="0.621368 0.337493 0.621368 -0.337493" group="5"/>
-        <site name="front_lidar_ray_154" size="0.002" pos="0 -0.235 0.28232" quat="0.624288 0.33206 0.624288 -0.33206" group="5"/>
-        <site name="front_lidar_ray_155" size="0.002" pos="0 -0.235 0.28232" quat="0.627161 0.326603 0.627161 -0.326603" group="5"/>
-        <site name="front_lidar_ray_156" size="0.002" pos="0 -0.235 0.28232" quat="0.629986 0.32112 0.629986 -0.32112" group="5"/>
-        <site name="front_lidar_ray_157" size="0.002" pos="0 -0.235 0.28232" quat="0.632763 0.315613 0.632763 -0.315613" group="5"/>
-        <site name="front_lidar_ray_158" size="0.002" pos="0 -0.235 0.28232" quat="0.635491 0.310082 0.635491 -0.310082" group="5"/>
-        <site name="front_lidar_ray_159" size="0.002" pos="0 -0.235 0.28232" quat="0.638172 0.304527 0.638172 -0.304527" group="5"/>
-        <site name="front_lidar_ray_160" size="0.002" pos="0 -0.235 0.28232" quat="0.640803 0.29895 0.640803 -0.29895" group="5"/>
-        <site name="front_lidar_ray_161" size="0.002" pos="0 -0.235 0.28232" quat="0.643387 0.293349 0.643387 -0.293349" group="5"/>
-        <site name="front_lidar_ray_162" size="0.002" pos="0 -0.235 0.28232" quat="0.645921 0.287726 0.645921 -0.287726" group="5"/>
-        <site name="front_lidar_ray_163" size="0.002" pos="0 -0.235 0.28232" quat="0.648406 0.282082 0.648406 -0.282082" group="5"/>
-        <site name="front_lidar_ray_164" size="0.002" pos="0 -0.235 0.28232" quat="0.650841 0.276415 0.650841 -0.276415" group="5"/>
-        <site name="front_lidar_ray_165" size="0.002" pos="0 -0.235 0.28232" quat="0.653228 0.270728 0.653228 -0.270728" group="5"/>
-        <site name="front_lidar_ray_166" size="0.002" pos="0 -0.235 0.28232" quat="0.655564 0.26502 0.655564 -0.26502" group="5"/>
-        <site name="front_lidar_ray_167" size="0.002" pos="0 -0.235 0.28232" quat="0.657851 0.259292 0.657851 -0.259292" group="5"/>
-        <site name="front_lidar_ray_168" size="0.002" pos="0 -0.235 0.28232" quat="0.660087 0.253545 0.660087 -0.253545" group="5"/>
-        <site name="front_lidar_ray_169" size="0.002" pos="0 -0.235 0.28232" quat="0.662274 0.247778 0.662274 -0.247778" group="5"/>
-        <site name="front_lidar_ray_170" size="0.002" pos="0 -0.235 0.28232" quat="0.66441 0.241992 0.66441 -0.241992" group="5"/>
-        <site name="front_lidar_ray_171" size="0.002" pos="0 -0.235 0.28232" quat="0.666495 0.236187 0.666495 -0.236187" group="5"/>
-        <site name="front_lidar_ray_172" size="0.002" pos="0 -0.235 0.28232" quat="0.66853 0.230365 0.66853 -0.230365" group="5"/>
-        <site name="front_lidar_ray_173" size="0.002" pos="0 -0.235 0.28232" quat="0.670513 0.224525 0.670513 -0.224525" group="5"/>
-        <site name="front_lidar_ray_174" size="0.002" pos="0 -0.235 0.28232" quat="0.672446 0.218669 0.672446 -0.218669" group="5"/>
-        <site name="front_lidar_ray_175" size="0.002" pos="0 -0.235 0.28232" quat="0.674328 0.212795 0.674328 -0.212795" group="5"/>
-        <site name="front_lidar_ray_176" size="0.002" pos="0 -0.235 0.28232" quat="0.676158 0.206906 0.676158 -0.206906" group="5"/>
-        <site name="front_lidar_ray_177" size="0.002" pos="0 -0.235 0.28232" quat="0.677937 0.201 0.677937 -0.201" group="5"/>
-        <site name="front_lidar_ray_178" size="0.002" pos="0 -0.235 0.28232" quat="0.679665 0.195079 0.679665 -0.195079" group="5"/>
-        <site name="front_lidar_ray_179" size="0.002" pos="0 -0.235 0.28232" quat="0.68134 0.189144 0.68134 -0.189144" group="5"/>
-        <site name="front_lidar_ray_180" size="0.002" pos="0 -0.235 0.28232" quat="0.682964 0.183194 0.682964 -0.183194" group="5"/>
-        <site name="front_lidar_ray_181" size="0.002" pos="0 -0.235 0.28232" quat="0.684536 0.17723 0.684536 -0.17723" group="5"/>
-        <site name="front_lidar_ray_182" size="0.002" pos="0 -0.235 0.28232" quat="0.686056 0.171253 0.686056 -0.171253" group="5"/>
-        <site name="front_lidar_ray_183" size="0.002" pos="0 -0.235 0.28232" quat="0.687523 0.165262 0.687523 -0.165262" group="5"/>
-        <site name="front_lidar_ray_184" size="0.002" pos="0 -0.235 0.28232" quat="0.688939 0.159259 0.688939 -0.159259" group="5"/>
-        <site name="front_lidar_ray_185" size="0.002" pos="0 -0.235 0.28232" quat="0.690301 0.153244 0.690301 -0.153244" group="5"/>
-        <site name="front_lidar_ray_186" size="0.002" pos="0 -0.235 0.28232" quat="0.691612 0.147218 0.691612 -0.147218" group="5"/>
-        <site name="front_lidar_ray_187" size="0.002" pos="0 -0.235 0.28232" quat="0.69287 0.14118 0.69287 -0.14118" group="5"/>
-        <site name="front_lidar_ray_188" size="0.002" pos="0 -0.235 0.28232" quat="0.694075 0.135131 0.694075 -0.135131" group="5"/>
-        <site name="front_lidar_ray_189" size="0.002" pos="0 -0.235 0.28232" quat="0.695227 0.129072 0.695227 -0.129072" group="5"/>
-        <site name="front_lidar_ray_190" size="0.002" pos="0 -0.235 0.28232" quat="0.696326 0.123003 0.696326 -0.123003" group="5"/>
-        <site name="front_lidar_ray_191" size="0.002" pos="0 -0.235 0.28232" quat="0.697373 0.116925 0.697373 -0.116925" group="5"/>
-        <site name="front_lidar_ray_192" size="0.002" pos="0 -0.235 0.28232" quat="0.698366 0.110838 0.698366 -0.110838" group="5"/>
-        <site name="front_lidar_ray_193" size="0.002" pos="0 -0.235 0.28232" quat="0.699306 0.104743 0.699306 -0.104743" group="5"/>
-        <site name="front_lidar_ray_194" size="0.002" pos="0 -0.235 0.28232" quat="0.700193 0.0986395 0.700193 -0.0986395" group="5"/>
-        <site name="front_lidar_ray_195" size="0.002" pos="0 -0.235 0.28232" quat="0.701027 0.0925286 0.701027 -0.0925286" group="5"/>
-        <site name="front_lidar_ray_196" size="0.002" pos="0 -0.235 0.28232" quat="0.701807 0.0864106 0.701807 -0.0864106" group="5"/>
-        <site name="front_lidar_ray_197" size="0.002" pos="0 -0.235 0.28232" quat="0.702534 0.0802861 0.702534 -0.0802861" group="5"/>
-        <site name="front_lidar_ray_198" size="0.002" pos="0 -0.235 0.28232" quat="0.703208 0.0741554 0.703208 -0.0741554" group="5"/>
-        <site name="front_lidar_ray_199" size="0.002" pos="0 -0.235 0.28232" quat="0.703828 0.0680192 0.703828 -0.0680192" group="5"/>
-        <site name="front_lidar_ray_200" size="0.002" pos="0 -0.235 0.28232" quat="0.704394 0.0618777 0.704394 -0.0618777" group="5"/>
-        <site name="front_lidar_ray_201" size="0.002" pos="0 -0.235 0.28232" quat="0.704907 0.0557316 0.704907 -0.0557316" group="5"/>
-        <site name="front_lidar_ray_202" size="0.002" pos="0 -0.235 0.28232" quat="0.705366 0.0495812 0.705366 -0.0495812" group="5"/>
-        <site name="front_lidar_ray_203" size="0.002" pos="0 -0.235 0.28232" quat="0.705772 0.043427 0.705772 -0.043427" group="5"/>
-        <site name="front_lidar_ray_204" size="0.002" pos="0 -0.235 0.28232" quat="0.706124 0.0372695 0.706124 -0.0372695" group="5"/>
-        <site name="front_lidar_ray_205" size="0.002" pos="0 -0.235 0.28232" quat="0.706422 0.0311092 0.706422 -0.0311092" group="5"/>
-        <site name="front_lidar_ray_206" size="0.002" pos="0 -0.235 0.28232" quat="0.706667 0.0249465 0.706667 -0.0249465" group="5"/>
-        <site name="front_lidar_ray_207" size="0.002" pos="0 -0.235 0.28232" quat="0.706857 0.018782 0.706857 -0.018782" group="5"/>
-        <site name="front_lidar_ray_208" size="0.002" pos="0 -0.235 0.28232" quat="0.706994 0.012616 0.706994 -0.012616" group="5"/>
-        <site name="front_lidar_ray_209" size="0.002" pos="0 -0.235 0.28232" quat="0.707077 0.00644899 0.707077 -0.00644899" group="5"/>
-        <site name="front_lidar_ray_210" size="0.002" pos="0 -0.235 0.28232" quat="0.707107 0.000281535 0.707107 -0.000281535" group="5"/>
-        <site name="front_lidar_ray_211" size="0.002" pos="0 -0.235 0.28232" quat="0.707082 -0.00588594 0.707082 0.00588594" group="5"/>
-        <site name="front_lidar_ray_212" size="0.002" pos="0 -0.235 0.28232" quat="0.707004 -0.012053 0.707004 0.012053" group="5"/>
-        <site name="front_lidar_ray_213" size="0.002" pos="0 -0.235 0.28232" quat="0.706872 -0.0182191 0.706872 0.0182191" group="5"/>
-        <site name="front_lidar_ray_214" size="0.002" pos="0 -0.235 0.28232" quat="0.706686 -0.0243838 0.706686 0.0243838" group="5"/>
-        <site name="front_lidar_ray_215" size="0.002" pos="0 -0.235 0.28232" quat="0.706447 -0.0305467 0.706447 0.0305467" group="5"/>
-        <site name="front_lidar_ray_216" size="0.002" pos="0 -0.235 0.28232" quat="0.706153 -0.0367072 0.706153 0.0367072" group="5"/>
-        <site name="front_lidar_ray_217" size="0.002" pos="0 -0.235 0.28232" quat="0.705806 -0.042865 0.705806 0.042865" group="5"/>
-        <site name="front_lidar_ray_218" size="0.002" pos="0 -0.235 0.28232" quat="0.705406 -0.0490195 0.705406 0.0490195" group="5"/>
-        <site name="front_lidar_ray_219" size="0.002" pos="0 -0.235 0.28232" quat="0.704951 -0.0551702 0.704951 0.0551702" group="5"/>
-        <site name="front_lidar_ray_220" size="0.002" pos="0 -0.235 0.28232" quat="0.704443 -0.0613168 0.704443 0.0613168" group="5"/>
-        <site name="front_lidar_ray_221" size="0.002" pos="0 -0.235 0.28232" quat="0.703882 -0.0674587 0.703882 0.0674587" group="5"/>
-        <site name="front_lidar_ray_222" size="0.002" pos="0 -0.235 0.28232" quat="0.703266 -0.0735955 0.703266 0.0735955" group="5"/>
-        <site name="front_lidar_ray_223" size="0.002" pos="0 -0.235 0.28232" quat="0.702598 -0.0797266 0.702598 0.0797266" group="5"/>
-        <site name="front_lidar_ray_224" size="0.002" pos="0 -0.235 0.28232" quat="0.701876 -0.0858517 0.701876 0.0858517" group="5"/>
-        <site name="front_lidar_ray_225" size="0.002" pos="0 -0.235 0.28232" quat="0.7011 -0.0919703 0.7011 0.0919703" group="5"/>
-        <site name="front_lidar_ray_226" size="0.002" pos="0 -0.235 0.28232" quat="0.700271 -0.0980819 0.700271 0.0980819" group="5"/>
-        <site name="front_lidar_ray_227" size="0.002" pos="0 -0.235 0.28232" quat="0.699389 -0.104186 0.699389 0.104186" group="5"/>
-        <site name="front_lidar_ray_228" size="0.002" pos="0 -0.235 0.28232" quat="0.698454 -0.110282 0.698454 0.110282" group="5"/>
-        <site name="front_lidar_ray_229" size="0.002" pos="0 -0.235 0.28232" quat="0.697465 -0.11637 0.697465 0.11637" group="5"/>
-        <site name="front_lidar_ray_230" size="0.002" pos="0 -0.235 0.28232" quat="0.696424 -0.122449 0.696424 0.122449" group="5"/>
-        <site name="front_lidar_ray_231" size="0.002" pos="0 -0.235 0.28232" quat="0.695329 -0.128519 0.695329 0.128519" group="5"/>
-        <site name="front_lidar_ray_232" size="0.002" pos="0 -0.235 0.28232" quat="0.694182 -0.134578 0.694182 0.134578" group="5"/>
-        <site name="front_lidar_ray_233" size="0.002" pos="0 -0.235 0.28232" quat="0.692982 -0.140628 0.692982 0.140628" group="5"/>
-        <site name="front_lidar_ray_234" size="0.002" pos="0 -0.235 0.28232" quat="0.691729 -0.146667 0.691729 0.146667" group="5"/>
-        <site name="front_lidar_ray_235" size="0.002" pos="0 -0.235 0.28232" quat="0.690423 -0.152695 0.690423 0.152695" group="5"/>
-        <site name="front_lidar_ray_236" size="0.002" pos="0 -0.235 0.28232" quat="0.689065 -0.158711 0.689065 0.158711" group="5"/>
-        <site name="front_lidar_ray_237" size="0.002" pos="0 -0.235 0.28232" quat="0.687655 -0.164715 0.687655 0.164715" group="5"/>
-        <site name="front_lidar_ray_238" size="0.002" pos="0 -0.235 0.28232" quat="0.686192 -0.170706 0.686192 0.170706" group="5"/>
-        <site name="front_lidar_ray_239" size="0.002" pos="0 -0.235 0.28232" quat="0.684677 -0.176685 0.684677 0.176685" group="5"/>
-        <site name="front_lidar_ray_240" size="0.002" pos="0 -0.235 0.28232" quat="0.68311 -0.18265 0.68311 0.18265" group="5"/>
-        <site name="back_lidar_ray_000" size="0.002" pos="0 0.235 0.28232" quat="0.68311 0.18265 0.68311 -0.18265" group="5"/>
-        <site name="back_lidar_ray_001" size="0.002" pos="0 0.235 0.28232" quat="0.684677 0.176685 0.684677 -0.176685" group="5"/>
-        <site name="back_lidar_ray_002" size="0.002" pos="0 0.235 0.28232" quat="0.686192 0.170706 0.686192 -0.170706" group="5"/>
-        <site name="back_lidar_ray_003" size="0.002" pos="0 0.235 0.28232" quat="0.687655 0.164715 0.687655 -0.164715" group="5"/>
-        <site name="back_lidar_ray_004" size="0.002" pos="0 0.235 0.28232" quat="0.689065 0.158711 0.689065 -0.158711" group="5"/>
-        <site name="back_lidar_ray_005" size="0.002" pos="0 0.235 0.28232" quat="0.690423 0.152695 0.690423 -0.152695" group="5"/>
-        <site name="back_lidar_ray_006" size="0.002" pos="0 0.235 0.28232" quat="0.691729 0.146667 0.691729 -0.146667" group="5"/>
-        <site name="back_lidar_ray_007" size="0.002" pos="0 0.235 0.28232" quat="0.692982 0.140628 0.692982 -0.140628" group="5"/>
-        <site name="back_lidar_ray_008" size="0.002" pos="0 0.235 0.28232" quat="0.694182 0.134578 0.694182 -0.134578" group="5"/>
-        <site name="back_lidar_ray_009" size="0.002" pos="0 0.235 0.28232" quat="0.695329 0.128519 0.695329 -0.128519" group="5"/>
-        <site name="back_lidar_ray_010" size="0.002" pos="0 0.235 0.28232" quat="0.696424 0.122449 0.696424 -0.122449" group="5"/>
-        <site name="back_lidar_ray_011" size="0.002" pos="0 0.235 0.28232" quat="0.697465 0.11637 0.697465 -0.11637" group="5"/>
-        <site name="back_lidar_ray_012" size="0.002" pos="0 0.235 0.28232" quat="0.698454 0.110282 0.698454 -0.110282" group="5"/>
-        <site name="back_lidar_ray_013" size="0.002" pos="0 0.235 0.28232" quat="0.699389 0.104186 0.699389 -0.104186" group="5"/>
-        <site name="back_lidar_ray_014" size="0.002" pos="0 0.235 0.28232" quat="0.700271 0.0980819 0.700271 -0.0980819" group="5"/>
-        <site name="back_lidar_ray_015" size="0.002" pos="0 0.235 0.28232" quat="0.7011 0.0919703 0.7011 -0.0919703" group="5"/>
-        <site name="back_lidar_ray_016" size="0.002" pos="0 0.235 0.28232" quat="0.701876 0.0858517 0.701876 -0.0858517" group="5"/>
-        <site name="back_lidar_ray_017" size="0.002" pos="0 0.235 0.28232" quat="0.702598 0.0797266 0.702598 -0.0797266" group="5"/>
-        <site name="back_lidar_ray_018" size="0.002" pos="0 0.235 0.28232" quat="0.703266 0.0735955 0.703266 -0.0735955" group="5"/>
-        <site name="back_lidar_ray_019" size="0.002" pos="0 0.235 0.28232" quat="0.703882 0.0674587 0.703882 -0.0674587" group="5"/>
-        <site name="back_lidar_ray_020" size="0.002" pos="0 0.235 0.28232" quat="0.704443 0.0613168 0.704443 -0.0613168" group="5"/>
-        <site name="back_lidar_ray_021" size="0.002" pos="0 0.235 0.28232" quat="0.704951 0.0551702 0.704951 -0.0551702" group="5"/>
-        <site name="back_lidar_ray_022" size="0.002" pos="0 0.235 0.28232" quat="0.705406 0.0490195 0.705406 -0.0490195" group="5"/>
-        <site name="back_lidar_ray_023" size="0.002" pos="0 0.235 0.28232" quat="0.705806 0.042865 0.705806 -0.042865" group="5"/>
-        <site name="back_lidar_ray_024" size="0.002" pos="0 0.235 0.28232" quat="0.706153 0.0367072 0.706153 -0.0367072" group="5"/>
-        <site name="back_lidar_ray_025" size="0.002" pos="0 0.235 0.28232" quat="0.706447 0.0305467 0.706447 -0.0305467" group="5"/>
-        <site name="back_lidar_ray_026" size="0.002" pos="0 0.235 0.28232" quat="0.706686 0.0243838 0.706686 -0.0243838" group="5"/>
-        <site name="back_lidar_ray_027" size="0.002" pos="0 0.235 0.28232" quat="0.706872 0.0182191 0.706872 -0.0182191" group="5"/>
-        <site name="back_lidar_ray_028" size="0.002" pos="0 0.235 0.28232" quat="0.707004 0.012053 0.707004 -0.012053" group="5"/>
-        <site name="back_lidar_ray_029" size="0.002" pos="0 0.235 0.28232" quat="0.707082 0.00588594 0.707082 -0.00588594" group="5"/>
-        <site name="back_lidar_ray_030" size="0.002" pos="0 0.235 0.28232" quat="0.707107 -0.000281535 0.707107 0.000281535" group="5"/>
-        <site name="back_lidar_ray_031" size="0.002" pos="0 0.235 0.28232" quat="0.707077 -0.00644899 0.707077 0.00644899" group="5"/>
-        <site name="back_lidar_ray_032" size="0.002" pos="0 0.235 0.28232" quat="0.706994 -0.012616 0.706994 0.012616" group="5"/>
-        <site name="back_lidar_ray_033" size="0.002" pos="0 0.235 0.28232" quat="0.706857 -0.018782 0.706857 0.018782" group="5"/>
-        <site name="back_lidar_ray_034" size="0.002" pos="0 0.235 0.28232" quat="0.706667 -0.0249465 0.706667 0.0249465" group="5"/>
-        <site name="back_lidar_ray_035" size="0.002" pos="0 0.235 0.28232" quat="0.706422 -0.0311092 0.706422 0.0311092" group="5"/>
-        <site name="back_lidar_ray_036" size="0.002" pos="0 0.235 0.28232" quat="0.706124 -0.0372695 0.706124 0.0372695" group="5"/>
-        <site name="back_lidar_ray_037" size="0.002" pos="0 0.235 0.28232" quat="0.705772 -0.043427 0.705772 0.043427" group="5"/>
-        <site name="back_lidar_ray_038" size="0.002" pos="0 0.235 0.28232" quat="0.705366 -0.0495812 0.705366 0.0495812" group="5"/>
-        <site name="back_lidar_ray_039" size="0.002" pos="0 0.235 0.28232" quat="0.704907 -0.0557316 0.704907 0.0557316" group="5"/>
-        <site name="back_lidar_ray_040" size="0.002" pos="0 0.235 0.28232" quat="0.704394 -0.0618777 0.704394 0.0618777" group="5"/>
-        <site name="back_lidar_ray_041" size="0.002" pos="0 0.235 0.28232" quat="0.703828 -0.0680192 0.703828 0.0680192" group="5"/>
-        <site name="back_lidar_ray_042" size="0.002" pos="0 0.235 0.28232" quat="0.703208 -0.0741554 0.703208 0.0741554" group="5"/>
-        <site name="back_lidar_ray_043" size="0.002" pos="0 0.235 0.28232" quat="0.702534 -0.0802861 0.702534 0.0802861" group="5"/>
-        <site name="back_lidar_ray_044" size="0.002" pos="0 0.235 0.28232" quat="0.701807 -0.0864106 0.701807 0.0864106" group="5"/>
-        <site name="back_lidar_ray_045" size="0.002" pos="0 0.235 0.28232" quat="0.701027 -0.0925286 0.701027 0.0925286" group="5"/>
-        <site name="back_lidar_ray_046" size="0.002" pos="0 0.235 0.28232" quat="0.700193 -0.0986395 0.700193 0.0986395" group="5"/>
-        <site name="back_lidar_ray_047" size="0.002" pos="0 0.235 0.28232" quat="0.699306 -0.104743 0.699306 0.104743" group="5"/>
-        <site name="back_lidar_ray_048" size="0.002" pos="0 0.235 0.28232" quat="0.698366 -0.110838 0.698366 0.110838" group="5"/>
-        <site name="back_lidar_ray_049" size="0.002" pos="0 0.235 0.28232" quat="0.697373 -0.116925 0.697373 0.116925" group="5"/>
-        <site name="back_lidar_ray_050" size="0.002" pos="0 0.235 0.28232" quat="0.696326 -0.123003 0.696326 0.123003" group="5"/>
-        <site name="back_lidar_ray_051" size="0.002" pos="0 0.235 0.28232" quat="0.695227 -0.129072 0.695227 0.129072" group="5"/>
-        <site name="back_lidar_ray_052" size="0.002" pos="0 0.235 0.28232" quat="0.694075 -0.135131 0.694075 0.135131" group="5"/>
-        <site name="back_lidar_ray_053" size="0.002" pos="0 0.235 0.28232" quat="0.69287 -0.14118 0.69287 0.14118" group="5"/>
-        <site name="back_lidar_ray_054" size="0.002" pos="0 0.235 0.28232" quat="0.691612 -0.147218 0.691612 0.147218" group="5"/>
-        <site name="back_lidar_ray_055" size="0.002" pos="0 0.235 0.28232" quat="0.690301 -0.153244 0.690301 0.153244" group="5"/>
-        <site name="back_lidar_ray_056" size="0.002" pos="0 0.235 0.28232" quat="0.688939 -0.159259 0.688939 0.159259" group="5"/>
-        <site name="back_lidar_ray_057" size="0.002" pos="0 0.235 0.28232" quat="0.687523 -0.165262 0.687523 0.165262" group="5"/>
-        <site name="back_lidar_ray_058" size="0.002" pos="0 0.235 0.28232" quat="0.686056 -0.171253 0.686056 0.171253" group="5"/>
-        <site name="back_lidar_ray_059" size="0.002" pos="0 0.235 0.28232" quat="0.684536 -0.17723 0.684536 0.17723" group="5"/>
-        <site name="back_lidar_ray_060" size="0.002" pos="0 0.235 0.28232" quat="0.682964 -0.183194 0.682964 0.183194" group="5"/>
-        <site name="back_lidar_ray_061" size="0.002" pos="0 0.235 0.28232" quat="0.68134 -0.189144 0.68134 0.189144" group="5"/>
-        <site name="back_lidar_ray_062" size="0.002" pos="0 0.235 0.28232" quat="0.679665 -0.195079 0.679665 0.195079" group="5"/>
-        <site name="back_lidar_ray_063" size="0.002" pos="0 0.235 0.28232" quat="0.677937 -0.201 0.677937 0.201" group="5"/>
-        <site name="back_lidar_ray_064" size="0.002" pos="0 0.235 0.28232" quat="0.676158 -0.206906 0.676158 0.206906" group="5"/>
-        <site name="back_lidar_ray_065" size="0.002" pos="0 0.235 0.28232" quat="0.674328 -0.212795 0.674328 0.212795" group="5"/>
-        <site name="back_lidar_ray_066" size="0.002" pos="0 0.235 0.28232" quat="0.672446 -0.218669 0.672446 0.218669" group="5"/>
-        <site name="back_lidar_ray_067" size="0.002" pos="0 0.235 0.28232" quat="0.670513 -0.224525 0.670513 0.224525" group="5"/>
-        <site name="back_lidar_ray_068" size="0.002" pos="0 0.235 0.28232" quat="0.66853 -0.230365 0.66853 0.230365" group="5"/>
-        <site name="back_lidar_ray_069" size="0.002" pos="0 0.235 0.28232" quat="0.666495 -0.236187 0.666495 0.236187" group="5"/>
-        <site name="back_lidar_ray_070" size="0.002" pos="0 0.235 0.28232" quat="0.66441 -0.241992 0.66441 0.241992" group="5"/>
-        <site name="back_lidar_ray_071" size="0.002" pos="0 0.235 0.28232" quat="0.662274 -0.247778 0.662274 0.247778" group="5"/>
-        <site name="back_lidar_ray_072" size="0.002" pos="0 0.235 0.28232" quat="0.660087 -0.253545 0.660087 0.253545" group="5"/>
-        <site name="back_lidar_ray_073" size="0.002" pos="0 0.235 0.28232" quat="0.657851 -0.259292 0.657851 0.259292" group="5"/>
-        <site name="back_lidar_ray_074" size="0.002" pos="0 0.235 0.28232" quat="0.655564 -0.26502 0.655564 0.26502" group="5"/>
-        <site name="back_lidar_ray_075" size="0.002" pos="0 0.235 0.28232" quat="0.653228 -0.270728 0.653228 0.270728" group="5"/>
-        <site name="back_lidar_ray_076" size="0.002" pos="0 0.235 0.28232" quat="0.650841 -0.276415 0.650841 0.276415" group="5"/>
-        <site name="back_lidar_ray_077" size="0.002" pos="0 0.235 0.28232" quat="0.648406 -0.282082 0.648406 0.282082" group="5"/>
-        <site name="back_lidar_ray_078" size="0.002" pos="0 0.235 0.28232" quat="0.645921 -0.287726 0.645921 0.287726" group="5"/>
-        <site name="back_lidar_ray_079" size="0.002" pos="0 0.235 0.28232" quat="0.643387 -0.293349 0.643387 0.293349" group="5"/>
-        <site name="back_lidar_ray_080" size="0.002" pos="0 0.235 0.28232" quat="0.640803 -0.29895 0.640803 0.29895" group="5"/>
-        <site name="back_lidar_ray_081" size="0.002" pos="0 0.235 0.28232" quat="0.638172 -0.304527 0.638172 0.304527" group="5"/>
-        <site name="back_lidar_ray_082" size="0.002" pos="0 0.235 0.28232" quat="0.635491 -0.310082 0.635491 0.310082" group="5"/>
-        <site name="back_lidar_ray_083" size="0.002" pos="0 0.235 0.28232" quat="0.632763 -0.315613 0.632763 0.315613" group="5"/>
-        <site name="back_lidar_ray_084" size="0.002" pos="0 0.235 0.28232" quat="0.629986 -0.32112 0.629986 0.32112" group="5"/>
-        <site name="back_lidar_ray_085" size="0.002" pos="0 0.235 0.28232" quat="0.627161 -0.326603 0.627161 0.326603" group="5"/>
-        <site name="back_lidar_ray_086" size="0.002" pos="0 0.235 0.28232" quat="0.624288 -0.33206 0.624288 0.33206" group="5"/>
-        <site name="back_lidar_ray_087" size="0.002" pos="0 0.235 0.28232" quat="0.621368 -0.337493 0.621368 0.337493" group="5"/>
-        <site name="back_lidar_ray_088" size="0.002" pos="0 0.235 0.28232" quat="0.618401 -0.3429 0.618401 0.3429" group="5"/>
-        <site name="back_lidar_ray_089" size="0.002" pos="0 0.235 0.28232" quat="0.615387 -0.34828 0.615387 0.34828" group="5"/>
-        <site name="back_lidar_ray_090" size="0.002" pos="0 0.235 0.28232" quat="0.612326 -0.353635 0.612326 0.353635" group="5"/>
-        <site name="back_lidar_ray_091" size="0.002" pos="0 0.235 0.28232" quat="0.609218 -0.358962 0.609218 0.358962" group="5"/>
-        <site name="back_lidar_ray_092" size="0.002" pos="0 0.235 0.28232" quat="0.606064 -0.364262 0.606064 0.364262" group="5"/>
-        <site name="back_lidar_ray_093" size="0.002" pos="0 0.235 0.28232" quat="0.602864 -0.369534 0.602864 0.369534" group="5"/>
-        <site name="back_lidar_ray_094" size="0.002" pos="0 0.235 0.28232" quat="0.599617 -0.374778 0.599617 0.374778" group="5"/>
-        <site name="back_lidar_ray_095" size="0.002" pos="0 0.235 0.28232" quat="0.596326 -0.379994 0.596326 0.379994" group="5"/>
-        <site name="back_lidar_ray_096" size="0.002" pos="0 0.235 0.28232" quat="0.592989 -0.385181 0.592989 0.385181" group="5"/>
-        <site name="back_lidar_ray_097" size="0.002" pos="0 0.235 0.28232" quat="0.589607 -0.390338 0.589607 0.390338" group="5"/>
-        <site name="back_lidar_ray_098" size="0.002" pos="0 0.235 0.28232" quat="0.58618 -0.395466 0.58618 0.395466" group="5"/>
-        <site name="back_lidar_ray_099" size="0.002" pos="0 0.235 0.28232" quat="0.582708 -0.400564 0.582708 0.400564" group="5"/>
-        <site name="back_lidar_ray_100" size="0.002" pos="0 0.235 0.28232" quat="0.579192 -0.405631 0.579192 0.405631" group="5"/>
-        <site name="back_lidar_ray_101" size="0.002" pos="0 0.235 0.28232" quat="0.575632 -0.410667 0.575632 0.410667" group="5"/>
-        <site name="back_lidar_ray_102" size="0.002" pos="0 0.235 0.28232" quat="0.572028 -0.415672 0.572028 0.415672" group="5"/>
-        <site name="back_lidar_ray_103" size="0.002" pos="0 0.235 0.28232" quat="0.568381 -0.420646 0.568381 0.420646" group="5"/>
-        <site name="back_lidar_ray_104" size="0.002" pos="0 0.235 0.28232" quat="0.56469 -0.425587 0.56469 0.425587" group="5"/>
-        <site name="back_lidar_ray_105" size="0.002" pos="0 0.235 0.28232" quat="0.560957 -0.430497 0.560957 0.430497" group="5"/>
-        <site name="back_lidar_ray_106" size="0.002" pos="0 0.235 0.28232" quat="0.557181 -0.435373 0.557181 0.435373" group="5"/>
-        <site name="back_lidar_ray_107" size="0.002" pos="0 0.235 0.28232" quat="0.553362 -0.440216 0.553362 0.440216" group="5"/>
-        <site name="back_lidar_ray_108" size="0.002" pos="0 0.235 0.28232" quat="0.549502 -0.445026 0.549502 0.445026" group="5"/>
-        <site name="back_lidar_ray_109" size="0.002" pos="0 0.235 0.28232" quat="0.545599 -0.449802 0.545599 0.449802" group="5"/>
-        <site name="back_lidar_ray_110" size="0.002" pos="0 0.235 0.28232" quat="0.541655 -0.454543 0.541655 0.454543" group="5"/>
-        <site name="back_lidar_ray_111" size="0.002" pos="0 0.235 0.28232" quat="0.53767 -0.459251 0.53767 0.459251" group="5"/>
-        <site name="back_lidar_ray_112" size="0.002" pos="0 0.235 0.28232" quat="0.533644 -0.463923 0.533644 0.463923" group="5"/>
-        <site name="back_lidar_ray_113" size="0.002" pos="0 0.235 0.28232" quat="0.529577 -0.46856 0.529577 0.46856" group="5"/>
-        <site name="back_lidar_ray_114" size="0.002" pos="0 0.235 0.28232" quat="0.52547 -0.473161 0.52547 0.473161" group="5"/>
-        <site name="back_lidar_ray_115" size="0.002" pos="0 0.235 0.28232" quat="0.521323 -0.477726 0.521323 0.477726" group="5"/>
-        <site name="back_lidar_ray_116" size="0.002" pos="0 0.235 0.28232" quat="0.517137 -0.482255 0.517137 0.482255" group="5"/>
-        <site name="back_lidar_ray_117" size="0.002" pos="0 0.235 0.28232" quat="0.512911 -0.486747 0.512911 0.486747" group="5"/>
-        <site name="back_lidar_ray_118" size="0.002" pos="0 0.235 0.28232" quat="0.508646 -0.491202 0.508646 0.491202" group="5"/>
-        <site name="back_lidar_ray_119" size="0.002" pos="0 0.235 0.28232" quat="0.504342 -0.49562 0.504342 0.49562" group="5"/>
-        <site name="back_lidar_ray_120" size="0.002" pos="0 0.235 0.28232" quat="0.5 -0.5 0.5 0.5" group="5"/>
-        <site name="back_lidar_ray_121" size="0.002" pos="0 0.235 0.28232" quat="0.49562 -0.504342 0.49562 0.504342" group="5"/>
-        <site name="back_lidar_ray_122" size="0.002" pos="0 0.235 0.28232" quat="0.491202 -0.508646 0.491202 0.508646" group="5"/>
-        <site name="back_lidar_ray_123" size="0.002" pos="0 0.235 0.28232" quat="0.486747 -0.512911 0.486747 0.512911" group="5"/>
-        <site name="back_lidar_ray_124" size="0.002" pos="0 0.235 0.28232" quat="0.482255 -0.517137 0.482255 0.517137" group="5"/>
-        <site name="back_lidar_ray_125" size="0.002" pos="0 0.235 0.28232" quat="0.477726 -0.521323 0.477726 0.521323" group="5"/>
-        <site name="back_lidar_ray_126" size="0.002" pos="0 0.235 0.28232" quat="0.473161 -0.52547 0.473161 0.52547" group="5"/>
-        <site name="back_lidar_ray_127" size="0.002" pos="0 0.235 0.28232" quat="0.46856 -0.529577 0.46856 0.529577" group="5"/>
-        <site name="back_lidar_ray_128" size="0.002" pos="0 0.235 0.28232" quat="0.463923 -0.533644 0.463923 0.533644" group="5"/>
-        <site name="back_lidar_ray_129" size="0.002" pos="0 0.235 0.28232" quat="0.459251 -0.53767 0.459251 0.53767" group="5"/>
-        <site name="back_lidar_ray_130" size="0.002" pos="0 0.235 0.28232" quat="0.454543 -0.541655 0.454543 0.541655" group="5"/>
-        <site name="back_lidar_ray_131" size="0.002" pos="0 0.235 0.28232" quat="0.449802 -0.545599 0.449802 0.545599" group="5"/>
-        <site name="back_lidar_ray_132" size="0.002" pos="0 0.235 0.28232" quat="0.445026 -0.549502 0.445026 0.549502" group="5"/>
-        <site name="back_lidar_ray_133" size="0.002" pos="0 0.235 0.28232" quat="0.440216 -0.553362 0.440216 0.553362" group="5"/>
-        <site name="back_lidar_ray_134" size="0.002" pos="0 0.235 0.28232" quat="0.435373 -0.557181 0.435373 0.557181" group="5"/>
-        <site name="back_lidar_ray_135" size="0.002" pos="0 0.235 0.28232" quat="0.430497 -0.560957 0.430497 0.560957" group="5"/>
-        <site name="back_lidar_ray_136" size="0.002" pos="0 0.235 0.28232" quat="0.425587 -0.56469 0.425587 0.56469" group="5"/>
-        <site name="back_lidar_ray_137" size="0.002" pos="0 0.235 0.28232" quat="0.420646 -0.568381 0.420646 0.568381" group="5"/>
-        <site name="back_lidar_ray_138" size="0.002" pos="0 0.235 0.28232" quat="0.415672 -0.572028 0.415672 0.572028" group="5"/>
-        <site name="back_lidar_ray_139" size="0.002" pos="0 0.235 0.28232" quat="0.410667 -0.575632 0.410667 0.575632" group="5"/>
-        <site name="back_lidar_ray_140" size="0.002" pos="0 0.235 0.28232" quat="0.405631 -0.579192 0.405631 0.579192" group="5"/>
-        <site name="back_lidar_ray_141" size="0.002" pos="0 0.235 0.28232" quat="0.400564 -0.582708 0.400564 0.582708" group="5"/>
-        <site name="back_lidar_ray_142" size="0.002" pos="0 0.235 0.28232" quat="0.395466 -0.58618 0.395466 0.58618" group="5"/>
-        <site name="back_lidar_ray_143" size="0.002" pos="0 0.235 0.28232" quat="0.390338 -0.589607 0.390338 0.589607" group="5"/>
-        <site name="back_lidar_ray_144" size="0.002" pos="0 0.235 0.28232" quat="0.385181 -0.592989 0.385181 0.592989" group="5"/>
-        <site name="back_lidar_ray_145" size="0.002" pos="0 0.235 0.28232" quat="0.379994 -0.596326 0.379994 0.596326" group="5"/>
-        <site name="back_lidar_ray_146" size="0.002" pos="0 0.235 0.28232" quat="0.374778 -0.599617 0.374778 0.599617" group="5"/>
-        <site name="back_lidar_ray_147" size="0.002" pos="0 0.235 0.28232" quat="0.369534 -0.602864 0.369534 0.602864" group="5"/>
-        <site name="back_lidar_ray_148" size="0.002" pos="0 0.235 0.28232" quat="0.364262 -0.606064 0.364262 0.606064" group="5"/>
-        <site name="back_lidar_ray_149" size="0.002" pos="0 0.235 0.28232" quat="0.358962 -0.609218 0.358962 0.609218" group="5"/>
-        <site name="back_lidar_ray_150" size="0.002" pos="0 0.235 0.28232" quat="0.353635 -0.612326 0.353635 0.612326" group="5"/>
-        <site name="back_lidar_ray_151" size="0.002" pos="0 0.235 0.28232" quat="0.34828 -0.615387 0.34828 0.615387" group="5"/>
-        <site name="back_lidar_ray_152" size="0.002" pos="0 0.235 0.28232" quat="0.3429 -0.618401 0.3429 0.618401" group="5"/>
-        <site name="back_lidar_ray_153" size="0.002" pos="0 0.235 0.28232" quat="0.337493 -0.621368 0.337493 0.621368" group="5"/>
-        <site name="back_lidar_ray_154" size="0.002" pos="0 0.235 0.28232" quat="0.33206 -0.624288 0.33206 0.624288" group="5"/>
-        <site name="back_lidar_ray_155" size="0.002" pos="0 0.235 0.28232" quat="0.326603 -0.627161 0.326603 0.627161" group="5"/>
-        <site name="back_lidar_ray_156" size="0.002" pos="0 0.235 0.28232" quat="0.32112 -0.629986 0.32112 0.629986" group="5"/>
-        <site name="back_lidar_ray_157" size="0.002" pos="0 0.235 0.28232" quat="0.315613 -0.632762 0.315613 0.632762" group="5"/>
-        <site name="back_lidar_ray_158" size="0.002" pos="0 0.235 0.28232" quat="0.310082 -0.635491 0.310082 0.635491" group="5"/>
-        <site name="back_lidar_ray_159" size="0.002" pos="0 0.235 0.28232" quat="0.304527 -0.638172 0.304527 0.638172" group="5"/>
-        <site name="back_lidar_ray_160" size="0.002" pos="0 0.235 0.28232" quat="0.29895 -0.640803 0.29895 0.640803" group="5"/>
-        <site name="back_lidar_ray_161" size="0.002" pos="0 0.235 0.28232" quat="0.293349 -0.643387 0.293349 0.643387" group="5"/>
-        <site name="back_lidar_ray_162" size="0.002" pos="0 0.235 0.28232" quat="0.287726 -0.645921 0.287726 0.645921" group="5"/>
-        <site name="back_lidar_ray_163" size="0.002" pos="0 0.235 0.28232" quat="0.282082 -0.648406 0.282082 0.648406" group="5"/>
-        <site name="back_lidar_ray_164" size="0.002" pos="0 0.235 0.28232" quat="0.276415 -0.650841 0.276415 0.650841" group="5"/>
-        <site name="back_lidar_ray_165" size="0.002" pos="0 0.235 0.28232" quat="0.270728 -0.653228 0.270728 0.653228" group="5"/>
-        <site name="back_lidar_ray_166" size="0.002" pos="0 0.235 0.28232" quat="0.26502 -0.655564 0.26502 0.655564" group="5"/>
-        <site name="back_lidar_ray_167" size="0.002" pos="0 0.235 0.28232" quat="0.259292 -0.657851 0.259292 0.657851" group="5"/>
-        <site name="back_lidar_ray_168" size="0.002" pos="0 0.235 0.28232" quat="0.253545 -0.660087 0.253545 0.660087" group="5"/>
-        <site name="back_lidar_ray_169" size="0.002" pos="0 0.235 0.28232" quat="0.247778 -0.662274 0.247778 0.662274" group="5"/>
-        <site name="back_lidar_ray_170" size="0.002" pos="0 0.235 0.28232" quat="0.241992 -0.66441 0.241992 0.66441" group="5"/>
-        <site name="back_lidar_ray_171" size="0.002" pos="0 0.235 0.28232" quat="0.236187 -0.666495 0.236187 0.666495" group="5"/>
-        <site name="back_lidar_ray_172" size="0.002" pos="0 0.235 0.28232" quat="0.230365 -0.66853 0.230365 0.66853" group="5"/>
-        <site name="back_lidar_ray_173" size="0.002" pos="0 0.235 0.28232" quat="0.224526 -0.670513 0.224526 0.670513" group="5"/>
-        <site name="back_lidar_ray_174" size="0.002" pos="0 0.235 0.28232" quat="0.218669 -0.672446 0.218669 0.672446" group="5"/>
-        <site name="back_lidar_ray_175" size="0.002" pos="0 0.235 0.28232" quat="0.212795 -0.674328 0.212795 0.674328" group="5"/>
-        <site name="back_lidar_ray_176" size="0.002" pos="0 0.235 0.28232" quat="0.206906 -0.676158 0.206906 0.676158" group="5"/>
-        <site name="back_lidar_ray_177" size="0.002" pos="0 0.235 0.28232" quat="0.201 -0.677937 0.201 0.677937" group="5"/>
-        <site name="back_lidar_ray_178" size="0.002" pos="0 0.235 0.28232" quat="0.195079 -0.679665 0.195079 0.679665" group="5"/>
-        <site name="back_lidar_ray_179" size="0.002" pos="0 0.235 0.28232" quat="0.189144 -0.68134 0.189144 0.68134" group="5"/>
-        <site name="back_lidar_ray_180" size="0.002" pos="0 0.235 0.28232" quat="0.183194 -0.682964 0.183194 0.682964" group="5"/>
-        <site name="back_lidar_ray_181" size="0.002" pos="0 0.235 0.28232" quat="0.17723 -0.684536 0.17723 0.684536" group="5"/>
-        <site name="back_lidar_ray_182" size="0.002" pos="0 0.235 0.28232" quat="0.171253 -0.686056 0.171253 0.686056" group="5"/>
-        <site name="back_lidar_ray_183" size="0.002" pos="0 0.235 0.28232" quat="0.165262 -0.687523 0.165262 0.687523" group="5"/>
-        <site name="back_lidar_ray_184" size="0.002" pos="0 0.235 0.28232" quat="0.159259 -0.688939 0.159259 0.688939" group="5"/>
-        <site name="back_lidar_ray_185" size="0.002" pos="0 0.235 0.28232" quat="0.153244 -0.690301 0.153244 0.690301" group="5"/>
-        <site name="back_lidar_ray_186" size="0.002" pos="0 0.235 0.28232" quat="0.147218 -0.691612 0.147218 0.691612" group="5"/>
-        <site name="back_lidar_ray_187" size="0.002" pos="0 0.235 0.28232" quat="0.14118 -0.69287 0.14118 0.69287" group="5"/>
-        <site name="back_lidar_ray_188" size="0.002" pos="0 0.235 0.28232" quat="0.135131 -0.694075 0.135131 0.694075" group="5"/>
-        <site name="back_lidar_ray_189" size="0.002" pos="0 0.235 0.28232" quat="0.129072 -0.695227 0.129072 0.695227" group="5"/>
-        <site name="back_lidar_ray_190" size="0.002" pos="0 0.235 0.28232" quat="0.123003 -0.696326 0.123003 0.696326" group="5"/>
-        <site name="back_lidar_ray_191" size="0.002" pos="0 0.235 0.28232" quat="0.116925 -0.697373 0.116925 0.697373" group="5"/>
-        <site name="back_lidar_ray_192" size="0.002" pos="0 0.235 0.28232" quat="0.110838 -0.698366 0.110838 0.698366" group="5"/>
-        <site name="back_lidar_ray_193" size="0.002" pos="0 0.235 0.28232" quat="0.104743 -0.699306 0.104743 0.699306" group="5"/>
-        <site name="back_lidar_ray_194" size="0.002" pos="0 0.235 0.28232" quat="0.0986395 -0.700193 0.0986395 0.700193" group="5"/>
-        <site name="back_lidar_ray_195" size="0.002" pos="0 0.235 0.28232" quat="0.0925286 -0.701027 0.0925286 0.701027" group="5"/>
-        <site name="back_lidar_ray_196" size="0.002" pos="0 0.235 0.28232" quat="0.0864106 -0.701807 0.0864106 0.701807" group="5"/>
-        <site name="back_lidar_ray_197" size="0.002" pos="0 0.235 0.28232" quat="0.0802861 -0.702534 0.0802861 0.702534" group="5"/>
-        <site name="back_lidar_ray_198" size="0.002" pos="0 0.235 0.28232" quat="0.0741555 -0.703208 0.0741555 0.703208" group="5"/>
-        <site name="back_lidar_ray_199" size="0.002" pos="0 0.235 0.28232" quat="0.0680192 -0.703828 0.0680192 0.703828" group="5"/>
-        <site name="back_lidar_ray_200" size="0.002" pos="0 0.235 0.28232" quat="0.0618777 -0.704394 0.0618777 0.704394" group="5"/>
-        <site name="back_lidar_ray_201" size="0.002" pos="0 0.235 0.28232" quat="0.0557316 -0.704907 0.0557316 0.704907" group="5"/>
-        <site name="back_lidar_ray_202" size="0.002" pos="0 0.235 0.28232" quat="0.0495812 -0.705366 0.0495812 0.705366" group="5"/>
-        <site name="back_lidar_ray_203" size="0.002" pos="0 0.235 0.28232" quat="0.043427 -0.705772 0.043427 0.705772" group="5"/>
-        <site name="back_lidar_ray_204" size="0.002" pos="0 0.235 0.28232" quat="0.0372695 -0.706124 0.0372695 0.706124" group="5"/>
-        <site name="back_lidar_ray_205" size="0.002" pos="0 0.235 0.28232" quat="0.0311092 -0.706422 0.0311092 0.706422" group="5"/>
-        <site name="back_lidar_ray_206" size="0.002" pos="0 0.235 0.28232" quat="0.0249465 -0.706667 0.0249465 0.706667" group="5"/>
-        <site name="back_lidar_ray_207" size="0.002" pos="0 0.235 0.28232" quat="0.018782 -0.706857 0.018782 0.706857" group="5"/>
-        <site name="back_lidar_ray_208" size="0.002" pos="0 0.235 0.28232" quat="0.012616 -0.706994 0.012616 0.706994" group="5"/>
-        <site name="back_lidar_ray_209" size="0.002" pos="0 0.235 0.28232" quat="0.00644901 -0.707077 0.00644901 0.707077" group="5"/>
-        <site name="back_lidar_ray_210" size="0.002" pos="0 0.235 0.28232" quat="0.000281554 -0.707107 0.000281554 0.707107" group="5"/>
-        <site name="back_lidar_ray_211" size="0.002" pos="0 0.235 0.28232" quat="-0.00588592 -0.707082 -0.00588592 0.707082" group="5"/>
-        <site name="back_lidar_ray_212" size="0.002" pos="0 0.235 0.28232" quat="-0.0120529 -0.707004 -0.0120529 0.707004" group="5"/>
-        <site name="back_lidar_ray_213" size="0.002" pos="0 0.235 0.28232" quat="-0.0182191 -0.706872 -0.0182191 0.706872" group="5"/>
-        <site name="back_lidar_ray_214" size="0.002" pos="0 0.235 0.28232" quat="-0.0243838 -0.706686 -0.0243838 0.706686" group="5"/>
-        <site name="back_lidar_ray_215" size="0.002" pos="0 0.235 0.28232" quat="-0.0305466 -0.706447 -0.0305466 0.706447" group="5"/>
-        <site name="back_lidar_ray_216" size="0.002" pos="0 0.235 0.28232" quat="-0.0367072 -0.706153 -0.0367072 0.706153" group="5"/>
-        <site name="back_lidar_ray_217" size="0.002" pos="0 0.235 0.28232" quat="-0.0428649 -0.705806 -0.0428649 0.705806" group="5"/>
-        <site name="back_lidar_ray_218" size="0.002" pos="0 0.235 0.28232" quat="-0.0490194 -0.705406 -0.0490194 0.705406" group="5"/>
-        <site name="back_lidar_ray_219" size="0.002" pos="0 0.235 0.28232" quat="-0.0551702 -0.704951 -0.0551702 0.704951" group="5"/>
-        <site name="back_lidar_ray_220" size="0.002" pos="0 0.235 0.28232" quat="-0.0613168 -0.704443 -0.0613168 0.704443" group="5"/>
-        <site name="back_lidar_ray_221" size="0.002" pos="0 0.235 0.28232" quat="-0.0674587 -0.703882 -0.0674587 0.703882" group="5"/>
-        <site name="back_lidar_ray_222" size="0.002" pos="0 0.235 0.28232" quat="-0.0735954 -0.703266 -0.0735954 0.703266" group="5"/>
-        <site name="back_lidar_ray_223" size="0.002" pos="0 0.235 0.28232" quat="-0.0797266 -0.702598 -0.0797266 0.702598" group="5"/>
-        <site name="back_lidar_ray_224" size="0.002" pos="0 0.235 0.28232" quat="-0.0858517 -0.701876 -0.0858517 0.701876" group="5"/>
-        <site name="back_lidar_ray_225" size="0.002" pos="0 0.235 0.28232" quat="-0.0919703 -0.7011 -0.0919703 0.7011" group="5"/>
-        <site name="back_lidar_ray_226" size="0.002" pos="0 0.235 0.28232" quat="-0.0980819 -0.700271 -0.0980819 0.700271" group="5"/>
-        <site name="back_lidar_ray_227" size="0.002" pos="0 0.235 0.28232" quat="-0.104186 -0.699389 -0.104186 0.699389" group="5"/>
-        <site name="back_lidar_ray_228" size="0.002" pos="0 0.235 0.28232" quat="-0.110282 -0.698454 -0.110282 0.698454" group="5"/>
-        <site name="back_lidar_ray_229" size="0.002" pos="0 0.235 0.28232" quat="-0.11637 -0.697465 -0.11637 0.697465" group="5"/>
-        <site name="back_lidar_ray_230" size="0.002" pos="0 0.235 0.28232" quat="-0.122449 -0.696424 -0.122449 0.696424" group="5"/>
-        <site name="back_lidar_ray_231" size="0.002" pos="0 0.235 0.28232" quat="-0.128519 -0.695329 -0.128519 0.695329" group="5"/>
-        <site name="back_lidar_ray_232" size="0.002" pos="0 0.235 0.28232" quat="-0.134578 -0.694182 -0.134578 0.694182" group="5"/>
-        <site name="back_lidar_ray_233" size="0.002" pos="0 0.235 0.28232" quat="-0.140628 -0.692982 -0.140628 0.692982" group="5"/>
-        <site name="back_lidar_ray_234" size="0.002" pos="0 0.235 0.28232" quat="-0.146667 -0.691729 -0.146667 0.691729" group="5"/>
-        <site name="back_lidar_ray_235" size="0.002" pos="0 0.235 0.28232" quat="-0.152695 -0.690423 -0.152695 0.690423" group="5"/>
-        <site name="back_lidar_ray_236" size="0.002" pos="0 0.235 0.28232" quat="-0.158711 -0.689065 -0.158711 0.689065" group="5"/>
-        <site name="back_lidar_ray_237" size="0.002" pos="0 0.235 0.28232" quat="-0.164715 -0.687655 -0.164715 0.687655" group="5"/>
-        <site name="back_lidar_ray_238" size="0.002" pos="0 0.235 0.28232" quat="-0.170706 -0.686192 -0.170706 0.686192" group="5"/>
-        <site name="back_lidar_ray_239" size="0.002" pos="0 0.235 0.28232" quat="-0.176685 -0.684677 -0.176685 0.684677" group="5"/>
-        <site name="back_lidar_ray_240" size="0.002" pos="0 0.235 0.28232" quat="-0.18265 -0.68311 -0.18265 0.68311" group="5"/>
-        <body name="lift_link" pos="0 0.07 0.3985">
+        <geom name="base_link_collision_1" size="0.09 0.098 0.52" pos="-0.07 0 0.845" type="box" contype="2" conaffinity="24" group="3"/>
+        <geom name="base_link_collision_2" size="0.0345 0.115 0.52" pos="-0.07 -0.115 0.845" type="box" contype="2" conaffinity="24" group="3"/>
+        <site name="front_lidar_ray_000" size="0.002" pos="0.235 0 0.28232" quat="0.353878 0.612185 0.353878 -0.612185" group="5"/>
+        <site name="front_lidar_ray_001" size="0.002" pos="0.235 0 0.28232" quat="0.359205 0.609075 0.359205 -0.609075" group="5"/>
+        <site name="front_lidar_ray_002" size="0.002" pos="0.235 0 0.28232" quat="0.364503 0.605919 0.364503 -0.605919" group="5"/>
+        <site name="front_lidar_ray_003" size="0.002" pos="0.235 0 0.28232" quat="0.369774 0.602716 0.369774 -0.602716" group="5"/>
+        <site name="front_lidar_ray_004" size="0.002" pos="0.235 0 0.28232" quat="0.375017 0.599468 0.375017 -0.599468" group="5"/>
+        <site name="front_lidar_ray_005" size="0.002" pos="0.235 0 0.28232" quat="0.380232 0.596174 0.380232 -0.596174" group="5"/>
+        <site name="front_lidar_ray_006" size="0.002" pos="0.235 0 0.28232" quat="0.385417 0.592835 0.385417 -0.592835" group="5"/>
+        <site name="front_lidar_ray_007" size="0.002" pos="0.235 0 0.28232" quat="0.390573 0.589451 0.390573 -0.589451" group="5"/>
+        <site name="front_lidar_ray_008" size="0.002" pos="0.235 0 0.28232" quat="0.3957 0.586022 0.3957 -0.586022" group="5"/>
+        <site name="front_lidar_ray_009" size="0.002" pos="0.235 0 0.28232" quat="0.400796 0.582548 0.400796 -0.582548" group="5"/>
+        <site name="front_lidar_ray_010" size="0.002" pos="0.235 0 0.28232" quat="0.405862 0.579031 0.405862 -0.579031" group="5"/>
+        <site name="front_lidar_ray_011" size="0.002" pos="0.235 0 0.28232" quat="0.410897 0.575469 0.410897 -0.575469" group="5"/>
+        <site name="front_lidar_ray_012" size="0.002" pos="0.235 0 0.28232" quat="0.4159 0.571863 0.4159 -0.571863" group="5"/>
+        <site name="front_lidar_ray_013" size="0.002" pos="0.235 0 0.28232" quat="0.420872 0.568213 0.420872 -0.568213" group="5"/>
+        <site name="front_lidar_ray_014" size="0.002" pos="0.235 0 0.28232" quat="0.425812 0.564521 0.425812 -0.564521" group="5"/>
+        <site name="front_lidar_ray_015" size="0.002" pos="0.235 0 0.28232" quat="0.43072 0.560786 0.43072 -0.560786" group="5"/>
+        <site name="front_lidar_ray_016" size="0.002" pos="0.235 0 0.28232" quat="0.435595 0.557007 0.435595 -0.557007" group="5"/>
+        <site name="front_lidar_ray_017" size="0.002" pos="0.235 0 0.28232" quat="0.440436 0.553187 0.440436 -0.553187" group="5"/>
+        <site name="front_lidar_ray_018" size="0.002" pos="0.235 0 0.28232" quat="0.445245 0.549324 0.445245 -0.549324" group="5"/>
+        <site name="front_lidar_ray_019" size="0.002" pos="0.235 0 0.28232" quat="0.450019 0.54542 0.450019 -0.54542" group="5"/>
+        <site name="front_lidar_ray_020" size="0.002" pos="0.235 0 0.28232" quat="0.454759 0.541474 0.454759 -0.541474" group="5"/>
+        <site name="front_lidar_ray_021" size="0.002" pos="0.235 0 0.28232" quat="0.459465 0.537487 0.459465 -0.537487" group="5"/>
+        <site name="front_lidar_ray_022" size="0.002" pos="0.235 0 0.28232" quat="0.464135 0.533459 0.464135 -0.533459" group="5"/>
+        <site name="front_lidar_ray_023" size="0.002" pos="0.235 0 0.28232" quat="0.46877 0.529391 0.46877 -0.529391" group="5"/>
+        <site name="front_lidar_ray_024" size="0.002" pos="0.235 0 0.28232" quat="0.47337 0.525282 0.47337 -0.525282" group="5"/>
+        <site name="front_lidar_ray_025" size="0.002" pos="0.235 0 0.28232" quat="0.477933 0.521133 0.477933 -0.521133" group="5"/>
+        <site name="front_lidar_ray_026" size="0.002" pos="0.235 0 0.28232" quat="0.482461 0.516945 0.482461 -0.516945" group="5"/>
+        <site name="front_lidar_ray_027" size="0.002" pos="0.235 0 0.28232" quat="0.486951 0.512717 0.486951 -0.512717" group="5"/>
+        <site name="front_lidar_ray_028" size="0.002" pos="0.235 0 0.28232" quat="0.491405 0.50845 0.491405 -0.50845" group="5"/>
+        <site name="front_lidar_ray_029" size="0.002" pos="0.235 0 0.28232" quat="0.495821 0.504145 0.495821 -0.504145" group="5"/>
+        <site name="front_lidar_ray_030" size="0.002" pos="0.235 0 0.28232" quat="0.500199 0.499801 0.500199 -0.499801" group="5"/>
+        <site name="front_lidar_ray_031" size="0.002" pos="0.235 0 0.28232" quat="0.504539 0.495419 0.504539 -0.495419" group="5"/>
+        <site name="front_lidar_ray_032" size="0.002" pos="0.235 0 0.28232" quat="0.508841 0.491 0.508841 -0.491" group="5"/>
+        <site name="front_lidar_ray_033" size="0.002" pos="0.235 0 0.28232" quat="0.513104 0.486543 0.513104 -0.486543" group="5"/>
+        <site name="front_lidar_ray_034" size="0.002" pos="0.235 0 0.28232" quat="0.517329 0.482049 0.517329 -0.482049" group="5"/>
+        <site name="front_lidar_ray_035" size="0.002" pos="0.235 0 0.28232" quat="0.521513 0.477518 0.521513 -0.477518" group="5"/>
+        <site name="front_lidar_ray_036" size="0.002" pos="0.235 0 0.28232" quat="0.525659 0.472951 0.525659 -0.472951" group="5"/>
+        <site name="front_lidar_ray_037" size="0.002" pos="0.235 0 0.28232" quat="0.529764 0.468349 0.529764 -0.468349" group="5"/>
+        <site name="front_lidar_ray_038" size="0.002" pos="0.235 0 0.28232" quat="0.533829 0.46371 0.533829 -0.46371" group="5"/>
+        <site name="front_lidar_ray_039" size="0.002" pos="0.235 0 0.28232" quat="0.537853 0.459036 0.537853 -0.459036" group="5"/>
+        <site name="front_lidar_ray_040" size="0.002" pos="0.235 0 0.28232" quat="0.541836 0.454328 0.541836 -0.454328" group="5"/>
+        <site name="front_lidar_ray_041" size="0.002" pos="0.235 0 0.28232" quat="0.545778 0.449585 0.545778 -0.449585" group="5"/>
+        <site name="front_lidar_ray_042" size="0.002" pos="0.235 0 0.28232" quat="0.549679 0.444807 0.549679 -0.444807" group="5"/>
+        <site name="front_lidar_ray_043" size="0.002" pos="0.235 0 0.28232" quat="0.553537 0.439996 0.553537 -0.439996" group="5"/>
+        <site name="front_lidar_ray_044" size="0.002" pos="0.235 0 0.28232" quat="0.557354 0.435151 0.557354 -0.435151" group="5"/>
+        <site name="front_lidar_ray_045" size="0.002" pos="0.235 0 0.28232" quat="0.561128 0.430273 0.561128 -0.430273" group="5"/>
+        <site name="front_lidar_ray_046" size="0.002" pos="0.235 0 0.28232" quat="0.56486 0.425363 0.56486 -0.425363" group="5"/>
+        <site name="front_lidar_ray_047" size="0.002" pos="0.235 0 0.28232" quat="0.568548 0.42042 0.568548 -0.42042" group="5"/>
+        <site name="front_lidar_ray_048" size="0.002" pos="0.235 0 0.28232" quat="0.572194 0.415445 0.572194 -0.415445" group="5"/>
+        <site name="front_lidar_ray_049" size="0.002" pos="0.235 0 0.28232" quat="0.575796 0.410438 0.575796 -0.410438" group="5"/>
+        <site name="front_lidar_ray_050" size="0.002" pos="0.235 0 0.28232" quat="0.579354 0.4054 0.579354 -0.4054" group="5"/>
+        <site name="front_lidar_ray_051" size="0.002" pos="0.235 0 0.28232" quat="0.582867 0.400332 0.582867 -0.400332" group="5"/>
+        <site name="front_lidar_ray_052" size="0.002" pos="0.235 0 0.28232" quat="0.586337 0.395233 0.586337 -0.395233" group="5"/>
+        <site name="front_lidar_ray_053" size="0.002" pos="0.235 0 0.28232" quat="0.589762 0.390104 0.589762 -0.390104" group="5"/>
+        <site name="front_lidar_ray_054" size="0.002" pos="0.235 0 0.28232" quat="0.593142 0.384945 0.593142 -0.384945" group="5"/>
+        <site name="front_lidar_ray_055" size="0.002" pos="0.235 0 0.28232" quat="0.596477 0.379757 0.596477 -0.379757" group="5"/>
+        <site name="front_lidar_ray_056" size="0.002" pos="0.235 0 0.28232" quat="0.599767 0.37454 0.599767 -0.37454" group="5"/>
+        <site name="front_lidar_ray_057" size="0.002" pos="0.235 0 0.28232" quat="0.603011 0.369294 0.603011 -0.369294" group="5"/>
+        <site name="front_lidar_ray_058" size="0.002" pos="0.235 0 0.28232" quat="0.606209 0.364021 0.606209 -0.364021" group="5"/>
+        <site name="front_lidar_ray_059" size="0.002" pos="0.235 0 0.28232" quat="0.609361 0.358719 0.609361 -0.358719" group="5"/>
+        <site name="front_lidar_ray_060" size="0.002" pos="0.235 0 0.28232" quat="0.612466 0.353391 0.612466 -0.353391" group="5"/>
+        <site name="front_lidar_ray_061" size="0.002" pos="0.235 0 0.28232" quat="0.615525 0.348035 0.615525 -0.348035" group="5"/>
+        <site name="front_lidar_ray_062" size="0.002" pos="0.235 0 0.28232" quat="0.618537 0.342653 0.618537 -0.342653" group="5"/>
+        <site name="front_lidar_ray_063" size="0.002" pos="0.235 0 0.28232" quat="0.621503 0.337245 0.621503 -0.337245" group="5"/>
+        <site name="front_lidar_ray_064" size="0.002" pos="0.235 0 0.28232" quat="0.62442 0.331812 0.62442 -0.331812" group="5"/>
+        <site name="front_lidar_ray_065" size="0.002" pos="0.235 0 0.28232" quat="0.627291 0.326353 0.627291 -0.326353" group="5"/>
+        <site name="front_lidar_ray_066" size="0.002" pos="0.235 0 0.28232" quat="0.630113 0.320869 0.630113 -0.320869" group="5"/>
+        <site name="front_lidar_ray_067" size="0.002" pos="0.235 0 0.28232" quat="0.632888 0.315361 0.632888 -0.315361" group="5"/>
+        <site name="front_lidar_ray_068" size="0.002" pos="0.235 0 0.28232" quat="0.635615 0.309829 0.635615 -0.309829" group="5"/>
+        <site name="front_lidar_ray_069" size="0.002" pos="0.235 0 0.28232" quat="0.638293 0.304273 0.638293 -0.304273" group="5"/>
+        <site name="front_lidar_ray_070" size="0.002" pos="0.235 0 0.28232" quat="0.640922 0.298694 0.640922 -0.298694" group="5"/>
+        <site name="front_lidar_ray_071" size="0.002" pos="0.235 0 0.28232" quat="0.643503 0.293093 0.643503 -0.293093" group="5"/>
+        <site name="front_lidar_ray_072" size="0.002" pos="0.235 0 0.28232" quat="0.646035 0.287469 0.646035 -0.287469" group="5"/>
+        <site name="front_lidar_ray_073" size="0.002" pos="0.235 0 0.28232" quat="0.648518 0.281823 0.648518 -0.281823" group="5"/>
+        <site name="front_lidar_ray_074" size="0.002" pos="0.235 0 0.28232" quat="0.650951 0.276156 0.650951 -0.276156" group="5"/>
+        <site name="front_lidar_ray_075" size="0.002" pos="0.235 0 0.28232" quat="0.653335 0.270468 0.653335 -0.270468" group="5"/>
+        <site name="front_lidar_ray_076" size="0.002" pos="0.235 0 0.28232" quat="0.65567 0.264759 0.65567 -0.264759" group="5"/>
+        <site name="front_lidar_ray_077" size="0.002" pos="0.235 0 0.28232" quat="0.657954 0.25903 0.657954 -0.25903" group="5"/>
+        <site name="front_lidar_ray_078" size="0.002" pos="0.235 0 0.28232" quat="0.660188 0.253282 0.660188 -0.253282" group="5"/>
+        <site name="front_lidar_ray_079" size="0.002" pos="0.235 0 0.28232" quat="0.662372 0.247514 0.662372 -0.247514" group="5"/>
+        <site name="front_lidar_ray_080" size="0.002" pos="0.235 0 0.28232" quat="0.664506 0.241727 0.664506 -0.241727" group="5"/>
+        <site name="front_lidar_ray_081" size="0.002" pos="0.235 0 0.28232" quat="0.666589 0.235922 0.666589 -0.235922" group="5"/>
+        <site name="front_lidar_ray_082" size="0.002" pos="0.235 0 0.28232" quat="0.668621 0.230099 0.668621 -0.230099" group="5"/>
+        <site name="front_lidar_ray_083" size="0.002" pos="0.235 0 0.28232" quat="0.670603 0.224259 0.670603 -0.224259" group="5"/>
+        <site name="front_lidar_ray_084" size="0.002" pos="0.235 0 0.28232" quat="0.672533 0.218401 0.672533 -0.218401" group="5"/>
+        <site name="front_lidar_ray_085" size="0.002" pos="0.235 0 0.28232" quat="0.674413 0.212527 0.674413 -0.212527" group="5"/>
+        <site name="front_lidar_ray_086" size="0.002" pos="0.235 0 0.28232" quat="0.676241 0.206636 0.676241 -0.206636" group="5"/>
+        <site name="front_lidar_ray_087" size="0.002" pos="0.235 0 0.28232" quat="0.678017 0.20073 0.678017 -0.20073" group="5"/>
+        <site name="front_lidar_ray_088" size="0.002" pos="0.235 0 0.28232" quat="0.679742 0.194809 0.679742 -0.194809" group="5"/>
+        <site name="front_lidar_ray_089" size="0.002" pos="0.235 0 0.28232" quat="0.681416 0.188873 0.681416 -0.188873" group="5"/>
+        <site name="front_lidar_ray_090" size="0.002" pos="0.235 0 0.28232" quat="0.683037 0.182922 0.683037 -0.182922" group="5"/>
+        <site name="front_lidar_ray_091" size="0.002" pos="0.235 0 0.28232" quat="0.684606 0.176958 0.684606 -0.176958" group="5"/>
+        <site name="front_lidar_ray_092" size="0.002" pos="0.235 0 0.28232" quat="0.686124 0.17098 0.686124 -0.17098" group="5"/>
+        <site name="front_lidar_ray_093" size="0.002" pos="0.235 0 0.28232" quat="0.687589 0.164989 0.687589 -0.164989" group="5"/>
+        <site name="front_lidar_ray_094" size="0.002" pos="0.235 0 0.28232" quat="0.689002 0.158985 0.689002 -0.158985" group="5"/>
+        <site name="front_lidar_ray_095" size="0.002" pos="0.235 0 0.28232" quat="0.690362 0.15297 0.690362 -0.15297" group="5"/>
+        <site name="front_lidar_ray_096" size="0.002" pos="0.235 0 0.28232" quat="0.69167 0.146942 0.69167 -0.146942" group="5"/>
+        <site name="front_lidar_ray_097" size="0.002" pos="0.235 0 0.28232" quat="0.692926 0.140904 0.692926 -0.140904" group="5"/>
+        <site name="front_lidar_ray_098" size="0.002" pos="0.235 0 0.28232" quat="0.694128 0.134855 0.694128 -0.134855" group="5"/>
+        <site name="front_lidar_ray_099" size="0.002" pos="0.235 0 0.28232" quat="0.695278 0.128795 0.695278 -0.128795" group="5"/>
+        <site name="front_lidar_ray_100" size="0.002" pos="0.235 0 0.28232" quat="0.696375 0.122726 0.696375 -0.122726" group="5"/>
+        <site name="front_lidar_ray_101" size="0.002" pos="0.235 0 0.28232" quat="0.697419 0.116648 0.697419 -0.116648" group="5"/>
+        <site name="front_lidar_ray_102" size="0.002" pos="0.235 0 0.28232" quat="0.69841 0.11056 0.69841 -0.11056" group="5"/>
+        <site name="front_lidar_ray_103" size="0.002" pos="0.235 0 0.28232" quat="0.699348 0.104464 0.699348 -0.104464" group="5"/>
+        <site name="front_lidar_ray_104" size="0.002" pos="0.235 0 0.28232" quat="0.700232 0.0983607 0.700232 -0.0983607" group="5"/>
+        <site name="front_lidar_ray_105" size="0.002" pos="0.235 0 0.28232" quat="0.701064 0.0922494 0.701064 -0.0922494" group="5"/>
+        <site name="front_lidar_ray_106" size="0.002" pos="0.235 0 0.28232" quat="0.701841 0.0861312 0.701841 -0.0861312" group="5"/>
+        <site name="front_lidar_ray_107" size="0.002" pos="0.235 0 0.28232" quat="0.702566 0.0800064 0.702566 -0.0800064" group="5"/>
+        <site name="front_lidar_ray_108" size="0.002" pos="0.235 0 0.28232" quat="0.703237 0.0738755 0.703237 -0.0738755" group="5"/>
+        <site name="front_lidar_ray_109" size="0.002" pos="0.235 0 0.28232" quat="0.703855 0.0677389 0.703855 -0.0677389" group="5"/>
+        <site name="front_lidar_ray_110" size="0.002" pos="0.235 0 0.28232" quat="0.704419 0.0615973 0.704419 -0.0615973" group="5"/>
+        <site name="front_lidar_ray_111" size="0.002" pos="0.235 0 0.28232" quat="0.704929 0.0554509 0.704929 -0.0554509" group="5"/>
+        <site name="front_lidar_ray_112" size="0.002" pos="0.235 0 0.28232" quat="0.705386 0.0493003 0.705386 -0.0493003" group="5"/>
+        <site name="front_lidar_ray_113" size="0.002" pos="0.235 0 0.28232" quat="0.705789 0.043146 0.705789 -0.043146" group="5"/>
+        <site name="front_lidar_ray_114" size="0.002" pos="0.235 0 0.28232" quat="0.706139 0.0369884 0.706139 -0.0369884" group="5"/>
+        <site name="front_lidar_ray_115" size="0.002" pos="0.235 0 0.28232" quat="0.706434 0.0308279 0.706434 -0.0308279" group="5"/>
+        <site name="front_lidar_ray_116" size="0.002" pos="0.235 0 0.28232" quat="0.706676 0.0246652 0.706676 -0.0246652" group="5"/>
+        <site name="front_lidar_ray_117" size="0.002" pos="0.235 0 0.28232" quat="0.706865 0.0185005 0.706865 -0.0185005" group="5"/>
+        <site name="front_lidar_ray_118" size="0.002" pos="0.235 0 0.28232" quat="0.706999 0.0123345 0.706999 -0.0123345" group="5"/>
+        <site name="front_lidar_ray_119" size="0.002" pos="0.235 0 0.28232" quat="0.70708 0.00616746 0.70708 -0.00616746" group="5"/>
+        <site name="front_lidar_ray_120" size="0.002" pos="0.235 0 0.28232" quat="0.707107 0 0.707107 0" group="5"/>
+        <site name="front_lidar_ray_121" size="0.002" pos="0.235 0 0.28232" quat="0.70708 -0.00616746 0.70708 0.00616746" group="5"/>
+        <site name="front_lidar_ray_122" size="0.002" pos="0.235 0 0.28232" quat="0.706999 -0.0123345 0.706999 0.0123345" group="5"/>
+        <site name="front_lidar_ray_123" size="0.002" pos="0.235 0 0.28232" quat="0.706865 -0.0185005 0.706865 0.0185005" group="5"/>
+        <site name="front_lidar_ray_124" size="0.002" pos="0.235 0 0.28232" quat="0.706676 -0.0246652 0.706676 0.0246652" group="5"/>
+        <site name="front_lidar_ray_125" size="0.002" pos="0.235 0 0.28232" quat="0.706434 -0.0308279 0.706434 0.0308279" group="5"/>
+        <site name="front_lidar_ray_126" size="0.002" pos="0.235 0 0.28232" quat="0.706139 -0.0369884 0.706139 0.0369884" group="5"/>
+        <site name="front_lidar_ray_127" size="0.002" pos="0.235 0 0.28232" quat="0.705789 -0.043146 0.705789 0.043146" group="5"/>
+        <site name="front_lidar_ray_128" size="0.002" pos="0.235 0 0.28232" quat="0.705386 -0.0493003 0.705386 0.0493003" group="5"/>
+        <site name="front_lidar_ray_129" size="0.002" pos="0.235 0 0.28232" quat="0.704929 -0.0554509 0.704929 0.0554509" group="5"/>
+        <site name="front_lidar_ray_130" size="0.002" pos="0.235 0 0.28232" quat="0.704419 -0.0615973 0.704419 0.0615973" group="5"/>
+        <site name="front_lidar_ray_131" size="0.002" pos="0.235 0 0.28232" quat="0.703855 -0.0677389 0.703855 0.0677389" group="5"/>
+        <site name="front_lidar_ray_132" size="0.002" pos="0.235 0 0.28232" quat="0.703237 -0.0738755 0.703237 0.0738755" group="5"/>
+        <site name="front_lidar_ray_133" size="0.002" pos="0.235 0 0.28232" quat="0.702566 -0.0800064 0.702566 0.0800064" group="5"/>
+        <site name="front_lidar_ray_134" size="0.002" pos="0.235 0 0.28232" quat="0.701841 -0.0861312 0.701841 0.0861312" group="5"/>
+        <site name="front_lidar_ray_135" size="0.002" pos="0.235 0 0.28232" quat="0.701064 -0.0922494 0.701064 0.0922494" group="5"/>
+        <site name="front_lidar_ray_136" size="0.002" pos="0.235 0 0.28232" quat="0.700232 -0.0983607 0.700232 0.0983607" group="5"/>
+        <site name="front_lidar_ray_137" size="0.002" pos="0.235 0 0.28232" quat="0.699348 -0.104464 0.699348 0.104464" group="5"/>
+        <site name="front_lidar_ray_138" size="0.002" pos="0.235 0 0.28232" quat="0.69841 -0.11056 0.69841 0.11056" group="5"/>
+        <site name="front_lidar_ray_139" size="0.002" pos="0.235 0 0.28232" quat="0.697419 -0.116648 0.697419 0.116648" group="5"/>
+        <site name="front_lidar_ray_140" size="0.002" pos="0.235 0 0.28232" quat="0.696375 -0.122726 0.696375 0.122726" group="5"/>
+        <site name="front_lidar_ray_141" size="0.002" pos="0.235 0 0.28232" quat="0.695278 -0.128795 0.695278 0.128795" group="5"/>
+        <site name="front_lidar_ray_142" size="0.002" pos="0.235 0 0.28232" quat="0.694128 -0.134855 0.694128 0.134855" group="5"/>
+        <site name="front_lidar_ray_143" size="0.002" pos="0.235 0 0.28232" quat="0.692926 -0.140904 0.692926 0.140904" group="5"/>
+        <site name="front_lidar_ray_144" size="0.002" pos="0.235 0 0.28232" quat="0.69167 -0.146942 0.69167 0.146942" group="5"/>
+        <site name="front_lidar_ray_145" size="0.002" pos="0.235 0 0.28232" quat="0.690362 -0.15297 0.690362 0.15297" group="5"/>
+        <site name="front_lidar_ray_146" size="0.002" pos="0.235 0 0.28232" quat="0.689002 -0.158985 0.689002 0.158985" group="5"/>
+        <site name="front_lidar_ray_147" size="0.002" pos="0.235 0 0.28232" quat="0.687589 -0.164989 0.687589 0.164989" group="5"/>
+        <site name="front_lidar_ray_148" size="0.002" pos="0.235 0 0.28232" quat="0.686124 -0.17098 0.686124 0.17098" group="5"/>
+        <site name="front_lidar_ray_149" size="0.002" pos="0.235 0 0.28232" quat="0.684606 -0.176958 0.684606 0.176958" group="5"/>
+        <site name="front_lidar_ray_150" size="0.002" pos="0.235 0 0.28232" quat="0.683037 -0.182922 0.683037 0.182922" group="5"/>
+        <site name="front_lidar_ray_151" size="0.002" pos="0.235 0 0.28232" quat="0.681416 -0.188873 0.681416 0.188873" group="5"/>
+        <site name="front_lidar_ray_152" size="0.002" pos="0.235 0 0.28232" quat="0.679742 -0.194809 0.679742 0.194809" group="5"/>
+        <site name="front_lidar_ray_153" size="0.002" pos="0.235 0 0.28232" quat="0.678017 -0.20073 0.678017 0.20073" group="5"/>
+        <site name="front_lidar_ray_154" size="0.002" pos="0.235 0 0.28232" quat="0.676241 -0.206636 0.676241 0.206636" group="5"/>
+        <site name="front_lidar_ray_155" size="0.002" pos="0.235 0 0.28232" quat="0.674413 -0.212527 0.674413 0.212527" group="5"/>
+        <site name="front_lidar_ray_156" size="0.002" pos="0.235 0 0.28232" quat="0.672533 -0.218401 0.672533 0.218401" group="5"/>
+        <site name="front_lidar_ray_157" size="0.002" pos="0.235 0 0.28232" quat="0.670603 -0.224259 0.670603 0.224259" group="5"/>
+        <site name="front_lidar_ray_158" size="0.002" pos="0.235 0 0.28232" quat="0.668621 -0.230099 0.668621 0.230099" group="5"/>
+        <site name="front_lidar_ray_159" size="0.002" pos="0.235 0 0.28232" quat="0.666589 -0.235922 0.666589 0.235922" group="5"/>
+        <site name="front_lidar_ray_160" size="0.002" pos="0.235 0 0.28232" quat="0.664506 -0.241727 0.664506 0.241727" group="5"/>
+        <site name="front_lidar_ray_161" size="0.002" pos="0.235 0 0.28232" quat="0.662372 -0.247514 0.662372 0.247514" group="5"/>
+        <site name="front_lidar_ray_162" size="0.002" pos="0.235 0 0.28232" quat="0.660188 -0.253282 0.660188 0.253282" group="5"/>
+        <site name="front_lidar_ray_163" size="0.002" pos="0.235 0 0.28232" quat="0.657954 -0.25903 0.657954 0.25903" group="5"/>
+        <site name="front_lidar_ray_164" size="0.002" pos="0.235 0 0.28232" quat="0.65567 -0.264759 0.65567 0.264759" group="5"/>
+        <site name="front_lidar_ray_165" size="0.002" pos="0.235 0 0.28232" quat="0.653335 -0.270468 0.653335 0.270468" group="5"/>
+        <site name="front_lidar_ray_166" size="0.002" pos="0.235 0 0.28232" quat="0.650951 -0.276156 0.650951 0.276156" group="5"/>
+        <site name="front_lidar_ray_167" size="0.002" pos="0.235 0 0.28232" quat="0.648518 -0.281823 0.648518 0.281823" group="5"/>
+        <site name="front_lidar_ray_168" size="0.002" pos="0.235 0 0.28232" quat="0.646035 -0.287469 0.646035 0.287469" group="5"/>
+        <site name="front_lidar_ray_169" size="0.002" pos="0.235 0 0.28232" quat="0.643503 -0.293093 0.643503 0.293093" group="5"/>
+        <site name="front_lidar_ray_170" size="0.002" pos="0.235 0 0.28232" quat="0.640922 -0.298694 0.640922 0.298694" group="5"/>
+        <site name="front_lidar_ray_171" size="0.002" pos="0.235 0 0.28232" quat="0.638293 -0.304273 0.638293 0.304273" group="5"/>
+        <site name="front_lidar_ray_172" size="0.002" pos="0.235 0 0.28232" quat="0.635615 -0.309829 0.635615 0.309829" group="5"/>
+        <site name="front_lidar_ray_173" size="0.002" pos="0.235 0 0.28232" quat="0.632888 -0.315361 0.632888 0.315361" group="5"/>
+        <site name="front_lidar_ray_174" size="0.002" pos="0.235 0 0.28232" quat="0.630113 -0.320869 0.630113 0.320869" group="5"/>
+        <site name="front_lidar_ray_175" size="0.002" pos="0.235 0 0.28232" quat="0.627291 -0.326353 0.627291 0.326353" group="5"/>
+        <site name="front_lidar_ray_176" size="0.002" pos="0.235 0 0.28232" quat="0.62442 -0.331812 0.62442 0.331812" group="5"/>
+        <site name="front_lidar_ray_177" size="0.002" pos="0.235 0 0.28232" quat="0.621503 -0.337245 0.621503 0.337245" group="5"/>
+        <site name="front_lidar_ray_178" size="0.002" pos="0.235 0 0.28232" quat="0.618537 -0.342653 0.618537 0.342653" group="5"/>
+        <site name="front_lidar_ray_179" size="0.002" pos="0.235 0 0.28232" quat="0.615525 -0.348035 0.615525 0.348035" group="5"/>
+        <site name="front_lidar_ray_180" size="0.002" pos="0.235 0 0.28232" quat="0.612466 -0.353391 0.612466 0.353391" group="5"/>
+        <site name="front_lidar_ray_181" size="0.002" pos="0.235 0 0.28232" quat="0.609361 -0.358719 0.609361 0.358719" group="5"/>
+        <site name="front_lidar_ray_182" size="0.002" pos="0.235 0 0.28232" quat="0.606209 -0.364021 0.606209 0.364021" group="5"/>
+        <site name="front_lidar_ray_183" size="0.002" pos="0.235 0 0.28232" quat="0.603011 -0.369294 0.603011 0.369294" group="5"/>
+        <site name="front_lidar_ray_184" size="0.002" pos="0.235 0 0.28232" quat="0.599767 -0.37454 0.599767 0.37454" group="5"/>
+        <site name="front_lidar_ray_185" size="0.002" pos="0.235 0 0.28232" quat="0.596477 -0.379757 0.596477 0.379757" group="5"/>
+        <site name="front_lidar_ray_186" size="0.002" pos="0.235 0 0.28232" quat="0.593142 -0.384945 0.593142 0.384945" group="5"/>
+        <site name="front_lidar_ray_187" size="0.002" pos="0.235 0 0.28232" quat="0.589762 -0.390104 0.589762 0.390104" group="5"/>
+        <site name="front_lidar_ray_188" size="0.002" pos="0.235 0 0.28232" quat="0.586337 -0.395233 0.586337 0.395233" group="5"/>
+        <site name="front_lidar_ray_189" size="0.002" pos="0.235 0 0.28232" quat="0.582867 -0.400332 0.582867 0.400332" group="5"/>
+        <site name="front_lidar_ray_190" size="0.002" pos="0.235 0 0.28232" quat="0.579354 -0.4054 0.579354 0.4054" group="5"/>
+        <site name="front_lidar_ray_191" size="0.002" pos="0.235 0 0.28232" quat="0.575796 -0.410438 0.575796 0.410438" group="5"/>
+        <site name="front_lidar_ray_192" size="0.002" pos="0.235 0 0.28232" quat="0.572194 -0.415445 0.572194 0.415445" group="5"/>
+        <site name="front_lidar_ray_193" size="0.002" pos="0.235 0 0.28232" quat="0.568548 -0.42042 0.568548 0.42042" group="5"/>
+        <site name="front_lidar_ray_194" size="0.002" pos="0.235 0 0.28232" quat="0.56486 -0.425363 0.56486 0.425363" group="5"/>
+        <site name="front_lidar_ray_195" size="0.002" pos="0.235 0 0.28232" quat="0.561128 -0.430273 0.561128 0.430273" group="5"/>
+        <site name="front_lidar_ray_196" size="0.002" pos="0.235 0 0.28232" quat="0.557354 -0.435151 0.557354 0.435151" group="5"/>
+        <site name="front_lidar_ray_197" size="0.002" pos="0.235 0 0.28232" quat="0.553537 -0.439996 0.553537 0.439996" group="5"/>
+        <site name="front_lidar_ray_198" size="0.002" pos="0.235 0 0.28232" quat="0.549679 -0.444807 0.549679 0.444807" group="5"/>
+        <site name="front_lidar_ray_199" size="0.002" pos="0.235 0 0.28232" quat="0.545778 -0.449585 0.545778 0.449585" group="5"/>
+        <site name="front_lidar_ray_200" size="0.002" pos="0.235 0 0.28232" quat="0.541836 -0.454328 0.541836 0.454328" group="5"/>
+        <site name="front_lidar_ray_201" size="0.002" pos="0.235 0 0.28232" quat="0.537853 -0.459036 0.537853 0.459036" group="5"/>
+        <site name="front_lidar_ray_202" size="0.002" pos="0.235 0 0.28232" quat="0.533829 -0.46371 0.533829 0.46371" group="5"/>
+        <site name="front_lidar_ray_203" size="0.002" pos="0.235 0 0.28232" quat="0.529764 -0.468349 0.529764 0.468349" group="5"/>
+        <site name="front_lidar_ray_204" size="0.002" pos="0.235 0 0.28232" quat="0.525659 -0.472951 0.525659 0.472951" group="5"/>
+        <site name="front_lidar_ray_205" size="0.002" pos="0.235 0 0.28232" quat="0.521513 -0.477518 0.521513 0.477518" group="5"/>
+        <site name="front_lidar_ray_206" size="0.002" pos="0.235 0 0.28232" quat="0.517329 -0.482049 0.517329 0.482049" group="5"/>
+        <site name="front_lidar_ray_207" size="0.002" pos="0.235 0 0.28232" quat="0.513104 -0.486543 0.513104 0.486543" group="5"/>
+        <site name="front_lidar_ray_208" size="0.002" pos="0.235 0 0.28232" quat="0.508841 -0.491 0.508841 0.491" group="5"/>
+        <site name="front_lidar_ray_209" size="0.002" pos="0.235 0 0.28232" quat="0.504539 -0.495419 0.504539 0.495419" group="5"/>
+        <site name="front_lidar_ray_210" size="0.002" pos="0.235 0 0.28232" quat="0.500199 -0.499801 0.500199 0.499801" group="5"/>
+        <site name="front_lidar_ray_211" size="0.002" pos="0.235 0 0.28232" quat="0.495821 -0.504145 0.495821 0.504145" group="5"/>
+        <site name="front_lidar_ray_212" size="0.002" pos="0.235 0 0.28232" quat="0.491405 -0.50845 0.491405 0.50845" group="5"/>
+        <site name="front_lidar_ray_213" size="0.002" pos="0.235 0 0.28232" quat="0.486951 -0.512717 0.486951 0.512717" group="5"/>
+        <site name="front_lidar_ray_214" size="0.002" pos="0.235 0 0.28232" quat="0.482461 -0.516945 0.482461 0.516945" group="5"/>
+        <site name="front_lidar_ray_215" size="0.002" pos="0.235 0 0.28232" quat="0.477933 -0.521133 0.477933 0.521133" group="5"/>
+        <site name="front_lidar_ray_216" size="0.002" pos="0.235 0 0.28232" quat="0.47337 -0.525282 0.47337 0.525282" group="5"/>
+        <site name="front_lidar_ray_217" size="0.002" pos="0.235 0 0.28232" quat="0.46877 -0.529391 0.46877 0.529391" group="5"/>
+        <site name="front_lidar_ray_218" size="0.002" pos="0.235 0 0.28232" quat="0.464135 -0.533459 0.464135 0.533459" group="5"/>
+        <site name="front_lidar_ray_219" size="0.002" pos="0.235 0 0.28232" quat="0.459465 -0.537487 0.459465 0.537487" group="5"/>
+        <site name="front_lidar_ray_220" size="0.002" pos="0.235 0 0.28232" quat="0.454759 -0.541474 0.454759 0.541474" group="5"/>
+        <site name="front_lidar_ray_221" size="0.002" pos="0.235 0 0.28232" quat="0.450019 -0.54542 0.450019 0.54542" group="5"/>
+        <site name="front_lidar_ray_222" size="0.002" pos="0.235 0 0.28232" quat="0.445245 -0.549324 0.445245 0.549324" group="5"/>
+        <site name="front_lidar_ray_223" size="0.002" pos="0.235 0 0.28232" quat="0.440436 -0.553187 0.440436 0.553187" group="5"/>
+        <site name="front_lidar_ray_224" size="0.002" pos="0.235 0 0.28232" quat="0.435595 -0.557007 0.435595 0.557007" group="5"/>
+        <site name="front_lidar_ray_225" size="0.002" pos="0.235 0 0.28232" quat="0.43072 -0.560786 0.43072 0.560786" group="5"/>
+        <site name="front_lidar_ray_226" size="0.002" pos="0.235 0 0.28232" quat="0.425812 -0.564521 0.425812 0.564521" group="5"/>
+        <site name="front_lidar_ray_227" size="0.002" pos="0.235 0 0.28232" quat="0.420872 -0.568213 0.420872 0.568213" group="5"/>
+        <site name="front_lidar_ray_228" size="0.002" pos="0.235 0 0.28232" quat="0.4159 -0.571863 0.4159 0.571863" group="5"/>
+        <site name="front_lidar_ray_229" size="0.002" pos="0.235 0 0.28232" quat="0.410897 -0.575469 0.410897 0.575469" group="5"/>
+        <site name="front_lidar_ray_230" size="0.002" pos="0.235 0 0.28232" quat="0.405862 -0.579031 0.405862 0.579031" group="5"/>
+        <site name="front_lidar_ray_231" size="0.002" pos="0.235 0 0.28232" quat="0.400796 -0.582548 0.400796 0.582548" group="5"/>
+        <site name="front_lidar_ray_232" size="0.002" pos="0.235 0 0.28232" quat="0.3957 -0.586022 0.3957 0.586022" group="5"/>
+        <site name="front_lidar_ray_233" size="0.002" pos="0.235 0 0.28232" quat="0.390573 -0.589451 0.390573 0.589451" group="5"/>
+        <site name="front_lidar_ray_234" size="0.002" pos="0.235 0 0.28232" quat="0.385417 -0.592835 0.385417 0.592835" group="5"/>
+        <site name="front_lidar_ray_235" size="0.002" pos="0.235 0 0.28232" quat="0.380232 -0.596174 0.380232 0.596174" group="5"/>
+        <site name="front_lidar_ray_236" size="0.002" pos="0.235 0 0.28232" quat="0.375017 -0.599468 0.375017 0.599468" group="5"/>
+        <site name="front_lidar_ray_237" size="0.002" pos="0.235 0 0.28232" quat="0.369774 -0.602716 0.369774 0.602716" group="5"/>
+        <site name="front_lidar_ray_238" size="0.002" pos="0.235 0 0.28232" quat="0.364503 -0.605919 0.364503 0.605919" group="5"/>
+        <site name="front_lidar_ray_239" size="0.002" pos="0.235 0 0.28232" quat="0.359205 -0.609075 0.359205 0.609075" group="5"/>
+        <site name="front_lidar_ray_240" size="0.002" pos="0.235 0 0.28232" quat="0.353878 -0.612185 0.353878 0.612185" group="5"/>
+        <site name="back_lidar_ray_000" size="0.002" pos="-0.235 0 0.28232" quat="0.612185 -0.353878 0.612185 0.353878" group="5"/>
+        <site name="back_lidar_ray_001" size="0.002" pos="-0.235 0 0.28232" quat="0.609075 -0.359205 0.609075 0.359205" group="5"/>
+        <site name="back_lidar_ray_002" size="0.002" pos="-0.235 0 0.28232" quat="0.605919 -0.364503 0.605919 0.364503" group="5"/>
+        <site name="back_lidar_ray_003" size="0.002" pos="-0.235 0 0.28232" quat="0.602716 -0.369774 0.602716 0.369774" group="5"/>
+        <site name="back_lidar_ray_004" size="0.002" pos="-0.235 0 0.28232" quat="0.599468 -0.375017 0.599468 0.375017" group="5"/>
+        <site name="back_lidar_ray_005" size="0.002" pos="-0.235 0 0.28232" quat="0.596174 -0.380232 0.596174 0.380232" group="5"/>
+        <site name="back_lidar_ray_006" size="0.002" pos="-0.235 0 0.28232" quat="0.592835 -0.385417 0.592835 0.385417" group="5"/>
+        <site name="back_lidar_ray_007" size="0.002" pos="-0.235 0 0.28232" quat="0.589451 -0.390573 0.589451 0.390573" group="5"/>
+        <site name="back_lidar_ray_008" size="0.002" pos="-0.235 0 0.28232" quat="0.586022 -0.3957 0.586022 0.3957" group="5"/>
+        <site name="back_lidar_ray_009" size="0.002" pos="-0.235 0 0.28232" quat="0.582548 -0.400796 0.582548 0.400796" group="5"/>
+        <site name="back_lidar_ray_010" size="0.002" pos="-0.235 0 0.28232" quat="0.579031 -0.405862 0.579031 0.405862" group="5"/>
+        <site name="back_lidar_ray_011" size="0.002" pos="-0.235 0 0.28232" quat="0.575469 -0.410897 0.575469 0.410897" group="5"/>
+        <site name="back_lidar_ray_012" size="0.002" pos="-0.235 0 0.28232" quat="0.571863 -0.4159 0.571863 0.4159" group="5"/>
+        <site name="back_lidar_ray_013" size="0.002" pos="-0.235 0 0.28232" quat="0.568213 -0.420872 0.568213 0.420872" group="5"/>
+        <site name="back_lidar_ray_014" size="0.002" pos="-0.235 0 0.28232" quat="0.564521 -0.425812 0.564521 0.425812" group="5"/>
+        <site name="back_lidar_ray_015" size="0.002" pos="-0.235 0 0.28232" quat="0.560786 -0.43072 0.560786 0.43072" group="5"/>
+        <site name="back_lidar_ray_016" size="0.002" pos="-0.235 0 0.28232" quat="0.557007 -0.435595 0.557007 0.435595" group="5"/>
+        <site name="back_lidar_ray_017" size="0.002" pos="-0.235 0 0.28232" quat="0.553187 -0.440436 0.553187 0.440436" group="5"/>
+        <site name="back_lidar_ray_018" size="0.002" pos="-0.235 0 0.28232" quat="0.549324 -0.445245 0.549324 0.445245" group="5"/>
+        <site name="back_lidar_ray_019" size="0.002" pos="-0.235 0 0.28232" quat="0.54542 -0.450019 0.54542 0.450019" group="5"/>
+        <site name="back_lidar_ray_020" size="0.002" pos="-0.235 0 0.28232" quat="0.541474 -0.454759 0.541474 0.454759" group="5"/>
+        <site name="back_lidar_ray_021" size="0.002" pos="-0.235 0 0.28232" quat="0.537487 -0.459465 0.537487 0.459465" group="5"/>
+        <site name="back_lidar_ray_022" size="0.002" pos="-0.235 0 0.28232" quat="0.533459 -0.464135 0.533459 0.464135" group="5"/>
+        <site name="back_lidar_ray_023" size="0.002" pos="-0.235 0 0.28232" quat="0.529391 -0.46877 0.529391 0.46877" group="5"/>
+        <site name="back_lidar_ray_024" size="0.002" pos="-0.235 0 0.28232" quat="0.525282 -0.47337 0.525282 0.47337" group="5"/>
+        <site name="back_lidar_ray_025" size="0.002" pos="-0.235 0 0.28232" quat="0.521133 -0.477933 0.521133 0.477933" group="5"/>
+        <site name="back_lidar_ray_026" size="0.002" pos="-0.235 0 0.28232" quat="0.516945 -0.482461 0.516945 0.482461" group="5"/>
+        <site name="back_lidar_ray_027" size="0.002" pos="-0.235 0 0.28232" quat="0.512717 -0.486951 0.512717 0.486951" group="5"/>
+        <site name="back_lidar_ray_028" size="0.002" pos="-0.235 0 0.28232" quat="0.50845 -0.491405 0.50845 0.491405" group="5"/>
+        <site name="back_lidar_ray_029" size="0.002" pos="-0.235 0 0.28232" quat="0.504145 -0.495821 0.504145 0.495821" group="5"/>
+        <site name="back_lidar_ray_030" size="0.002" pos="-0.235 0 0.28232" quat="0.499801 -0.500199 0.499801 0.500199" group="5"/>
+        <site name="back_lidar_ray_031" size="0.002" pos="-0.235 0 0.28232" quat="0.495419 -0.504539 0.495419 0.504539" group="5"/>
+        <site name="back_lidar_ray_032" size="0.002" pos="-0.235 0 0.28232" quat="0.491 -0.508841 0.491 0.508841" group="5"/>
+        <site name="back_lidar_ray_033" size="0.002" pos="-0.235 0 0.28232" quat="0.486543 -0.513104 0.486543 0.513104" group="5"/>
+        <site name="back_lidar_ray_034" size="0.002" pos="-0.235 0 0.28232" quat="0.482049 -0.517329 0.482049 0.517329" group="5"/>
+        <site name="back_lidar_ray_035" size="0.002" pos="-0.235 0 0.28232" quat="0.477518 -0.521513 0.477518 0.521513" group="5"/>
+        <site name="back_lidar_ray_036" size="0.002" pos="-0.235 0 0.28232" quat="0.472951 -0.525659 0.472951 0.525659" group="5"/>
+        <site name="back_lidar_ray_037" size="0.002" pos="-0.235 0 0.28232" quat="0.468349 -0.529764 0.468349 0.529764" group="5"/>
+        <site name="back_lidar_ray_038" size="0.002" pos="-0.235 0 0.28232" quat="0.46371 -0.533829 0.46371 0.533829" group="5"/>
+        <site name="back_lidar_ray_039" size="0.002" pos="-0.235 0 0.28232" quat="0.459036 -0.537853 0.459036 0.537853" group="5"/>
+        <site name="back_lidar_ray_040" size="0.002" pos="-0.235 0 0.28232" quat="0.454328 -0.541836 0.454328 0.541836" group="5"/>
+        <site name="back_lidar_ray_041" size="0.002" pos="-0.235 0 0.28232" quat="0.449585 -0.545778 0.449585 0.545778" group="5"/>
+        <site name="back_lidar_ray_042" size="0.002" pos="-0.235 0 0.28232" quat="0.444807 -0.549679 0.444807 0.549679" group="5"/>
+        <site name="back_lidar_ray_043" size="0.002" pos="-0.235 0 0.28232" quat="0.439996 -0.553537 0.439996 0.553537" group="5"/>
+        <site name="back_lidar_ray_044" size="0.002" pos="-0.235 0 0.28232" quat="0.435151 -0.557354 0.435151 0.557354" group="5"/>
+        <site name="back_lidar_ray_045" size="0.002" pos="-0.235 0 0.28232" quat="0.430273 -0.561128 0.430273 0.561128" group="5"/>
+        <site name="back_lidar_ray_046" size="0.002" pos="-0.235 0 0.28232" quat="0.425363 -0.56486 0.425363 0.56486" group="5"/>
+        <site name="back_lidar_ray_047" size="0.002" pos="-0.235 0 0.28232" quat="0.42042 -0.568548 0.42042 0.568548" group="5"/>
+        <site name="back_lidar_ray_048" size="0.002" pos="-0.235 0 0.28232" quat="0.415445 -0.572194 0.415445 0.572194" group="5"/>
+        <site name="back_lidar_ray_049" size="0.002" pos="-0.235 0 0.28232" quat="0.410438 -0.575796 0.410438 0.575796" group="5"/>
+        <site name="back_lidar_ray_050" size="0.002" pos="-0.235 0 0.28232" quat="0.4054 -0.579354 0.4054 0.579354" group="5"/>
+        <site name="back_lidar_ray_051" size="0.002" pos="-0.235 0 0.28232" quat="0.400332 -0.582867 0.400332 0.582867" group="5"/>
+        <site name="back_lidar_ray_052" size="0.002" pos="-0.235 0 0.28232" quat="0.395233 -0.586337 0.395233 0.586337" group="5"/>
+        <site name="back_lidar_ray_053" size="0.002" pos="-0.235 0 0.28232" quat="0.390104 -0.589762 0.390104 0.589762" group="5"/>
+        <site name="back_lidar_ray_054" size="0.002" pos="-0.235 0 0.28232" quat="0.384945 -0.593142 0.384945 0.593142" group="5"/>
+        <site name="back_lidar_ray_055" size="0.002" pos="-0.235 0 0.28232" quat="0.379757 -0.596477 0.379757 0.596477" group="5"/>
+        <site name="back_lidar_ray_056" size="0.002" pos="-0.235 0 0.28232" quat="0.37454 -0.599767 0.37454 0.599767" group="5"/>
+        <site name="back_lidar_ray_057" size="0.002" pos="-0.235 0 0.28232" quat="0.369294 -0.603011 0.369294 0.603011" group="5"/>
+        <site name="back_lidar_ray_058" size="0.002" pos="-0.235 0 0.28232" quat="0.364021 -0.606209 0.364021 0.606209" group="5"/>
+        <site name="back_lidar_ray_059" size="0.002" pos="-0.235 0 0.28232" quat="0.358719 -0.609361 0.358719 0.609361" group="5"/>
+        <site name="back_lidar_ray_060" size="0.002" pos="-0.235 0 0.28232" quat="0.353391 -0.612466 0.353391 0.612466" group="5"/>
+        <site name="back_lidar_ray_061" size="0.002" pos="-0.235 0 0.28232" quat="0.348035 -0.615525 0.348035 0.615525" group="5"/>
+        <site name="back_lidar_ray_062" size="0.002" pos="-0.235 0 0.28232" quat="0.342653 -0.618537 0.342653 0.618537" group="5"/>
+        <site name="back_lidar_ray_063" size="0.002" pos="-0.235 0 0.28232" quat="0.337245 -0.621503 0.337245 0.621503" group="5"/>
+        <site name="back_lidar_ray_064" size="0.002" pos="-0.235 0 0.28232" quat="0.331812 -0.62442 0.331812 0.62442" group="5"/>
+        <site name="back_lidar_ray_065" size="0.002" pos="-0.235 0 0.28232" quat="0.326353 -0.627291 0.326353 0.627291" group="5"/>
+        <site name="back_lidar_ray_066" size="0.002" pos="-0.235 0 0.28232" quat="0.320869 -0.630113 0.320869 0.630113" group="5"/>
+        <site name="back_lidar_ray_067" size="0.002" pos="-0.235 0 0.28232" quat="0.315361 -0.632888 0.315361 0.632888" group="5"/>
+        <site name="back_lidar_ray_068" size="0.002" pos="-0.235 0 0.28232" quat="0.309829 -0.635615 0.309829 0.635615" group="5"/>
+        <site name="back_lidar_ray_069" size="0.002" pos="-0.235 0 0.28232" quat="0.304273 -0.638293 0.304273 0.638293" group="5"/>
+        <site name="back_lidar_ray_070" size="0.002" pos="-0.235 0 0.28232" quat="0.298694 -0.640922 0.298694 0.640922" group="5"/>
+        <site name="back_lidar_ray_071" size="0.002" pos="-0.235 0 0.28232" quat="0.293093 -0.643503 0.293093 0.643503" group="5"/>
+        <site name="back_lidar_ray_072" size="0.002" pos="-0.235 0 0.28232" quat="0.287469 -0.646035 0.287469 0.646035" group="5"/>
+        <site name="back_lidar_ray_073" size="0.002" pos="-0.235 0 0.28232" quat="0.281823 -0.648518 0.281823 0.648518" group="5"/>
+        <site name="back_lidar_ray_074" size="0.002" pos="-0.235 0 0.28232" quat="0.276156 -0.650951 0.276156 0.650951" group="5"/>
+        <site name="back_lidar_ray_075" size="0.002" pos="-0.235 0 0.28232" quat="0.270468 -0.653335 0.270468 0.653335" group="5"/>
+        <site name="back_lidar_ray_076" size="0.002" pos="-0.235 0 0.28232" quat="0.264759 -0.65567 0.264759 0.65567" group="5"/>
+        <site name="back_lidar_ray_077" size="0.002" pos="-0.235 0 0.28232" quat="0.25903 -0.657954 0.25903 0.657954" group="5"/>
+        <site name="back_lidar_ray_078" size="0.002" pos="-0.235 0 0.28232" quat="0.253282 -0.660188 0.253282 0.660188" group="5"/>
+        <site name="back_lidar_ray_079" size="0.002" pos="-0.235 0 0.28232" quat="0.247514 -0.662372 0.247514 0.662372" group="5"/>
+        <site name="back_lidar_ray_080" size="0.002" pos="-0.235 0 0.28232" quat="0.241727 -0.664506 0.241727 0.664506" group="5"/>
+        <site name="back_lidar_ray_081" size="0.002" pos="-0.235 0 0.28232" quat="0.235922 -0.666589 0.235922 0.666589" group="5"/>
+        <site name="back_lidar_ray_082" size="0.002" pos="-0.235 0 0.28232" quat="0.230099 -0.668621 0.230099 0.668621" group="5"/>
+        <site name="back_lidar_ray_083" size="0.002" pos="-0.235 0 0.28232" quat="0.224259 -0.670603 0.224259 0.670603" group="5"/>
+        <site name="back_lidar_ray_084" size="0.002" pos="-0.235 0 0.28232" quat="0.218401 -0.672533 0.218401 0.672533" group="5"/>
+        <site name="back_lidar_ray_085" size="0.002" pos="-0.235 0 0.28232" quat="0.212527 -0.674413 0.212527 0.674413" group="5"/>
+        <site name="back_lidar_ray_086" size="0.002" pos="-0.235 0 0.28232" quat="0.206636 -0.676241 0.206636 0.676241" group="5"/>
+        <site name="back_lidar_ray_087" size="0.002" pos="-0.235 0 0.28232" quat="0.20073 -0.678017 0.20073 0.678017" group="5"/>
+        <site name="back_lidar_ray_088" size="0.002" pos="-0.235 0 0.28232" quat="0.194809 -0.679742 0.194809 0.679742" group="5"/>
+        <site name="back_lidar_ray_089" size="0.002" pos="-0.235 0 0.28232" quat="0.188873 -0.681416 0.188873 0.681416" group="5"/>
+        <site name="back_lidar_ray_090" size="0.002" pos="-0.235 0 0.28232" quat="0.182922 -0.683037 0.182922 0.683037" group="5"/>
+        <site name="back_lidar_ray_091" size="0.002" pos="-0.235 0 0.28232" quat="0.176958 -0.684606 0.176958 0.684606" group="5"/>
+        <site name="back_lidar_ray_092" size="0.002" pos="-0.235 0 0.28232" quat="0.17098 -0.686124 0.17098 0.686124" group="5"/>
+        <site name="back_lidar_ray_093" size="0.002" pos="-0.235 0 0.28232" quat="0.164989 -0.687589 0.164989 0.687589" group="5"/>
+        <site name="back_lidar_ray_094" size="0.002" pos="-0.235 0 0.28232" quat="0.158985 -0.689002 0.158985 0.689002" group="5"/>
+        <site name="back_lidar_ray_095" size="0.002" pos="-0.235 0 0.28232" quat="0.15297 -0.690362 0.15297 0.690362" group="5"/>
+        <site name="back_lidar_ray_096" size="0.002" pos="-0.235 0 0.28232" quat="0.146942 -0.69167 0.146942 0.69167" group="5"/>
+        <site name="back_lidar_ray_097" size="0.002" pos="-0.235 0 0.28232" quat="0.140904 -0.692926 0.140904 0.692926" group="5"/>
+        <site name="back_lidar_ray_098" size="0.002" pos="-0.235 0 0.28232" quat="0.134855 -0.694128 0.134855 0.694128" group="5"/>
+        <site name="back_lidar_ray_099" size="0.002" pos="-0.235 0 0.28232" quat="0.128795 -0.695278 0.128795 0.695278" group="5"/>
+        <site name="back_lidar_ray_100" size="0.002" pos="-0.235 0 0.28232" quat="0.122726 -0.696375 0.122726 0.696375" group="5"/>
+        <site name="back_lidar_ray_101" size="0.002" pos="-0.235 0 0.28232" quat="0.116648 -0.697419 0.116648 0.697419" group="5"/>
+        <site name="back_lidar_ray_102" size="0.002" pos="-0.235 0 0.28232" quat="0.11056 -0.69841 0.11056 0.69841" group="5"/>
+        <site name="back_lidar_ray_103" size="0.002" pos="-0.235 0 0.28232" quat="0.104464 -0.699348 0.104464 0.699348" group="5"/>
+        <site name="back_lidar_ray_104" size="0.002" pos="-0.235 0 0.28232" quat="0.0983607 -0.700232 0.0983607 0.700232" group="5"/>
+        <site name="back_lidar_ray_105" size="0.002" pos="-0.235 0 0.28232" quat="0.0922494 -0.701064 0.0922494 0.701064" group="5"/>
+        <site name="back_lidar_ray_106" size="0.002" pos="-0.235 0 0.28232" quat="0.0861312 -0.701841 0.0861312 0.701841" group="5"/>
+        <site name="back_lidar_ray_107" size="0.002" pos="-0.235 0 0.28232" quat="0.0800064 -0.702566 0.0800064 0.702566" group="5"/>
+        <site name="back_lidar_ray_108" size="0.002" pos="-0.235 0 0.28232" quat="0.0738755 -0.703237 0.0738755 0.703237" group="5"/>
+        <site name="back_lidar_ray_109" size="0.002" pos="-0.235 0 0.28232" quat="0.0677389 -0.703855 0.0677389 0.703855" group="5"/>
+        <site name="back_lidar_ray_110" size="0.002" pos="-0.235 0 0.28232" quat="0.0615973 -0.704419 0.0615973 0.704419" group="5"/>
+        <site name="back_lidar_ray_111" size="0.002" pos="-0.235 0 0.28232" quat="0.0554509 -0.704929 0.0554509 0.704929" group="5"/>
+        <site name="back_lidar_ray_112" size="0.002" pos="-0.235 0 0.28232" quat="0.0493003 -0.705386 0.0493003 0.705386" group="5"/>
+        <site name="back_lidar_ray_113" size="0.002" pos="-0.235 0 0.28232" quat="0.043146 -0.705789 0.043146 0.705789" group="5"/>
+        <site name="back_lidar_ray_114" size="0.002" pos="-0.235 0 0.28232" quat="0.0369884 -0.706139 0.0369884 0.706139" group="5"/>
+        <site name="back_lidar_ray_115" size="0.002" pos="-0.235 0 0.28232" quat="0.0308279 -0.706434 0.0308279 0.706434" group="5"/>
+        <site name="back_lidar_ray_116" size="0.002" pos="-0.235 0 0.28232" quat="0.0246652 -0.706676 0.0246652 0.706676" group="5"/>
+        <site name="back_lidar_ray_117" size="0.002" pos="-0.235 0 0.28232" quat="0.0185005 -0.706865 0.0185005 0.706865" group="5"/>
+        <site name="back_lidar_ray_118" size="0.002" pos="-0.235 0 0.28232" quat="0.0123345 -0.706999 0.0123345 0.706999" group="5"/>
+        <site name="back_lidar_ray_119" size="0.002" pos="-0.235 0 0.28232" quat="0.00616746 -0.70708 0.00616746 0.70708" group="5"/>
+        <site name="back_lidar_ray_120" size="0.002" pos="-0.235 0 0.28232" quat="0 -0.707107 0 0.707107" group="5"/>
+        <site name="back_lidar_ray_121" size="0.002" pos="-0.235 0 0.28232" quat="-0.00616746 -0.70708 -0.00616746 0.70708" group="5"/>
+        <site name="back_lidar_ray_122" size="0.002" pos="-0.235 0 0.28232" quat="-0.0123345 -0.706999 -0.0123345 0.706999" group="5"/>
+        <site name="back_lidar_ray_123" size="0.002" pos="-0.235 0 0.28232" quat="-0.0185005 -0.706865 -0.0185005 0.706865" group="5"/>
+        <site name="back_lidar_ray_124" size="0.002" pos="-0.235 0 0.28232" quat="-0.0246652 -0.706676 -0.0246652 0.706676" group="5"/>
+        <site name="back_lidar_ray_125" size="0.002" pos="-0.235 0 0.28232" quat="-0.0308279 -0.706434 -0.0308279 0.706434" group="5"/>
+        <site name="back_lidar_ray_126" size="0.002" pos="-0.235 0 0.28232" quat="-0.0369884 -0.706139 -0.0369884 0.706139" group="5"/>
+        <site name="back_lidar_ray_127" size="0.002" pos="-0.235 0 0.28232" quat="-0.043146 -0.705789 -0.043146 0.705789" group="5"/>
+        <site name="back_lidar_ray_128" size="0.002" pos="-0.235 0 0.28232" quat="-0.0493003 -0.705386 -0.0493003 0.705386" group="5"/>
+        <site name="back_lidar_ray_129" size="0.002" pos="-0.235 0 0.28232" quat="-0.0554509 -0.704929 -0.0554509 0.704929" group="5"/>
+        <site name="back_lidar_ray_130" size="0.002" pos="-0.235 0 0.28232" quat="-0.0615973 -0.704419 -0.0615973 0.704419" group="5"/>
+        <site name="back_lidar_ray_131" size="0.002" pos="-0.235 0 0.28232" quat="-0.0677389 -0.703855 -0.0677389 0.703855" group="5"/>
+        <site name="back_lidar_ray_132" size="0.002" pos="-0.235 0 0.28232" quat="-0.0738755 -0.703237 -0.0738755 0.703237" group="5"/>
+        <site name="back_lidar_ray_133" size="0.002" pos="-0.235 0 0.28232" quat="-0.0800064 -0.702566 -0.0800064 0.702566" group="5"/>
+        <site name="back_lidar_ray_134" size="0.002" pos="-0.235 0 0.28232" quat="-0.0861312 -0.701841 -0.0861312 0.701841" group="5"/>
+        <site name="back_lidar_ray_135" size="0.002" pos="-0.235 0 0.28232" quat="-0.0922494 -0.701064 -0.0922494 0.701064" group="5"/>
+        <site name="back_lidar_ray_136" size="0.002" pos="-0.235 0 0.28232" quat="-0.0983607 -0.700232 -0.0983607 0.700232" group="5"/>
+        <site name="back_lidar_ray_137" size="0.002" pos="-0.235 0 0.28232" quat="-0.104464 -0.699348 -0.104464 0.699348" group="5"/>
+        <site name="back_lidar_ray_138" size="0.002" pos="-0.235 0 0.28232" quat="-0.11056 -0.69841 -0.11056 0.69841" group="5"/>
+        <site name="back_lidar_ray_139" size="0.002" pos="-0.235 0 0.28232" quat="-0.116648 -0.697419 -0.116648 0.697419" group="5"/>
+        <site name="back_lidar_ray_140" size="0.002" pos="-0.235 0 0.28232" quat="-0.122726 -0.696375 -0.122726 0.696375" group="5"/>
+        <site name="back_lidar_ray_141" size="0.002" pos="-0.235 0 0.28232" quat="-0.128795 -0.695278 -0.128795 0.695278" group="5"/>
+        <site name="back_lidar_ray_142" size="0.002" pos="-0.235 0 0.28232" quat="-0.134855 -0.694128 -0.134855 0.694128" group="5"/>
+        <site name="back_lidar_ray_143" size="0.002" pos="-0.235 0 0.28232" quat="-0.140904 -0.692926 -0.140904 0.692926" group="5"/>
+        <site name="back_lidar_ray_144" size="0.002" pos="-0.235 0 0.28232" quat="-0.146942 -0.69167 -0.146942 0.69167" group="5"/>
+        <site name="back_lidar_ray_145" size="0.002" pos="-0.235 0 0.28232" quat="-0.15297 -0.690362 -0.15297 0.690362" group="5"/>
+        <site name="back_lidar_ray_146" size="0.002" pos="-0.235 0 0.28232" quat="-0.158985 -0.689002 -0.158985 0.689002" group="5"/>
+        <site name="back_lidar_ray_147" size="0.002" pos="-0.235 0 0.28232" quat="-0.164989 -0.687589 -0.164989 0.687589" group="5"/>
+        <site name="back_lidar_ray_148" size="0.002" pos="-0.235 0 0.28232" quat="-0.17098 -0.686124 -0.17098 0.686124" group="5"/>
+        <site name="back_lidar_ray_149" size="0.002" pos="-0.235 0 0.28232" quat="-0.176958 -0.684606 -0.176958 0.684606" group="5"/>
+        <site name="back_lidar_ray_150" size="0.002" pos="-0.235 0 0.28232" quat="-0.182922 -0.683037 -0.182922 0.683037" group="5"/>
+        <site name="back_lidar_ray_151" size="0.002" pos="-0.235 0 0.28232" quat="-0.188873 -0.681416 -0.188873 0.681416" group="5"/>
+        <site name="back_lidar_ray_152" size="0.002" pos="-0.235 0 0.28232" quat="-0.194809 -0.679742 -0.194809 0.679742" group="5"/>
+        <site name="back_lidar_ray_153" size="0.002" pos="-0.235 0 0.28232" quat="-0.20073 -0.678017 -0.20073 0.678017" group="5"/>
+        <site name="back_lidar_ray_154" size="0.002" pos="-0.235 0 0.28232" quat="-0.206636 -0.676241 -0.206636 0.676241" group="5"/>
+        <site name="back_lidar_ray_155" size="0.002" pos="-0.235 0 0.28232" quat="-0.212527 -0.674413 -0.212527 0.674413" group="5"/>
+        <site name="back_lidar_ray_156" size="0.002" pos="-0.235 0 0.28232" quat="-0.218401 -0.672533 -0.218401 0.672533" group="5"/>
+        <site name="back_lidar_ray_157" size="0.002" pos="-0.235 0 0.28232" quat="-0.224259 -0.670603 -0.224259 0.670603" group="5"/>
+        <site name="back_lidar_ray_158" size="0.002" pos="-0.235 0 0.28232" quat="-0.230099 -0.668621 -0.230099 0.668621" group="5"/>
+        <site name="back_lidar_ray_159" size="0.002" pos="-0.235 0 0.28232" quat="-0.235922 -0.666589 -0.235922 0.666589" group="5"/>
+        <site name="back_lidar_ray_160" size="0.002" pos="-0.235 0 0.28232" quat="-0.241727 -0.664506 -0.241727 0.664506" group="5"/>
+        <site name="back_lidar_ray_161" size="0.002" pos="-0.235 0 0.28232" quat="-0.247514 -0.662372 -0.247514 0.662372" group="5"/>
+        <site name="back_lidar_ray_162" size="0.002" pos="-0.235 0 0.28232" quat="-0.253282 -0.660188 -0.253282 0.660188" group="5"/>
+        <site name="back_lidar_ray_163" size="0.002" pos="-0.235 0 0.28232" quat="-0.25903 -0.657954 -0.25903 0.657954" group="5"/>
+        <site name="back_lidar_ray_164" size="0.002" pos="-0.235 0 0.28232" quat="-0.264759 -0.65567 -0.264759 0.65567" group="5"/>
+        <site name="back_lidar_ray_165" size="0.002" pos="-0.235 0 0.28232" quat="-0.270468 -0.653335 -0.270468 0.653335" group="5"/>
+        <site name="back_lidar_ray_166" size="0.002" pos="-0.235 0 0.28232" quat="-0.276156 -0.650951 -0.276156 0.650951" group="5"/>
+        <site name="back_lidar_ray_167" size="0.002" pos="-0.235 0 0.28232" quat="-0.281823 -0.648518 -0.281823 0.648518" group="5"/>
+        <site name="back_lidar_ray_168" size="0.002" pos="-0.235 0 0.28232" quat="-0.287469 -0.646035 -0.287469 0.646035" group="5"/>
+        <site name="back_lidar_ray_169" size="0.002" pos="-0.235 0 0.28232" quat="-0.293093 -0.643503 -0.293093 0.643503" group="5"/>
+        <site name="back_lidar_ray_170" size="0.002" pos="-0.235 0 0.28232" quat="-0.298694 -0.640922 -0.298694 0.640922" group="5"/>
+        <site name="back_lidar_ray_171" size="0.002" pos="-0.235 0 0.28232" quat="-0.304273 -0.638293 -0.304273 0.638293" group="5"/>
+        <site name="back_lidar_ray_172" size="0.002" pos="-0.235 0 0.28232" quat="-0.309829 -0.635615 -0.309829 0.635615" group="5"/>
+        <site name="back_lidar_ray_173" size="0.002" pos="-0.235 0 0.28232" quat="-0.315361 -0.632888 -0.315361 0.632888" group="5"/>
+        <site name="back_lidar_ray_174" size="0.002" pos="-0.235 0 0.28232" quat="-0.320869 -0.630113 -0.320869 0.630113" group="5"/>
+        <site name="back_lidar_ray_175" size="0.002" pos="-0.235 0 0.28232" quat="-0.326353 -0.627291 -0.326353 0.627291" group="5"/>
+        <site name="back_lidar_ray_176" size="0.002" pos="-0.235 0 0.28232" quat="-0.331812 -0.62442 -0.331812 0.62442" group="5"/>
+        <site name="back_lidar_ray_177" size="0.002" pos="-0.235 0 0.28232" quat="-0.337245 -0.621503 -0.337245 0.621503" group="5"/>
+        <site name="back_lidar_ray_178" size="0.002" pos="-0.235 0 0.28232" quat="-0.342653 -0.618537 -0.342653 0.618537" group="5"/>
+        <site name="back_lidar_ray_179" size="0.002" pos="-0.235 0 0.28232" quat="-0.348035 -0.615525 -0.348035 0.615525" group="5"/>
+        <site name="back_lidar_ray_180" size="0.002" pos="-0.235 0 0.28232" quat="-0.353391 -0.612466 -0.353391 0.612466" group="5"/>
+        <site name="back_lidar_ray_181" size="0.002" pos="-0.235 0 0.28232" quat="-0.358719 -0.609361 -0.358719 0.609361" group="5"/>
+        <site name="back_lidar_ray_182" size="0.002" pos="-0.235 0 0.28232" quat="-0.364021 -0.606209 -0.364021 0.606209" group="5"/>
+        <site name="back_lidar_ray_183" size="0.002" pos="-0.235 0 0.28232" quat="-0.369294 -0.603011 -0.369294 0.603011" group="5"/>
+        <site name="back_lidar_ray_184" size="0.002" pos="-0.235 0 0.28232" quat="-0.37454 -0.599767 -0.37454 0.599767" group="5"/>
+        <site name="back_lidar_ray_185" size="0.002" pos="-0.235 0 0.28232" quat="-0.379757 -0.596477 -0.379757 0.596477" group="5"/>
+        <site name="back_lidar_ray_186" size="0.002" pos="-0.235 0 0.28232" quat="-0.384945 -0.593142 -0.384945 0.593142" group="5"/>
+        <site name="back_lidar_ray_187" size="0.002" pos="-0.235 0 0.28232" quat="-0.390104 -0.589762 -0.390104 0.589762" group="5"/>
+        <site name="back_lidar_ray_188" size="0.002" pos="-0.235 0 0.28232" quat="-0.395233 -0.586337 -0.395233 0.586337" group="5"/>
+        <site name="back_lidar_ray_189" size="0.002" pos="-0.235 0 0.28232" quat="-0.400332 -0.582867 -0.400332 0.582867" group="5"/>
+        <site name="back_lidar_ray_190" size="0.002" pos="-0.235 0 0.28232" quat="-0.4054 -0.579354 -0.4054 0.579354" group="5"/>
+        <site name="back_lidar_ray_191" size="0.002" pos="-0.235 0 0.28232" quat="-0.410438 -0.575796 -0.410438 0.575796" group="5"/>
+        <site name="back_lidar_ray_192" size="0.002" pos="-0.235 0 0.28232" quat="-0.415445 -0.572194 -0.415445 0.572194" group="5"/>
+        <site name="back_lidar_ray_193" size="0.002" pos="-0.235 0 0.28232" quat="-0.42042 -0.568548 -0.42042 0.568548" group="5"/>
+        <site name="back_lidar_ray_194" size="0.002" pos="-0.235 0 0.28232" quat="-0.425363 -0.56486 -0.425363 0.56486" group="5"/>
+        <site name="back_lidar_ray_195" size="0.002" pos="-0.235 0 0.28232" quat="-0.430273 -0.561128 -0.430273 0.561128" group="5"/>
+        <site name="back_lidar_ray_196" size="0.002" pos="-0.235 0 0.28232" quat="-0.435151 -0.557354 -0.435151 0.557354" group="5"/>
+        <site name="back_lidar_ray_197" size="0.002" pos="-0.235 0 0.28232" quat="-0.439996 -0.553537 -0.439996 0.553537" group="5"/>
+        <site name="back_lidar_ray_198" size="0.002" pos="-0.235 0 0.28232" quat="-0.444807 -0.549679 -0.444807 0.549679" group="5"/>
+        <site name="back_lidar_ray_199" size="0.002" pos="-0.235 0 0.28232" quat="-0.449585 -0.545778 -0.449585 0.545778" group="5"/>
+        <site name="back_lidar_ray_200" size="0.002" pos="-0.235 0 0.28232" quat="-0.454328 -0.541836 -0.454328 0.541836" group="5"/>
+        <site name="back_lidar_ray_201" size="0.002" pos="-0.235 0 0.28232" quat="-0.459036 -0.537853 -0.459036 0.537853" group="5"/>
+        <site name="back_lidar_ray_202" size="0.002" pos="-0.235 0 0.28232" quat="-0.46371 -0.533829 -0.46371 0.533829" group="5"/>
+        <site name="back_lidar_ray_203" size="0.002" pos="-0.235 0 0.28232" quat="-0.468349 -0.529764 -0.468349 0.529764" group="5"/>
+        <site name="back_lidar_ray_204" size="0.002" pos="-0.235 0 0.28232" quat="-0.472951 -0.525659 -0.472951 0.525659" group="5"/>
+        <site name="back_lidar_ray_205" size="0.002" pos="-0.235 0 0.28232" quat="-0.477518 -0.521513 -0.477518 0.521513" group="5"/>
+        <site name="back_lidar_ray_206" size="0.002" pos="-0.235 0 0.28232" quat="-0.482049 -0.517329 -0.482049 0.517329" group="5"/>
+        <site name="back_lidar_ray_207" size="0.002" pos="-0.235 0 0.28232" quat="-0.486543 -0.513104 -0.486543 0.513104" group="5"/>
+        <site name="back_lidar_ray_208" size="0.002" pos="-0.235 0 0.28232" quat="-0.491 -0.508841 -0.491 0.508841" group="5"/>
+        <site name="back_lidar_ray_209" size="0.002" pos="-0.235 0 0.28232" quat="-0.495419 -0.504539 -0.495419 0.504539" group="5"/>
+        <site name="back_lidar_ray_210" size="0.002" pos="-0.235 0 0.28232" quat="-0.499801 -0.500199 -0.499801 0.500199" group="5"/>
+        <site name="back_lidar_ray_211" size="0.002" pos="-0.235 0 0.28232" quat="-0.504145 -0.495821 -0.504145 0.495821" group="5"/>
+        <site name="back_lidar_ray_212" size="0.002" pos="-0.235 0 0.28232" quat="-0.50845 -0.491405 -0.50845 0.491405" group="5"/>
+        <site name="back_lidar_ray_213" size="0.002" pos="-0.235 0 0.28232" quat="-0.512717 -0.486951 -0.512717 0.486951" group="5"/>
+        <site name="back_lidar_ray_214" size="0.002" pos="-0.235 0 0.28232" quat="-0.516945 -0.482461 -0.516945 0.482461" group="5"/>
+        <site name="back_lidar_ray_215" size="0.002" pos="-0.235 0 0.28232" quat="-0.521133 -0.477933 -0.521133 0.477933" group="5"/>
+        <site name="back_lidar_ray_216" size="0.002" pos="-0.235 0 0.28232" quat="-0.525282 -0.47337 -0.525282 0.47337" group="5"/>
+        <site name="back_lidar_ray_217" size="0.002" pos="-0.235 0 0.28232" quat="-0.529391 -0.46877 -0.529391 0.46877" group="5"/>
+        <site name="back_lidar_ray_218" size="0.002" pos="-0.235 0 0.28232" quat="-0.533459 -0.464135 -0.533459 0.464135" group="5"/>
+        <site name="back_lidar_ray_219" size="0.002" pos="-0.235 0 0.28232" quat="-0.537487 -0.459465 -0.537487 0.459465" group="5"/>
+        <site name="back_lidar_ray_220" size="0.002" pos="-0.235 0 0.28232" quat="-0.541474 -0.454759 -0.541474 0.454759" group="5"/>
+        <site name="back_lidar_ray_221" size="0.002" pos="-0.235 0 0.28232" quat="-0.54542 -0.450019 -0.54542 0.450019" group="5"/>
+        <site name="back_lidar_ray_222" size="0.002" pos="-0.235 0 0.28232" quat="-0.549324 -0.445245 -0.549324 0.445245" group="5"/>
+        <site name="back_lidar_ray_223" size="0.002" pos="-0.235 0 0.28232" quat="-0.553187 -0.440436 -0.553187 0.440436" group="5"/>
+        <site name="back_lidar_ray_224" size="0.002" pos="-0.235 0 0.28232" quat="-0.557007 -0.435595 -0.557007 0.435595" group="5"/>
+        <site name="back_lidar_ray_225" size="0.002" pos="-0.235 0 0.28232" quat="-0.560786 -0.43072 -0.560786 0.43072" group="5"/>
+        <site name="back_lidar_ray_226" size="0.002" pos="-0.235 0 0.28232" quat="-0.564521 -0.425812 -0.564521 0.425812" group="5"/>
+        <site name="back_lidar_ray_227" size="0.002" pos="-0.235 0 0.28232" quat="-0.568213 -0.420872 -0.568213 0.420872" group="5"/>
+        <site name="back_lidar_ray_228" size="0.002" pos="-0.235 0 0.28232" quat="-0.571863 -0.4159 -0.571863 0.4159" group="5"/>
+        <site name="back_lidar_ray_229" size="0.002" pos="-0.235 0 0.28232" quat="-0.575469 -0.410897 -0.575469 0.410897" group="5"/>
+        <site name="back_lidar_ray_230" size="0.002" pos="-0.235 0 0.28232" quat="-0.579031 -0.405862 -0.579031 0.405862" group="5"/>
+        <site name="back_lidar_ray_231" size="0.002" pos="-0.235 0 0.28232" quat="-0.582548 -0.400796 -0.582548 0.400796" group="5"/>
+        <site name="back_lidar_ray_232" size="0.002" pos="-0.235 0 0.28232" quat="-0.586022 -0.3957 -0.586022 0.3957" group="5"/>
+        <site name="back_lidar_ray_233" size="0.002" pos="-0.235 0 0.28232" quat="-0.589451 -0.390573 -0.589451 0.390573" group="5"/>
+        <site name="back_lidar_ray_234" size="0.002" pos="-0.235 0 0.28232" quat="-0.592835 -0.385417 -0.592835 0.385417" group="5"/>
+        <site name="back_lidar_ray_235" size="0.002" pos="-0.235 0 0.28232" quat="-0.596174 -0.380232 -0.596174 0.380232" group="5"/>
+        <site name="back_lidar_ray_236" size="0.002" pos="-0.235 0 0.28232" quat="-0.599468 -0.375017 -0.599468 0.375017" group="5"/>
+        <site name="back_lidar_ray_237" size="0.002" pos="-0.235 0 0.28232" quat="-0.602716 -0.369774 -0.602716 0.369774" group="5"/>
+        <site name="back_lidar_ray_238" size="0.002" pos="-0.235 0 0.28232" quat="-0.605919 -0.364503 -0.605919 0.364503" group="5"/>
+        <site name="back_lidar_ray_239" size="0.002" pos="-0.235 0 0.28232" quat="-0.609075 -0.359205 -0.609075 0.359205" group="5"/>
+        <site name="back_lidar_ray_240" size="0.002" pos="-0.235 0 0.28232" quat="-0.612185 -0.353878 -0.612185 0.353878" group="5"/>
+        <body name="lift_link" pos="-0.07 0 0.3985" quat="0.707107 0 0 0.707107">
           <inertial pos="0 0 0.109" mass="3" diaginertia="0.011925 0.034285 0.037498"/>
-          <joint name="lift_joint" type="slide" range="0.08 0.7435" actuatorfrcrange="-600 600" armature="0.01" damping="6000"/>
+          <joint name="lift_joint" type="slide" range="0 0.7435" actuatorfrcrange="-600 600" armature="0.01" damping="6000"/>
           <geom name="lift" pos="0 0 0" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="Lift_simple"/>
           <geom name="top_bar" size="0.173 0.087 0.066" pos="0 0 0.109" type="box" contype="4" conaffinity="24" group="3"/>
           <geom name="stem" size="0.095 0.095 0.066" pos="0 -0.172 0.109" type="box" contype="4" conaffinity="24" group="3"/>
@@ -573,12 +574,11 @@
             <inertial pos="0 0 0" mass="0.2" diaginertia="0.0001 0.0001 0.0001"/>
             <joint name="head_servo_joint" range="-0.785398 1.0472" armature="0.01" axis="1 0 0"/>
             <geom name="head_servo_link_visual" pos="0 0 0" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="HeadCameraMount_simple"/>
-            <geom name="head_servo_link_collision" pos="0 0 0" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" mesh="HeadCameraMount_simple"/>
+            <geom name="head_servo_link_collision" pos="0 0 0" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" mesh="HeadCameraMount_collision"/>
             <body name="zed_head_camera_link" pos="0.034 -0.088 0.005" quat="0.707105 0 0 -0.707108">
               <site name="zed_head_camera_link" size="0.01" group="4"/>
               <body name="zed_head_camera_center" pos="0 0 0.015">
                 <geom name="zed_head_camera_center_visual" pos="-0.01 0 0" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" rgba="0.25 0.25 0.25 1" density="0" mesh="zed2i"/>
-                <geom name="zed_head_camera_center_collision" pos="-0.01 0 0" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" rgba="0.25 0.25 0.25 1" density="0" mesh="zed2i"/>
                 <body name="zed_head_left_camera_frame" pos="-0.01 0.06 0">
                   <site name="zed_head_left_camera_frame" size="0.01" group="4"/>
                   <body name="zed_head_left_camera_frame_optical" quat="0.5 -0.5 0.5 -0.5">
@@ -597,23 +597,23 @@
           </body>
           <body name="openarm_left_link0" pos="0.03 -0.23 0.1085" quat="0.499998 -0.5 0.500002 -0.5">
             <inertial pos="-0.000948336 -0.000158021 0.0307686" quat="0.479051 0.472241 -0.533622 0.512587" mass="1.14323" diaginertia="0.00147324 0.00112498 0.000961783"/>
-            <geom name="openarm_left_link0_visual" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link0_symp"/>
-            <geom name="openarm_left_link0_collision" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" mesh="link0_symp"/>
+            <geom name="openarm_left_link0_visual" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link0_symp_inv"/>
+            <geom name="openarm_left_link0_collision" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" mesh="link0_symp_inv"/>
             <body name="openarm_left_link1" pos="0 0 0.0625">
               <inertial pos="0.00114677 -3.31999e-05 0.0539528" quat="0.999653 0.00178277 0.0262159 -0.00182562" mass="1.14167" diaginertia="0.00156853 0.001273 0.00101447"/>
               <joint name="openarm_left_joint1" range="-3.49066 1.39626" actuatorfrcrange="-40 40" armature="0.01"/>
-              <geom name="openarm_left_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link1_symp"/>
-              <geom name="openarm_left_link1_collision" pos="0 0 -0.0625" type="mesh" contype="8" conaffinity="126" group="3" mesh="link1_symp"/>
+              <geom name="openarm_left_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link1_symp_inv"/>
+              <geom name="openarm_left_link1_collision" pos="0 0 -0.0625" type="mesh" contype="8" conaffinity="126" group="3" mesh="link1_symp_inv"/>
               <body name="openarm_left_link2" pos="-0.0301 0 0.06" quat="0.707107 -0.707107 0 0">
                 <inertial pos="0.00839629 2.01451e-08 0.0325665" quat="0.966167 0.00423305 0.257864 0.00305036" mass="0.277509" diaginertia="0.000421651 0.000376006 0.000169343"/>
                 <joint name="openarm_left_joint2" range="-3.31613 0.174533" actuatorfrcrange="-40 40" armature="0.01" axis="-1 0 0"/>
-                <geom name="openarm_left_link2_visual" pos="0.0301 0 -0.1225" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link2_symp"/>
-                <geom name="openarm_left_link2_collision" pos="0.0301 0 -0.1225" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link2_symp"/>
+                <geom name="openarm_left_link2_visual" pos="0.0301 0 -0.1225" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link2_symp_inv"/>
+                <geom name="openarm_left_link2_collision" pos="0.0301 0 -0.1225" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link2_symp_inv"/>
                 <body name="openarm_left_link3" pos="0.0301 0 0.06625">
                   <inertial pos="-0.00210475 -0.000554909 0.0904747" quat="0.999951 -0.00493279 -0.00144148 0.00846754" mass="1.07386" diaginertia="0.00437205 0.00431934 0.000660613"/>
                   <joint name="openarm_left_joint3" range="-1.5708 1.5708" actuatorfrcrange="-27 27" armature="0.01"/>
-                  <geom name="openarm_left_link3_visual" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link3_symp"/>
-                  <geom name="openarm_left_link3_collision" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link3_symp"/>
+                  <geom name="openarm_left_link3_visual" pos="0 0 -0.18875" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link3_symp_inv"/>
+                  <geom name="openarm_left_link3_collision" pos="0 0 -0.18875" type="mesh" contype="8" conaffinity="126" group="3" mesh="link3_symp_inv"/>
                   <body name="openarm_left_link4" pos="0 0.0315 0.20375">
                     <inertial pos="-0.00290068 -0.0303058 0.0633964" quat="0.994282 0.0996876 0.0329726 -0.0194357" mass="0.634853" diaginertia="0.000624355 0.000518596 0.000325049"/>
                     <joint name="openarm_left_joint4" range="-0.02 2.44346" actuatorfrcrange="-27 27" armature="0.01" axis="0 1 0"/>
@@ -622,18 +622,18 @@
                     <body name="openarm_left_link5" pos="0 -0.0315 0.0955">
                       <inertial pos="-0.00304967 -0.00088669 0.0430798" quat="0.583368 -0.0362078 0.00200307 0.811398" mass="0.615659" diaginertia="0.000448064 0.000420549 0.000323387"/>
                       <joint name="openarm_left_joint5" range="-1.5708 1.5708" actuatorfrcrange="-7 7" armature="0.01"/>
-                      <geom name="openarm_left_link5_visual" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link5_symp"/>
-                      <geom name="openarm_left_link5_collision" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link5_symp"/>
+                      <geom name="openarm_left_link5_visual" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link5_symp_inv"/>
+                      <geom name="openarm_left_link5_collision" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link5_symp_inv"/>
                       <body name="openarm_left_link6" pos="0.0375 0 0.1205">
                         <inertial pos="-0.0371366 -0.000332305 -9.49837e-05" quat="0.162305 0.716462 0.124543 0.666955" mass="0.475203" diaginertia="0.000159518 0.000156606 0.000142875"/>
                         <joint name="openarm_left_joint6" range="-0.785398 0.785398" actuatorfrcrange="-7 7" armature="0.01" axis="1 0 0"/>
-                        <geom name="openarm_left_link6_visual" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link6_symp"/>
-                        <geom name="openarm_left_link6_collision" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link6_symp"/>
+                        <geom name="openarm_left_link6_visual" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link6_symp_inv"/>
+                        <geom name="openarm_left_link6_collision" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link6_symp_inv"/>
                         <body name="openarm_left_link7" pos="-0.0375 0 0">
                           <inertial pos="6.87551e-05 -0.0126618 0.0695195" quat="0.977257 0.211956 -0.00210063 0.00621971" mass="0.465977" diaginertia="0.000639018 0.000537496 0.000301486"/>
                           <joint name="openarm_left_joint7" range="-1.5708 1.5708" actuatorfrcrange="-7 7" armature="0.01" axis="0 -1 0"/>
-                          <geom name="openarm_left_link7_visual" pos="0 0 -0.5585" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link7_symp"/>
-                          <geom name="openarm_left_link7_collision" pos="0 0 -0.5585" type="mesh" contype="8" conaffinity="126" group="3" mesh="link7_symp"/>
+                          <geom name="openarm_left_link7_visual" pos="0 0 -0.5585" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link7_symp_inv"/>
+                          <geom name="openarm_left_link7_collision" pos="0 0 -0.5585" type="mesh" contype="8" conaffinity="126" group="3" mesh="link7_symp_inv"/>
                           <body name="openarm_left_hand" pos="0 0 0.1001">
                             <inertial pos="0 0.002 0.03" quat="0.547194 0.546814 -0.44595 0.450224" mass="0.35" diaginertia="0.000252306 0.000247103 1.76214e-05"/>
                             <geom name="openarm_left_hand_visual" pos="0 0 -0.6585" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="hand"/>
@@ -644,8 +644,8 @@
                             <body name="openarm_left_right_finger" pos="0 -0.006 0.015">
                               <inertial pos="0.0064528 -0.01702 0.0219685" mass="0.0360255" diaginertia="0.0002375 0.0002375 7.5e-05"/>
                               <joint name="openarm_left_finger_joint1" type="slide" range="0 0.044" actuatorfrcrange="-333 333" armature="0.01" axis="0 -1 0"/>
-                              <geom name="openarm_left_right_finger_visual" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="finger1"/>
-                              <geom name="openarm_left_right_finger_collision" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="16" conaffinity="126" group="3" mesh="finger1"/>
+                              <geom name="openarm_left_right_finger_visual" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="finger_inv"/>
+                              <geom name="openarm_left_right_finger_collision" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="16" conaffinity="126" group="3" mesh="finger_inv"/>
                             </body>
                             <body name="openarm_left_left_finger" pos="0 0.006 0.015">
                               <inertial pos="0.0064528 0.01702 0.0219685" mass="0.0360255" diaginertia="0.0002375 0.0002375 7.5e-05"/>
@@ -668,23 +668,23 @@
           </body>
           <body name="openarm_right_link0" pos="-0.03 -0.23 0.1085" quat="0.499998 0.5 -0.500002 -0.5">
             <inertial pos="-0.000948336 0.000158021 0.0307686" quat="0.479051 0.472241 -0.533622 0.512587" mass="1.14323" diaginertia="0.00147324 0.00112498 0.000961783"/>
-            <geom name="openarm_right_link0_visual" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link0_symp1"/>
-            <geom name="openarm_right_link0_collision" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" mesh="link0_symp1"/>
+            <geom name="openarm_right_link0_visual" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link0_symp"/>
+            <geom name="openarm_right_link0_collision" quat="1 0 0 0" type="mesh" contype="4" conaffinity="24" group="3" mesh="link0_symp"/>
             <body name="openarm_right_link1" pos="0 0 0.0625">
               <inertial pos="0.00114677 3.31999e-05 0.0539528" quat="0.999653 0.00178277 0.0262159 -0.00182562" mass="1.14167" diaginertia="0.00156853 0.001273 0.00101447"/>
               <joint name="openarm_right_joint1" range="-1.39626 3.49066" actuatorfrcrange="-40 40" armature="0.01"/>
-              <geom name="openarm_right_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link1_symp1"/>
-              <geom name="openarm_right_link1_collision" pos="0 0 -0.0625" type="mesh" contype="8" conaffinity="126" group="3" mesh="link1_symp1"/>
+              <geom name="openarm_right_link1_visual" pos="0 0 -0.0625" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link1_symp"/>
+              <geom name="openarm_right_link1_collision" pos="0 0 -0.0625" type="mesh" contype="8" conaffinity="126" group="3" mesh="link1_symp"/>
               <body name="openarm_right_link2" pos="-0.0301 0 0.06" quat="0.707107 0.707107 0 0">
                 <inertial pos="0.00839629 -2.01451e-08 0.0325665" quat="0.966167 0.00423305 0.257864 0.00305036" mass="0.277509" diaginertia="0.000421651 0.000376006 0.000169343"/>
                 <joint name="openarm_right_joint2" range="-0.174533 3.31613" actuatorfrcrange="-40 40" armature="0.01" axis="-1 0 0"/>
-                <geom name="openarm_right_link2_visual" pos="0.0301 0 -0.1225" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link2_symp1"/>
-                <geom name="openarm_right_link2_collision" pos="0.0301 0 -0.1225" type="mesh" contype="8" conaffinity="126" group="3" mesh="link2_symp1"/>
+                <geom name="openarm_right_link2_visual" pos="0.0301 0 -0.1225" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link2_symp"/>
+                <geom name="openarm_right_link2_collision" pos="0.0301 0 -0.1225" type="mesh" contype="8" conaffinity="126" group="3" mesh="link2_symp"/>
                 <body name="openarm_right_link3" pos="0.0301 0 0.06625">
                   <inertial pos="-0.00210475 0.000554909 0.0904747" quat="0.999951 -0.00493279 -0.00144148 0.00846754" mass="1.07386" diaginertia="0.00437205 0.00431934 0.000660613"/>
                   <joint name="openarm_right_joint3" range="-1.5708 1.5708" actuatorfrcrange="-27 27" armature="0.01"/>
-                  <geom name="openarm_right_link3_visual" pos="0 0 -0.18875" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link3_symp1"/>
-                  <geom name="openarm_right_link3_collision" pos="0 0 -0.18875" type="mesh" contype="8" conaffinity="126" group="3" mesh="link3_symp1"/>
+                  <geom name="openarm_right_link3_visual" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link3_symp"/>
+                  <geom name="openarm_right_link3_collision" pos="0 0 -0.18875" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link3_symp"/>
                   <body name="openarm_right_link4" pos="0 0.0315 0.20375">
                     <inertial pos="-0.00290068 -0.0303058 0.0633964" quat="0.994282 0.0996876 0.0329726 -0.0194357" mass="0.634853" diaginertia="0.000624355 0.000518596 0.000325049"/>
                     <joint name="openarm_right_joint4" range="-0.02 2.44346" actuatorfrcrange="-27 27" armature="0.01" axis="0 1 0"/>
@@ -693,18 +693,18 @@
                     <body name="openarm_right_link5" pos="0 -0.0315 0.0955">
                       <inertial pos="-0.00304967 0.00088669 0.0430798" quat="0.583368 -0.0362078 0.00200307 0.811398" mass="0.615659" diaginertia="0.000448064 0.000420549 0.000323387"/>
                       <joint name="openarm_right_joint5" range="-1.5708 1.5708" actuatorfrcrange="-7 7" armature="0.01"/>
-                      <geom name="openarm_right_link5_visual" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link5_symp1"/>
-                      <geom name="openarm_right_link5_collision" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link5_symp1"/>
+                      <geom name="openarm_right_link5_visual" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link5_symp"/>
+                      <geom name="openarm_right_link5_collision" pos="0 0 -0.438" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link5_symp"/>
                       <body name="openarm_right_link6" pos="0.0375 0 0.1205">
                         <inertial pos="-0.0371366 0.000332305 -9.49837e-05" quat="0.162305 0.716462 0.124543 0.666955" mass="0.475203" diaginertia="0.000159518 0.000156606 0.000142875"/>
                         <joint name="openarm_right_joint6" range="-0.785398 0.785398" actuatorfrcrange="-7 7" armature="0.01" axis="1 0 0"/>
-                        <geom name="openarm_right_link6_visual" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link6_symp1"/>
-                        <geom name="openarm_right_link6_collision" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link6_symp1"/>
+                        <geom name="openarm_right_link6_visual" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link6_symp"/>
+                        <geom name="openarm_right_link6_collision" pos="-0.0375 0 -0.5585" quat="1 0 0 0" type="mesh" contype="8" conaffinity="126" group="3" mesh="link6_symp"/>
                         <body name="openarm_right_link7" pos="-0.0375 0 0">
                           <inertial pos="6.87551e-05 0.0126618 0.0695195" quat="0.977257 0.211956 -0.00210063 0.00621971" mass="0.465977" diaginertia="0.000639018 0.000537496 0.000301486"/>
                           <joint name="openarm_right_joint7" range="-1.5708 1.5708" actuatorfrcrange="-7 7" armature="0.01" axis="0 1 0"/>
-                          <geom name="openarm_right_link7_visual" pos="0 0 -0.5585" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link7_symp1"/>
-                          <geom name="openarm_right_link7_collision" pos="0 0 -0.5585" type="mesh" contype="8" conaffinity="126" group="3" mesh="link7_symp1"/>
+                          <geom name="openarm_right_link7_visual" pos="0 0 -0.5585" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="link7_symp"/>
+                          <geom name="openarm_right_link7_collision" pos="0 0 -0.5585" type="mesh" contype="8" conaffinity="126" group="3" mesh="link7_symp"/>
                           <body name="openarm_right_hand" pos="0 0 0.1001">
                             <inertial pos="0 0.002 0.03" quat="0.547194 0.546814 -0.44595 0.450224" mass="0.35" diaginertia="0.000252306 0.000247103 1.76214e-05"/>
                             <geom name="openarm_right_hand_visual" pos="0 0 -0.6585" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="hand"/>
@@ -715,8 +715,8 @@
                             <body name="openarm_right_right_finger" pos="0 -0.006 0.015">
                               <inertial pos="0.0064528 -0.01702 0.0219685" mass="0.0360255" diaginertia="0.0002375 0.0002375 7.5e-05"/>
                               <joint name="openarm_right_finger_joint1" type="slide" range="0 0.044" actuatorfrcrange="-333 333" armature="0.01" axis="0 -1 0"/>
-                              <geom name="openarm_right_right_finger_visual" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="finger1"/>
-                              <geom name="openarm_right_right_finger_collision" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="16" conaffinity="126" group="3" mesh="finger1"/>
+                              <geom name="openarm_right_right_finger_visual" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="0" conaffinity="0" group="2" density="0" mesh="finger_inv"/>
+                              <geom name="openarm_right_right_finger_collision" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh" contype="16" conaffinity="126" group="3" mesh="finger_inv"/>
                             </body>
                             <body name="openarm_right_left_finger" pos="0 0.006 0.015">
                               <inertial pos="0.0064528 0.01702 0.0219685" mass="0.0360255" diaginertia="0.0002375 0.0002375 7.5e-05"/>
@@ -738,46 +738,46 @@
             </body>
           </body>
         </body>
-        <body name="bl_wheel_link" pos="0.130943 0.130943 0.05" quat="0.92388 0 0 -0.382683">
+        <body name="bl_wheel_link" pos="-0.130943 0.130943 0.05" quat="0.92388 0 0 0.382683">
           <inertial pos="0 0 0" quat="0.707107 7.25151e-11 -7.25151e-11 0.707107" mass="0.05" diaginertia="0.000140625 8.07292e-05 8.07292e-05"/>
           <joint name="bl_wheel_joint" actuatorfrcrange="-100 100" armature="0.01" damping="0.001" axis="0 1 0"/>
           <geom name="bl_wheel_link_visual" size="0.075 0.025" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="2" density="0"/>
           <geom name="bl_wheel_contact" size="0.075 0.005" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
         </body>
-        <body name="br_wheel_link" pos="-0.130943 0.130943 0.05" quat="0.92388 0 0 0.382683">
+        <body name="br_wheel_link" pos="-0.130943 -0.130943 0.05" quat="0.382683 0 0 0.92388">
           <inertial pos="0 0 0" quat="0.707107 7.25151e-11 -7.25151e-11 0.707107" mass="0.05" diaginertia="0.000140625 8.07292e-05 8.07292e-05"/>
           <joint name="br_wheel_joint" actuatorfrcrange="-100 100" armature="0.01" damping="0.001" axis="0 1 0"/>
           <geom name="br_wheel_link_visual" size="0.075 0.025" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="2" density="0"/>
           <geom name="br_wheel_contact" size="0.075 0.005" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
         </body>
-        <body name="fr_wheel_link" pos="-0.130943 -0.130943 0.05" quat="0.382683 0 0 0.92388">
+        <body name="fr_wheel_link" pos="0.130943 -0.130943 0.05" quat="-0.382683 0 0 0.92388">
           <inertial pos="0 0 0" quat="0.707107 7.25151e-11 -7.25151e-11 0.707107" mass="0.05" diaginertia="0.000140625 8.07292e-05 8.07292e-05"/>
           <joint name="fr_wheel_joint" actuatorfrcrange="-100 100" armature="0.01" damping="0.001" axis="0 1 0"/>
           <geom name="fr_wheel_link_visual" size="0.075 0.025" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="2" density="0"/>
           <geom name="fr_wheel_contact" size="0.075 0.005" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
         </body>
-        <body name="fl_wheel_link" pos="0.130943 -0.130943 0.05" quat="-0.382683 0 0 0.92388">
+        <body name="fl_wheel_link" pos="0.130943 0.130943 0.05" quat="0.92388 0 0 -0.382683">
           <inertial pos="0 0 0" quat="0.707107 7.25151e-11 -7.25151e-11 0.707107" mass="0.05" diaginertia="0.000140625 8.07292e-05 8.07292e-05"/>
           <joint name="fl_wheel_joint" actuatorfrcrange="-100 100" armature="0.01" damping="0.001" axis="0 1 0"/>
           <geom name="fl_wheel_link_visual" size="0.075 0.025" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="2" density="0"/>
           <geom name="fl_wheel_contact" size="0.075 0.005" quat="0.707107 0.707107 0 0" type="capsule" contype="0" conaffinity="0" group="3"/>
         </body>
-        <body name="front_lidar_link" pos="0 -0.235 0.28232" quat="0.707107 0 0 -0.707107">
+        <body name="front_lidar_link" pos="0.235 0 0.28232">
           <site name="front_lidar_link" size="0.01" group="4"/>
         </body>
-        <body name="back_lidar_link" pos="0 0.235 0.28232" quat="0.707107 0 0 0.707107">
+        <body name="back_lidar_link" pos="-0.235 0 0.28232" quat="0 0 0 1">
           <site name="back_lidar_link" size="0.01" group="4"/>
         </body>
         <body name="merged_lidar_link" pos="0 0 0.28232">
           <site name="merged_lidar_link" size="0.01" group="4"/>
         </body>
-        <body name="unitree4d_l2_imu_initial" pos="0 0.0519615 1.676" quat="-0.205266 0.816448 0.523297 0.132052">
+        <body name="unitree4d_l2_imu_initial" pos="-0.0519615 0 1.676" quat="-0.23852 0.207289 0.947343 -0.0517705">
           <site name="unitree4d_l2_imu_initial" size="0.01" group="4"/>
           <body name="unitree4d_l2_imu" pos="-0.007698 -0.014655 0.00667">
             <site name="unitree4d_l2_imu" size="0.01" group="4"/>
           </body>
         </body>
-        <body name="bottom_bottom_screw_frame" pos="0 -0.273862 0.180048" quat="0.640856 -0.298836 -0.298836 -0.640856">
+        <body name="bottom_bottom_screw_frame" pos="0.273862 0 0.180048" quat="0.906308 0 -0.422618 0">
           <site name="bottom_bottom_screw_frame" size="0.01" group="4"/>
           <body name="bottom_link" pos="0 0.02 0.0115">
             <inertial pos="0 0 0" quat="0.707107 0.707107 0 0" mass="0.564" diaginertia="0.00388124 0.00387926 0.00049894"/>
@@ -831,7 +831,7 @@
   </equality>
 
   <actuator>
-    <general name="lift_joint" joint="lift_joint" ctrlrange="0.08 0.7435" ctrllimited="true" forcelimited="true" forcerange="-600 600" biastype="affine" gainprm="50000" biasprm="0 -50000 1"/>
+    <general name="lift_joint" joint="lift_joint" ctrlrange="0 0.7435" ctrllimited="true" forcelimited="true" forcerange="-600 600" biastype="affine" gainprm="50000" biasprm="0 -50000 1"/>
     <general name="bl_wheel_joint" joint="bl_wheel_joint" ctrlrange="-100 100" ctrllimited="true" forcelimited="true" forcerange="-100 100" biastype="affine" gainprm="20" biasprm="0 0 -20"/>
     <general name="br_wheel_joint" joint="br_wheel_joint" ctrlrange="-100 100" ctrllimited="true" forcelimited="true" forcerange="-100 100" biastype="affine" gainprm="20" biasprm="0 0 -20"/>
     <general name="fr_wheel_joint" joint="fr_wheel_joint" ctrlrange="-100 100" ctrllimited="true" forcelimited="true" forcerange="-100 100" biastype="affine" gainprm="20" biasprm="0 0 -20"/>
