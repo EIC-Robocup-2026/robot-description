@@ -23,6 +23,9 @@
   images):
     front_lidar: frame front_lidar_link, 241 beams, min_angle -2.09333333, max_angle 2.09333333, angle_increment 0.017444444416, range 0.18 to 10 m, 40 Hz
     back_lidar: frame back_lidar_link, 241 beams, min_angle -2.09333333, max_angle 2.09333333, angle_increment 0.017444444416, range 0.18 to 10 m, 40 Hz
+  Head 3D lidar (sensor of the MuJoCo extension mujoco.plugin.lidar; azimuth about the site Z
+  axis, elevation from its XY plane, -1 when nothing is hit; the rays also hit the robot):
+    unitree_l2: site unitree4d_l2_imu_initial, 180 x 32 rays, range 0.05 to 30 m, 12 Hz
   Cameras (MJCF camera -> optical frame): head_camera -> zed_head_left_camera_frame_optical (640x360), bottom_camera -> bottom_color_optical_frame (1280x720)
   IMU: site top_imu, sensors top_imu_quat, top_imu_gyro, top_imu_accel.
 
@@ -45,6 +48,19 @@
     <global offwidth="1280" offheight="720"/>
     <rgba rangefinder="1 1 0.1 0"/>
   </visual>
+
+  <extension>
+    <plugin plugin="mujoco.plugin.lidar">
+      <instance name="unitree_l2">
+        <config key="resolution" value="180 32"/>
+        <config key="azimuth_range" value="-3.124139361 3.124139361"/>
+        <config key="elevation_range" value="0.024543693 1.546252634"/>
+        <config key="max_range" value="30"/>
+        <config key="min_range" value="0.05"/>
+        <config key="update_rate" value="12"/>
+      </instance>
+    </plugin>
+  </extension>
 
   <asset>
     <mesh name="base_link_simple" content_type="model/stl" file="meshes/walkie/base_link_simple.stl"/>
@@ -1341,6 +1357,7 @@
     <rangefinder site="back_lidar_ray_238" name="back_lidar-238" nsample="1" interval="0.025 0"/>
     <rangefinder site="back_lidar_ray_239" name="back_lidar-239" nsample="1" interval="0.025 0"/>
     <rangefinder site="back_lidar_ray_240" name="back_lidar-240" nsample="1" interval="0.025 0"/>
+    <plugin objtype="site" objname="unitree4d_l2_imu_initial" instance="unitree_l2" name="unitree_l2"/>
   </sensor>
 
   <keyframe>

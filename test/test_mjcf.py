@@ -70,6 +70,19 @@ LIDAR_TOLERANCE = 0.02
 WALL_DISTANCE = 1.0          # m from the robot origin to the wall face, along +x
 WALL_HALF_SIZE = (0.05, 3.0, 0.5)
 
+LIDAR_3D = 'unitree_l2'
+# Self-filter box of the head lidar cloud (bringup/config/lidar/unitree_self_filter.yaml), in
+# the root body frame. Rays that hit the robot must end inside it.
+SELF_FILTER_BOX = ((-0.45, -0.45, 0.0), (0.45, 0.45, 1.9))
+# Shares of the rays in the empty scene at the home keyframe (measured: 67 % floor, 21 % robot,
+# 12 % upward rays with no hit).
+LIDAR_3D_FLOOR_SHARE = 0.6
+LIDAR_3D_MAX_SELF_SHARE = 0.3
+LIDAR_3D_TOLERANCE = 1e-6
+# A box beside the robot (+y), where the head lidar sees down from its horizon.
+LIDAR_3D_BOX_CENTER = (0.0, 1.5, 1.0)
+LIDAR_3D_BOX_HALF_SIZE = (0.3, 0.1, 1.0)
+
 
 # ----------------------------------------------------------------------------------------------
 # Fixtures and helpers
@@ -166,6 +179,36 @@ def _ray_box_distance(origin, direction, center, half_size):
     if far < max(near, 0.0) or near < 0.0:
         return None
     return near
+
+
+def _lidar_3d_rays(model, data, generator):
+    """Origin, unit directions (world frame) and readings of the head 3D lidar, in data order."""
+    config = generator.lidar_3d_config()
+    azimuth_count, elevation_count = (int(value) for value in config['resolution'].split())
+    azimuth = np.linspace(*(float(value) for value in config['azimuth_range'].split()),
+                          azimuth_count)
+    elevation = np.linspace(*(float(value) for value in config['elevation_range'].split()),
+                            elevation_count)
+    # The extension stores elevation rows of azimuth columns; a ray is
+    # (cos az cos el, sin az cos el, sin el) in the site frame.
+    elevations, azimuths = np.meshgrid(elevation, azimuth, indexing='ij')
+    local = np.stack([np.cos(azimuths) * np.cos(elevations),
+                      np.sin(azimuths) * np.cos(elevations),
+                      np.sin(elevations)], axis=-1).reshape(-1, 3)
+    sensor = model.sensor(LIDAR_3D)
+    site = sensor.objid[0]
+    directions = local @ data.site_xmat[site].reshape(3, 3).T
+    readings = data.sensordata[sensor.adr[0]:sensor.adr[0] + sensor.dim[0]].copy()
+    return data.site_xpos[site].copy(), directions, readings
+
+
+def _floor_distances(model, origin, directions):
+    """Distance along each ray to the floor plane, inf for rays that do not point down."""
+    height = origin[2] - model.geom('floor').pos[2]
+    distances = np.full(len(directions), np.inf)
+    down = directions[:, 2] < 0
+    distances[down] = height / -directions[down, 2]
+    return distances
 
 
 def _contact_bodies(model, data):
@@ -384,6 +427,88 @@ def test_lidar_ranges_to_wall(urdf, generator):
     # The front scanner faces the wall; the back scanner only sees it with its outermost beams.
     assert hits['front_lidar'] > 100
     assert 0 < hits['back_lidar'] < hits['front_lidar']
+
+
+def test_lidar_3d_layout(scene_model, generator):
+    """The head 3D lidar is one extension sensor on the URDF frame of the real cloud."""
+    sensor = scene_model.sensor(LIDAR_3D)
+    assert sensor.type[0] == mujoco.mjtSensor.mjSENS_PLUGIN
+    assert sensor.objtype[0] == mujoco.mjtObj.mjOBJ_SITE
+    site = scene_model.site(sensor.objid[0])
+    assert site.name == generator.LIDAR_3D_SITE
+    assert scene_model.body(site.bodyid[0]).name == generator.LIDAR_3D_SITE
+    assert sensor.dim[0] == math.prod(generator.LIDAR_3D_RESOLUTION)
+    plugins = mujoco.MjSpec.from_file(str(MODEL_FILE)).plugins
+    assert [(plugin.name, plugin.plugin_name, plugin.config) for plugin in plugins] == [
+        (LIDAR_3D, generator.LIDAR_3D_PLUGIN, generator.lidar_3d_config())]
+
+    # The rays sit at the centres of an even grid of cells covering the hemisphere z >= 0 of
+    # the site, within the [-pi, pi] the extension accepts.
+    (azimuth_min, azimuth_max), (elevation_min, elevation_max) = \
+        generator.lidar_3d_angle_ranges()
+    azimuth_count, elevation_count = generator.LIDAR_3D_RESOLUTION
+    azimuth_step = (azimuth_max - azimuth_min) / (azimuth_count - 1)
+    elevation_step = (elevation_max - elevation_min) / (elevation_count - 1)
+    assert azimuth_min - azimuth_step / 2 == pytest.approx(-math.pi)
+    assert azimuth_max + azimuth_step / 2 == pytest.approx(math.pi)
+    assert elevation_min - elevation_step / 2 == pytest.approx(0.0, abs=1e-12)
+    assert elevation_max + elevation_step / 2 == pytest.approx(math.pi / 2)
+    assert -math.pi < azimuth_min and azimuth_max < math.pi
+
+    header = re.search(rf'{LIDAR_3D}: site (\S+), (\d+) x (\d+) rays', MODEL_FILE.read_text())
+    assert header is not None, f'{LIDAR_3D} is not documented in the {MODEL_FILE.name} header'
+    assert (header[1], int(header[2]), int(header[3])) == (
+        generator.LIDAR_3D_SITE, azimuth_count, elevation_count)
+
+
+def test_lidar_3d_sees_floor(scene_model, generator):
+    """In the empty scene the rays end on the floor or on the robot, inside the self-filter box."""
+    data = _home_data(scene_model)
+    origin, directions, readings = _lidar_3d_rays(scene_model, data, generator)
+    floor = _floor_distances(scene_model, origin, directions)
+    min_range, max_range = generator.LIDAR_3D_RANGE
+    hit = readings >= 0
+    assert np.all((readings[hit] >= min_range) & (readings[hit] <= max_range))
+    # Nothing is seen beyond the floor, and every ray that reaches the floor in range hits.
+    assert np.all(readings[hit] <= floor[hit] + LIDAR_3D_TOLERANCE)
+    assert np.all(hit[floor <= max_range])
+    on_floor = hit & (np.abs(readings - floor) < LIDAR_3D_TOLERANCE)
+    on_robot = hit & ~on_floor
+    assert on_floor.mean() > LIDAR_3D_FLOOR_SHARE
+    assert on_robot.mean() < LIDAR_3D_MAX_SELF_SHARE
+
+    root = scene_model.body(ROOT_BODY).id
+    points = origin + directions[on_robot] * readings[on_robot, None]
+    local = (points - data.xpos[root]) @ data.xmat[root].reshape(3, 3)
+    lower, upper = SELF_FILTER_BOX
+    assert np.all((local >= lower) & (local <= upper)), 'robot hits outside the self-filter box'
+
+
+def test_lidar_3d_ranges_to_box(generator):
+    """Readings match the analytic distance to a box beside the robot."""
+    center = np.array(LIDAR_3D_BOX_CENTER)
+
+    def add_box(spec):
+        body = spec.worldbody.add_body(name='test_box', pos=center.tolist())
+        body.add_geom(name='test_box', type=mujoco.mjtGeom.mjGEOM_BOX,
+                      size=list(LIDAR_3D_BOX_HALF_SIZE), contype=generator.FURN,
+                      conaffinity=generator.COLLIDES_WITH[generator.FURN])
+
+    model = _scene_with(add_box)
+    data = _home_data(model)
+    origin, directions, readings = _lidar_3d_rays(model, data, generator)
+    floor = _floor_distances(model, origin, directions)
+    box = np.array([_ray_box_distance(origin, direction, center, LIDAR_3D_BOX_HALF_SIZE)
+                    or math.inf for direction in directions])
+    nearest = np.minimum(floor, box)
+    hit = readings >= 0
+    # Rays end on the nearest surface, or earlier on the robot itself.
+    assert np.all(readings[hit] <= nearest[hit] + LIDAR_3D_TOLERANCE)
+    towards_box = box < floor
+    on_box = hit & towards_box & (np.abs(readings - box) < LIDAR_3D_TOLERANCE)
+    on_robot = hit & towards_box & (readings < box - LIDAR_3D_TOLERANCE)
+    assert np.all(on_box | on_robot | ~towards_box)
+    assert on_box.sum() > 100
 
 
 # ----------------------------------------------------------------------------------------------
