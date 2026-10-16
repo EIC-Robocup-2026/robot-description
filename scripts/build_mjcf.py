@@ -10,8 +10,9 @@ Pipeline:
      make mesh paths relative to the package root, and replace visual meshes MuJoCo cannot
      load (COLLADA, oversized STL) with the collision geometry of the same link.
   3. Import with mujoco.MjSpec and add what URDF cannot express: the floating base joint,
-     omni-wheel contact capsules, actuators, IMU sensors, cameras, emulated 2D lidars,
-     collision filtering, self-collision excludes, inertia estimates and a 'home' keyframe.
+     omni-wheel contact capsules, actuators, IMU sensors, cameras, emulated 2D lidars, the head
+     3D lidar, collision filtering, self-collision excludes, inertia estimates and a 'home'
+     keyframe. The 3D lidar needs the MuJoCo extension of ros-jazzy-mujoco-3d-lidar.
   4. Write the result deterministically with MjSpec.to_xml().
 
 The generated file is checked in. Regenerate it after any change to the robot description:
@@ -208,6 +209,24 @@ LIDAR_SENSOR_TYPES = ('gpu_lidar', 'lidar', 'gpu_ray', 'ray')
 # contain them unless the renderer disables mjVIS_RANGEFINDER.
 RANGEFINDER_RGBA = (1.0, 1.0, 0.1, 0.0)
 
+# The head 3D lidar (Unitree 4D L2) is one sensor of the MuJoCo extension 'mujoco.plugin.lidar'
+# (conda package ros-jazzy-mujoco-3d-lidar), published by Mujoco3dLidarPlugin of
+# mujoco_ros2_control_plugins. It sits on the URDF frame the real driver stamps its cloud with.
+# The L2 sees the hemisphere z >= 0 of that frame (360 x 90 deg) from 0.05 m to 30 m and sends
+# 12 clouds per second (216 scan lines per second, 18 lines per cloud). The extension casts a
+# fixed grid of rays, azimuth about the Z axis of the site and elevation from its XY plane. The
+# rays sit at the centres of an even grid of cells covering the hemisphere, so no ray repeats at
+# the azimuth seam or at the pole. Every ray is cast synchronously in mj_step and the extension
+# cannot exclude geoms (it also hits the robot), so the resolution trades density for
+# simulation speed.
+LIDAR_3D_NAME = 'unitree_l2'  # MJCF plugin instance and sensor name.
+LIDAR_3D_SITE = 'unitree4d_l2_imu_initial'
+LIDAR_3D_PLUGIN = 'mujoco.plugin.lidar'
+LIDAR_3D_PACKAGE = 'ros-jazzy-mujoco-3d-lidar'
+LIDAR_3D_RESOLUTION = (180, 32)  # Rays in azimuth and elevation (2 x 2.8 deg).
+LIDAR_3D_RANGE = (0.05, 30.0)    # m
+LIDAR_3D_UPDATE_RATE = 12.0      # Hz, in simulated time.
+
 # MuJoCo's STL decoder only reads binary files with at most this many faces.
 STL_MAX_FACES = 200000
 MESH_CONTENT_TYPES = {'.stl': 'model/stl', '.obj': 'model/obj', '.msh': 'model/vnd.mujoco.msh'}
@@ -232,6 +251,9 @@ HEADER_TEMPLATE = """
   max_angle, -1 when nothing is hit; beams are drawn transparent so they stay out of camera
   images):
 {lidar_table}
+  Head 3D lidar (sensor of the MuJoCo extension {lidar_3d_plugin}; azimuth about the site Z
+  axis, elevation from its XY plane, -1 when nothing is hit; the rays also hit the robot):
+{lidar_3d_row}
   Cameras (MJCF camera -> optical frame): {camera_table}
   IMU: site {imu}, sensors {imu}_quat, {imu}_gyro, {imu}_accel.
 
@@ -386,6 +408,28 @@ def lidar_beam_angles(min_angle, max_angle):
     increment = lidar_angle_increment(min_angle, max_angle)
     count = round((max_angle - min_angle) / increment) + 1
     return [min_angle + index * increment for index in range(count)]
+
+
+def lidar_3d_angle_ranges():
+    """(azimuth, elevation) ranges of the head 3D lidar: first and last ray, inclusive."""
+    azimuth_count, elevation_count = LIDAR_3D_RESOLUTION
+    azimuth_step = 2 * math.pi / azimuth_count
+    elevation_step = math.pi / 2 / elevation_count
+    return ((-math.pi + azimuth_step / 2, math.pi - azimuth_step / 2),
+            (elevation_step / 2, math.pi / 2 - elevation_step / 2))
+
+
+def lidar_3d_config():
+    """Plugin configuration of the head 3D lidar (synchronous: the 'async' key is unset)."""
+    azimuth, elevation = lidar_3d_angle_ranges()
+    return {
+        'resolution': ' '.join(str(count) for count in LIDAR_3D_RESOLUTION),
+        'azimuth_range': ' '.join(f'{angle:.9f}' for angle in azimuth),
+        'elevation_range': ' '.join(f'{angle:.9f}' for angle in elevation),
+        'min_range': f'{LIDAR_3D_RANGE[0]:g}',
+        'max_range': f'{LIDAR_3D_RANGE[1]:g}',
+        'update_rate': f'{LIDAR_3D_UPDATE_RATE:g}',
+    }
 
 
 # ----------------------------------------------------------------------------------------------
@@ -668,6 +712,26 @@ def _add_lidars(spec, urdf):
     return lidars
 
 
+def _add_lidar_3d(spec):
+    """Add the head 3D lidar as a sensor of the MuJoCo lidar extension on its frame site."""
+    # Parsing an <extension> element fails when no loaded library registers the plugin. The
+    # mujoco Python package loads every library in <prefix>/bin/mujoco_plugin on import.
+    try:
+        mujoco.MjSpec.from_string(
+            f'<mujoco><extension><plugin plugin="{LIDAR_3D_PLUGIN}"/></extension></mujoco>')
+    except ValueError as error:
+        raise RuntimeError(f"MuJoCo extension '{LIDAR_3D_PLUGIN}' is not available; install "
+                           f'{LIDAR_3D_PACKAGE} (pixi install)') from error
+    if spec.site(LIDAR_3D_SITE) is None:
+        raise ValueError(f"3D lidar frame '{LIDAR_3D_SITE}' is not a site of the model")
+    spec.activate_plugin(LIDAR_3D_PLUGIN)
+    plugin = spec.add_plugin(name=LIDAR_3D_NAME, plugin_name=LIDAR_3D_PLUGIN, active=True)
+    plugin.config = lidar_3d_config()
+    sensor = spec.add_sensor(name=LIDAR_3D_NAME, type=mujoco.mjtSensor.mjSENS_PLUGIN,
+                             objtype=mujoco.mjtObj.mjOBJ_SITE, objname=LIDAR_3D_SITE)
+    sensor.plugin = plugin
+
+
 def _set_rest_height(spec):
     """Place the root so the wheel capsules touch the z = 0 plane at qpos0."""
     model = spec.compile()
@@ -770,6 +834,10 @@ def _header(lidars, cameras, excludes):
         f"range {lidar['range_min']:g} to {lidar['range_max']:g} m, "
         f"{lidar['update_rate']:g} Hz"
         for lidar in lidars]
+    lidar_3d_row = (
+        f'    {LIDAR_3D_NAME}: site {LIDAR_3D_SITE}, '
+        f'{LIDAR_3D_RESOLUTION[0]} x {LIDAR_3D_RESOLUTION[1]} rays, '
+        f'range {LIDAR_3D_RANGE[0]:g} to {LIDAR_3D_RANGE[1]:g} m, {LIDAR_3D_UPDATE_RATE:g} Hz')
     camera_rows = ', '.join(f'{name} -> {frame} ({width}x{height})'
                             for name, frame, width, height in cameras)
     del excludes  # Listed in the model itself.
@@ -777,6 +845,7 @@ def _header(lidars, cameras, excludes):
         collision_table='\n'.join(rows),
         wheel_geoms=', '.join(wheel_contact_geom(wheel) for wheel in WHEELS),
         lidar_table='\n'.join(lidar_rows), camera_table=camera_rows, imu=IMU_NAME,
+        lidar_3d_plugin=LIDAR_3D_PLUGIN, lidar_3d_row=lidar_3d_row,
         lift_mass=LIFT_LINK_MASS_ESTIMATE, lift_force=LIFT_FORCE_LIMIT_ESTIMATE,
         lift_kp=LIFT_POSITION_KP_ESTIMATE, lift_damping=LIFT_JOINT_DAMPING_ESTIMATE)
 
@@ -813,6 +882,8 @@ def build_spec(urdf_root=None):
     _set_rest_height(spec)
     excludes = _add_self_collision_excludes(spec)
     _add_home_keyframe(spec, urdf)
+    # Added last, so the forward passes of the steps above do not cast its rays.
+    _add_lidar_3d(spec)
     spec.comment = _header(lidars, cameras, excludes)
     return spec, {'lidars': lidars, 'cameras': cameras, 'excludes': excludes, 'urdf': urdf}
 
@@ -835,8 +906,8 @@ def to_xml(spec):
     reloaded_spec = mujoco.MjSpec.from_string(xml)
     reloaded_spec.modelfiledir = str(MUJOCO_DIR)
     reloaded = reloaded_spec.compile()
-    for field in ('nq', 'nv', 'nu', 'nbody', 'ngeom', 'nsite', 'nsensor', 'neq', 'nexclude',
-                  'nkey'):
+    for field in ('nq', 'nv', 'nu', 'nbody', 'ngeom', 'nsite', 'nsensor', 'nplugin', 'neq',
+                  'nexclude', 'nkey'):
         if getattr(expected, field) != getattr(reloaded, field):
             raise RuntimeError(f'written model differs from the spec in {field}')
     for field in ('body_mass', 'body_inertia', 'body_ipos', 'geom_size', 'geom_contype',
