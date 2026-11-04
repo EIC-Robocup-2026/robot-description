@@ -1,0 +1,72 @@
+<!--
+  MuJoCo world for the whole-body MoveIt demo: the default floor plus a table, a box on the
+  table and a wall behind it.
+
+  The robot starts at the origin facing +x. The table's near edge is 1.55 m away, so a target
+  above the box is out of reach of the arms from the start pose. The table legs reach the
+  lidar plane at z = 0.28 m, so /scan and Nav2's collision monitor see them. The table top and
+  the box are above that plane and only the head camera sees them.
+
+  See scene.xml for the rules a custom world has to follow.
+-->
+<mujoco model="walkie_scene_whole_body">
+  <include file="walkie.xml"/>
+
+  <statistic center="0 0 0.7" extent="2.2"/>
+
+  <visual>
+    <map znear="0.025"/>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="150" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+      height="3072"/>
+    <texture type="2d" name="floor" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+      rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="floor" texture="floor" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    <material name="table" rgba="0.55 0.4 0.28 1"/>
+    <material name="wall" rgba="0.75 0.75 0.72 1"/>
+    <material name="box" rgba="0.85 0.25 0.2 1"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 3.5" dir="0 0 -1" directional="true"/>
+    <geom name="floor" type="plane" size="0 0 0.05" material="floor" contype="1"
+      conaffinity="32"/>
+
+    <body name="table" pos="1.9 0 0">
+      <geom name="table_top" type="box" size="0.35 0.6 0.02" pos="0 0 0.72" material="table"
+        contype="64" conaffinity="56"/>
+      <geom name="table_leg_near_left" type="box" size="0.03 0.03 0.35" pos="-0.3 0.55 0.35"
+        material="table" contype="64" conaffinity="56"/>
+      <geom name="table_leg_near_right" type="box" size="0.03 0.03 0.35" pos="-0.3 -0.55 0.35"
+        material="table" contype="64" conaffinity="56"/>
+      <geom name="table_leg_far_left" type="box" size="0.03 0.03 0.35" pos="0.3 0.55 0.35"
+        material="table" contype="64" conaffinity="56"/>
+      <geom name="table_leg_far_right" type="box" size="0.03 0.03 0.35" pos="0.3 -0.55 0.35"
+        material="table" contype="64" conaffinity="56"/>
+    </body>
+
+    <body name="box" pos="1.75 0.15 0.79">
+      <freejoint name="box_joint"/>
+      <geom name="box" type="box" size="0.03 0.03 0.05" mass="0.1" material="box" contype="32"
+        conaffinity="121"/>
+    </body>
+
+    <body name="wall" pos="3.2 0 0">
+      <geom name="wall" type="box" size="0.05 2.5 1.0" pos="0 0 1.0" material="wall" contype="64"
+        conaffinity="56"/>
+    </body>
+  </worldbody>
+
+  <contact>
+    <!-- friction: along the axle, along the rolling direction, torsional, rolling (x2) -->
+    <pair geom1="fl_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+    <pair geom1="fr_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+    <pair geom1="bl_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+    <pair geom1="br_wheel_contact" geom2="floor" condim="3" friction="0.005 1 0.005 0.0001 0.0001"/>
+  </contact>
+</mujoco>
