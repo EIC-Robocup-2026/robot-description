@@ -736,13 +736,36 @@ def test_mesh_geoms_use_urdf_files(scene_model, urdf, generator):
     assert {key: sorted(files) for key, files in actual.items()} == expected
 
 
-def test_mesh_name_clash_is_an_error(generator):
-    """Two mesh files with the same name and scale would load as one mesh in MuJoCo."""
-    prefix = generator.PACKAGE_URI_PREFIX
-    root = ElementTree.fromstring(
-        '<robot name="clash"><link name="link">'
-        f'<collision><geometry><mesh filename="{prefix}meshes/a/part.stl"/></geometry></collision>'
-        f'<collision><geometry><mesh filename="{prefix}meshes/b/part.stl"/></geometry></collision>'
-        '</link></robot>')
-    with pytest.raises(ValueError, match="share the name 'part'"):
-        generator.prepare_urdf(root)
+def _mesh_urdf(generator, meshes):
+    """A one-link URDF with a collision mesh per (path below meshes/, scale) entry."""
+    collisions = ''.join(
+        f'<collision><geometry><mesh filename="{generator.PACKAGE_URI_PREFIX}meshes/{path}" '
+        f'scale="{scale}"/></geometry></collision>' for path, scale in meshes)
+    return ElementTree.fromstring(f'<robot name="meshes"><link name="link">{collisions}</link></robot>')
+
+
+# The importer names a mesh after its file name without directory and extension, and the same
+# name at another scale with an index (part, part1). Mesh files are not read by the import.
+@pytest.mark.parametrize('meshes', [
+    pytest.param([('a/part.stl', '1 1 1'), ('b/part.stl', '1 1 1')], id='same-name-and-scale'),
+    pytest.param([('a/part.stl', '0.001 0.001 0.001'), ('b/part.stl', '1e-3 1e-3 1e-3')],
+                 id='same-scale-written-differently'),
+    pytest.param([('a/part.stl', '1 1 1'), ('b/part.stl', '2 2 2'), ('c/part1.stl', '2 2 2')],
+                 id='name-of-an-indexed-mesh'),
+    pytest.param([('a/part.stl', '1 1 1'), ('b/part.stl', '2 2 2'), ('c/part1.stl', '1 1 1')],
+                 id='name-of-an-indexed-mesh-other-scale'),
+])
+def test_merged_mesh_files_are_an_error(generator, meshes):
+    """The generator stops when the importer would load another mesh file for a geom."""
+    with pytest.raises(ValueError, match='do not load the mesh files of the URDF'):
+        generator.import_urdf(_mesh_urdf(generator, meshes))
+
+
+@pytest.mark.parametrize('meshes', [
+    pytest.param([('a/part.stl', '1 1 1'), ('a/part.stl', '1 1 1')], id='same-file-twice'),
+    pytest.param([('a/part.stl', '1 1 1'), ('b/part.stl', '2 2 2')], id='same-name-other-scale'),
+    pytest.param([('a/part.stl', '1 1 1'), ('a/./part.stl', '1 1 1')], id='equivalent-paths'),
+])
+def test_distinct_mesh_files_import(generator, meshes):
+    """Mesh references that the importer resolves to the named files pass the check."""
+    generator.import_urdf(_mesh_urdf(generator, meshes))
