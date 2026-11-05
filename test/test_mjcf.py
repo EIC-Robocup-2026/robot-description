@@ -16,6 +16,7 @@ import math
 from pathlib import Path
 import re
 import sys
+from xml.etree import ElementTree
 
 import pytest
 import yaml
@@ -701,3 +702,47 @@ def test_collision_classes_in_contact(generator):
     assert 'furniture_at_left_hand' in touching
     assert 'object_at_right_hand' in touching
     assert ('object_on_floor', 'world') in pairs
+
+
+# ----------------------------------------------------------------------------------------------
+# (g) Mesh geoms load the mesh files of the URDF
+# ----------------------------------------------------------------------------------------------
+def _mesh_file(model, mesh):
+    paths = bytes(model.paths)
+    start = model.mesh_pathadr[mesh]
+    return paths[start:paths.index(b'\0', start)].decode()
+
+
+def test_mesh_geoms_use_urdf_files(scene_model, urdf, generator):
+    """Every visual and collision mesh geom loads the file the prepared URDF names for it."""
+    prepared = ElementTree.fromstring(generator.prepare_urdf(urdf.root))
+    expected = {}
+    for link in prepared.findall('link'):
+        for kind, group in (('visual', generator.VISUAL_GROUP),
+                            ('collision', generator.COLLISION_GROUP)):
+            files = [mesh.get('filename') for mesh in link.findall(f'{kind}/geometry/mesh')]
+            if files:
+                expected[(link.get('name'), group)] = sorted(files)
+    root = scene_model.body(ROOT_BODY).id
+    actual = {}
+    for geom in range(scene_model.ngeom):
+        body = scene_model.geom_bodyid[geom]
+        if (scene_model.geom_type[geom] != mujoco.mjtGeom.mjGEOM_MESH
+                or scene_model.body_rootid[body] != root):
+            continue
+        key = (scene_model.body(body).name, int(scene_model.geom_group[geom]))
+        actual.setdefault(key, []).append(
+            _mesh_file(scene_model, scene_model.geom_dataid[geom]))
+    assert {key: sorted(files) for key, files in actual.items()} == expected
+
+
+def test_mesh_name_clash_is_an_error(generator):
+    """Two mesh files with the same name and scale would load as one mesh in MuJoCo."""
+    prefix = generator.PACKAGE_URI_PREFIX
+    root = ElementTree.fromstring(
+        '<robot name="clash"><link name="link">'
+        f'<collision><geometry><mesh filename="{prefix}meshes/a/part.stl"/></geometry></collision>'
+        f'<collision><geometry><mesh filename="{prefix}meshes/b/part.stl"/></geometry></collision>'
+        '</link></robot>')
+    with pytest.raises(ValueError, match="share the name 'part'"):
+        generator.prepare_urdf(root)

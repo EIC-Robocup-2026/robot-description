@@ -8,7 +8,8 @@ Pipeline:
      directory, so a stale install cannot leak into the generated model.
   2. Prepare the URDF for MuJoCo's importer: drop <gazebo>, <ros2_control> and <transmission>,
      make mesh paths relative to the package root, and replace visual meshes MuJoCo cannot
-     load (COLLADA, oversized STL) with the collision geometry of the same link.
+     load (COLLADA, oversized STL) with the collision geometry of the same link. Mesh files
+     the importer would merge into one mesh (same file name and scale) are an error.
   3. Import with mujoco.MjSpec and add what URDF cannot express: the floating base joint,
      omni-wheel contact capsules, actuators, IMU sensors, cameras, emulated 2D lidars, the head
      3D lidar, collision filtering, self-collision excludes, inertia estimates and a 'home'
@@ -450,6 +451,26 @@ def _mesh_is_loadable(relative_path):
     return path.stat().st_size == 84 + 50 * faces and 0 < faces <= STL_MAX_FACES
 
 
+def _check_mesh_names(root):
+    """
+    Fail when MuJoCo's URDF importer would load two different mesh files as one mesh.
+
+    The importer names a mesh after its file name without directory and extension, and reuses
+    an existing mesh of that name and scale. A second file with the same name and scale is
+    silently replaced by the first, for example visual/part.stl and collision/part.stl.
+    """
+    files_by_key = {}
+    for mesh in root.iter('mesh'):
+        filename = mesh.get('filename')
+        scale = tuple(float(value) for value in mesh.get('scale', '1 1 1').split())
+        files_by_key.setdefault((Path(filename).stem, scale), set()).add(filename)
+    for (stem, _), files in files_by_key.items():
+        if len(files) > 1:
+            raise ValueError(f"mesh files {sorted(files)} share the name '{stem}' and scale; "
+                             "MuJoCo's URDF importer would load only one of them. "
+                             'Rename one of the files.')
+
+
 def prepare_urdf(root):
     """Return a copy of the URDF ready for mujoco.MjSpec.from_string()."""
     root = copy.deepcopy(root)
@@ -481,6 +502,7 @@ def prepare_urdf(root):
             if collision.find('origin') is not None:
                 visual.insert(0, copy.deepcopy(collision.find('origin')))
             visual.append(copy.deepcopy(collision.find('geometry')))
+    _check_mesh_names(root)
 
     extension = ElementTree.SubElement(root, 'mujoco')
     ElementTree.SubElement(
