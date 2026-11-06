@@ -9,7 +9,7 @@
   Writing a custom world
   ======================
   Copy this file and keep it in this directory: walkie.xml resolves its meshes relative to
-  the directory of the top-level model file (meshdir=".."). A world must:
+  the directory of the top-level model file (meshdir="../"). A world must:
 
     1. Include walkie.xml before any other body with joints, so the robot's degrees of
        freedom come first in qpos and the robot's 'home' keyframe stays valid.
