@@ -87,6 +87,7 @@
     <mesh name="finger" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/finger.stl" scale="0.001 0.001 0.001"/>
     <mesh name="finger_inv" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/finger_inv.stl" scale="0.001 0.001 0.001"/>
     <mesh name="wristcam_bracket" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/visual/wristcam_bracket.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="wristcam_bracket_collision" content_type="model/stl" file="meshes/openarm/ee/openarm_hand/collision/wristcam_bracket_collision.stl" scale="0.001 0.001 0.001"/>
   </asset>
 
   <worldbody>
@@ -671,7 +672,7 @@
                             </body>
                             <body name="openarm_left_wristcam_bracket">
                               <geom name="openarm_left_wristcam_bracket_visual" pos="0.0095 0 -0.0055" quat="0.00586866 0.707364 -0.00586399 0.706801" type="mesh" contype="0" conaffinity="0" group="2" rgba="0.2 0.2 0.2 1" density="0" mesh="wristcam_bracket"/>
-                              <geom name="openarm_left_wristcam_bracket_collision" pos="0.0095 0 -0.0055" quat="0.00586866 0.707364 -0.00586399 0.706801" type="mesh" contype="16" conaffinity="126" group="3" rgba="0.2 0.2 0.2 1" density="0" mesh="wristcam_bracket"/>
+                              <geom name="openarm_left_wristcam_bracket_collision" pos="0.0095 0 -0.0055" quat="0.00586866 0.707364 -0.00586399 0.706801" type="mesh" contype="16" conaffinity="126" group="3" rgba="0.2 0.2 0.2 1" density="0" mesh="wristcam_bracket_collision"/>
                             </body>
                           </body>
                         </body>
@@ -742,7 +743,7 @@
                             </body>
                             <body name="openarm_right_wristcam_bracket">
                               <geom name="openarm_right_wristcam_bracket_visual" pos="0.0095 0 -0.0055" quat="0.00586866 0.707364 -0.00586399 0.706801" type="mesh" contype="0" conaffinity="0" group="2" rgba="0.2 0.2 0.2 1" density="0" mesh="wristcam_bracket"/>
-                              <geom name="openarm_right_wristcam_bracket_collision" pos="0.0095 0 -0.0055" quat="0.00586866 0.707364 -0.00586399 0.706801" type="mesh" contype="16" conaffinity="126" group="3" rgba="0.2 0.2 0.2 1" density="0" mesh="wristcam_bracket"/>
+                              <geom name="openarm_right_wristcam_bracket_collision" pos="0.0095 0 -0.0055" quat="0.00586866 0.707364 -0.00586399 0.706801" type="mesh" contype="16" conaffinity="126" group="3" rgba="0.2 0.2 0.2 1" density="0" mesh="wristcam_bracket_collision"/>
                             </body>
                           </body>
                         </body>

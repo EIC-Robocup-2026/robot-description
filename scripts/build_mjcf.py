@@ -9,7 +9,9 @@ Pipeline:
   2. Prepare the URDF for MuJoCo's importer: drop <gazebo>, <ros2_control> and <transmission>,
      make mesh paths relative to the package root, and replace visual meshes MuJoCo cannot
      load (COLLADA, oversized STL) with the collision geometry of the same link.
-  3. Import with mujoco.MjSpec and add what URDF cannot express: the floating base joint,
+  3. Import with mujoco.MjSpec. A mesh geom that does not load the mesh file the URDF names
+     for it is an error: the importer merges mesh files whose names clash. Then add what URDF
+     cannot express: the floating base joint,
      omni-wheel contact capsules, actuators, IMU sensors, cameras, emulated 2D lidars, the head
      3D lidar, collision filtering, self-collision excludes, inertia estimates and a 'home'
      keyframe. The 3D lidar needs the MuJoCo extension of ros-jazzy-mujoco-3d-lidar.
@@ -489,6 +491,69 @@ def prepare_urdf(root):
     return ElementTree.tostring(root, encoding='unicode')
 
 
+def _mesh_reference(filename, scale):
+    return os.path.normpath(filename), tuple(float(value) for value in scale)
+
+
+def _describe_mesh_references(references):
+    return ', '.join(f"{filename} at scale {' '.join(f'{value:g}' for value in scale)}"
+                     for filename, scale in references) or 'nothing'
+
+
+def _check_mesh_files(spec, root):
+    """
+    Fail when a mesh geom does not load the mesh file and scale that the URDF names for it.
+
+    MuJoCo's URDF importer names a mesh after its file name without directory and extension.
+    It reuses the mesh of that name and scale, and names the same file name at another scale
+    with an index (part, part1, ...). Two cases follow:
+
+    - visual/part.stl and collision/part.stl at the same scale load as one mesh, silently;
+    - c/part1.stl next to a/part.stl and b/part.stl at two scales repeats the mesh name part1,
+      which MuJoCo reports only as "repeated name 'part1' in mesh" when compiling.
+
+    The flat geom list of the spec is used, because body.geoms raises on a repeated mesh name.
+    """
+    expected = {}
+    for link in root.findall('link'):
+        for kind in ('visual', 'collision'):
+            for mesh in link.findall(f'{kind}/geometry/mesh'):
+                expected.setdefault((link.get('name'), kind), []).append(
+                    _mesh_reference(mesh.get('filename'), mesh.get('scale', '1 1 1').split()))
+    loaded = {}
+    for geom in spec.geoms:
+        if geom.type != mujoco.mjtGeom.mjGEOM_MESH:
+            continue
+        # The URDF importer marks visual geoms with contype = conaffinity = 0.
+        kind = 'visual' if geom.contype == 0 and geom.conaffinity == 0 else 'collision'
+        mesh = spec.mesh(geom.meshname)
+        reference = (_mesh_reference(mesh.file, mesh.scale) if mesh is not None
+                     else (f'<no mesh named {geom.meshname!r}>', ()))
+        loaded.setdefault((geom.parent.name, kind), []).append(reference)
+    problems = []
+    for link, kind in sorted(set(expected) | set(loaded)):
+        urdf_meshes = sorted(expected.get((link, kind), []))
+        mujoco_meshes = sorted(loaded.get((link, kind), []))
+        if urdf_meshes != mujoco_meshes:
+            problems.append(f"link '{link}', {kind}: the URDF names "
+                            f'{_describe_mesh_references(urdf_meshes)}; MuJoCo loads '
+                            f'{_describe_mesh_references(mujoco_meshes)}')
+    if problems:
+        raise ValueError(
+            "mesh geoms do not load the mesh files of the URDF. MuJoCo's URDF importer names a "
+            'mesh after its file name without directory and extension, and merges meshes whose '
+            'names clash. Rename the mesh files so that their names differ.\n  '
+            + '\n  '.join(problems))
+
+
+def import_urdf(root):
+    """Import the URDF with MuJoCo's URDF importer and check its mesh geoms; returns an MjSpec."""
+    prepared = prepare_urdf(root)
+    spec = mujoco.MjSpec.from_string(prepared)
+    _check_mesh_files(spec, ElementTree.fromstring(prepared))
+    return spec
+
+
 # ----------------------------------------------------------------------------------------------
 # Model construction
 # ----------------------------------------------------------------------------------------------
@@ -853,7 +918,7 @@ def _header(lidars, cameras, excludes):
 def build_spec(urdf_root=None):
     """Build the MjSpec of walkie. Returns (spec, report)."""
     urdf = UrdfModel(urdf_root if urdf_root is not None else expand_urdf())
-    spec = mujoco.MjSpec.from_string(prepare_urdf(urdf.root))
+    spec = import_urdf(urdf.root)
     spec.modelname = MODEL_NAME
     # Static bodies are not fused: every URDF link stays a body of the same name. Rigidly
     # attached bodies already behave as one for contact filtering (MuJoCo weld groups), and
