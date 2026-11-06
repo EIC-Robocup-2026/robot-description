@@ -737,7 +737,7 @@ def test_mesh_geoms_use_urdf_files(scene_model, urdf, generator):
 
 
 def _mesh_urdf(generator, meshes):
-    """A one-link URDF with a collision mesh per (path below meshes/, scale) entry."""
+    """Return a one-link URDF with a collision mesh per (path below meshes/, scale) entry."""
     collisions = ''.join(
         f'<collision><geometry><mesh filename="{generator.PACKAGE_URI_PREFIX}meshes/{path}" '
         f'scale="{scale}"/></geometry></collision>' for path, scale in meshes)
